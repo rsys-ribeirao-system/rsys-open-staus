@@ -13,7 +13,7 @@ import { ChartTooltipNumber } from "./chart-tooltip-number";
 
 const chartConfig = {
   latency: {
-    label: "Latency",
+    label: "Latência",
     color: "var(--success)",
   },
 } satisfies ChartConfig;

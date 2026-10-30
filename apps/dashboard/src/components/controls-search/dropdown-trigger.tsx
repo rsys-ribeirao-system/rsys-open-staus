@@ -24,13 +24,13 @@ export function DropdownTrigger() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm" className="capitalize">
-          {trigger ?? "All Trigger"}
+          {trigger ?? "Todos os gatilhos"}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         <DropdownMenuGroup>
           <DropdownMenuLabel className="text-muted-foreground text-xs font-medium">
-            Trigger
+            Gatilho
           </DropdownMenuLabel>
           {TRIGGER.map((item) => (
             <DropdownMenuItem
@@ -38,7 +38,7 @@ export function DropdownTrigger() {
               onSelect={() => setTrigger(item)}
               className={cn("capitalize")}
             >
-              {item === "cron" ? "Scheduled" : "API"}
+              {item === "cron" ? "Agendado" : "API"}
               {trigger === item ? <Check className="ml-auto shrink-0" /> : null}
             </DropdownMenuItem>
           ))}

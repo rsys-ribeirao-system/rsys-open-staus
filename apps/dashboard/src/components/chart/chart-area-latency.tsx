@@ -32,7 +32,7 @@ import { ChartTooltipNumber } from "./chart-tooltip-number";
 
 const chartConfig = {
   latency: {
-    label: "Latency",
+    label: "Latência",
     color: "var(--success)",
   },
 } satisfies ChartConfig;
@@ -112,7 +112,7 @@ export function ChartAreaLatency({
             strokeDasharray="3 3"
           >
             <Label
-              value="Degraded"
+              value="Degradado"
               position="insideBottomRight"
               fill="var(--warning)"
             />

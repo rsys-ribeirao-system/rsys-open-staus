@@ -90,16 +90,16 @@ export function BillingAddons({
           value: newValue,
         });
         toast.promise(promise, {
-          loading: "Updating...",
+          loading: "Atualizando...",
           success: () => {
             setOpen(false);
-            return "Billing information updated";
+            return "Informações de cobrança atualizadas";
           },
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to update";
+            return "Falha ao atualizar";
           },
         });
         await promise;
@@ -125,7 +125,7 @@ export function BillingAddons({
           <div className="flex items-center gap-1.5">
             <span className="text-foreground font-mono text-sm">
               {formatPrice(price)}
-              {isQuantity ? "/mo./each" : "/mo."}
+              {isQuantity ? "/mês/cada" : "/mês"}
             </span>
             {hasAddon && !isQuantity ? (
               <Check className="text-success size-4" />
@@ -160,7 +160,7 @@ export function BillingAddons({
           />
         ) : null}
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Cancelar</AlertDialogCancel>
           <AlertDialogAction
             onClick={(e) => {
               e.preventDefault();
@@ -195,15 +195,15 @@ function getButtonLabel(
   value: number | boolean,
   isPending = false,
 ) {
-  if (isPending) return "Updating...";
+  if (isPending) return "Atualizando...";
 
   const isBoolean = typeof value === "boolean";
   const isQuantity = typeof value === "number";
 
-  if (isQuantity) return "Update";
+  if (isQuantity) return "Atualizar";
 
   if (isBoolean) {
-    return hasAddon ? "Remove" : "Add";
+    return hasAddon ? "Remover" : "Adicionar";
   }
 
   return null;
@@ -218,17 +218,17 @@ function getDialogDescription(
   const formattedPrice = formatPrice(price);
   const isBoolean = typeof value === "boolean";
   const isQuantity = typeof value === "number";
-  const priceSuffix = isQuantity ? "/mo./each" : "/mo.";
+  const priceSuffix = isQuantity ? "/mês/cada" : "/mês";
 
   if (isBoolean) {
     if (hasAddon) {
-      return `${label} will be removed from your subscription. You will save ${formattedPrice}${priceSuffix} on your next billing cycle.`;
+      return `${label} será removido da sua assinatura. Você economizará ${formattedPrice}${priceSuffix} no próximo ciclo de cobrança.`;
     }
-    return `${label} will be added to your subscription. You will be charged an additional ${formattedPrice}${priceSuffix} on your next billing cycle.`;
+    return `${label} será adicionado à sua assinatura. Será cobrado um valor adicional de ${formattedPrice}${priceSuffix} no próximo ciclo de cobrança.`;
   }
 
   if (isQuantity) {
-    return `${label} will be updated to ${value} on your next billing cycle. You will be charged ${formattedPrice}${priceSuffix} on your next billing cycle.`;
+    return `${label} será atualizado para ${value} no próximo ciclo de cobrança. Será cobrado ${formattedPrice}${priceSuffix} no próximo ciclo de cobrança.`;
   }
 }
 
@@ -254,7 +254,7 @@ function QuantityControl({
 
   return (
     <div className="flex items-center justify-center gap-2 py-2">
-      <ButtonGroup aria-label="Quantity" className="h-fit">
+      <ButtonGroup aria-label="Quantidade" className="h-fit">
         <Button
           variant="outline"
           size="icon"

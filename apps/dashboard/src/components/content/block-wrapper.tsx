@@ -49,7 +49,7 @@ export function BlockWrapper({
           >
             <CollapsibleTrigger asChild>
               <Button variant="outline" size="sm">
-                Expand
+                Expandir
               </Button>
             </CollapsibleTrigger>
           </div>

@@ -53,7 +53,7 @@ export function HoverCardTimestamp({
           />
           <CopyRow
             value={formatDistanceToNowStrict(date, { addSuffix: true })}
-            label="Relative"
+            label="Relativo"
           />
         </dl>
       </HoverCardContent>

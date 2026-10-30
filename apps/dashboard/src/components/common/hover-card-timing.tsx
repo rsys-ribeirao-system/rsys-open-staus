@@ -71,12 +71,12 @@ export function HoverCardTimingContent({
             </div>
             <div className="flex items-center justify-between gap-4">
               <div className="text-muted-foreground font-mono">
-                {`${new Intl.NumberFormat("en-US", {
+                {`${new Intl.NumberFormat("pt-BR", {
                   maximumFractionDigits: 2,
                 }).format((value / (latency || 1)) * 100)}%`}
               </div>
               <div className="font-mono">
-                {new Intl.NumberFormat("en-US", {
+                {new Intl.NumberFormat("pt-BR", {
                   maximumFractionDigits: 3,
                 }).format(value)}
                 <span className="text-muted-foreground">ms</span>

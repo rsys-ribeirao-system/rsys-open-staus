@@ -38,7 +38,7 @@ const chartConfig = {
     color: "var(--chart-1)",
   },
   connect: {
-    label: "Connect",
+    label: "Conexão",
     color: "var(--chart-2)",
   },
   tls: {
@@ -50,7 +50,7 @@ const chartConfig = {
     color: "var(--chart-4)",
   },
   transfer: {
-    label: "Transfer",
+    label: "Transferência",
     color: "var(--chart-5)",
   },
 } satisfies ChartConfig;
@@ -189,7 +189,7 @@ export function ChartAreaTimingPhases({
             strokeDasharray="3 3"
           >
             <Label
-              value="Degraded"
+              value="Degradado"
               position="insideBottomRight"
               fill="var(--warning)"
             />
