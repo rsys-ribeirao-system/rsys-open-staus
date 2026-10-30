@@ -14,12 +14,12 @@ export function listMaintenancesTable(
 ): ResultTableData<"title" | "from" | "duration" | "page" | "id"> {
   const items = output?.items ?? [];
   return {
-    empty: "No maintenance windows.",
+    empty: "Nenhuma janela de manutenção.",
     columns: [
-      { key: "title", header: "Title" },
-      { key: "from", header: "Start" },
-      { key: "duration", header: "Duration" },
-      { key: "page", header: "Page" },
+      { key: "title", header: "Título" },
+      { key: "from", header: "Início" },
+      { key: "duration", header: "Duração" },
+      { key: "page", header: "Página" },
       { key: "id", header: "ID" },
     ],
     rows: items.map((m) => {

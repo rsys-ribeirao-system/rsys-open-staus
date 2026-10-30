@@ -63,7 +63,7 @@ export function NavFeedback() {
     if (!SpeechRecognitionCtor) return;
 
     const recognition: SpeechRecognition = new SpeechRecognitionCtor();
-    recognition.lang = "en-US";
+    recognition.lang = "pt-BR";
     recognition.continuous = false;
     recognition.interimResults = false;
 
@@ -108,9 +108,9 @@ export function NavFeedback() {
         isMobile,
       });
       toast.promise(promise, {
-        loading: "Sending feedback...",
-        success: "Feedback sent",
-        error: "Failed to send feedback",
+        loading: "Enviando feedback...",
+        success: "Feedback enviado",
+        error: "Falha ao enviar feedback",
       });
       await promise;
     },
@@ -179,9 +179,11 @@ export function NavFeedback() {
         {feedbackMutation.isSuccess ? (
           <div className="border-input flex h-[110px] flex-col items-center justify-center gap-1 rounded-md border p-3 text-base shadow-xs">
             <Inbox className="size-4 shrink-0" />
-            <p className="text-center font-medium">Thanks for sharing!</p>
+            <p className="text-center font-medium">
+              Obrigado por compartilhar!
+            </p>
             <p className="text-muted-foreground text-center text-sm">
-              We&apos;ll get in touch if there&apos;s a follow-up.
+              Entraremos em contato se houver retorno.
             </p>
           </div>
         ) : (
@@ -195,7 +197,7 @@ export function NavFeedback() {
                     <FormLabel className="sr-only">Feedback</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Ideas, bugs, or anything else..."
+                        placeholder="Ideias, bugs ou qualquer outra coisa..."
                         className="field-sizing-fixed h-[110px] resize-none p-3"
                         rows={4}
                         {...field}
@@ -230,7 +232,7 @@ export function NavFeedback() {
                   <Loading className="size-4 animate-spin" />
                 ) : (
                   <>
-                    Send
+                    Enviar
                     <Kbd className="group-hover:text-foreground ml-1 font-mono">
                       ⌘
                     </Kbd>

@@ -13,11 +13,11 @@ export function listNotificationsTable(
 ): ResultTableData<"name" | "provider" | "monitors" | "id"> {
   const items = output?.items ?? [];
   return {
-    empty: "No notification channels.",
+    empty: "Nenhum canal de notificação.",
     columns: [
-      { key: "name", header: "Name" },
-      { key: "provider", header: "Provider" },
-      { key: "monitors", header: "Monitors" },
+      { key: "name", header: "Nome" },
+      { key: "provider", header: "Provedor" },
+      { key: "monitors", header: "Monitores" },
       { key: "id", header: "ID" },
     ],
     rows: items.map((n) => ({

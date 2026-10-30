@@ -14,11 +14,11 @@ export function listPrivateLocationsTable(
 ): ResultTableData<"name" | "monitors" | "lastSeenAt" | "id"> {
   const items = output?.items ?? [];
   return {
-    empty: "No private locations.",
+    empty: "Nenhuma localização privada.",
     columns: [
-      { key: "name", header: "Name" },
-      { key: "monitors", header: "Monitors" },
-      { key: "lastSeenAt", header: "Last seen" },
+      { key: "name", header: "Nome" },
+      { key: "monitors", header: "Monitores" },
+      { key: "lastSeenAt", header: "Visto por último" },
       { key: "id", header: "ID" },
     ],
     rows: items.map((location) => ({

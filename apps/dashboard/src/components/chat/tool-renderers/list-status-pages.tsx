@@ -13,9 +13,9 @@ export function listStatusPagesTable(
 ): ResultTableData<"title" | "slug" | "id"> {
   const items = output?.items ?? [];
   return {
-    empty: "No status pages.",
+    empty: "Nenhuma página de status.",
     columns: [
-      { key: "title", header: "Title" },
+      { key: "title", header: "Título" },
       { key: "slug", header: "Slug" },
       { key: "id", header: "ID" },
     ],

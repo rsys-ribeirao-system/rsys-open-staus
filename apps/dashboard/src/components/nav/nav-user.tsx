@@ -116,7 +116,7 @@ export function NavUser() {
                     className="font-commit-mono tracking-tight"
                   >
                     <AI />
-                    Upgrade Workspace
+                    Fazer upgrade do workspace
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -129,7 +129,7 @@ export function NavUser() {
                   onClick={() => setOpenMobile(false)}
                 >
                   <Account />
-                  Account
+                  Conta
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSub>
@@ -141,7 +141,7 @@ export function NavUser() {
                   ) : (
                     <System />
                   )}
-                  Theme
+                  Tema
                 </DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent className="font-commit-mono tracking-tight">
@@ -163,7 +163,7 @@ export function NavUser() {
                   onClick={() => setOpenMobile(false)}
                 >
                   <Billing />
-                  Billing
+                  Cobrança
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -173,7 +173,7 @@ export function NavUser() {
               className="font-commit-mono tracking-tight"
             >
               <Logout />
-              Log out
+              Sair
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

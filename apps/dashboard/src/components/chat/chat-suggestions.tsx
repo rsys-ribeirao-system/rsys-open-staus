@@ -9,10 +9,10 @@ import {
 } from "@/components/content/section";
 
 const SUGGESTIONS = [
-  "List all my monitors",
-  "Are any status reports unresolved?",
-  "Draft a status report",
-  "Schedule a maintenance window",
+  "Liste todos os meus monitores",
+  "Há relatórios de status não resolvidos?",
+  "Rascunhe um relatório de status",
+  "Agende uma janela de manutenção",
 ];
 
 type Props = {
@@ -23,12 +23,12 @@ export function ChatSuggestions({ onSelect }: Props) {
   return (
     <Section className="flex w-full max-w-3xl flex-col items-center">
       <SectionHeader className="max-w-2xl text-center">
-        <SectionTitle>openstatus assistant</SectionTitle>
+        <SectionTitle>assistente openstatus</SectionTitle>
         <SectionDescription>
-          Ask about your workspace, draft status reports, or debug your failing
-          monitors.{" "}
+          Pergunte sobre seu workspace, rascunhe relatórios de status ou depure
+          monitores com falha.{" "}
           <span className="text-muted-foreground/80">
-            Test it out and share your feedback.
+            Teste e compartilhe seu feedback.
           </span>{" "}
           <Badge variant="secondary" className="bg-info/10 text-info">
             BETA

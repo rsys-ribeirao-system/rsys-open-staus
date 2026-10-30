@@ -38,7 +38,8 @@ export function NavBannerUpgrade({ handleClose }: { handleClose: () => void }) {
         <SidebarMenuItem className="flex items-center gap-2 text-sm">
           <Launch className="text-info shrink-0" size={12} />
           <span>
-            Unlock custom domains, teams, 1 min. checks, subscriptions and more.
+            Desbloqueie domínios personalizados, equipes, verificações de 1
+            min., inscrições e mais.
           </span>
         </SidebarMenuItem>
         <SidebarMenuItem>
@@ -47,7 +48,7 @@ export function NavBannerUpgrade({ handleClose }: { handleClose: () => void }) {
             data-active="true"
             onClick={() => setOpen(true)}
           >
-            Upgrade
+            Fazer upgrade
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>

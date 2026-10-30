@@ -20,12 +20,12 @@ export function NavSearch() {
           setOpenMobile(false);
           setOpen(true);
         }}
-        tooltip="Search"
+        tooltip="Buscar"
         variant="outline"
         className="group/search"
       >
         <Search />
-        <span>Search</span>
+        <span>Buscar</span>
         <div className="group-hover/search:text-foreground ms-auto space-x-1 font-mono group-data-[collapsible=icon]:hidden">
           <Kbd>⌘</Kbd>
           <Kbd>K</Kbd>

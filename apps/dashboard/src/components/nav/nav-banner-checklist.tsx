@@ -36,31 +36,31 @@ export function NavBannerChecklist({
 
   const items = [
     {
-      title: "Create Monitor",
+      title: "Criar monitor",
       checked: hasMonitors,
       href: "/monitors/create",
     },
     {
-      title: "Create Status Page",
+      title: "Criar página de status",
       checked: hasStatusPages,
       href: "/status-pages/create",
     },
     {
-      title: "Add Page Components",
+      title: "Adicionar componentes",
       checked: hasPageComponents,
       href: onlyPage
         ? `/status-pages/${onlyPage.id}/components`
         : "/status-pages",
     },
     {
-      title: "Create Status Report",
+      title: "Criar relatório de status",
       checked: hasStatusReports,
       href: onlyPage
         ? `/status-pages/${onlyPage.id}/status-reports`
         : "/status-pages",
     },
     {
-      title: "Create Notification",
+      title: "Criar notificação",
       checked: hasNotifications,
       href: "/notifications",
     },
@@ -114,7 +114,7 @@ export function NavBannerChecklist({
             target="_blank"
             rel="noopener noreferrer"
           >
-            Read the Docs
+            Leia a documentação
           </a>
         </SidebarMenuItem>
       </SidebarMenu>

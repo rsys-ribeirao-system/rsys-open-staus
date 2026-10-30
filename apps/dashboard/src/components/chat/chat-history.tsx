@@ -23,7 +23,7 @@ export function ChatHistory() {
     <div className="flex w-full max-w-xl flex-col gap-2">
       <div className="flex items-center justify-between">
         <span className="text-muted-foreground font-mono text-xs tracking-wide uppercase">
-          Recent
+          Recentes
         </span>
       </div>
       <ul className="flex flex-col gap-2">

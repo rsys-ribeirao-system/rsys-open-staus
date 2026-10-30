@@ -23,12 +23,12 @@ export function listAuditLogsTable(
 ): ResultTableData<"action" | "entity" | "actor" | "createdAt"> {
   const items = output.items;
   return {
-    empty: "No audit log entries.",
+    empty: "Nenhuma entrada no log de auditoria.",
     columns: [
-      { key: "action", header: "Action" },
-      { key: "entity", header: "Entity" },
-      { key: "actor", header: "Actor" },
-      { key: "createdAt", header: "Timestamp" },
+      { key: "action", header: "Ação" },
+      { key: "entity", header: "Entidade" },
+      { key: "actor", header: "Autor" },
+      { key: "createdAt", header: "Data/hora" },
     ],
     rows: items.map((item) => ({
       id: item.id,
