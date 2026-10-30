@@ -101,9 +101,10 @@ export function Client() {
         <SectionHeader>
           <SectionHeaderRow>
             <div>
-              <SectionTitle>History</SectionTitle>
+              <SectionTitle>Histórico</SectionTitle>
               <SectionDescription>
-                Long-term uptime, build from your page's components.
+                Disponibilidade de longo prazo, calculada a partir dos
+                componentes da sua página.
               </SectionDescription>
             </div>
             <Tabs
@@ -113,7 +114,7 @@ export function Client() {
               <TabsList>
                 {HISTORY_WINDOWS.map((w) => (
                   <TabsTrigger key={w} value={String(w)}>
-                    {w} months
+                    {w} meses
                   </TabsTrigger>
                 ))}
               </TabsList>
@@ -126,7 +127,7 @@ export function Client() {
           <MetricCard variant="success">
             <MetricCardHeader>
               <MetricCardTitle className="uppercase">
-                Page Uptime
+                Disponibilidade da página
               </MetricCardTitle>
             </MetricCardHeader>
             <MetricCardValue>
@@ -135,23 +136,23 @@ export function Client() {
           </MetricCard>
           <MetricCard>
             <MetricCardHeader>
-              <MetricCardTitle className="uppercase">Reports</MetricCardTitle>
+              <MetricCardTitle className="uppercase">
+                Relatórios
+              </MetricCardTitle>
             </MetricCardHeader>
             <MetricCardValue>{summary.reports}</MetricCardValue>
           </MetricCard>
           <MetricCard>
             <MetricCardHeader>
               <MetricCardTitle className="uppercase">
-                Components
+                Componentes
               </MetricCardTitle>
             </MetricCardHeader>
             <MetricCardValue>{history.rows.length}</MetricCardValue>
           </MetricCard>
           <MetricCard>
             <MetricCardHeader>
-              <MetricCardTitle className="uppercase">
-                Created At
-              </MetricCardTitle>
+              <MetricCardTitle className="uppercase">Criado em</MetricCardTitle>
             </MetricCardHeader>
             <MetricCardValue>
               {history.createdAt ? format(history.createdAt, "MMM yy") : "—"}
@@ -171,10 +172,10 @@ export function Client() {
             <BillingOverlay>
               <BillingOverlayButton onClick={() => setOpenDialog(true)}>
                 <Lock />
-                Upgrade
+                Fazer upgrade
               </BillingOverlayButton>
               <BillingOverlayDescription>
-                Keep an overview of your uptime history for the last 24 months.
+                Acompanhe seu histórico de disponibilidade dos últimos 24 meses.
               </BillingOverlayDescription>
             </BillingOverlay>
             <UpgradeDialog
@@ -194,34 +195,35 @@ export function Client() {
           </div>
         ) : (
           <EmptyStateContainer>
-            <EmptyStateTitle>No history yet</EmptyStateTitle>
+            <EmptyStateTitle>Nenhum histórico ainda</EmptyStateTitle>
             <EmptyStateDescription>
-              The first{" "}
-              <span className="text-foreground font-medium">snapshot</span>{" "}
-              freezes on the{" "}
+              O primeiro{" "}
+              <span className="text-foreground font-medium">snapshot</span> é
+              congelado no{" "}
               <span className="text-foreground font-medium">
-                10th of next month
+                dia 10 do próximo mês
               </span>{" "}
-              — until then, the current month is served live.
+              — até lá, o mês atual é exibido em tempo real.
             </EmptyStateDescription>
           </EmptyStateContainer>
         )}
         <HintCollapsible>
           <HintCollapsibleTrigger>
             <HintCollapsibleTitle>
-              How uptime is calculated
+              Como a disponibilidade é calculada
             </HintCollapsibleTitle>
             <HintCollapsibleDescription>
-              Each percentage depends on the page's calculation mode and the
-              component type.
+              Cada porcentagem depende do modo de cálculo da página e do tipo de
+              componente.
             </HintCollapsibleDescription>
           </HintCollapsibleTrigger>
           <HintCollapsibleContent>
             <p className="text-muted-foreground">
-              The calculation mode is set page-wide in the status page settings
-              and applies to every month shown here. What is frozen monthly are
-              the raw daily check counts — changing the mode re-renders all
-              months from those immutable counts.
+              O modo de cálculo é definido para a página inteira nas
+              configurações da página de status e se aplica a todos os meses
+              exibidos aqui. O que é congelado mensalmente são as contagens
+              diárias brutas de verificações — alterar o modo recalcula todos os
+              meses a partir dessas contagens imutáveis.
             </p>
             <ul className="space-y-2.5">
               <li>
@@ -229,11 +231,11 @@ export function Client() {
                   requests
                 </span>{" "}
                 <span className="text-muted-foreground">
-                  — Monitor components. Uptime is{" "}
+                  — Componentes de monitor. A disponibilidade é{" "}
                   <span className="text-foreground font-medium">
-                    (ok + degraded) / total checks
+                    (ok + degradado) / total de verificações
                   </span>
-                  . Degraded responses still count as up.
+                  . Respostas degradadas ainda contam como disponíveis.
                 </span>
               </li>
               <li>
@@ -241,10 +243,11 @@ export function Client() {
                   duration
                 </span>{" "}
                 <span className="text-muted-foreground">
-                  — Monitor components. Downtime is measured from incident and
-                  status-report intervals, weighted by impact (major outage
-                  counts fully, partial outage at half) and merged so
-                  overlapping events are never double-counted.
+                  — Componentes de monitor. A indisponibilidade é medida pelos
+                  intervalos de incidentes e relatórios de status, ponderada
+                  pelo impacto (indisponibilidade total conta integralmente,
+                  parcial pela metade) e mesclada para que eventos sobrepostos
+                  nunca sejam contados em dobro.
                 </span>
               </li>
               <li>
@@ -252,25 +255,26 @@ export function Client() {
                   manual
                 </span>{" "}
                 <span className="text-muted-foreground">
-                  — No probe data is considered; uptime is derived entirely from
-                  reported incidents. Static components always work this way,
-                  with their full history kept — reports never expire.
+                  — Nenhum dado de sonda é considerado; a disponibilidade é
+                  derivada inteiramente dos incidentes reportados. Componentes
+                  estáticos sempre funcionam assim, com todo o histórico mantido
+                  — relatórios nunca expiram.
                 </span>
               </li>
             </ul>
             <p className="text-muted-foreground">
-              Months without recorded checks are shown as{" "}
-              <span className="text-foreground font-medium">no data</span> and
-              excluded from totals — they are never counted as downtime.
+              Meses sem verificações registradas aparecem como{" "}
+              <span className="text-foreground font-medium">sem dados</span> e
+              são excluídos dos totais — nunca contam como indisponibilidade.
             </p>
           </HintCollapsibleContent>
         </HintCollapsible>
         {!isLimited ? (
           <NoteDismissible cookieKey="note_status_page_history_missing_months">
             <Info />
-            If there are any missing months, please contact us.
+            Se houver meses faltando, entre em contato conosco.
             <FormDialogSupportContact>
-              <NoteButton variant="default">Request Backfill</NoteButton>
+              <NoteButton variant="default">Solicitar preenchimento</NoteButton>
             </FormDialogSupportContact>
           </NoteDismissible>
         ) : null}

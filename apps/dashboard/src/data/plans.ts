@@ -18,27 +18,27 @@ export const config: Record<
   }
 > = {
   "status-pages": {
-    label: "Status Pages",
+    label: "Páginas de status",
     features: [
       {
         value: "status-pages",
-        label: "Number of status pages",
+        label: "Número de páginas de status",
       },
       {
         value: "page-components",
-        label: "Number of components",
+        label: "Número de componentes",
       },
       {
         value: "maintenance",
-        label: "Maintenance status",
+        label: "Status de manutenção",
       },
       {
         value: "slack-agent",
-        label: "Slack Agent",
+        label: "Agente do Slack",
       },
       {
         value: "monitor-values-visibility",
-        label: "Toggle numbers visibility",
+        label: "Alternar visibilidade dos números",
       },
       // {
       //   value: "uptime-history",
@@ -46,68 +46,68 @@ export const config: Record<
       // },
       {
         value: "status-subscribers",
-        label: "Subscribers",
+        label: "Assinantes",
       },
       {
         value: "custom-domain",
-        label: "Custom domain",
+        label: "Domínio personalizado",
       },
       {
         value: "white-label",
-        label: "White Label",
+        label: "White label",
       },
       {
         value: "custom-theme",
-        label: "Custom Theme",
+        label: "Tema personalizado",
       },
     ],
   },
   "status-page-audience": {
-    label: "Status Page Audience",
+    label: "Público da página de status",
     features: [
       {
         value: "password-protection",
-        label: "Password Protection (Basic)",
+        label: "Proteção por senha (básica)",
       },
       {
         value: "email-domain-protection",
-        label: "Magic Link (Auth)",
+        label: "Link mágico (autenticação)",
       },
       {
         value: "ip-restriction",
-        label: "IP Restriction",
+        label: "Restrição por IP",
       },
     ],
   },
   monitors: {
-    label: "Monitors",
+    label: "Monitores",
     features: [
       {
         value: "periodicity",
-        label: "Frequency",
+        label: "Frequência",
       },
       {
         value: "monitors",
-        label: "Number of monitors",
+        label: "Número de monitores",
       },
       {
         value: "multi-region",
-        label: "Multi-region monitoring",
+        label: "Monitoramento multirregião",
       },
-      { value: "regions", label: "Total regions" },
-      { value: "max-regions", label: "Regions per monitor" },
-      { value: "data-retention", label: "Data retention" },
-      { value: "response-logs", label: "Response Logs" },
-      { value: "otel", label: "OTel Exporter" },
+      { value: "regions", label: "Total de regiões" },
+      { value: "max-regions", label: "Regiões por monitor" },
+      { value: "data-retention", label: "Retenção de dados" },
+      { value: "response-logs", label: "Logs de resposta" },
+      { value: "otel", label: "Exportador OTel" },
       {
         value: "synthetic-checks",
-        label: "Synthetic API Checks",
+        label: "Verificações sintéticas de API",
         monthly: true,
       },
     ],
   },
   notifications: {
-    label: "Notifications",
+    label: "Notificações",
     features: [
       {
         value: "notifications",
@@ -135,24 +135,24 @@ export const config: Record<
       },
       {
         value: "notification-channels",
-        label: "Number of notification channels",
+        label: "Número de canais de notificação",
       },
     ],
   },
   collaboration: {
-    label: "Collaboration",
+    label: "Colaboração",
     features: [
       {
         value: "members",
-        label: "Team members",
+        label: "Membros da equipe",
       },
       {
         value: "audit-log",
-        label: "Audit log",
+        label: "Log de auditoria",
       },
       {
         value: "sso",
-        label: "SAML single sign-on",
+        label: "Single sign-on SAML",
       },
     ],
   },

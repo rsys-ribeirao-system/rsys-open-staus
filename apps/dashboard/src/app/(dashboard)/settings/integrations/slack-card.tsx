@@ -76,34 +76,36 @@ export function SlackIntegrationCard({
       <FormCardHeader>
         <div className="flex items-center gap-2">
           <FormCardTitle>Slack</FormCardTitle>
-          {isConnected && <Badge variant="secondary">Connected</Badge>}
+          {isConnected && <Badge variant="secondary">Conectado</Badge>}
         </div>
         <FormCardDescription>
-          Manage status reports directly from Slack. Mention the bot in a
-          channel to create and update incidents.
+          Gerencie relatórios de status direto do Slack. Mencione o bot em um
+          canal para criar e atualizar incidentes.
         </FormCardDescription>
       </FormCardHeader>
       <FormCardContent>
         {isConnected ? (
           <p className="text-muted-foreground text-sm">
-            Connected to{" "}
-            <strong>{integration.data?.teamName ?? "Slack workspace"}</strong>
+            Conectado a{" "}
+            <strong>
+              {integration.data?.teamName ?? "workspace do Slack"}
+            </strong>
           </p>
         ) : (
           <p className="text-muted-foreground text-sm">
-            Connect your Slack workspace to get started.
+            Conecte seu workspace do Slack para começar.
           </p>
         )}
       </FormCardContent>
       <FormCardFooter>
         <FormCardFooterInfo>
-          Learn more about{" "}
+          Saiba mais sobre o{" "}
           <Link
             href="https://www.openstatus.dev/blog/openstatus-slack-agent"
             rel="noreferrer"
             target="_blank"
           >
-            Slack Agent
+            agente do Slack
           </Link>
           .
         </FormCardFooterInfo>
@@ -111,7 +113,7 @@ export function SlackIntegrationCard({
           <Button type="button" asChild>
             <Link href="/settings/billing">
               <Lock />
-              Upgrade
+              Fazer upgrade
             </Link>
           </Button>
         ) : isConnected ? (
@@ -121,7 +123,7 @@ export function SlackIntegrationCard({
             onClick={handleDisconnect}
             disabled={deleteIntegration.isPending}
           >
-            {deleteIntegration.isPending ? "Disconnecting..." : "Disconnect"}
+            {deleteIntegration.isPending ? "Desconectando..." : "Desconectar"}
           </Button>
         ) : (
           <Button
@@ -129,7 +131,7 @@ export function SlackIntegrationCard({
             onClick={handleInstall}
             disabled={generateToken.isPending}
           >
-            {generateToken.isPending ? "Connecting..." : "Add to Slack"}
+            {generateToken.isPending ? "Conectando..." : "Adicionar ao Slack"}
           </Button>
         )}
       </FormCardFooter>

@@ -38,7 +38,7 @@ import {
 } from "@/components/ui/checkbox-tree";
 
 const headerSchema = z.object({
-  key: z.string().min(1, "Key is required"),
+  key: z.string().min(1, "A chave é obrigatória"),
   value: z.string(),
 });
 
@@ -60,7 +60,7 @@ const formSchema = z
         ctx.addIssue({
           code: "custom",
           path: ["email"],
-          message: "Please enter a valid email",
+          message: "Informe um e-mail válido",
         });
       }
     } else {
@@ -69,7 +69,7 @@ const formSchema = z
         ctx.addIssue({
           code: "custom",
           path: ["webhookUrl"],
-          message: "Please enter a valid URL",
+          message: "Informe uma URL válida",
         });
       }
     }
@@ -159,13 +159,13 @@ export function FormSubscriber({
       try {
         const promise = onSubmit(toPayload(values));
         toast.promise(promise, {
-          loading: "Saving...",
-          success: () => "Saved",
+          loading: "Salvando...",
+          success: () => "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -188,7 +188,7 @@ export function FormSubscriber({
             name="channelType"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Channel</FormLabel>
+                <FormLabel>Canal</FormLabel>
                 <FormControl>
                   <Tabs
                     value={field.value}
@@ -201,7 +201,7 @@ export function FormSubscriber({
                   >
                     <TabsList>
                       <TabsTrigger value="email" disabled={editMode}>
-                        Email
+                        E-mail
                       </TabsTrigger>
                       <TabsTrigger value="webhook" disabled={editMode}>
                         Webhook
@@ -221,7 +221,7 @@ export function FormSubscriber({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Display label (optional)</FormLabel>
+                <FormLabel>Rótulo de exibição (opcional)</FormLabel>
                 <FormControl>
                   <Input
                     placeholder={
@@ -233,7 +233,7 @@ export function FormSubscriber({
                   />
                 </FormControl>
                 <FormDescription>
-                  Shown in place of the raw destination in the dashboard.
+                  Exibido no lugar do destino bruto no painel.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -248,7 +248,7 @@ export function FormSubscriber({
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>E-mail</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
@@ -260,14 +260,14 @@ export function FormSubscriber({
                   </FormControl>
                   {editMode ? (
                     <FormDescription>
-                      Email address is immutable. Delete and re-add to change
-                      it.
+                      O endereço de e-mail não pode ser alterado. Exclua e
+                      adicione novamente para alterá-lo.
                     </FormDescription>
                   ) : (
                     <FormDescription>
-                      By adding this email, you confirm this contact has
-                      consented to receive status updates. We'll not be sending
-                      a confirmation email.
+                      Ao adicionar este e-mail, você confirma que este contato
+                      consentiu em receber atualizações de status. Não
+                      enviaremos um e-mail de confirmação.
                     </FormDescription>
                   )}
                   <FormMessage />
@@ -310,9 +310,10 @@ export function FormSubscriber({
             <FormCardSeparator />
             <FormCardContent>
               <FormItem>
-                <FormLabel>Request Headers</FormLabel>
+                <FormLabel>Headers da requisição</FormLabel>
                 <FormDescription>
-                  Custom headers to include in every webhook request.
+                  Headers personalizados incluídos em toda requisição do
+                  webhook.
                 </FormDescription>
                 {fields.map((f, idx) => (
                   <div key={f.id} className="grid gap-2 sm:grid-cols-5">
@@ -322,7 +323,7 @@ export function FormSubscriber({
                       render={({ field }) => (
                         <FormItem className="col-span-2">
                           <FormControl>
-                            <Input placeholder="Key" {...field} />
+                            <Input placeholder="Chave" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -334,7 +335,7 @@ export function FormSubscriber({
                       render={({ field }) => (
                         <FormItem className="col-span-2">
                           <FormControl>
-                            <Input placeholder="Value" {...field} />
+                            <Input placeholder="Valor" {...field} />
                           </FormControl>
                         </FormItem>
                       )}
@@ -343,7 +344,7 @@ export function FormSubscriber({
                       size="icon"
                       variant="ghost"
                       type="button"
-                      aria-label="Remove header"
+                      aria-label="Remover header"
                       onClick={() => remove(idx)}
                     >
                       <Close />
@@ -358,7 +359,7 @@ export function FormSubscriber({
                     onClick={() => append({ key: "", value: "" })}
                   >
                     <Add />
-                    Add Header
+                    Adicionar header
                   </Button>
                 </div>
                 <FormMessage />
@@ -373,10 +374,11 @@ export function FormSubscriber({
             name="componentIds"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Page Components</FormLabel>
+                <FormLabel>Componentes da página</FormLabel>
                 <FormDescription>
-                  Leave empty to notify for the entire page. Select components
-                  to only notify on matching reports.
+                  Deixe vazio para notificar sobre a página inteira. Selecione
+                  componentes para notificar apenas sobre relatórios
+                  correspondentes.
                 </FormDescription>
                 {items.length ? (
                   <FormControl>
@@ -388,7 +390,9 @@ export function FormSubscriber({
                   </FormControl>
                 ) : (
                   <EmptyStateContainer>
-                    <EmptyStateTitle>No page components found</EmptyStateTitle>
+                    <EmptyStateTitle>
+                      Nenhum componente da página encontrado
+                    </EmptyStateTitle>
                   </EmptyStateContainer>
                 )}
                 <FormMessage />

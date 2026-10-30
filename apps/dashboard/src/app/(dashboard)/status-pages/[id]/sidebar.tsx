@@ -32,10 +32,10 @@ export function Sidebar() {
 
   return (
     <SidebarRight
-      header="Status Page"
+      header="Página de status"
       metadata={[
         {
-          label: "Overview",
+          label: "Visão geral",
           items: [
             {
               label: "Slug",
@@ -52,10 +52,10 @@ export function Sidebar() {
               ),
             },
             {
-              label: "Access Type",
+              label: "Tipo de acesso",
               value: statusPage.accessType,
             },
-            { label: "Domain", value: statusPage.customDomain || "-" },
+            { label: "Domínio", value: statusPage.customDomain || "-" },
             {
               label: "Favicon",
               value: statusPage.icon ? (
@@ -92,33 +92,33 @@ export function Sidebar() {
           ],
         },
         {
-          label: "Configuration",
+          label: "Configuração",
           items: [
             {
-              label: "Theme",
+              label: "Tema",
               value: statusPage.configuration?.theme ?? "-",
             },
             {
-              label: "Bar Value",
+              label: "Valor da barra",
               value: statusPage.configuration?.type ?? "-",
             },
             {
-              label: "Card Value",
+              label: "Valor do card",
               value: statusPage.configuration?.value ?? "-",
             },
             {
-              label: "Show Uptime",
-              value: statusPage.configuration?.uptime ? "Yes" : "No",
+              label: "Mostrar disponibilidade",
+              value: statusPage.configuration?.uptime ? "Sim" : "Não",
             },
           ],
         },
         {
-          label: "Monitors",
-          emptyMessage: "No monitors attached",
+          label: "Monitores",
+          emptyMessage: "Nenhum monitor vinculado",
           items: statusPage.pageComponents.flatMap((component) => {
             const arr = [];
             arr.push({
-              label: "Name",
+              label: "Nome",
               value: (
                 <TableCellLink
                   href={`/status-pages/${statusPage.id}/components`}
@@ -127,7 +127,7 @@ export function Sidebar() {
               ),
             });
             arr.push({
-              label: "Type",
+              label: "Tipo",
               value: component.type,
               isNested: true,
             });
@@ -147,7 +147,7 @@ export function Sidebar() {
         children: (
           <>
             <ExternalLink />
-            <span>Visit Status Page</span>
+            <span>Visitar página de status</span>
           </>
         ),
       }}

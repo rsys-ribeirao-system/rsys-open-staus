@@ -53,7 +53,7 @@ import { useTRPC } from "@/lib/trpc/client";
 
 const schema = z
   .object({
-    title: z.string().min(1, "Title is required"),
+    title: z.string().min(1, "O título é obrigatório"),
     message: z.string(),
     startDate: z.date(),
     endDate: z.date(),
@@ -61,7 +61,7 @@ const schema = z
     notifySubscribers: z.boolean().optional(),
   })
   .refine((data) => data.endDate > data.startDate, {
-    error: "End date cannot be earlier than start date.",
+    error: "A data de término não pode ser anterior à data de início.",
     path: ["endDate"],
   });
 
@@ -111,13 +111,13 @@ export function FormMaintenance({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: () => "Saved",
+          loading: "Salvando...",
+          success: () => "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -140,9 +140,9 @@ export function FormMaintenance({
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Title</FormLabel>
+                <FormLabel>Título</FormLabel>
                 <FormControl>
-                  <Input placeholder="DB migration..." {...field} />
+                  <Input placeholder="Migração do banco..." {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -157,7 +157,7 @@ export function FormMaintenance({
             name="startDate"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Start Date</FormLabel>
+                <FormLabel>Data de início</FormLabel>
                 <Popover modal>
                   <FormControl>
                     <PopoverTrigger asChild>
@@ -173,7 +173,7 @@ export function FormMaintenance({
                         {field.value ? (
                           format(field.value, "PPP 'at' h:mm a")
                         ) : (
-                          <span>Pick a date</span>
+                          <span>Escolha uma data</span>
                         )}
                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </Button>
@@ -209,7 +209,7 @@ export function FormMaintenance({
                     <div className="border-t p-3">
                       <div className="flex items-center gap-3">
                         <Label htmlFor="time-start" className="text-xs">
-                          Enter time
+                          Informe o horário
                         </Label>
                         <div className="relative grow">
                           <Input
@@ -276,7 +276,7 @@ export function FormMaintenance({
             name="endDate"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>End Date</FormLabel>
+                <FormLabel>Data de término</FormLabel>
                 <Popover modal>
                   <FormControl>
                     <PopoverTrigger asChild>
@@ -292,7 +292,7 @@ export function FormMaintenance({
                         {field.value ? (
                           format(field.value, "PPP 'at' h:mm a")
                         ) : (
-                          <span>Pick a date</span>
+                          <span>Escolha uma data</span>
                         )}
                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </Button>
@@ -323,7 +323,7 @@ export function FormMaintenance({
                     <div className="border-t p-3">
                       <div className="flex items-center gap-3">
                         <Label htmlFor="time-end" className="text-xs">
-                          Enter time
+                          Informe o horário
                         </Label>
                         <div className="relative grow">
                           <Input
@@ -387,8 +387,8 @@ export function FormMaintenance({
         <FormCardContent>
           <Tabs defaultValue="tab-1">
             <TabsList>
-              <TabsTrigger value="tab-1">Writing</TabsTrigger>
-              <TabsTrigger value="tab-2">Preview</TabsTrigger>
+              <TabsTrigger value="tab-1">Escrita</TabsTrigger>
+              <TabsTrigger value="tab-2">Pré-visualização</TabsTrigger>
             </TabsList>
             <TabsContent value="tab-1">
               <FormField
@@ -396,19 +396,19 @@ export function FormMaintenance({
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Message</FormLabel>
+                    <FormLabel>Mensagem</FormLabel>
                     <FormControl>
                       <Textarea rows={6} {...field} />
                     </FormControl>
                     <FormMessage />
-                    <FormDescription>Markdown support</FormDescription>
+                    <FormDescription>Suporta Markdown</FormDescription>
                   </FormItem>
                 )}
               />
             </TabsContent>
             <TabsContent value="tab-2">
               <div className="grid gap-2">
-                <Label>Preview</Label>
+                <Label>Pré-visualização</Label>
                 <div className="prose dark:prose-invert prose-sm text-foreground rounded-md border px-3 py-2 text-sm">
                   <ProcessMessage value={watchMessage} />
                 </div>
@@ -423,10 +423,10 @@ export function FormMaintenance({
             name="pageComponents"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Page Components</FormLabel>
+                <FormLabel>Componentes da página</FormLabel>
                 <FormDescription>
-                  Connected page components will be affected for the period of
-                  time.
+                  Os componentes da página conectados serão afetados durante o
+                  período.
                 </FormDescription>
                 {items.length ? (
                   <FormControl>
@@ -438,7 +438,9 @@ export function FormMaintenance({
                   </FormControl>
                 ) : (
                   <EmptyStateContainer>
-                    <EmptyStateTitle>No page components found</EmptyStateTitle>
+                    <EmptyStateTitle>
+                      Nenhum componente da página encontrado
+                    </EmptyStateTitle>
                   </EmptyStateContainer>
                 )}
                 <FormMessage />
@@ -455,7 +457,7 @@ export function FormMaintenance({
                 name="notifySubscribers"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Notify Subscribers</FormLabel>
+                    <FormLabel>Notificar assinantes</FormLabel>
                     <FormControl>
                       <div className="flex items-center gap-2">
                         <Checkbox
@@ -464,13 +466,13 @@ export function FormMaintenance({
                           onCheckedChange={field.onChange}
                         />
                         <Label htmlFor="notifySubscribers">
-                          Send notification to subscribers
+                          Enviar notificação aos assinantes
                         </Label>
                       </div>
                     </FormControl>
                     <FormMessage />
                     <FormDescription>
-                      Subscribers will be notified when creating a maintenance.
+                      Os assinantes serão notificados ao criar uma manutenção.
                     </FormDescription>
                   </FormItem>
                 )}

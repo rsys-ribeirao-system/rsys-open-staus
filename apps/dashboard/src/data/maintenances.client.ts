@@ -3,13 +3,13 @@ import { Settings, Delete } from "@openstatus/icons";
 export const actions = [
   {
     id: "edit",
-    label: "Settings",
+    label: "Configurações",
     icon: Settings,
     variant: "default" as const,
   },
   {
     id: "delete",
-    label: "Delete",
+    label: "Excluir",
     icon: Delete,
     variant: "destructive" as const,
   },

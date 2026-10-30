@@ -45,7 +45,9 @@ export function NavActions() {
     edit: () => router.push(`/status-pages/${id}/edit`),
     "copy-id": async () => {
       await navigator.clipboard.writeText(id);
-      toast.success("Status Page ID copied to clipboard");
+      toast.success(
+        "ID da página de status copiado para a área de transferência",
+      );
     },
   });
 
@@ -69,7 +71,7 @@ export function NavActions() {
               </a>
             </Button>
           </TooltipTrigger>
-          <TooltipContent>View Page</TooltipContent>
+          <TooltipContent>Ver página</TooltipContent>
         </Tooltip>
       </TooltipProvider>
       <QuickActions

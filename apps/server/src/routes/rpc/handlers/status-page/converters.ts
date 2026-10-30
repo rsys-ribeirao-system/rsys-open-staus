@@ -309,6 +309,8 @@ const DB_LOCALE_TO_PROTO: Record<Locale, ProtoLocale> = {
   tr: ProtoLocale.TR,
   hi: ProtoLocale.HI,
   ko: ProtoLocale.KO,
+  // shortcut: proto sem LOCALE_PT_BR, API devolve UNSPECIFIED; adicionar ao .proto se a API precisar ler pt-BR.
+  "pt-BR": ProtoLocale.UNSPECIFIED,
 };
 
 const PROTO_LOCALE_TO_DB: Record<ProtoLocale, Locale | null> = {

@@ -24,13 +24,13 @@ export function DropdownStatus() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm" className="capitalize">
-          {status ?? "All Status"}
+          {status ?? "Todos os status"}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         <DropdownMenuGroup>
           <DropdownMenuLabel className="text-muted-foreground text-xs font-medium">
-            Request Status
+            Status da requisição
           </DropdownMenuLabel>
           {STATUS.map((item) => (
             <DropdownMenuItem

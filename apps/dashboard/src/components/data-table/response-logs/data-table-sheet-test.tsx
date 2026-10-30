@@ -39,7 +39,7 @@ export function DataTableSheetTest({
       {/* NOTE: we are using onCloseAutoFocus to reset with a delay to avoid abrupt closing of the sheet */}
       <DataTableSheetContent className="sm:max-w-lg" onCloseAutoFocus={onClose}>
         <DataTableSheetHeader className="px-2">
-          <DataTableSheetTitle>Test Result</DataTableSheetTitle>
+          <DataTableSheetTitle>Resultado do teste</DataTableSheetTitle>
         </DataTableSheetHeader>
         <DataTableBasics data={_data} />
       </DataTableSheetContent>

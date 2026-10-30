@@ -10,11 +10,11 @@ export function Breadcrumb() {
       items={[
         {
           type: "link",
-          label: "Monitors",
+          label: "Monitores",
           href: "/monitors",
           icon: Monitor,
         },
-        { type: "page", label: "Create Monitor" },
+        { type: "page", label: "Criar monitor" },
       ]}
     />
   );

@@ -68,7 +68,7 @@ export function NavStatusPages() {
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
       <SidebarGroupLabel className="flex items-center justify-between pr-1">
         <div className="flex items-center gap-1">
-          <span>Status Pages</span>
+          <span>Páginas de status</span>
           {isLoading ? (
             <Skeleton className="h-4 w-5 shrink-0" />
           ) : (
@@ -98,7 +98,7 @@ export function NavStatusPages() {
                 </SidebarMenuAction>
               </TooltipTrigger>
               <TooltipContent side="right" align="center">
-                {limitReached ? "Upgrade" : "Create Status Page"}
+                {limitReached ? "Fazer upgrade" : "Criar página de status"}
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -116,7 +116,7 @@ export function NavStatusPages() {
               edit: () => router.push(`/status-pages/${item.id}/edit`),
               "copy-id": async () => {
                 await navigator.clipboard.writeText(item.id.toString());
-                toast.success("Status Page ID copied to clipboard");
+                toast.success("ID da página de status copiado");
               },
             });
             return (
@@ -179,7 +179,7 @@ export function NavStatusPages() {
         ) : (
           <SidebarMenuItem>
             <SidebarMenuButton disabled>
-              <span>No status pages found</span>
+              <span>Nenhuma página de status encontrada</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         )}

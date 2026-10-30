@@ -166,17 +166,18 @@ function BillingPlaceholder() {
         <BillingOverlayButton asChild>
           <Link href="/settings/billing">
             <Lock />
-            Upgrade
+            Fazer upgrade
           </Link>
         </BillingOverlayButton>
         <BillingOverlayDescription>
-          Access response headers, timing phases and more for each request.{" "}
+          Acesse headers de resposta, fases de tempo e mais para cada
+          requisição.{" "}
           <Link
             href="https://www.openstatus.dev/docs/monitoring/monitor-data-collected/"
             rel="noreferrer"
             target="_blank"
           >
-            Learn more
+            Saiba mais
           </Link>
           .
         </BillingOverlayDescription>

@@ -38,8 +38,7 @@ import {
 } from "@/components/forms/form-card";
 import { useTRPC } from "@/lib/trpc/client";
 
-const SLUG_UNIQUE_ERROR_MESSAGE =
-  "This slug is already taken. Please choose another one.";
+const SLUG_UNIQUE_ERROR_MESSAGE = "Este slug já está em uso. Escolha outro.";
 
 // Keep in sync with `slugSchema` in
 // `packages/db/src/schema/pages/validation.ts`. We can't import that on the
@@ -47,7 +46,7 @@ const SLUG_UNIQUE_ERROR_MESSAGE =
 // (subdomains are case-insensitive), so we restrict input client-side too.
 const SLUG_PATTERN = /^[a-z0-9-]+$/;
 const SLUG_PATTERN_MESSAGE =
-  "Only use digits (0-9), hyphen (-) or lowercase characters (a-z).";
+  "Use apenas dígitos (0-9), hífen (-) ou letras minúsculas (a-z).";
 
 function formatSlug(title: string) {
   return title
@@ -57,10 +56,10 @@ function formatSlug(title: string) {
 }
 
 const schema = z.object({
-  title: z.string().trim().min(1, "Title is required"),
+  title: z.string().trim().min(1, "O título é obrigatório"),
   slug: z
     .string()
-    .min(3, "Slug is required")
+    .min(3, "O slug é obrigatório")
     .regex(SLUG_PATTERN, SLUG_PATTERN_MESSAGE),
   icon: z.string().optional(),
   description: z.string().optional(),
@@ -146,13 +145,13 @@ export function FormGeneral({
 
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -166,9 +165,9 @@ export function FormGeneral({
       <form onSubmit={form.handleSubmit(submitAction)} {...props}>
         <FormCard>
           <FormCardHeader>
-            <FormCardTitle>General</FormCardTitle>
+            <FormCardTitle>Geral</FormCardTitle>
             <FormCardDescription>
-              Configure the essential details for your status page.
+              Configure os detalhes essenciais da sua página de status.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardSeparator />
@@ -178,13 +177,13 @@ export function FormGeneral({
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Title</FormLabel>
+                  <FormLabel>Título</FormLabel>
                   <FormControl>
-                    <Input placeholder="My Status Page" {...field} />
+                    <Input placeholder="Minha página de status" {...field} />
                   </FormControl>
                   <FormMessage />
                   <FormDescription>
-                    Enter a descriptive name for your status page.
+                    Informe um nome descritivo para sua página de status.
                   </FormDescription>
                 </FormItem>
               )}
@@ -205,8 +204,8 @@ export function FormGeneral({
                   </InputGroup>
                   <FormMessage />
                   <FormDescription>
-                    Choose a unique subdomain for your status page (minimum 3
-                    characters).
+                    Escolha um subdomínio único para sua página de status
+                    (mínimo de 3 caracteres).
                   </FormDescription>
                 </FormItem>
               )}
@@ -216,7 +215,7 @@ export function FormGeneral({
               name="icon"
               render={() => (
                 <FormItem>
-                  <FormLabel>Icon</FormLabel>
+                  <FormLabel>Ícone</FormLabel>
                   <FormControl>
                     <div className="flex items-center space-x-2">
                       {watchIcon ? (
@@ -226,7 +225,7 @@ export function FormGeneral({
                               src={watchIcon}
                               width={36}
                               height={36}
-                              alt="Icon preview"
+                              alt="Pré-visualização do ícone"
                             />
                           </div>
                           <Button
@@ -235,7 +234,7 @@ export function FormGeneral({
                             type="button"
                             onClick={() => form.setValue("icon", undefined)}
                           >
-                            Remove
+                            Remover
                           </Button>
                         </>
                       ) : (
@@ -256,7 +255,7 @@ export function FormGeneral({
                               }
                             } catch (err) {
                               console.error(err);
-                              toast.error("Upload failed");
+                              toast.error("Falha no upload");
                             }
                           }}
                         />
@@ -265,8 +264,9 @@ export function FormGeneral({
                   </FormControl>
                   <FormMessage />
                   <FormDescription>
-                    Select an icon for your status page. PNG/ICO: 512x512px
-                    recommended. SVG also supported. Will be used as favicon.
+                    Selecione um ícone para sua página de status. PNG/ICO:
+                    512x512px recomendado. SVG também é suportado. Será usado
+                    como favicon.
                   </FormDescription>
                 </FormItem>
               )}
@@ -276,13 +276,13 @@ export function FormGeneral({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>Descrição</FormLabel>
                   <FormControl>
                     <Textarea {...field} />
                   </FormControl>
                   <FormMessage />
                   <FormDescription>
-                    Provide a brief overview of your status page purpose.
+                    Descreva brevemente o propósito da sua página de status.
                   </FormDescription>
                 </FormItem>
               )}
@@ -290,7 +290,7 @@ export function FormGeneral({
           </FormCardContent>
           <FormCardFooter>
             <Button type="submit" disabled={isPending || disabled}>
-              {isPending ? "Submitting..." : "Submit"}
+              {isPending ? "Enviando..." : "Enviar"}
             </Button>
           </FormCardFooter>
         </FormCard>

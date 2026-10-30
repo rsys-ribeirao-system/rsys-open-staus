@@ -64,7 +64,7 @@ export function ChatPromptInput({ onSubmit, onStop, status }: Props) {
         <form onSubmit={handleSubmit}>
           <InputGroup>
             <InputGroupTextarea
-              placeholder="Ask openstatus…"
+              placeholder="Pergunte ao openstatus…"
               value={value}
               onChange={(e) => setValue(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -80,7 +80,7 @@ export function ChatPromptInput({ onSubmit, onStop, status }: Props) {
                 size="icon-sm"
                 onClick={handleClick}
                 disabled={!isGenerating && !value.trim()}
-                aria-label={isGenerating ? "Stop" : "Send"}
+                aria-label={isGenerating ? "Parar" : "Enviar"}
               >
                 {status === "submitted" ? (
                   <Spinner />
@@ -96,8 +96,8 @@ export function ChatPromptInput({ onSubmit, onStop, status }: Props) {
           </InputGroup>
         </form>
         <p className="text-muted-foreground text-center text-xs">
-          Powered by Claude. AI responses may contain errors, double-check
-          results.
+          Com tecnologia Claude. Respostas de IA podem conter erros, confira os
+          resultados.
         </p>
       </div>
     </div>

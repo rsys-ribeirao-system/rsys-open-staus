@@ -89,9 +89,9 @@ export function FormTags({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
-          error: "Failed to save",
+          loading: "Salvando...",
+          success: "Salvo",
+          error: "Falha ao salvar",
         });
         await promise;
       } catch (error) {
@@ -132,7 +132,7 @@ export function FormTags({
           <FormCardHeader>
             <FormCardTitle>Tags</FormCardTitle>
             <FormCardDescription>
-              Add tags to categorize and organize your monitor.
+              Adicione tags para categorizar e organizar seu monitor.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent className="grid gap-4 md:grid-cols-2">
@@ -170,7 +170,7 @@ export function FormTags({
                               ))
                             ) : (
                               <span className="text-muted-foreground">
-                                No tags selected
+                                Nenhuma tag selecionada
                               </span>
                             )}
                           </div>
@@ -180,9 +180,9 @@ export function FormTags({
                     </PopoverTrigger>
                     <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0">
                       <Command>
-                        <CommandInput placeholder="Search tags..." />
+                        <CommandInput placeholder="Buscar tags..." />
                         <CommandList className="w-full">
-                          <CommandEmpty>No tag found.</CommandEmpty>
+                          <CommandEmpty>Nenhuma tag encontrada.</CommandEmpty>
                           <CommandGroup>
                             {tags?.map((tag) => (
                               <CommandItem
@@ -252,14 +252,14 @@ export function FormTags({
                 }}
               >
                 <Button variant="outline" size="sm">
-                  Edit Tags
+                  Editar tags
                 </Button>
               </FormSheetMonitorTag>
             </div>
           </FormCardContent>
           <FormCardFooter>
             <FormCardFooterInfo>
-              Learn more about{" "}
+              Saiba mais sobre{" "}
               <Link
                 href="https://www.openstatus.dev/changelog/monitor-tags"
                 rel="noreferrer"
@@ -267,10 +267,10 @@ export function FormTags({
               >
                 tags
               </Link>{" "}
-              and how to use them.
+              e como usá-las.
             </FormCardFooterInfo>
             <Button type="submit" form="monitor-tags-form" disabled={isPending}>
-              {isPending ? "Submitting..." : "Submit"}
+              {isPending ? "Enviando..." : "Enviar"}
             </Button>
           </FormCardFooter>
         </FormCard>

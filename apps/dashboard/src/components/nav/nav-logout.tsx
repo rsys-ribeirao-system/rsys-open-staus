@@ -19,7 +19,7 @@ export function NavLogout({
       {...props}
     >
       <Logout className="size-3" />
-      Log out
+      Sair
     </Button>
   );
 }

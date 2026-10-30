@@ -19,24 +19,24 @@ export function DataTableRowDetails({ row }: { row: AuditLog }) {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <div className="col-span-2 flex flex-col gap-2">
             <div className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-              Changes
+              Alterações
             </div>
             <ChangesTable changes={changes} />
           </div>
           <div className="flex flex-col gap-2">
             <div className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-              Entry
+              Registro
             </div>
             <dl className="flex flex-col gap-1.5">
-              <CopyRow label="Entity Type" value={row.entityType} />
-              <CopyRow label="Entity ID" value={row.entityId} />
-              <CopyRow label="Actor Type" value={row.actorType} />
-              <CopyRow label="Actor ID" value={row.actorId} />
+              <CopyRow label="Tipo de entidade" value={row.entityType} />
+              <CopyRow label="ID da entidade" value={row.entityId} />
+              <CopyRow label="Tipo de autor" value={row.actorType} />
+              <CopyRow label="ID do autor" value={row.actorId} />
               {row.user?.name ? (
-                <CopyRow label="User Name" value={row.user.name} />
+                <CopyRow label="Nome do usuário" value={row.user.name} />
               ) : null}
               {row.user?.email ? (
-                <CopyRow label="User Email" value={row.user.email} />
+                <CopyRow label="E-mail do usuário" value={row.user.email} />
               ) : null}
             </dl>
           </div>

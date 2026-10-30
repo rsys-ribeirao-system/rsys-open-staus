@@ -26,14 +26,14 @@ export function listResponseLogsTable(
 > {
   const logs = output?.logs ?? [];
   return {
-    empty: "No response logs in this window.",
+    empty: "Nenhum log de resposta nesta janela.",
     columns: [
       { key: "indicator", header: "" },
-      { key: "timestamp", header: "Timestamp" },
-      { key: "region", header: "Region" },
+      { key: "timestamp", header: "Data/hora" },
+      { key: "region", header: "Região" },
       { key: "status", header: "Status" },
-      { key: "latency", header: "Latency" },
-      { key: "timing", header: "Timing" },
+      { key: "latency", header: "Latência" },
+      { key: "timing", header: "Tempos" },
       { key: "id", header: "ID" },
     ],
     rows: logs.map((log, idx) => ({

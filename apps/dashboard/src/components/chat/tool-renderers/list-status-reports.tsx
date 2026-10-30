@@ -15,11 +15,11 @@ export function listStatusReportsTable(
 ): ResultTableData<"title" | "status" | "page" | "id"> {
   const items = output?.items ?? [];
   return {
-    empty: "No status reports.",
+    empty: "Nenhum relatório de status.",
     columns: [
-      { key: "title", header: "Title" },
+      { key: "title", header: "Título" },
       { key: "status", header: "Status" },
-      { key: "page", header: "Page" },
+      { key: "page", header: "Página" },
       { key: "id", header: "ID" },
     ],
     rows: items.map((r) => ({

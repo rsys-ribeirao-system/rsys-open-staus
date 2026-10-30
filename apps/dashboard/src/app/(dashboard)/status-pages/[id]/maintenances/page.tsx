@@ -56,9 +56,9 @@ export default function Page() {
           <SectionHeader>
             <SectionTitle>{statusPage.title}</SectionTitle>
             <SectionDescription>
-              List of all maintenances. Looking for{" "}
+              Lista de todas as manutenções. Procurando{" "}
               <Link href={`/status-pages/${id}/status-reports`}>
-                status reports
+                relatórios de status
               </Link>
               ?
             </SectionDescription>
@@ -83,7 +83,7 @@ export default function Page() {
             >
               <Button data-section="action" size="sm">
                 <Add />
-                Create Maintenance
+                Criar manutenção
               </Button>
             </FormSheetMaintenance>
           </div>

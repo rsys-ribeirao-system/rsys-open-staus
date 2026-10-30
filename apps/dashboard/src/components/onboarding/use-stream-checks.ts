@@ -43,7 +43,7 @@ export function useStreamChecks() {
           const json = (await res.json().catch(() => null)) as {
             error?: string;
           } | null;
-          fail(json?.error ?? `Stream failed (${res.status})`);
+          fail(json?.error ?? `Falha no stream (${res.status})`);
           return;
         }
 
@@ -81,7 +81,7 @@ export function useStreamChecks() {
         }
       } catch (err) {
         if ((err as Error)?.name === "AbortError") return;
-        fail(err instanceof Error ? err.message : "Stream failed");
+        fail(err instanceof Error ? err.message : "Falha no stream");
       } finally {
         setIsStreaming(false);
         abortRef.current = null;

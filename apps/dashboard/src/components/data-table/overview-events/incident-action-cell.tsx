@@ -29,7 +29,7 @@ export function IncidentActionCell({ incident }: { incident: Incident }) {
           setType(nextAction);
         }}
       >
-        {nextAction === "acknowledge" ? "Acknowledge" : "Resolve"}
+        {nextAction === "acknowledge" ? "Reconhecer" : "Resolver"}
       </Button>
       <DialogConfirmIncident
         incident={incident}

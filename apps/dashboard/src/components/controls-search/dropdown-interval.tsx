@@ -20,14 +20,14 @@ import { useEffect } from "react";
 import { INTERVALS, PERIODS, periodToMinInterval } from "@/data/metrics.client";
 
 const MAPPING = {
-  5: "5 minutes",
-  15: "15 minutes",
-  30: "30 minutes",
-  60: "1 hour",
-  120: "2 hours",
-  240: "4 hours",
-  480: "8 hours",
-  1440: "1 day",
+  5: "5 minutos",
+  15: "15 minutos",
+  30: "30 minutos",
+  60: "1 hora",
+  120: "2 horas",
+  240: "4 horas",
+  480: "8 horas",
+  1440: "1 dia",
 } as const;
 
 const parseInterval = parseAsNumberLiteral(INTERVALS).withDefault(30);
@@ -58,7 +58,7 @@ export function DropdownInterval() {
       <DropdownMenuContent align="start">
         <DropdownMenuGroup>
           <DropdownMenuLabel className="text-muted-foreground text-xs font-medium">
-            Resolution
+            Resolução
           </DropdownMenuLabel>
           {options.map((item) => (
             <DropdownMenuItem key={item} onSelect={() => setInterval(item)}>

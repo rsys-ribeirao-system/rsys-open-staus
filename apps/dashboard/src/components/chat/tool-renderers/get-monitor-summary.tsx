@@ -26,18 +26,18 @@ export function getMonitorSummaryDetails(
             label: "ID",
             value: <TableCellNumber value={output.monitorId} />,
           },
-          { label: "Window", value: <TableCellText value={input.timeRange} /> },
+          { label: "Janela", value: <TableCellText value={input.timeRange} /> },
           {
-            label: "Last check",
+            label: "Última verificação",
             value: <TableCellDate value={lastPingDate} />,
           },
         ],
       },
       {
-        title: "Checks",
+        title: "Verificações",
         rows: [
           {
-            label: "Successful",
+            label: "Sucesso",
             value: (
               <TableCellNumber
                 value={output.totalSuccessful}
@@ -46,7 +46,7 @@ export function getMonitorSummaryDetails(
             ),
           },
           {
-            label: "Degraded",
+            label: "Degradado",
             value: (
               <TableCellNumber
                 value={output.totalDegraded}
@@ -55,7 +55,7 @@ export function getMonitorSummaryDetails(
             ),
           },
           {
-            label: "Failed",
+            label: "Falha",
             value: (
               <TableCellNumber
                 value={output.totalFailed}
@@ -66,7 +66,7 @@ export function getMonitorSummaryDetails(
         ],
       },
       {
-        title: "Latency",
+        title: "Latência",
         rows: [
           {
             label: "p50",

@@ -38,9 +38,9 @@ export function FormSheetPrivateLocation({
       </FormSheetTrigger>
       <FormSheetContent>
         <FormSheetHeader>
-          <FormSheetTitle>Private Location</FormSheetTitle>
+          <FormSheetTitle>Localização privada</FormSheetTitle>
           <FormSheetDescription>
-            Configure and update the private location.
+            Configure e atualize a localização privada.
           </FormSheetDescription>
         </FormSheetHeader>
         <FormCardGroup className="overflow-y-auto">
@@ -59,7 +59,7 @@ export function FormSheetPrivateLocation({
         </FormCardGroup>
         <FormSheetFooter>
           <Button type="submit" form="private-location-form">
-            Submit
+            Enviar
           </Button>
         </FormSheetFooter>
       </FormSheetContent>

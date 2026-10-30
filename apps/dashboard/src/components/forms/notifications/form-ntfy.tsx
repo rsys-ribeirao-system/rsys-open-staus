@@ -29,7 +29,7 @@ import { CheckboxTree } from "@/components/ui/checkbox-tree";
 import { useTRPC } from "@/lib/trpc/client";
 
 const schema = z.object({
-  name: z.string().trim().min(1, "Name is required"),
+  name: z.string().trim().min(1, "O nome é obrigatório"),
   provider: z.literal("ntfy"),
   data: z.record(z.string(), z.string()),
   monitors: z.array(z.number()),
@@ -81,13 +81,13 @@ export function FormNtfy({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -103,7 +103,7 @@ export function FormNtfy({
     // Validate topic field before sending test
     const data = form.getValues("data");
     if (!data.topic || data.topic.trim() === "") {
-      toast.error("Please enter a topic before sending test");
+      toast.error("Informe um tópico antes de enviar o teste");
       return;
     }
 
@@ -117,13 +117,13 @@ export function FormNtfy({
           },
         });
         toast.promise(promise, {
-          loading: "Sending test...",
-          success: "Test sent",
+          loading: "Enviando teste...",
+          success: "Teste enviado",
           error: (error) => {
             if (error instanceof Error) {
               return error.message;
             }
-            return "Failed to send test";
+            return "Falha ao enviar teste";
           },
         });
         await promise;
@@ -146,13 +146,13 @@ export function FormNtfy({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Nome</FormLabel>
                 <FormControl>
-                  <Input placeholder="My Notifier" {...field} />
+                  <Input placeholder="Meu canal de notificação" {...field} />
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter a descriptive name for your notifier.
+                  Informe um nome descritivo para o seu canal de notificação.
                 </FormDescription>
               </FormItem>
             )}
@@ -162,13 +162,13 @@ export function FormNtfy({
             name="data.topic"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Topic</FormLabel>
+                <FormLabel>Tópico</FormLabel>
                 <FormControl>
-                  <Input placeholder="your-topic" {...field} />
+                  <Input placeholder="seu-topico" {...field} />
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter the topic for your ntfy notifications.
+                  Informe o tópico das suas notificações do ntfy.
                 </FormDescription>
               </FormItem>
             )}
@@ -178,13 +178,14 @@ export function FormNtfy({
             name="data.serverUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Server URL</FormLabel>
+                <FormLabel>URL do servidor</FormLabel>
                 <FormControl>
                   <Input placeholder="https://ntfy.sh" {...field} />
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter the ntfy server URL. Leave empty for default.
+                  Informe a URL do servidor ntfy. Deixe em branco para usar o
+                  padrão.
                 </FormDescription>
               </FormItem>
             )}
@@ -200,7 +201,7 @@ export function FormNtfy({
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter the bearer token for authentication.
+                  Informe o bearer token para autenticação.
                 </FormDescription>
               </FormItem>
             )}
@@ -212,7 +213,7 @@ export function FormNtfy({
               type="button"
               onClick={testAction}
             >
-              Send Test
+              Enviar teste
             </Button>
           </div>
         </FormCardContent>
@@ -223,16 +224,16 @@ export function FormNtfy({
             name="monitors"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Monitors</FormLabel>
+                <FormLabel>Monitores</FormLabel>
                 <FormDescription>
-                  Select the monitors you want to notify.
+                  Selecione os monitores que você deseja notificar.
                 </FormDescription>
                 <FormControl>
                   <CheckboxTree
                     items={[
                       {
                         id: -1,
-                        label: "Select all",
+                        label: "Selecionar todos",
                         children: monitors.map((m) => ({
                           id: m.id,
                           label: m.name,

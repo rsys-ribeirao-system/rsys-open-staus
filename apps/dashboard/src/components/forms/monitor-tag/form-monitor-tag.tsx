@@ -24,8 +24,8 @@ import { useTRPC } from "@/lib/trpc/client";
 
 const tagSchema = z.object({
   id: z.number().optional(),
-  name: z.string().min(1, "Name is required"),
-  color: z.string().regex(/^#[0-9A-Fa-f]{6}$/, "Invalid color format"),
+  name: z.string().min(1, "O nome é obrigatório"),
+  color: z.string().regex(/^#[0-9A-Fa-f]{6}$/, "Formato de cor inválido"),
 });
 
 const schema = z.object({
@@ -74,9 +74,9 @@ export function FormMonitorTag({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving tags...",
-          success: "Tags saved successfully",
-          error: "Failed to save tags",
+          loading: "Salvando tags...",
+          success: "Tags salvas com sucesso",
+          error: "Falha ao salvar tags",
         });
         await promise;
       } catch (error) {
@@ -110,7 +110,7 @@ export function FormMonitorTag({
               onClick={() => append({ name: "", color: "#00008B" })}
             >
               <Add className="mr-2 h-4 w-4" />
-              Add Tag
+              Adicionar tag
             </Button>
           </div>
 
@@ -139,7 +139,7 @@ export function FormMonitorTag({
                 render={({ field }) => (
                   <FormItem className="flex-1">
                     <FormControl>
-                      <Input placeholder="Tag name" {...field} />
+                      <Input placeholder="Nome da tag" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

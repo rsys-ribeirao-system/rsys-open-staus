@@ -12,11 +12,11 @@ export const STATUS_PAGE_TABS: {
   label: string;
   icon: IconType;
 }[] = [
-  { value: "status-reports", label: "Status Reports", icon: Report },
-  { value: "maintenances", label: "Maintenances", icon: Maintenance },
-  { value: "subscribers", label: "Subscribers", icon: Team },
-  { value: "components", label: "Components", icon: Components },
+  { value: "status-reports", label: "Relatórios de status", icon: Report },
+  { value: "maintenances", label: "Manutenções", icon: Maintenance },
+  { value: "subscribers", label: "Assinantes", icon: Team },
+  { value: "components", label: "Componentes", icon: Components },
   // TODO: hidden in the tabs but still accessible via direct link - can be enabled in the future
   // { value: "history", label: "History", icon: CalendarDays },
-  { value: "edit", label: "Settings", icon: Settings },
+  { value: "edit", label: "Configurações", icon: Settings },
 ];

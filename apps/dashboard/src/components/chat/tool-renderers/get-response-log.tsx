@@ -24,28 +24,28 @@ export function getResponseLogDetails(
   output: Output,
 ): DetailsTableData {
   const request: DetailsRow[] = [
-    { label: "Log ID", value: <TableCellText value={output.id} /> },
+    { label: "ID do log", value: <TableCellText value={output.id} /> },
     { label: "Monitor", value: <TableCellText value={output.monitorId} /> },
-    { label: "Region", value: <TableCellRegion value={output.region} /> },
+    { label: "Região", value: <TableCellRegion value={output.region} /> },
     { label: "URL", value: <TableCellText value={output.url} /> },
     {
       label: "Status",
       value: <TableCellText value={output.requestStatus} />,
     },
     {
-      label: "Status code",
+      label: "Código de status",
       value: <TableCellNumber value={output.statusCode} />,
     },
     {
-      label: "Latency",
+      label: "Latência",
       value: <TableCellNumber value={output.latency} unit="ms" />,
     },
     {
-      label: "Timestamp",
+      label: "Data/hora",
       value: <TableCellDate value={new Date(output.timestamp)} />,
     },
-    { label: "Trigger", value: <TableCellText value={output.trigger} /> },
-    { label: "Error", value: <TableCellBoolean value={output.error} /> },
+    { label: "Gatilho", value: <TableCellText value={output.trigger} /> },
+    { label: "Erro", value: <TableCellBoolean value={output.error} /> },
   ];
 
   const sections: DetailsSection[] = [{ rows: request }];
@@ -74,7 +74,7 @@ export function getResponseLogDetails(
   if (output.message) {
     sections.push({
       rows: [
-        { label: "Message", value: <TableCellText value={output.message} /> },
+        { label: "Mensagem", value: <TableCellText value={output.message} /> },
       ],
     });
   }
@@ -83,7 +83,7 @@ export function getResponseLogDetails(
     sections.push({
       rows: [
         {
-          label: "Assertions",
+          label: "Validações",
           value: <TableCellText value={output.assertions} />,
         },
       ],
@@ -100,7 +100,7 @@ function timingRows(timing: Timing, latency: number): DetailsRow[] {
     value: (
       <div className="flex items-center justify-between gap-3">
         <span className="text-muted-foreground">
-          {new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 }).format(
+          {new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 }).format(
             (value / denom) * 100,
           )}
           %

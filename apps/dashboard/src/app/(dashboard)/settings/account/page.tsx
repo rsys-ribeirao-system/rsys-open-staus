@@ -49,39 +49,39 @@ export default function Page() {
     <SectionGroup>
       <Section>
         <SectionHeader>
-          <SectionTitle>Account</SectionTitle>
+          <SectionTitle>Conta</SectionTitle>
         </SectionHeader>
         <FormCard id="personal-information">
           <FormCardUpgrade />
           <FormCardHeader>
-            <FormCardTitle>Personal Information</FormCardTitle>
+            <FormCardTitle>Informações pessoais</FormCardTitle>
             <FormCardDescription>
-              Manage your personal information.
+              Gerencie suas informações pessoais.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent>
             <form className="grid gap-4">
               <div className="grid gap-1.5">
-                <Label>Name</Label>
+                <Label>Nome</Label>
                 <Input defaultValue={user?.name ?? undefined} />
               </div>
               <div className="grid gap-1.5">
-                <Label>Email</Label>
+                <Label>E-mail</Label>
                 <Input defaultValue={user?.email ?? undefined} />
               </div>
             </form>
           </FormCardContent>
           <FormCardFooter className="[&>:last-child]:ml-0">
             <FormCardFooterInfo>
-              Please contact us if you want to change your email or name.
+              Entre em contato conosco se quiser alterar seu e-mail ou nome.
             </FormCardFooterInfo>
           </FormCardFooter>
         </FormCard>
         <FormCard id="appearance">
           <FormCardHeader>
-            <FormCardTitle>Appearance</FormCardTitle>
+            <FormCardTitle>Aparência</FormCardTitle>
             <FormCardDescription>
-              Choose your preferred theme.
+              Escolha seu tema preferido.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent className="pb-4">
@@ -90,30 +90,30 @@ export default function Page() {
         </FormCard>
         <FormCard id="delete-account" variant="destructive">
           <FormCardHeader>
-            <FormCardTitle>Delete Account</FormCardTitle>
+            <FormCardTitle>Excluir conta</FormCardTitle>
             <FormCardDescription>
-              This will permanently delete your account and remove you from all
-              workspaces. This action cannot be undone.
+              Isso excluirá sua conta permanentemente e removerá você de todos
+              os workspaces. Esta ação não pode ser desfeita.
             </FormCardDescription>
           </FormCardHeader>
           {isDeleteDisabled ? (
             <FormCardContent>
               <p className="text-destructive text-sm">
-                You must cancel your subscription before deleting your account.
-                Go to{" "}
+                Você precisa cancelar sua assinatura antes de excluir sua conta.
+                Acesse{" "}
                 <a
                   href="/settings/billing"
                   className="font-medium underline underline-offset-4"
                 >
-                  Billing
+                  Cobrança
                 </a>{" "}
-                to manage your subscription.
+                para gerenciar sua assinatura.
               </p>
             </FormCardContent>
           ) : null}
           <FormCardFooter variant="destructive">
             <FormCardFooterInfo>
-              Need help? Contact us at{" "}
+              Precisa de ajuda? Fale conosco em{" "}
               <Link href="mailto:ping@openstatus.dev">ping@openstatus.dev</Link>
               .
             </FormCardFooterInfo>
@@ -129,7 +129,7 @@ export default function Page() {
                 size="sm"
                 disabled={isDeleteDisabled}
               >
-                Delete
+                Excluir
               </Button>
             </FormAlertDialog>
           </FormCardFooter>

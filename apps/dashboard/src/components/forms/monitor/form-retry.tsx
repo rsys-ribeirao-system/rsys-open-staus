@@ -65,9 +65,9 @@ export function FormRetry({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
-          error: "Failed to save",
+          loading: "Salvando...",
+          success: "Salvo",
+          error: "Falha ao salvar",
         });
         await promise;
       } catch (error) {
@@ -81,9 +81,9 @@ export function FormRetry({
       <form onSubmit={form.handleSubmit(submitAction)} {...props}>
         <FormCard>
           <FormCardHeader>
-            <FormCardTitle>Retry Policy</FormCardTitle>
+            <FormCardTitle>Política de novas tentativas</FormCardTitle>
             <FormCardDescription>
-              Configure the retry policy for your monitor.
+              Configure a política de novas tentativas do seu monitor.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent className="grid gap-4 sm:grid-cols-2">
@@ -92,7 +92,7 @@ export function FormRetry({
               name="retry"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Retry</FormLabel>
+                  <FormLabel>Novas tentativas</FormLabel>
                   <FormControl>
                     <Input
                       min={RETRY_MIN}
@@ -104,7 +104,7 @@ export function FormRetry({
                   </FormControl>
                   <FormMessage />
                   <FormDescription>
-                    The retry policy is exponential backoff.
+                    A política de novas tentativas usa backoff exponencial.
                   </FormDescription>
                 </FormItem>
               )}
@@ -112,18 +112,18 @@ export function FormRetry({
           </FormCardContent>
           <FormCardFooter>
             <FormCardFooterInfo>
-              Learn more about{" "}
+              Saiba mais sobre{" "}
               <Link
                 href="https://www.openstatus.dev/docs/reference/http-monitor/#retry"
                 rel="noreferrer"
                 target="_blank"
               >
-                retries
+                novas tentativas
               </Link>
               .
             </FormCardFooterInfo>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Submitting..." : "Submit"}
+              {isPending ? "Enviando..." : "Enviar"}
             </Button>
           </FormCardFooter>
         </FormCard>

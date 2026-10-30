@@ -22,25 +22,25 @@ export type NavItem = {
 // icon swap here propagates to both surfaces.
 export const NAV = {
   overview: {
-    label: "Overview",
+    label: "Visão geral",
     href: "/overview",
     icon: Overview,
     keywords: ["home", "dashboard"],
   },
   monitors: {
-    label: "Monitors",
+    label: "Monitores",
     href: "/monitors",
     icon: Monitor,
     keywords: ["checks", "uptime"],
   },
   statusPages: {
-    label: "Status Pages",
+    label: "Páginas de status",
     href: "/status-pages",
     icon: StatusPage,
     keywords: ["pages"],
   },
   notifications: {
-    label: "Notifications",
+    label: "Notificações",
     href: "/notifications",
     icon: Notification,
     keywords: ["notifiers", "alerts", "channels"],
@@ -52,7 +52,7 @@ export const NAV = {
     keywords: ["assistant", "ai"],
   },
   agents: {
-    label: "Agents",
+    label: "Agentes",
     href: "/agents",
     icon: Agent,
     keywords: ["slack"],
@@ -64,7 +64,7 @@ export const NAV = {
     keywords: ["terminal"],
   },
   settings: {
-    label: "Settings",
+    label: "Configurações",
     href: "/settings/general",
     icon: Settings,
     keywords: ["workspace"],

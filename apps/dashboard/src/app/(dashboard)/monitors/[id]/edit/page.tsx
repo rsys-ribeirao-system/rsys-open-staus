@@ -27,7 +27,7 @@ export default function Page() {
       <Section>
         <SectionHeader>
           <SectionTitle>{monitor.name}</SectionTitle>
-          <SectionDescription>Customize your monitor.</SectionDescription>
+          <SectionDescription>Personalize seu monitor.</SectionDescription>
         </SectionHeader>
         <FormMonitorUpdate />
       </Section>

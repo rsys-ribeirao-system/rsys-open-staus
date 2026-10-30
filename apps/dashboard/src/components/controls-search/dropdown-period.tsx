@@ -22,23 +22,23 @@ import { useTRPC } from "@/lib/trpc/client";
 export const PERIOD_VALUES = [
   {
     value: "1d",
-    label: "Last day",
+    label: "Último dia",
   },
   {
     value: "7d",
-    label: "Last 7 days",
+    label: "Últimos 7 dias",
   },
   {
     value: "14d",
-    label: "Last 14 days",
+    label: "Últimos 14 dias",
   },
   {
     value: "30d",
-    label: "Last 30 days",
+    label: "Últimos 30 dias",
   },
   {
     value: "90d",
-    label: "Last 90 days",
+    label: "Últimos 90 dias",
   },
 ] satisfies { value: (typeof PERIODS)[number]; label: string }[];
 
@@ -62,7 +62,7 @@ export function DropdownPeriod() {
         <DropdownMenuContent align="start">
           <DropdownMenuGroup>
             <DropdownMenuLabel className="text-muted-foreground text-xs font-medium">
-              Period
+              Período
             </DropdownMenuLabel>
             {PERIOD_VALUES.map(({ value, label }) => {
               const locked = isFree && isPaidPeriod(value);

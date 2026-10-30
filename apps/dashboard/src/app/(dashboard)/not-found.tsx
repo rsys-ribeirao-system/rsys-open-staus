@@ -4,10 +4,10 @@ import Link from "next/link";
 import { WorkspaceSwitcher } from "@/components/nav/workspace-switcher";
 
 const quickLinks = [
-  { name: "Overview", href: "/overview", icon: Overview },
-  { name: "Monitors", href: "/monitors", icon: Monitor },
-  { name: "Status Pages", href: "/status-pages", icon: StatusPage },
-  { name: "Settings", href: "/settings/general", icon: Settings },
+  { name: "Visão geral", href: "/overview", icon: Overview },
+  { name: "Monitores", href: "/monitors", icon: Monitor },
+  { name: "Páginas de status", href: "/status-pages", icon: StatusPage },
+  { name: "Configurações", href: "/settings/general", icon: Settings },
 ];
 
 export default function NotFound() {
@@ -16,13 +16,13 @@ export default function NotFound() {
       <div className="border-border bg-sidebar mx-auto w-full max-w-md rounded-lg border">
         <div className="flex flex-col gap-6 p-6 sm:p-8">
           <div className="flex flex-col gap-1 text-center">
-            <p className="text-destructive font-mono">404 Not found</p>
+            <p className="text-destructive font-mono">404 Não encontrado</p>
             <h2 className="font-cal text-foreground text-2xl">
-              Page not found
+              Página não encontrada
             </h2>
             <p className="text-muted-foreground text-sm">
-              This resource doesn&apos;t exist or you might not be in the right
-              workspace.
+              Este recurso não existe ou você pode não estar no workspace
+              correto.
             </p>
           </div>
           <WorkspaceSwitcher

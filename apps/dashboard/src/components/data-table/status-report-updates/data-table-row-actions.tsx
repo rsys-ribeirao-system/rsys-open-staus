@@ -109,7 +109,7 @@ export function DataTableRowActions({
         }}
       >
         <button ref={buttonRef} type="button" className="sr-only">
-          Open sheet
+          Abrir painel
         </button>
       </FormSheetStatusReportUpdate>
     </>

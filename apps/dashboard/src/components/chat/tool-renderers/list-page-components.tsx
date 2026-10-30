@@ -13,11 +13,11 @@ export function listPageComponentsTable(
 ): ResultTableData<"name" | "type" | "page" | "monitor" | "id"> {
   const items = output?.items ?? [];
   return {
-    empty: "No page components.",
+    empty: "Nenhum componente de página.",
     columns: [
-      { key: "name", header: "Name" },
-      { key: "type", header: "Type" },
-      { key: "page", header: "Page" },
+      { key: "name", header: "Nome" },
+      { key: "type", header: "Tipo" },
+      { key: "page", header: "Página" },
       { key: "monitor", header: "Monitor" },
       { key: "id", header: "ID" },
     ],

@@ -55,8 +55,8 @@ export function CommandRegion({
       <PopoverTrigger asChild>
         <Button variant="outline" size="sm">
           {selectedRegions.length === regions.length
-            ? "All Regions"
-            : `${selectedRegions.length} Regions`}
+            ? "Todas as regiões"
+            : `${selectedRegions.length} regiões`}
         </Button>
       </PopoverTrigger>
       <PopoverContent
@@ -64,7 +64,7 @@ export function CommandRegion({
         className="relative w-[250px] overflow-hidden p-0"
       >
         <Command>
-          <CommandInput placeholder="Search region..." disabled={limited} />
+          <CommandInput placeholder="Buscar região..." disabled={limited} />
           <CommandList>
             <CommandGroup forceMount>
               <CommandItem
@@ -90,7 +90,7 @@ export function CommandRegion({
                 value="select-all"
                 disabled={limited}
               >
-                Toggle selection
+                Alternar seleção
               </CommandItem>
             </CommandGroup>
             <CommandSeparator alwaysRender />
@@ -150,7 +150,7 @@ export function CommandRegion({
               },
             )}
             {privateLocations && privateLocations.length > 0 ? (
-              <CommandGroup heading="Private Locations">
+              <CommandGroup heading="Localizações privadas">
                 {privateLocations.map((location) => (
                   <CommandItem
                     key={location.id}
@@ -178,7 +178,7 @@ export function CommandRegion({
                 ))}
               </CommandGroup>
             ) : null}
-            <CommandEmpty>No region found.</CommandEmpty>
+            <CommandEmpty>Nenhuma região encontrada.</CommandEmpty>
           </CommandList>
         </Command>
         {limited ? (
@@ -186,11 +186,11 @@ export function CommandRegion({
             <BillingOverlayButton asChild>
               <Link href="/settings/billing">
                 <Lock />
-                Upgrade
+                Fazer upgrade
               </Link>
             </BillingOverlayButton>
             <BillingOverlayDescription>
-              Filter by region is only available on paid plans.
+              O filtro por região está disponível apenas nos planos pagos.
             </BillingOverlayDescription>
           </BillingOverlay>
         ) : null}

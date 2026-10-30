@@ -38,9 +38,10 @@ export function ExportCodeDialog(props: DialogProps) {
     <Dialog {...props}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Export Configuration</DialogTitle>
+          <DialogTitle>Exportar configuração</DialogTitle>
           <DialogDescription>
-            Export and manage your monitor configuration using Infra as Code.
+            Exporte e gerencie a configuração dos seus monitores usando Infra as
+            Code.
           </DialogDescription>
         </DialogHeader>
         <Tabs defaultValue="yml">
@@ -65,8 +66,8 @@ export function ExportCodeDialog(props: DialogProps) {
               </Button>
             </pre>
             <p className="text-muted-foreground text-xs">
-              Use a <code>monitor.openstatus.yml</code> file to configure your
-              monitors. <Link href="#">Read more.</Link>
+              Use um arquivo <code>monitor.openstatus.yml</code> para configurar
+              seus monitores. <Link href="#">Saiba mais.</Link>
             </p>
           </TabsContent>
           <TabsContent value="terraform" className="space-y-2">
@@ -75,11 +76,11 @@ export function ExportCodeDialog(props: DialogProps) {
             </pre>
             {/* TODO: only showcase if there are any assertions */}
             <p className="text-destructive text-xs">
-              The Terraform provider does not support assertions yet.
+              O provider do Terraform ainda não suporta validações.
             </p>
             <p className="text-muted-foreground text-xs">
-              Use a Terraform provider to manage your monitors.{" "}
-              <Link href="#">Read more.</Link>
+              Use um provider do Terraform para gerenciar seus monitores.{" "}
+              <Link href="#">Saiba mais.</Link>
             </p>
           </TabsContent>
         </Tabs>

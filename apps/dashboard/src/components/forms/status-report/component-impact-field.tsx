@@ -26,7 +26,7 @@ export function ComponentImpactList({
   onValueChange,
   allowUnset = false,
   defaultImpact = "operational",
-  placeholder = "No change",
+  placeholder = "Sem alteração",
 }: {
   components: { id: number; name: string }[];
   value: ComponentImpactValue[];

@@ -113,7 +113,7 @@ export function OnboardingStatusPagePreview({
   const themeStyle = useThemeVars(themeKey, mode, mounted);
   const [placeholderBarData] = useState(buildPlaceholderBarData);
 
-  const displayTitle = title?.trim() || slug || "My Status Page";
+  const displayTitle = title?.trim() || slug || "Minha página de status";
   const allComponents: { key: string; name: string }[] = [
     ...(monitorName ? [{ key: "__monitor", name: monitorName }] : []),
     ...components

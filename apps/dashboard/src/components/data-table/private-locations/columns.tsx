@@ -23,7 +23,7 @@ export const columns: ColumnDef<PrivateLocation>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
     enableHiding: false,
   },
@@ -46,7 +46,7 @@ export const columns: ColumnDef<PrivateLocation>[] = [
   {
     accessorKey: "lastSeenAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Last Seen At" />
+      <DataTableColumnHeader column={column} title="Visto por último em" />
     ),
     enableHiding: false,
     cell: ({ row }) => {
@@ -56,7 +56,7 @@ export const columns: ColumnDef<PrivateLocation>[] = [
   },
   {
     accessorKey: "monitors",
-    header: "Monitors",
+    header: "Monitores",
     enableSorting: false,
     enableHiding: false,
 

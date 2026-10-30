@@ -54,9 +54,9 @@ export function FormWorkspace({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
+          loading: "Salvando...",
           success: () => "Saved",
-          error: "Failed to save",
+          error: "Falha ao salvar",
         });
         await promise;
       } catch (error) {
@@ -72,7 +72,7 @@ export function FormWorkspace({
           <FormCardHeader>
             <FormCardTitle>Workspace</FormCardTitle>
             <FormCardDescription>
-              Manage your workspace name.
+              Gerencie o nome do seu workspace.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent>
@@ -81,7 +81,7 @@ export function FormWorkspace({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -92,7 +92,7 @@ export function FormWorkspace({
           </FormCardContent>
           <FormCardFooter>
             <Button type="submit" disabled={isPending} size="sm">
-              {isPending ? "Submitting..." : "Submit"}
+              {isPending ? "Enviando..." : "Enviar"}
             </Button>
           </FormCardFooter>
         </FormCard>

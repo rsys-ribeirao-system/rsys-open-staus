@@ -33,7 +33,7 @@ export function DropdownPercentile() {
       <DropdownMenuContent align="start">
         <DropdownMenuGroup>
           <DropdownMenuLabel className="text-muted-foreground text-xs font-medium">
-            Percentile
+            Percentil
           </DropdownMenuLabel>
           {PERCENTILES.map((item) => (
             <DropdownMenuItem

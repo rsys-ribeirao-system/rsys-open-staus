@@ -24,13 +24,14 @@ export function PopoverQuantile({
       </PopoverTrigger>
       <PopoverContent side="top" className="p-0 text-sm">
         <p className="px-3 py-2 font-medium">
-          A quantile represents a specific percentile in your dataset.
+          Um quantil representa um percentil específico do seu conjunto de
+          dados.
         </p>
         <Separator />
         <p className="text-muted-foreground px-3 py-2">
-          For example, p50 is the 50th percentile - the point below which 50% of
-          data falls. Higher percentiles include more data and highlight the
-          upper range.
+          Por exemplo, p50 é o 50º percentil: o ponto abaixo do qual ficam 50%
+          dos dados. Percentis mais altos incluem mais dados e destacam a faixa
+          superior.
         </p>
       </PopoverContent>
     </Popover>

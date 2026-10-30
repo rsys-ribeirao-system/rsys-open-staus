@@ -69,13 +69,13 @@ export function FormCustomDomain({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: () => "Saved",
+          loading: "Salvando...",
+          success: () => "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -97,9 +97,9 @@ export function FormCustomDomain({
         <FormCard>
           {locked ? <FormCardUpgrade /> : null}
           <FormCardHeader>
-            <FormCardTitle>Custom Domain</FormCardTitle>
+            <FormCardTitle>Domínio personalizado</FormCardTitle>
             <FormCardDescription>
-              Use your own domain for your status page.
+              Use seu próprio domínio na sua página de status.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent>
@@ -108,7 +108,7 @@ export function FormCustomDomain({
               name="domain"
               render={({ field }) => (
                 <FormItem>
-                  <Label>Domain</Label>
+                  <Label>Domínio</Label>
                   <InputGroup>
                     <InputGroupAddon align="inline-start">
                       https://
@@ -134,13 +134,13 @@ export function FormCustomDomain({
           ) : null}
           <FormCardFooter>
             <FormCardFooterInfo>
-              Learn more about{" "}
+              Saiba mais sobre{" "}
               <Link
                 href="https://www.openstatus.dev/docs/reference/status-page/#custom-domain"
                 rel="noreferrer"
                 target="_blank"
               >
-                Custom Domain
+                Domínio personalizado
               </Link>
               .
             </FormCardFooterInfo>
@@ -148,7 +148,7 @@ export function FormCustomDomain({
               <Button type="button" asChild>
                 <Link href="/settings/billing">
                   <Lock />
-                  Upgrade
+                  Fazer upgrade
                 </Link>
               </Button>
             ) : (
@@ -160,10 +160,10 @@ export function FormCustomDomain({
                   onClick={refresh}
                   className="hidden sm:block"
                 >
-                  {isLoading ? "Refreshing..." : "Refresh Configuration"}
+                  {isLoading ? "Atualizando..." : "Atualizar configuração"}
                 </Button>
                 <Button type="submit" disabled={isPending}>
-                  {isPending ? "Submitting..." : "Submit"}
+                  {isPending ? "Enviando..." : "Enviar"}
                 </Button>
               </div>
             )}

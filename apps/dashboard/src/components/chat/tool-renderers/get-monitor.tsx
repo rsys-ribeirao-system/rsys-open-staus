@@ -22,31 +22,31 @@ export function getMonitorDetails(
 ): DetailsTableData {
   const identity: DetailsRow[] = [
     { label: "ID", value: <TableCellNumber value={output.id} /> },
-    { label: "Name", value: <TableCellText value={output.name} /> },
+    { label: "Nome", value: <TableCellText value={output.name} /> },
     { label: "URL", value: <TableCellText value={output.url} /> },
     {
-      label: "Type",
+      label: "Tipo",
       value: <TableCellText value={output.jobType.toUpperCase()} />,
     },
   ];
   if (output.method) {
     identity.push({
-      label: "Method",
+      label: "Método",
       value: <TableCellText value={output.method} />,
     });
   }
   identity.push({
-    label: "Active",
+    label: "Ativo",
     value: <TableCellBoolean value={output.active} />,
   });
 
   const behavior: DetailsRow[] = [
     {
-      label: "Periodicity",
+      label: "Frequência",
       value: <TableCellText value={output.periodicity} />,
     },
     {
-      label: "Regions",
+      label: "Regiões",
       value: <TableCellText value={output.regions.join(", ")} />,
     },
     {
@@ -56,20 +56,23 @@ export function getMonitorDetails(
   ];
   if (output.degradedAfter !== null) {
     behavior.push({
-      label: "Degraded after",
+      label: "Degradado após",
       value: <TableCellNumber value={output.degradedAfter} unit="ms" />,
     });
   }
   behavior.push(
-    { label: "Retry", value: <TableCellNumber value={output.retry} /> },
     {
-      label: "Follow redirects",
+      label: "Novas tentativas",
+      value: <TableCellNumber value={output.retry} />,
+    },
+    {
+      label: "Seguir redirecionamentos",
       value: <TableCellBoolean value={output.followRedirects} />,
     },
   );
 
   const visibility: DetailsRow[] = [
-    { label: "Public", value: <TableCellBoolean value={output.public} /> },
+    { label: "Público", value: <TableCellBoolean value={output.public} /> },
     {
       label: "Tags",
       value: (
@@ -77,7 +80,7 @@ export function getMonitorDetails(
       ),
     },
     {
-      label: "Notifications",
+      label: "Notificações",
       value: (
         <TableCellText
           value={output.notifications
@@ -90,12 +93,12 @@ export function getMonitorDetails(
 
   const sections: DetailsSection[] = [
     { title: "Monitor", rows: identity },
-    { title: "Behavior", rows: behavior },
-    { title: "Visibility", rows: visibility },
+    { title: "Comportamento", rows: behavior },
+    { title: "Visibilidade", rows: visibility },
   ];
   if (output.privateLocationIds.length > 0) {
     sections.push({
-      title: "Private locations",
+      title: "Localizações privadas",
       rows: [
         {
           label: "IDs",

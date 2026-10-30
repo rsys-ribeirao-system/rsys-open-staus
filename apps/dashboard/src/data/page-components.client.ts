@@ -3,7 +3,7 @@ import { Delete } from "@openstatus/icons";
 export const actions = [
   {
     id: "delete",
-    label: "Delete",
+    label: "Excluir",
     icon: Delete,
     variant: "destructive" as const,
   },

@@ -22,34 +22,34 @@ export type SettingsTab = {
 export const SETTINGS_TABS = [
   {
     value: "general",
-    label: "General",
+    label: "Geral",
     icon: Settings,
     href: "/settings/general",
     keywords: ["workspace"],
   },
   {
     value: "account",
-    label: "Account",
+    label: "Conta",
     icon: Account,
     href: "/settings/account",
     keywords: ["profile", "user"],
   },
   {
     value: "billing",
-    label: "Billing",
+    label: "Cobrança",
     icon: Billing,
     href: "/settings/billing",
     keywords: ["plan", "subscription", "upgrade"],
   },
   {
     value: "integrations",
-    label: "Integrations",
+    label: "Integrações",
     icon: Integrations,
     href: "/settings/integrations",
   },
   {
     value: "private-locations",
-    label: "Private Locations",
+    label: "Localizações privadas",
     icon: Globe,
     href: "/settings/private-locations",
     keywords: ["probes", "regions"],
@@ -63,7 +63,7 @@ export const SETTINGS_TABS = [
   },
   {
     value: "audit-logs",
-    label: "Audit Logs",
+    label: "Logs de auditoria",
     icon: AuditLog,
     href: "/settings/audit-logs",
     keywords: ["activity", "history"],

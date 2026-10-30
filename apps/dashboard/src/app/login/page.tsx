@@ -17,9 +17,9 @@ const hasWorkOS = Boolean(
 );
 
 export const metadata: Metadata = {
-  title: "Sign In",
+  title: "Entrar",
   description:
-    "Sign in to openstatus. Monitor your services and keep your users informed.",
+    "Entre no openstatus. Monitore seus serviços e mantenha seus usuários informados.",
   robots: {
     index: true,
     follow: true,
@@ -38,15 +38,15 @@ export default async function Page(props: {
   return (
     <div className="my-16 grid w-full max-w-lg gap-6">
       <div className="flex flex-col gap-1 text-center">
-        <h1 className="font-cal text-3xl tracking-tight">Sign In</h1>
+        <h1 className="font-cal text-3xl tracking-tight">Entrar</h1>
         <p className="font-commit-mono text-muted-foreground text-sm text-pretty">
-          Get started now. No credit card required.
+          Comece agora. Sem cartão de crédito.
         </p>
       </div>
       {error === "AccessDenied" ? (
         <p className="text-destructive mx-auto max-w-md px-8 text-center text-sm text-pretty">
-          Your SSO login isn&apos;t linked to a workspace yet. Contact your
-          workspace admin.
+          Seu login SSO ainda não está vinculado a um workspace. Fale com o
+          administrador do seu workspace.
         </p>
       ) : null}
       <div className="grid gap-4 p-4">
@@ -65,7 +65,7 @@ export default async function Page(props: {
           className="w-full"
         >
           <LoginButton type="submit" provider="github">
-            Sign in with GitHub <GitHubIcon className="ml-2 h-4 w-4" />
+            Entrar com GitHub <GitHubIcon className="ml-2 h-4 w-4" />
           </LoginButton>
         </form>
         <form
@@ -76,7 +76,7 @@ export default async function Page(props: {
           className="w-full"
         >
           <LoginButton type="submit" provider="google">
-            Sign in with Google <GoogleIcon className="ml-2 h-4 w-4" />
+            Entrar com Google <GoogleIcon className="ml-2 h-4 w-4" />
           </LoginButton>
         </form>
         {process.env.AUTH_OIDC_ISSUER ? (
@@ -88,26 +88,26 @@ export default async function Page(props: {
             className="w-full"
           >
             <LoginButton type="submit" provider="oidc">
-              Sign in with {process.env.AUTH_OIDC_NAME ?? "SSO"}
+              Entrar com {process.env.AUTH_OIDC_NAME ?? "SSO"}
             </LoginButton>
           </form>
         ) : null}
         {hasWorkOS ? <SsoForm redirectTo={redirectTo ?? undefined} /> : null}
       </div>
       <p className="text-muted-foreground mx-auto max-w-md px-8 text-center text-xs text-pretty">
-        By clicking continue, you agree to our{" "}
+        Ao continuar, você concorda com nossos{" "}
         <Link
           href="https://openstatus.dev/legal/terms"
           className="hover:text-primary underline underline-offset-4 hover:no-underline"
         >
-          Terms of Service
+          Termos de Serviço
         </Link>{" "}
-        and{" "}
+        e com a{" "}
         <Link
           href="https://openstatus.dev/legal/privacy"
           className="hover:text-primary underline underline-offset-4 hover:no-underline"
         >
-          Privacy Policy
+          Política de Privacidade
         </Link>
         .
       </p>

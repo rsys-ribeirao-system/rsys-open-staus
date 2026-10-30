@@ -42,8 +42,8 @@ export function FormSheetSubscriber({
   onSubmit,
   items,
   editMode = false,
-  title = "Add subscriber",
-  description = "Add an email or webhook subscriber. Partner starts receiving notifications immediately - no verification required.",
+  title = "Adicionar assinante",
+  description = "Adicione um assinante por e-mail ou webhook. Ele passa a receber notificações imediatamente, sem verificação.",
   open: controlledOpen,
   onOpenChange,
   triggerProps,
@@ -81,7 +81,7 @@ export function FormSheetSubscriber({
         </FormCardGroup>
         <FormSheetFooter>
           <Button type="submit" form="subscriber-form">
-            Submit
+            Enviar
           </Button>
         </FormSheetFooter>
       </FormSheetContent>

@@ -91,7 +91,7 @@ export type SidebarMetadataProps =
     };
 
 export function SidebarMetadata(props: SidebarMetadataProps) {
-  const { label, emptyMessage = "None" } = props;
+  const { label, emptyMessage = "Nenhum" } = props;
   return (
     <SidebarGroup className="p-0">
       <Collapsible defaultOpen className="group/collapsible border-b">
@@ -148,7 +148,7 @@ function SidebarMetadataTable({
       <TableHeader className="sr-only">
         <TableRow>
           <TableHead className="w-26">Label</TableHead>
-          <TableHead>Value</TableHead>
+          <TableHead>Valor</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -294,7 +294,7 @@ function SidebarMetadataTableCell({
               onPointerDownOutside={(event) => event.preventDefault()}
               side="left"
             >
-              {isCopied ? "Copied" : props.children}
+              {isCopied ? "Copiado" : props.children}
             </TooltipContent>
           </Tooltip>
         ) : (

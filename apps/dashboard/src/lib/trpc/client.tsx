@@ -7,6 +7,7 @@ import { createTRPCClient } from "@trpc/client";
 import { createTRPCContext } from "@trpc/tanstack-react-query";
 import { useState } from "react";
 
+import "@/lib/date-locale";
 import { makeQueryClient } from "@/lib/trpc/query-client";
 import { endingLink, sentryLoggerLink } from "@/lib/trpc/shared";
 

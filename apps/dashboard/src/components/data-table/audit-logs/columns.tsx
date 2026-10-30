@@ -35,7 +35,7 @@ export function getColumns(
     },
     {
       accessorKey: "action",
-      header: "Action",
+      header: "Ação",
       enableSorting: false,
       enableHiding: false,
       cell: ({ row }) => {
@@ -47,7 +47,7 @@ export function getColumns(
     },
     {
       accessorKey: "metadata",
-      header: "Information",
+      header: "Informações",
       enableSorting: false,
       enableHiding: false,
       cell: ({ row }) => {
@@ -76,7 +76,7 @@ export function getColumns(
     },
     {
       accessorKey: "timestamp",
-      header: "Timestamp",
+      header: "Data/hora",
       enableSorting: false,
       enableHiding: false,
       cell: ({ row }) => {

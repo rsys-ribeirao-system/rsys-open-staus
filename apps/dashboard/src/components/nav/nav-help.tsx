@@ -32,10 +32,10 @@ export function NavHelp() {
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton
                   className="font-commit-mono tracking-tight"
-                  tooltip="Get Help"
+                  tooltip="Obter ajuda"
                 >
                   <Help />
-                  <span>Get Help</span>
+                  <span>Obter ajuda</span>
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent
@@ -45,7 +45,7 @@ export function NavHelp() {
                 sideOffset={4}
               >
                 <DropdownMenuLabel className="text-muted-foreground text-xs">
-                  Get Help
+                  Obter ajuda
                 </DropdownMenuLabel>
                 <FormDialogSupportContact>
                   <DropdownMenuItem onSelect={(e) => e.preventDefault()}>

@@ -106,7 +106,7 @@ const componentSchema = z.object({
   id: z.number(),
   monitorId: z.number().nullish(),
   order: z.number(),
-  name: z.string().min(1, { message: "Name is required" }),
+  name: z.string().min(1, { message: "O nome é obrigatório" }),
   description: z.string().optional(),
   type: z.enum(["monitor", "static"]),
 });
@@ -120,7 +120,7 @@ const schema = z.object({
       name: z.string(),
       defaultOpen: z.boolean(),
       components: z.array(componentSchema).min(1, {
-        message: "At least one component is required",
+        message: "Pelo menos um componente é obrigatório",
       }),
     }),
   ),
@@ -479,13 +479,13 @@ export function FormComponents({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -501,27 +501,27 @@ export function FormComponents({
         <form onSubmit={form.handleSubmit(submitAction)} {...props}>
           <FormCard>
             <FormCardHeader>
-              <FormCardTitle>Components</FormCardTitle>
+              <FormCardTitle>Componentes</FormCardTitle>
               <FormCardDescription>
-                Manage your page components
+                Gerencie os componentes da sua página
               </FormCardDescription>
             </FormCardHeader>
             <FormCardContent className="flex flex-row gap-2">
               <Button variant="outline" type="button" onClick={handleAddGroup}>
                 <Add />
-                Add Component Group
+                Adicionar grupo de componentes
               </Button>
               <FormField
                 control={form.control}
                 name="components"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel className="sr-only">Components</FormLabel>
+                    <FormLabel className="sr-only">Componentes</FormLabel>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="w-full">
                           <Add />
-                          Add Component
+                          Adicionar componente
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="start">
@@ -543,22 +543,22 @@ export function FormComponents({
                             }}
                           >
                             <Unlinked className="text-muted-foreground" />
-                            Add Static Component
+                            Adicionar componente estático
                           </DropdownMenuItem>
                           <DropdownMenuSub>
                             <DropdownMenuSubTrigger className="[&_svg:not([class*='text-'])]:text-muted-foreground gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
                               <Linked className="text-muted-foreground" />
-                              Add Monitor Component
+                              Adicionar componente de monitor
                             </DropdownMenuSubTrigger>
                             <DropdownMenuSubContent className="p-0">
                               <Command>
                                 <CommandInput
-                                  placeholder="Search monitors..."
+                                  placeholder="Buscar monitores..."
                                   className="h-9"
                                 />
                                 <CommandList>
                                   <CommandEmpty>
-                                    No monitors found.
+                                    Nenhum monitor encontrado.
                                   </CommandEmpty>
                                   <CommandGroup>
                                     {monitors.map((monitor) => {
@@ -621,7 +621,7 @@ export function FormComponents({
                           </DropdownMenuSub>
                           <DropdownMenuItem disabled>
                             <Plug className="text-muted-foreground" />
-                            Add Third-Party Component
+                            Adicionar componente de terceiros
                           </DropdownMenuItem>
                         </DropdownMenuGroup>
                       </DropdownMenuContent>
@@ -683,21 +683,23 @@ export function FormComponents({
                   </SortableContent>
                 ) : (
                   <EmptyStateContainer>
-                    <EmptyStateTitle>No components selected</EmptyStateTitle>
+                    <EmptyStateTitle>
+                      Nenhum componente selecionado
+                    </EmptyStateTitle>
                   </EmptyStateContainer>
                 )}
               </Sortable>
             </FormCardContent>
             <FormCardFooter>
               <FormCardFooterInfo>
-                Learn more about{" "}
+                Saiba mais sobre{" "}
                 <Link href="https://www.openstatus.dev/docs/reference/page-components">
-                  page components
+                  componentes da página
                 </Link>
                 .
               </FormCardFooterInfo>
               <Button type="submit" disabled={isPending}>
-                {isPending ? "Submitting..." : "Submit"}
+                {isPending ? "Enviando..." : "Enviar"}
               </Button>
             </FormCardFooter>
           </FormCard>
@@ -754,10 +756,10 @@ function ComponentRow({
               name={`${fieldNamePrefix}.name` as "components.0.name"}
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel className="sr-only">Component name</FormLabel>
+                  <FormLabel className="sr-only">Nome do componente</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Name"
+                      placeholder="Nome"
                       className="bg-background w-full"
                       {...field}
                     />
@@ -783,11 +785,11 @@ function ComponentRow({
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormLabel className="sr-only">
-                    Component description
+                    Descrição do componente
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Description"
+                      placeholder="Descrição"
                       className="bg-background w-full"
                       {...field}
                     />
@@ -815,7 +817,7 @@ function ComponentRow({
           ) : (
             <span className="text-muted-foreground flex items-center gap-2 text-sm">
               <Unlinked className="size-4 shrink-0" />{" "}
-              <span className="truncate">Static Component</span>
+              <span className="truncate">Componente estático</span>
             </span>
           )}
         </div>
@@ -829,14 +831,14 @@ function ComponentRow({
                       <TooltipTrigger>
                         <Show className="text-muted-foreground size-4" />
                       </TooltipTrigger>
-                      <TooltipContent>Public</TooltipContent>
+                      <TooltipContent>Público</TooltipContent>
                     </Tooltip>
                   ) : (
                     <Tooltip>
                       <TooltipTrigger>
                         <Hide className="text-muted-foreground size-4" />
                       </TooltipTrigger>
-                      <TooltipContent>Private</TooltipContent>
+                      <TooltipContent>Privado</TooltipContent>
                     </Tooltip>
                   )}
                 </TooltipProvider>
@@ -868,10 +870,10 @@ function ComponentRow({
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                <AlertDialogTitle>Tem certeza?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Once saved, this will unlink the component from attached
-                  status reports and maintenances.
+                  Ao salvar, o componente será desvinculado dos relatórios de
+                  status e manutenções associados.
                 </AlertDialogDescription>
                 <ComponentAttachments
                   statusReports={component.statusReports ?? []}
@@ -879,12 +881,12 @@ function ComponentRow({
                 />
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogCancel>Cancelar</AlertDialogCancel>
                 <AlertDialogAction
                   className="bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 text-white shadow-xs"
                   onClick={() => onDelete(component.id)}
                 >
-                  Remove
+                  Remover
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -1013,10 +1015,10 @@ function ComponentGroupRow({
             name={`groups.${groupIndex}.name` as const}
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel className="sr-only">Group name</FormLabel>
+                <FormLabel className="sr-only">Nome do grupo</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Group Name"
+                    placeholder="Nome do grupo"
                     className="bg-background w-full"
                     {...field}
                   />
@@ -1032,12 +1034,12 @@ function ComponentGroupRow({
           name={`groups.${groupIndex}.components` as const}
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="sr-only">Components</FormLabel>
+              <FormLabel className="sr-only">Componentes</FormLabel>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" className="w-full">
                     <Add />
-                    Add Component
+                    Adicionar componente
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start">
@@ -1062,21 +1064,23 @@ function ComponentGroupRow({
                       }}
                     >
                       <Unlinked className="text-muted-foreground" />
-                      Add Static Component
+                      Adicionar componente estático
                     </DropdownMenuItem>
                     <DropdownMenuSub>
                       <DropdownMenuSubTrigger className="[&_svg:not([class*='text-'])]:text-muted-foreground gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
                         <Linked className="text-muted-foreground" />
-                        Add Monitor Component
+                        Adicionar componente de monitor
                       </DropdownMenuSubTrigger>
                       <DropdownMenuSubContent className="p-0">
                         <Command>
                           <CommandInput
-                            placeholder="Search monitors..."
+                            placeholder="Buscar monitores..."
                             className="h-9"
                           />
                           <CommandList>
-                            <CommandEmpty>No monitors found.</CommandEmpty>
+                            <CommandEmpty>
+                              Nenhum monitor encontrado.
+                            </CommandEmpty>
                             <CommandGroup>
                               {monitors.map((monitor) => {
                                 const current = field.value ?? [];
@@ -1139,7 +1143,7 @@ function ComponentGroupRow({
                     </DropdownMenuSub>
                     <DropdownMenuItem disabled>
                       <Plug className="text-muted-foreground" />
-                      Add Third-Party Component
+                      Adicionar componente de terceiros
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                 </DropdownMenuContent>
@@ -1162,7 +1166,7 @@ function ComponentGroupRow({
                 />
               </FormControl>
               <FormLabel className="text-muted-foreground !mt-0 text-sm font-normal">
-                Open by default
+                Aberto por padrão
               </FormLabel>
             </FormItem>
           )}
@@ -1185,10 +1189,11 @@ function ComponentGroupRow({
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                <AlertDialogTitle>Tem certeza?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Once saved, this will delete all components in the group and
-                  unlink them from attached status reports and maintenances.
+                  Ao salvar, todos os componentes do grupo serão excluídos e
+                  desvinculados dos relatórios de status e manutenções
+                  associados.
                 </AlertDialogDescription>
                 <ComponentAttachments
                   statusReports={Array.from(
@@ -1208,12 +1213,12 @@ function ComponentGroupRow({
                 />
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogCancel>Cancelar</AlertDialogCancel>
                 <AlertDialogAction
                   className="bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 text-white shadow-xs"
                   onClick={() => onDeleteGroup(group.id)}
                 >
-                  Remove
+                  Remover
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -1253,7 +1258,7 @@ function ComponentGroupRow({
             </SortableContent>
           ) : (
             <EmptyStateContainer>
-              <EmptyStateTitle>No components selected</EmptyStateTitle>
+              <EmptyStateTitle>Nenhum componente selecionado</EmptyStateTitle>
             </EmptyStateContainer>
           )}
         </Sortable>

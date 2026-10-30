@@ -76,16 +76,16 @@ export function OnboardingChecksTable({
         <Warning className="text-destructive size-5" />
         <div className="space-y-1">
           <p className="text-foreground text-sm font-medium">
-            Couldn&apos;t reach {url ? <code>{url}</code> : "your URL"}
+            Não foi possível acessar {url ? <code>{url}</code> : "sua URL"}
           </p>
           <p className="text-muted-foreground text-xs">
-            Common causes: the URL is internal, blocks our checkers, or has a
-            typo.
+            Causas comuns: a URL é interna, bloqueia nossos verificadores ou tem
+            um erro de digitação.
           </p>
         </div>
         <Button variant="outline" size="sm" onClick={onRetry}>
           <Refresh className="size-3" />
-          Retry
+          Tentar novamente
         </Button>
       </div>
     );
@@ -160,8 +160,8 @@ export function OnboardingChecksTable({
                   colSpan={table.getVisibleLeafColumns().length}
                   className="text-muted-foreground text-center text-xs"
                 >
-                  Streaming results from {totalRegions - rows.length} more
-                  region{totalRegions - rows.length === 1 ? "" : "s"}…
+                  Recebendo resultados de mais {totalRegions - rows.length}{" "}
+                  {totalRegions - rows.length === 1 ? "região" : "regiões"}…
                 </TableCell>
               </TableRow>
             ) : null}

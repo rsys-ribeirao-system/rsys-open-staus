@@ -42,7 +42,7 @@ export function Client() {
     <SectionGroup>
       <Section>
         <SectionHeader>
-          <SectionTitle>Create Status Page</SectionTitle>
+          <SectionTitle>Criar página de status</SectionTitle>
         </SectionHeader>
         <FormGeneral
           disabled={isPending}
@@ -58,12 +58,12 @@ export function Client() {
       </Section>
       <Section>
         <EmptyStateContainer>
-          <EmptyStateTitle>Create and start customizing</EmptyStateTitle>
+          <EmptyStateTitle>Crie e comece a personalizar</EmptyStateTitle>
           <EmptyStateDescription>
-            Connect your <span className="text-foreground">monitors</span>, set
-            up a <span className="text-foreground">custom domain</span>,{" "}
-            <span className="text-foreground">password protect</span> it and
-            more...
+            Conecte seus <span className="text-foreground">monitores</span>,
+            configure um{" "}
+            <span className="text-foreground">domínio personalizado</span>,{" "}
+            <span className="text-foreground">proteja com senha</span> e mais...
           </EmptyStateDescription>
         </EmptyStateContainer>
       </Section>

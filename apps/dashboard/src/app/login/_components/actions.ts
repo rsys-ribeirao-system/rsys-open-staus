@@ -21,7 +21,7 @@ export type SsoFormState = { error?: string };
 // limited": a specific message would tell an unauthenticated caller which
 // companies use openstatus and which of them have SSO.
 const GENERIC_ERROR =
-  "We couldn't start SSO for that email. Try GitHub or Google.";
+  "Não foi possível iniciar o SSO para esse e-mail. Tente GitHub ou Google.";
 
 export async function startSsoSignIn(
   _prevState: SsoFormState,

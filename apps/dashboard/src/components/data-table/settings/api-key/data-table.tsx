@@ -31,11 +31,11 @@ function scopeLabel(scopes: ApiKey["scopes"]): string {
         "[api-key table] row carries '*' scope — should never happen via the public API",
       );
     }
-    return "Admin";
+    return "Administrador";
   }
-  if (scopes.includes("write")) return "Read & write";
-  if (scopes.includes("read")) return "Read-only";
-  return "Unknown";
+  if (scopes.includes("write")) return "Leitura e escrita";
+  if (scopes.includes("read")) return "Somente leitura";
+  return "Desconhecido";
 }
 
 export function DataTable({
@@ -57,11 +57,11 @@ export function DataTable({
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Description</TableHead>
-            <TableHead>Prefix</TableHead>
-            <TableHead>Access</TableHead>
-            <TableHead>Expires</TableHead>
+            <TableHead>Nome</TableHead>
+            <TableHead>Descrição</TableHead>
+            <TableHead>Prefixo</TableHead>
+            <TableHead>Acesso</TableHead>
+            <TableHead>Expira</TableHead>
             <TableHead>
               <span className="sr-only">Actions</span>
             </TableHead>

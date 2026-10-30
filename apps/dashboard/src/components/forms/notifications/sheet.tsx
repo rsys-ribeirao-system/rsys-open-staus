@@ -42,9 +42,9 @@ export function FormSheetNotifier({
       </FormSheetTrigger>
       <FormSheetContent className="sm:max-w-lg">
         <FormSheetHeader>
-          <FormSheetTitle>Notifier</FormSheetTitle>
+          <FormSheetTitle>Canal de notificação</FormSheetTitle>
           <FormSheetDescription>
-            Configure and update the notifier.
+            Configure e atualize o canal de notificação.
           </FormSheetDescription>
         </FormSheetHeader>
         <FormCardGroup className="overflow-y-auto">
@@ -80,7 +80,7 @@ export function FormSheetNotifier({
         </FormCardGroup>
         <FormSheetFooter>
           <Button type="submit" form={`notifier-form-${provider}`}>
-            Submit
+            Enviar
           </Button>
         </FormSheetFooter>
       </FormSheetContent>

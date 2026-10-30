@@ -67,8 +67,8 @@ export function Client() {
   useEffect(() => {
     if (!isBlockedPeriod) return;
     const timeout = setTimeout(() => {
-      toast.error("30 and 90 day windows require a paid plan", {
-        description: "Showing the last 14 days instead.",
+      toast.error("Janelas de 30 e 90 dias exigem um plano pago", {
+        description: "Exibindo os últimos 14 dias.",
       });
       setSearchParams({ period: FREE_MAX_PERIOD });
     }, 0);
@@ -156,9 +156,9 @@ export function Client() {
       </Section>
       <Section>
         <SectionHeader>
-          <SectionTitle>Uptime</SectionTitle>
+          <SectionTitle>Disponibilidade</SectionTitle>
           <SectionDescription>
-            Uptime across all the selected regions
+            Disponibilidade em todas as regiões selecionadas
           </SectionDescription>
         </SectionHeader>
         <ChartBarUptime
@@ -171,17 +171,16 @@ export function Client() {
       <Section>
         {/* TODO: based on http, we have Timing Phases instead of Latency */}
         <SectionHeader>
-          <SectionTitle>Latency</SectionTitle>
+          <SectionTitle>Latência</SectionTitle>
           <SectionDescription>
-            Response time across all the regions
+            Tempo de resposta em todas as regiões
           </SectionDescription>
         </SectionHeader>
         <div className="flex flex-wrap gap-2">
           <div>
-            The <DropdownPercentile />{" "}
-            <PopoverQuantile>quantile</PopoverQuantile> within a{" "}
-            <DropdownInterval />{" "}
-            <PopoverResolution>resolution</PopoverResolution>
+            O <DropdownPercentile /> <PopoverQuantile>quantil</PopoverQuantile>{" "}
+            com <DropdownInterval />{" "}
+            <PopoverResolution>resolução</PopoverResolution>
           </div>
           <div>
             <ButtonReset only={["percentile", "interval"]} />
@@ -210,16 +209,15 @@ export function Client() {
       </Section>
       <Section>
         <SectionHeader>
-          <SectionTitle>Regions</SectionTitle>
+          <SectionTitle>Regiões</SectionTitle>
           <SectionDescription>
-            Every selected region&apos;s latency trend
+            Tendência de latência de cada região selecionada
           </SectionDescription>
         </SectionHeader>
         <div className="flex flex-wrap gap-2">
           <div>
-            The <DropdownPercentile />{" "}
-            <PopoverQuantile>quantile</PopoverQuantile> trend over the{" "}
-            <DropdownPeriod />
+            O <DropdownPercentile /> <PopoverQuantile>quantil</PopoverQuantile>:
+            tendência ao longo de <DropdownPeriod />
           </div>
           <div>
             <ButtonReset only={["percentile", "period"]} />
@@ -227,8 +225,8 @@ export function Client() {
         </div>
         <Tabs defaultValue="table">
           <TabsList>
-            <TabsTrigger value="table">Table</TabsTrigger>
-            <TabsTrigger value="chart">Chart</TabsTrigger>
+            <TabsTrigger value="table">Tabela</TabsTrigger>
+            <TabsTrigger value="chart">Gráfico</TabsTrigger>
           </TabsList>
           <TabsContent value="table">
             <DataTable
@@ -269,9 +267,9 @@ export function Client() {
       </Section>
       <Section>
         <SectionHeader>
-          <SectionTitle>Timeline</SectionTitle>
+          <SectionTitle>Linha do tempo</SectionTitle>
           <SectionDescription>
-            What happened to your monitor over the last {TIMELINE_INTERVAL} days
+            O que aconteceu com seu monitor nos últimos {TIMELINE_INTERVAL} dias
           </SectionDescription>
         </SectionHeader>
         <AuditLogsWrapper monitorId={id} interval={TIMELINE_INTERVAL} />

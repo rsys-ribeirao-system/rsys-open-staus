@@ -35,16 +35,17 @@ export default function Page() {
     <SectionGroup>
       <Section>
         <SectionHeader>
-          <SectionTitle>Integrations</SectionTitle>
+          <SectionTitle>Integrações</SectionTitle>
           <SectionDescription>
-            Connect third-party services to your workspace.
+            Conecte serviços de terceiros ao seu workspace.
           </SectionDescription>
         </SectionHeader>
         <NoteDismissible cookieKey="note_integrations_api_keys">
           <KeyRound />
-          Looking for your API keys? They live in the General settings page.
+          Procurando suas chaves de API? Elas ficam na página de configurações
+          gerais.
           <NoteButton variant="default" asChild>
-            <Link href="/settings/general#api-keys">Go API keys</Link>
+            <Link href="/settings/general#api-keys">Ir para chaves de API</Link>
           </NoteButton>
         </NoteDismissible>
         <FormCardGroup>

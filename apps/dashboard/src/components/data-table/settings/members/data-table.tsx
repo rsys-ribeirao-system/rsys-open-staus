@@ -28,10 +28,10 @@ export function DataTable() {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Name</TableHead>
-          <TableHead>Email</TableHead>
-          <TableHead>Role</TableHead>
-          <TableHead>Created</TableHead>
+          <TableHead>Nome</TableHead>
+          <TableHead>E-mail</TableHead>
+          <TableHead>Função</TableHead>
+          <TableHead>Criado em</TableHead>
           <TableHead>
             <span className="sr-only">Actions</span>
           </TableHead>
@@ -56,7 +56,7 @@ export function DataTable() {
                   deleteAction={{
                     confirmationValue: item.user.email ?? "user",
                     description: workspace?.ssoEnabled
-                      ? "This workspace uses SSO. They can sign in again and rejoin automatically unless you also remove them from your identity provider."
+                      ? "Este workspace usa SSO. O membro pode entrar novamente e voltar automaticamente, a menos que você também o remova do seu provedor de identidade."
                       : undefined,
                     // FIXME: when deleting myself, throws an error, should have been caught by the toast.error
                     submitAction: async () =>

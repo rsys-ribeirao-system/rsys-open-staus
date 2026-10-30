@@ -27,7 +27,7 @@ export function DetailsTable({ sections, empty }: DetailsTableData) {
   if (total === 0) {
     return (
       <div className="bg-background text-muted-foreground rounded-md border p-3 text-sm">
-        {empty ?? "No details to show."}
+        {empty ?? "Nenhum detalhe para exibir."}
       </div>
     );
   }

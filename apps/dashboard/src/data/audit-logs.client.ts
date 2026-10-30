@@ -8,39 +8,39 @@ export const config = {
   "incident.created": {
     icon: Incident,
     color: "text-destructive",
-    title: "Incident Created",
+    title: "Incidente criado",
   },
   "incident.resolved": {
     icon: Success,
     color: "text-success",
-    title: "Incident Resolved",
+    title: "Incidente resolvido",
   },
   "monitor.failed": {
     icon: Failed,
     color: "text-destructive",
-    title: "Monitor Failed",
+    title: "Monitor falhou",
   },
   "notification.sent": {
     icon: Send,
     color: "text-info",
-    title: "Notification Sent",
+    title: "Notificação enviada",
   },
   "monitor.recovered": {
     icon: Success,
     color: "text-success",
-    title: "Monitor Recovered",
+    title: "Monitor recuperado",
   },
   "monitor.degraded": {
     icon: Alert,
     color: "text-warning",
-    title: "Monitor Degraded",
+    title: "Monitor degradado",
   },
 } as const;
 
 export const getMetadata = (privateLocations?: PrivateLocation[]) => {
   return {
     region: {
-      label: "Region",
+      label: "Região",
       key: "region",
       unit: undefined,
       visible: () => true,
@@ -54,28 +54,28 @@ export const getMetadata = (privateLocations?: PrivateLocation[]) => {
       },
     },
     cronTimestamp: {
-      label: "Timestamp",
+      label: "Data/hora",
       key: "timestamp",
       unit: undefined,
       visible: () => false,
       format: (value) => String(value),
     },
     statusCode: {
-      label: "Status Code",
+      label: "Código de status",
       key: "status",
       unit: undefined,
       visible: (_value) => typeof _value === "number" && _value !== -1,
       format: (value) => String(value),
     },
     latency: {
-      label: "Latency",
+      label: "Latência",
       key: "latency",
       unit: "ms",
       visible: () => true,
       format: (value) => formatMilliseconds(Number(value)),
     },
     provider: {
-      label: "Provider",
+      label: "Provedor",
       key: "provider",
       unit: undefined,
       visible: () => true,

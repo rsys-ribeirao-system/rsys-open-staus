@@ -86,11 +86,11 @@ export function DataTableBasicsHTTP({
       </colgroup>
       <TableBody>
         <TableRow>
-          <TableHead colSpan={2}>Request</TableHead>
+          <TableHead colSpan={2}>Requisição</TableHead>
         </TableRow>
         <TableRow className="[&>:not(:last-child)]:border-r">
           <TableHead className="bg-muted/50 text-muted-foreground font-normal">
-            Result
+            Resultado
           </TableHead>
           {/* TODO: add colored square like list (see columns) */}
           <TableCell className="max-w-full overflow-x-auto font-mono whitespace-normal">
@@ -120,7 +120,7 @@ export function DataTableBasicsHTTP({
         ) : null}
         <TableRow className="[&>:not(:last-child)]:border-r">
           <TableHead className="bg-muted/50 text-muted-foreground font-normal">
-            Timestamp
+            Data/hora
           </TableHead>
           <TableCell className="max-w-full overflow-x-auto font-mono whitespace-normal">
             <TableCellDate
@@ -140,7 +140,7 @@ export function DataTableBasicsHTTP({
         {/* TODO: store method in TB 🤦 */}
         {/* <TableRow className="[&>:not(:last-child)]:border-r">
         <TableHead className="bg-muted/50 font-normal text-muted-foreground">
-            Method
+            Método
         </TableHead>
         <TableCell className="whitespace-normal font-mono">
             {data?.method}
@@ -159,7 +159,7 @@ export function DataTableBasicsHTTP({
         </TableRow>
         <TableRow className="[&>:not(:last-child)]:border-r">
           <TableHead className="bg-muted/50 text-muted-foreground font-normal">
-            Latency
+            Latência
           </TableHead>
           <TableCell className="max-w-full overflow-x-auto font-mono whitespace-normal">
             <TableCellNumber value={data?.latency} unit="ms" />
@@ -167,7 +167,7 @@ export function DataTableBasicsHTTP({
         </TableRow>
         <TableRow className="[&>:not(:last-child)]:border-r">
           <TableHead className="bg-muted/50 text-muted-foreground font-normal">
-            Region
+            Região
           </TableHead>
           <TableCell className="max-w-full overflow-x-auto font-mono whitespace-normal">
             {regionConfig?.code}{" "}
@@ -178,7 +178,7 @@ export function DataTableBasicsHTTP({
         </TableRow>
         <TableRow className="[&>:not(:last-child)]:border-r">
           <TableHead className="bg-muted/50 text-muted-foreground font-normal">
-            Cloud Provider
+            Provedor de nuvem
           </TableHead>
           <TableCell className="inline-flex max-w-full overflow-x-auto font-mono whitespace-normal">
             <IconCloudProvider
@@ -193,7 +193,7 @@ export function DataTableBasicsHTTP({
         {data.trigger ? (
           <TableRow className="[&>:not(:last-child)]:border-r">
             <TableHead className="bg-muted/50 text-muted-foreground font-normal">
-              Trigger
+              Disparo
             </TableHead>
             <TableCell className="max-w-full overflow-x-auto font-mono whitespace-normal">
               {data?.trigger}
@@ -203,7 +203,7 @@ export function DataTableBasicsHTTP({
         {data.headers ? (
           <>
             <TableRow>
-              <TableHead colSpan={2}>Headers</TableHead>
+              <TableHead colSpan={2}>Cabeçalhos</TableHead>
             </TableRow>
             <TableRow className="hover:bg-transparent">
               <TableCell colSpan={2} className="p-0">
@@ -254,7 +254,7 @@ export function DataTableBasicsHTTP({
         {data.timing ? (
           <>
             <TableRow>
-              <TableHead colSpan={2}>Timing</TableHead>
+              <TableHead colSpan={2}>Tempos</TableHead>
             </TableRow>
             {Object.entries(data?.timing ?? {}).map(([key, value], index) => (
               <TableRow key={key} className="[&>:not(:last-child)]:border-r">
@@ -289,7 +289,7 @@ export function DataTableBasicsHTTP({
         {data?.message ? (
           <>
             <TableRow>
-              <TableHead colSpan={2}>Message</TableHead>
+              <TableHead colSpan={2}>Mensagem</TableHead>
             </TableRow>
             <TableRow>
               <TableCell colSpan={2} className="p-0">
@@ -303,7 +303,7 @@ export function DataTableBasicsHTTP({
         {data.body ? (
           <>
             <TableRow>
-              <TableHead colSpan={2}>Body</TableHead>
+              <TableHead colSpan={2}>Corpo</TableHead>
             </TableRow>
             <TableRow>
               <TableCell colSpan={2} className="p-0">
@@ -319,13 +319,13 @@ export function DataTableBasicsHTTP({
         {data.assertions ? (
           <>
             <TableRow>
-              <TableHead colSpan={2}>Assertions</TableHead>
+              <TableHead colSpan={2}>Validações</TableHead>
             </TableRow>
             <TableRow>
               <TableCell colSpan={2} className="p-0">
                 {!data.assertions || data.assertions === "[]" ? (
                   <div className="text-muted-foreground p-2 font-mono text-sm">
-                    Default status code 2xx assertion
+                    Validação padrão de status code 2xx
                   </div>
                 ) : (
                   <pre className="bg-muted/50 max-w-full overflow-x-auto rounded-none p-2 font-mono text-sm whitespace-pre-wrap">
@@ -361,7 +361,7 @@ function BasicsTable({ children }: { children: React.ReactNode }) {
       </colgroup>
       <TableBody>
         <TableRow>
-          <TableHead colSpan={2}>Request</TableHead>
+          <TableHead colSpan={2}>Requisição</TableHead>
         </TableRow>
         {children}
       </TableBody>
@@ -399,7 +399,7 @@ function BasicsRequestRows({ data }: { data: BasicsRequestFields }) {
   return (
     <>
       {/* TODO: add colored square like list (see columns) */}
-      <BasicsRow label="Result">
+      <BasicsRow label="Resultado">
         <div className="flex items-center gap-2">
           <div
             className={cn("bg-muted h-2.5 w-2.5 rounded-[2px]", {
@@ -412,7 +412,7 @@ function BasicsRequestRows({ data }: { data: BasicsRequestFields }) {
         </div>
       </BasicsRow>
       {data.id ? <BasicsRow label="ID">{data.id}</BasicsRow> : null}
-      <BasicsRow label="Timestamp">
+      <BasicsRow label="Data/hora">
         <TableCellDate
           value={new Date(data.cronTimestamp)}
           className="text-foreground"
@@ -438,12 +438,12 @@ function BasicsLocationRows({
 
   return (
     <>
-      <BasicsRow label="Region">
+      <BasicsRow label="Região">
         {regionConfig?.flag} {regionConfig?.code}{" "}
         <span className="text-muted-foreground">{regionConfig?.location}</span>
       </BasicsRow>
       <BasicsRow
-        label="Cloud Provider"
+        label="Provedor de nuvem"
         cellClassName="inline-flex whitespace-normal"
       >
         <IconCloudProvider
@@ -455,7 +455,7 @@ function BasicsLocationRows({
         </span>
       </BasicsRow>
       {data.trigger ? (
-        <BasicsRow label="Trigger">{data?.trigger}</BasicsRow>
+        <BasicsRow label="Disparo">{data?.trigger}</BasicsRow>
       ) : null}
     </>
   );
@@ -471,7 +471,7 @@ function BasicsErrorMessageRows({
   return (
     <>
       <TableRow>
-        <TableHead colSpan={2}>Error Message</TableHead>
+        <TableHead colSpan={2}>Mensagem de erro</TableHead>
       </TableRow>
       <TableRow>
         <TableCell colSpan={2} className="p-0">
@@ -497,7 +497,7 @@ export function DataTableBasicsTCP({
     <BasicsTable>
       <BasicsRequestRows data={data} />
       <BasicsRow label="URI">{data.uri}</BasicsRow>
-      <BasicsRow label="Latency">
+      <BasicsRow label="Latência">
         <TableCellNumber value={data?.latency} unit="ms" />
       </BasicsRow>
       <BasicsLocationRows data={data} privateLocations={privateLocations} />
@@ -524,17 +524,19 @@ export function DataTableBasicsICMP({
     <BasicsTable>
       <BasicsRequestRows data={data} />
       <BasicsRow label="Host">{data.uri}</BasicsRow>
-      <BasicsRow label="Latency (avg)">
+      <BasicsRow label="Latência (média)">
         <TableCellNumber value={data?.latency} unit="ms" />
       </BasicsRow>
-      <BasicsRow label="Latency (min / max)">
+      <BasicsRow label="Latência (mín. / máx.)">
         {formatMilliseconds(data.latencyMin)} /{" "}
         {formatMilliseconds(data.latencyMax)}
       </BasicsRow>
-      <BasicsRow label="Packets">
+      <BasicsRow label="Pacotes">
         {data.packetsReceived} / {data.packetsSent} received
       </BasicsRow>
-      <BasicsRow label="Packet Loss">{formatPercentage(packetLoss)}</BasicsRow>
+      <BasicsRow label="Perda de pacotes">
+        {formatPercentage(packetLoss)}
+      </BasicsRow>
       <BasicsLocationRows data={data} privateLocations={privateLocations} />
       <BasicsErrorMessageRows errorMessage={data?.errorMessage} />
     </BasicsTable>
@@ -554,22 +556,22 @@ export function DataTableBasicsGRPC({
     <BasicsTable>
       <BasicsRequestRows data={data} />
       <BasicsRow label="Host:Port">{data.uri}</BasicsRow>
-      <BasicsRow label="Service">
+      <BasicsRow label="Serviço">
         {data.service ? (
           data.service
         ) : (
           <span className="text-muted-foreground">overall server health</span>
         )}
       </BasicsRow>
-      <BasicsRow label="Serving Status">
+      <BasicsRow label="Status do serviço">
         {data.servingStatus ?? (
           <span className="text-muted-foreground">no answer</span>
         )}
       </BasicsRow>
-      <BasicsRow label="gRPC Code">
+      <BasicsRow label="Código gRPC">
         {data.grpcCode ?? <span className="text-muted-foreground">N/A</span>}
       </BasicsRow>
-      <BasicsRow label="Latency">
+      <BasicsRow label="Latência">
         <TableCellNumber value={data?.latency} unit="ms" />
       </BasicsRow>
       <BasicsLocationRows data={data} privateLocations={privateLocations} />
@@ -591,14 +593,14 @@ export function DataTableBasicsDNS({
     <BasicsTable>
       <BasicsRequestRows data={data} />
       <BasicsRow label="URI">{data.uri}</BasicsRow>
-      <BasicsRow label="Latency">
+      <BasicsRow label="Latência">
         <TableCellNumber value={data?.latency} unit="ms" />
       </BasicsRow>
       <BasicsLocationRows data={data} privateLocations={privateLocations} />
       {data?.records ? (
         <>
           <TableRow>
-            <TableHead colSpan={2}>Records</TableHead>
+            <TableHead colSpan={2}>Registros</TableHead>
           </TableRow>
           <TableRow className="hover:bg-transparent">
             <TableCell colSpan={2} className="p-0">
@@ -649,7 +651,7 @@ export function DataTableBasicsDNS({
       {data?.errorMessage ? (
         <>
           <TableRow>
-            <TableHead colSpan={2}>Error Message</TableHead>
+            <TableHead colSpan={2}>Mensagem de erro</TableHead>
           </TableRow>
           <TableRow>
             <TableCell colSpan={2} className="p-0">
@@ -663,13 +665,13 @@ export function DataTableBasicsDNS({
       {data.assertions ? (
         <>
           <TableRow>
-            <TableHead colSpan={2}>Assertions</TableHead>
+            <TableHead colSpan={2}>Validações</TableHead>
           </TableRow>
           <TableRow>
             <TableCell colSpan={2} className="p-0">
               {!data.assertions || data.assertions === "[]" ? (
                 <div className="text-muted-foreground p-2 font-mono text-sm">
-                  No assertions
+                  Nenhuma validação
                 </div>
               ) : (
                 <pre className="bg-muted/50 max-w-full overflow-x-auto rounded-none p-2 font-mono text-sm whitespace-pre-wrap">

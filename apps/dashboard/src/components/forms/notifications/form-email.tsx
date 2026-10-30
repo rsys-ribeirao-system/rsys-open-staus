@@ -26,13 +26,13 @@ import { useFormSheetDirty } from "@/components/forms/form-sheet";
 import { CheckboxTree } from "@/components/ui/checkbox-tree";
 
 const schema = z.object({
-  name: z.string().trim().min(1, "Name is required"),
+  name: z.string().trim().min(1, "O nome é obrigatório"),
   provider: z.literal("email"),
   data: z
     .string()
     .trim()
-    .min(1, "Email is required")
-    .email("Please enter a valid email address"),
+    .min(1, "O e-mail é obrigatório")
+    .email("Informe um endereço de e-mail válido"),
   monitors: z.array(z.number()),
 });
 
@@ -73,13 +73,13 @@ export function FormEmail({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -102,13 +102,13 @@ export function FormEmail({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Nome</FormLabel>
                 <FormControl>
-                  <Input placeholder="My Notifier" {...field} />
+                  <Input placeholder="Meu canal de notificação" {...field} />
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter a descriptive name for your notifier.
+                  Informe um nome descritivo para o seu canal de notificação.
                 </FormDescription>
               </FormItem>
             )}
@@ -118,7 +118,7 @@ export function FormEmail({
             name="data"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>E-mail</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="max@openstatus.dev"
@@ -128,7 +128,7 @@ export function FormEmail({
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter the email address to send notifications to.
+                  Informe o endereço de e-mail que receberá as notificações.
                 </FormDescription>
               </FormItem>
             )}
@@ -141,16 +141,16 @@ export function FormEmail({
             name="monitors"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Monitors</FormLabel>
+                <FormLabel>Monitores</FormLabel>
                 <FormDescription>
-                  Select the monitors you want to notify.
+                  Selecione os monitores que você deseja notificar.
                 </FormDescription>
                 <FormControl>
                   <CheckboxTree
                     items={[
                       {
                         id: -1,
-                        label: "Select all",
+                        label: "Selecionar todos",
                         children: monitors.map((m) => ({
                           id: m.id,
                           label: m.name,

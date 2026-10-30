@@ -33,7 +33,7 @@ import {
 // TODO: add headers
 
 const schema = z.object({
-  endpoint: z.url("Please enter a valid URL"),
+  endpoint: z.url("Informe uma URL válida"),
   headers: z
     .array(z.object({ key: z.string(), value: z.string() }))
     .prefault([]),
@@ -64,9 +64,9 @@ export function FormOtel({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
-          error: "Failed to save",
+          loading: "Salvando...",
+          success: "Salvo",
+          error: "Falha ao salvar",
         });
         await promise;
       } catch (error) {
@@ -83,7 +83,7 @@ export function FormOtel({
           <FormCardHeader>
             <FormCardTitle>OpenTelemetry</FormCardTitle>
             <FormCardDescription>
-              Configure your OpenTelemetry Exporter.
+              Configure seu exporter do OpenTelemetry.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent className="grid grid-cols-4 gap-4">
@@ -110,11 +110,11 @@ export function FormOtel({
               disabled={locked}
               render={({ field }) => (
                 <FormItem className="col-span-full">
-                  <FormLabel>Request Headers</FormLabel>
+                  <FormLabel>Headers da requisição</FormLabel>
                   {field.value?.map((header, index) => (
                     <div key={index} className="grid gap-2 sm:grid-cols-5">
                       <Input
-                        placeholder="Key"
+                        placeholder="Chave"
                         className="col-span-2"
                         value={header.key}
                         disabled={locked}
@@ -128,7 +128,7 @@ export function FormOtel({
                         }}
                       />
                       <Input
-                        placeholder="Value"
+                        placeholder="Valor"
                         className="col-span-2"
                         value={header.value}
                         disabled={locked}
@@ -169,7 +169,7 @@ export function FormOtel({
                       }}
                     >
                       <Add />
-                      Add Header
+                      Adicionar header
                     </Button>
                   </div>
                   <FormMessage />
@@ -179,7 +179,7 @@ export function FormOtel({
           </FormCardContent>
           <FormCardFooter>
             <FormCardFooterInfo>
-              Learn more about{" "}
+              Saiba mais sobre{" "}
               <Link
                 href="https://www.openstatus.dev/docs/reference/http-monitor/#opentelemetry"
                 rel="noreferrer"
@@ -193,12 +193,12 @@ export function FormOtel({
               <Button asChild>
                 <NextLink href="/settings/billing">
                   <Lock className="size-4" />
-                  Upgrade
+                  Fazer upgrade
                 </NextLink>
               </Button>
             ) : (
               <Button type="submit" disabled={isPending}>
-                {isPending ? "Submitting..." : "Submit"}
+                {isPending ? "Enviando..." : "Enviar"}
               </Button>
             )}
           </FormCardFooter>

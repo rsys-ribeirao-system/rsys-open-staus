@@ -67,13 +67,13 @@ export function FormAppearance({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -88,9 +88,9 @@ export function FormAppearance({
       <form onSubmit={form.handleSubmit(submitAction)}>
         <FormCard>
           <FormCardHeader>
-            <FormCardTitle>Appearance</FormCardTitle>
+            <FormCardTitle>Aparência</FormCardTitle>
             <FormCardDescription>
-              Forced theme will override the user&apos;s preference.
+              O tema forçado substitui a preferência do usuário.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent className="grid gap-4 sm:grid-cols-3">
@@ -99,40 +99,40 @@ export function FormAppearance({
               name="forceTheme"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Mode</FormLabel>
+                  <FormLabel>Modo</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Select a theme" />
+                        <SelectValue placeholder="Selecione um tema" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
                       <SelectItem value="light">
                         <div className="flex items-center gap-2">
                           <Light className="h-4 w-4" />
-                          <span>Light</span>
+                          <span>Claro</span>
                         </div>
                       </SelectItem>
                       <SelectItem value="dark">
                         <div className="flex items-center gap-2">
                           <Dark className="h-4 w-4" />
-                          <span>Dark</span>
+                          <span>Escuro</span>
                         </div>
                       </SelectItem>
                       <SelectItem value="system">
                         <div className="flex items-center gap-2">
                           <System className="h-4 w-4" />
-                          <span>System</span>
+                          <span>Sistema</span>
                         </div>
                       </SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
                   <FormDescription>
-                    Override the user&apos;s preference.
+                    Substitui a preferência do usuário.
                   </FormDescription>
                 </FormItem>
               )}
@@ -142,21 +142,22 @@ export function FormAppearance({
               name="configuration.theme"
               render={({ field }) => (
                 <FormItem className="min-w-0">
-                  <FormLabel>Style</FormLabel>
+                  <FormLabel>Estilo</FormLabel>
                   <ThemePickerPopover
                     value={field.value as ThemeKey}
                     onChange={field.onChange}
                   />
                   <FormMessage />
-                  <FormDescription>Choose a theme to apply.</FormDescription>
+                  <FormDescription>
+                    Escolha um tema para aplicar.
+                  </FormDescription>
                 </FormItem>
               )}
             />
           </FormCardContent>
           <FormCardFooter>
             <FormCardFooterInfo>
-              Your user will still be able to change the mode via the theme
-              toggle.
+              Seu usuário ainda poderá alterar o modo pelo seletor de tema.
             </FormCardFooterInfo>
             <div className="flex items-center gap-2">
               <Button type="button" variant="ghost" asChild>
@@ -169,7 +170,7 @@ export function FormAppearance({
                 </Link>
               </Button>
               <Button type="submit" disabled={isPending}>
-                {isPending ? "Submitting..." : "Submit"}
+                {isPending ? "Enviando..." : "Enviar"}
               </Button>
             </div>
           </FormCardFooter>

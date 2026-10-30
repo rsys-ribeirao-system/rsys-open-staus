@@ -75,7 +75,7 @@ export function NoteButtonClose({
       type="button"
       variant="ghost"
       size="icon-sm"
-      aria-label="Close"
+      aria-label="Fechar"
       className={cn("text-muted-foreground -mr-1 shrink-0", className)}
       {...props}
     >

@@ -55,7 +55,7 @@ export default function DomainConfiguration({ domain }: { domain: string }) {
       <div className="flex items-center gap-3 border border-transparent px-4">
         <DomainStatusIcon loading={true} />
         <p className="text-muted-foreground text-sm">
-          Checking domain status...
+          Verificando status do domínio...
         </p>
       </div>
     );
@@ -84,8 +84,8 @@ export default function DomainConfiguration({ domain }: { domain: string }) {
       <StepCard variant={steps.dns}>
         <StepCardHeader>
           <StepCardIndicator step={1} />
-          <StepCardTitle>Configure DNS records</StepCardTitle>
-          <StepCardBadge>Done</StepCardBadge>
+          <StepCardTitle>Configurar registros DNS</StepCardTitle>
+          <StepCardBadge>Concluído</StepCardBadge>
         </StepCardHeader>
         <StepCardContent>
           {status === "Unknown Error" ? (
@@ -95,29 +95,29 @@ export default function DomainConfiguration({ domain }: { domain: string }) {
               <Tabs defaultValue={subdomain ? "CNAME" : "A"}>
                 <TabsList>
                   <TabsTrigger value="A">
-                    A Record{!subdomain && " (recommended)"}
+                    Registro A{!subdomain && " (recomendado)"}
                   </TabsTrigger>
                   <TabsTrigger value="CNAME">
-                    CNAME Record{subdomain && " (recommended)"}
+                    Registro CNAME{subdomain && " (recomendado)"}
                   </TabsTrigger>
                 </TabsList>
                 <TabsContent value="A" className="space-y-2">
                   <p className="text-sm">
-                    To configure your apex domain (
+                    Para configurar seu domínio raiz (
                     <InlineSnippet>{domainJson.apexName}</InlineSnippet>
-                    ), set the following A record on your DNS provider:
+                    ), defina o seguinte registro A no seu provedor de DNS:
                   </p>
                   <div className="bg-muted flex items-center justify-start space-x-10 rounded-md p-2">
                     <div>
-                      <p className="text-sm font-bold">Type</p>
+                      <p className="text-sm font-bold">Tipo</p>
                       <p className="mt-2 font-mono text-sm">A</p>
                     </div>
                     <div>
-                      <p className="text-sm font-bold">Name</p>
+                      <p className="text-sm font-bold">Nome</p>
                       <p className="mt-2 font-mono text-sm">@</p>
                     </div>
                     <div>
-                      <p className="text-sm font-bold">Value</p>
+                      <p className="text-sm font-bold">Valor</p>
                       <p className="mt-2 font-mono text-sm">{A_RECORD_VALUE}</p>
                     </div>
                     <div>
@@ -129,17 +129,17 @@ export default function DomainConfiguration({ domain }: { domain: string }) {
                 <TabsContent value="CNAME">
                   <div className="bg-muted flex items-center justify-start space-x-10 rounded-md p-2">
                     <div>
-                      <p className="text-sm font-bold">Type</p>
+                      <p className="text-sm font-bold">Tipo</p>
                       <p className="mt-2 font-mono text-sm">CNAME</p>
                     </div>
                     <div>
-                      <p className="text-sm font-bold">Name</p>
+                      <p className="text-sm font-bold">Nome</p>
                       <p className="mt-2 font-mono text-sm">
                         {subdomain ?? "www"}
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm font-bold">Value</p>
+                      <p className="text-sm font-bold">Valor</p>
                       <p className="mt-2 font-mono text-sm">{CNAME_VALUE}</p>
                     </div>
                     <div>
@@ -150,9 +150,9 @@ export default function DomainConfiguration({ domain }: { domain: string }) {
                 </TabsContent>
               </Tabs>
               <p className="text-muted-foreground mt-3 text-sm">
-                Note: for TTL, if <InlineSnippet>86400</InlineSnippet> is not
-                available, set the highest value possible. Domain propagation
-                can take up to an hour.
+                Observação: para o TTL, se <InlineSnippet>86400</InlineSnippet>{" "}
+                não estiver disponível, defina o maior valor possível. A
+                propagação do domínio pode levar até uma hora.
               </p>
             </>
           )}
@@ -163,26 +163,27 @@ export default function DomainConfiguration({ domain }: { domain: string }) {
       <StepCard variant={steps.verification}>
         <StepCardHeader>
           <StepCardIndicator step={2} />
-          <StepCardTitle>Verify domain ownership</StepCardTitle>
-          <StepCardBadge>Done</StepCardBadge>
+          <StepCardTitle>Verificar propriedade do domínio</StepCardTitle>
+          <StepCardBadge>Concluído</StepCardBadge>
         </StepCardHeader>
         <StepCardContent>
           {txtVerification ? (
             <>
               <p className="text-sm">
-                Set the following TXT record on{" "}
-                <InlineSnippet>{domainJson.apexName}</InlineSnippet> to prove
-                ownership of <InlineSnippet>{domainJson.name}</InlineSnippet>:
+                Defina o seguinte registro TXT em{" "}
+                <InlineSnippet>{domainJson.apexName}</InlineSnippet> para
+                comprovar a propriedade de{" "}
+                <InlineSnippet>{domainJson.name}</InlineSnippet>:
               </p>
               <div className="bg-muted my-3 flex items-start justify-start space-x-10 rounded-md p-2">
                 <div>
-                  <p className="text-sm font-bold">Type</p>
+                  <p className="text-sm font-bold">Tipo</p>
                   <p className="mt-2 font-mono text-sm">
                     {txtVerification.type}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm font-bold">Name</p>
+                  <p className="text-sm font-bold">Nome</p>
                   <p className="mt-2 font-mono text-sm">
                     {txtVerification.domain.slice(
                       0,
@@ -193,23 +194,23 @@ export default function DomainConfiguration({ domain }: { domain: string }) {
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm font-bold">Value</p>
+                  <p className="text-sm font-bold">Valor</p>
                   <p className="mt-2 font-mono text-sm break-all">
                     {txtVerification.value}
                   </p>
                 </div>
               </div>
               <p className="text-muted-foreground text-sm">
-                Warning: if you are using this domain for another site, setting
-                this TXT record will transfer domain ownership away from that
-                site and break it. Please exercise caution when setting this
-                record.
+                Atenção: se você usa este domínio em outro site, definir este
+                registro TXT transferirá a propriedade do domínio desse site e
+                vai quebrá-lo. Tenha cuidado ao definir este registro.
               </p>
             </>
           ) : (
             <p className="text-muted-foreground text-sm">
-              A TXT record may be required to verify domain ownership. The exact
-              record values will appear here once DNS is configured.
+              Um registro TXT pode ser necessário para verificar a propriedade
+              do domínio. Os valores exatos aparecerão aqui quando o DNS estiver
+              configurado.
             </p>
           )}
         </StepCardContent>

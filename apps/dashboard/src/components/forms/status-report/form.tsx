@@ -64,7 +64,7 @@ import { useTRPC } from "@/lib/trpc/client";
 
 const schema = z.object({
   status: z.enum(statusReportStatus),
-  title: z.string().min(1, "Title is required.").max(256),
+  title: z.string().min(1, "O título é obrigatório.").max(256),
   message: z.string(),
   date: z.date(),
   pageComponents: z.array(z.number()),
@@ -138,13 +138,13 @@ export function FormStatusReport({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: () => "Saved",
+          loading: "Salvando...",
+          success: () => "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -167,7 +167,7 @@ export function FormStatusReport({
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Title</FormLabel>
+                <FormLabel>Título</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -196,7 +196,7 @@ export function FormStatusReport({
                         "font-mono capitalize",
                       )}
                     >
-                      <SelectValue placeholder="Select a status" />
+                      <SelectValue placeholder="Selecione um status" />
                     </SelectTrigger>
                     <SelectContent>
                       {statusReportStatus.map((status) => (
@@ -225,7 +225,7 @@ export function FormStatusReport({
                 name="date"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Date</FormLabel>
+                    <FormLabel>Data</FormLabel>
                     <Popover modal>
                       <FormControl>
                         <PopoverTrigger asChild>
@@ -241,7 +241,7 @@ export function FormStatusReport({
                             {field.value ? (
                               format(field.value, "PPP 'at' h:mm a")
                             ) : (
-                              <span>Pick a date</span>
+                              <span>Escolha uma data</span>
                             )}
                             <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                           </Button>
@@ -274,7 +274,7 @@ export function FormStatusReport({
                         <div className="border-t p-3">
                           <div className="flex items-center gap-3">
                             <Label htmlFor="time" className="text-xs">
-                              Enter time
+                              Informe o horário
                             </Label>
                             <div className="relative grow">
                               <Input
@@ -317,8 +317,8 @@ export function FormStatusReport({
                       </PopoverContent>
                     </Popover>
                     <FormDescription>
-                      When the status report was created. Shown in your timezone
-                      (
+                      Quando o relatório de status foi criado. Exibido no seu
+                      fuso horário (
                       <code className="font-commit-mono text-foreground/70">
                         {timezone}
                       </code>
@@ -337,8 +337,8 @@ export function FormStatusReport({
             <FormCardContent>
               <Tabs defaultValue="tab-1">
                 <TabsList>
-                  <TabsTrigger value="tab-1">Writing</TabsTrigger>
-                  <TabsTrigger value="tab-2">Preview</TabsTrigger>
+                  <TabsTrigger value="tab-1">Escrita</TabsTrigger>
+                  <TabsTrigger value="tab-2">Pré-visualização</TabsTrigger>
                 </TabsList>
                 <TabsContent value="tab-1">
                   <FormField
@@ -346,19 +346,19 @@ export function FormStatusReport({
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Message</FormLabel>
+                        <FormLabel>Mensagem</FormLabel>
                         <FormControl>
                           <Textarea rows={6} {...field} />
                         </FormControl>
                         <FormMessage />
-                        <FormDescription>Markdown support</FormDescription>
+                        <FormDescription>Suporta Markdown</FormDescription>
                       </FormItem>
                     )}
                   />
                 </TabsContent>
                 <TabsContent value="tab-2">
                   <div className="grid gap-2">
-                    <Label>Preview</Label>
+                    <Label>Pré-visualização</Label>
                     <div className="prose dark:prose-invert prose-sm text-foreground rounded-md border px-3 py-2 text-sm">
                       <ProcessMessage value={watchMessage} />
                     </div>
@@ -375,9 +375,9 @@ export function FormStatusReport({
             name="pageComponents"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Page Components</FormLabel>
+                <FormLabel>Componentes da página</FormLabel>
                 <FormDescription>
-                  Select the page components you want to notify.
+                  Selecione os componentes da página que você deseja notificar.
                 </FormDescription>
                 {items.length ? (
                   <FormControl>
@@ -389,7 +389,9 @@ export function FormStatusReport({
                   </FormControl>
                 ) : (
                   <EmptyStateContainer>
-                    <EmptyStateTitle>No page components found</EmptyStateTitle>
+                    <EmptyStateTitle>
+                      Nenhum componente da página encontrado
+                    </EmptyStateTitle>
                   </EmptyStateContainer>
                 )}
                 <FormMessage />
@@ -406,9 +408,9 @@ export function FormStatusReport({
                 name="componentImpacts"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Component Impact</FormLabel>
+                    <FormLabel>Impacto nos componentes</FormLabel>
                     <FormDescription>
-                      How badly is each affected component impacted?
+                      Qual o impacto em cada componente afetado?
                     </FormDescription>
                     <FormControl>
                       <ComponentImpactList
@@ -437,7 +439,7 @@ export function FormStatusReport({
                 name="notifySubscribers"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Notify Subscribers</FormLabel>
+                    <FormLabel>Notificar assinantes</FormLabel>
                     <FormControl>
                       <div className="flex items-center gap-2">
                         <Checkbox
@@ -446,14 +448,14 @@ export function FormStatusReport({
                           onCheckedChange={field.onChange}
                         />
                         <Label htmlFor="notifySubscribers">
-                          Send notification to subscribers
+                          Enviar notificação aos assinantes
                         </Label>
                       </div>
                     </FormControl>
                     <FormMessage />
                     <FormDescription>
-                      Subscribers will be notified when creating a status
-                      report.
+                      Os assinantes serão notificados ao criar um relatório de
+                      status.
                     </FormDescription>
                   </FormItem>
                 )}

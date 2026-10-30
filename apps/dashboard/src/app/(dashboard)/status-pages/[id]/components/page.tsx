@@ -28,7 +28,7 @@ export default function Page() {
         <SectionHeader>
           <SectionTitle>{statusPage.title}</SectionTitle>
           <SectionDescription>
-            Configure your page components.
+            Configure os componentes da sua página.
           </SectionDescription>
         </SectionHeader>
         <FormComponentsUpdate />

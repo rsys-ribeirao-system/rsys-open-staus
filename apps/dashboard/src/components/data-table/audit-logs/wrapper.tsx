@@ -49,9 +49,9 @@ export function AuditLogsWrapper({
   if (!auditLogs?.data || auditLogs.data.length === 0) {
     return (
       <EmptyStateContainer>
-        <EmptyStateTitle>No audit logs</EmptyStateTitle>
+        <EmptyStateTitle>Nenhum log de auditoria</EmptyStateTitle>
         <EmptyStateDescription>
-          No audit logs found for this monitor.
+          Nenhum log de auditoria encontrado para este monitor.
         </EmptyStateDescription>
       </EmptyStateContainer>
     );

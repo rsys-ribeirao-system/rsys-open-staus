@@ -152,7 +152,7 @@ export function StatusComponentGroup({
             className,
           )}
           data-variant={status}
-          aria-label={`Toggle ${title} status details`}
+          aria-label={`Alternar detalhes de status de ${title}`}
         >
           {title}
           <div className="flex items-center gap-2">

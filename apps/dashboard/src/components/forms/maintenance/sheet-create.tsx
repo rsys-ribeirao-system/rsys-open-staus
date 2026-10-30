@@ -90,21 +90,21 @@ export function FormSheetMaintenanceCreate({
       ) : null}
       <FormSheetContent className="sm:max-w-lg">
         <FormSheetHeader>
-          <FormSheetTitle>Maintenance</FormSheetTitle>
+          <FormSheetTitle>Manutenção</FormSheetTitle>
           <FormSheetDescription>
-            Configure and update the maintenance.
+            Configure e atualize a manutenção.
           </FormSheetDescription>
         </FormSheetHeader>
         {defaultPageId === undefined && pages && pages.length > 1 ? (
           <>
             <div className="grid gap-1.5 px-4 py-4">
-              <Label htmlFor="maintenance-page-select">Status Page</Label>
+              <Label htmlFor="maintenance-page-select">Página de status</Label>
               <Select
                 value={pageId !== undefined ? String(pageId) : undefined}
                 onValueChange={(value) => setSelectedPageId(Number(value))}
               >
                 <SelectTrigger id="maintenance-page-select" size="sm">
-                  <SelectValue placeholder="Select a status page" />
+                  <SelectValue placeholder="Selecione uma página de status" />
                 </SelectTrigger>
                 <SelectContent>
                   {pages.map((p) => (
@@ -148,8 +148,8 @@ export function FormSheetMaintenanceCreate({
           <EmptyStateContainer className="m-4">
             <EmptyStateTitle>
               {pages?.length === 0
-                ? "No status pages found"
-                : "Select a status page"}
+                ? "Nenhuma página de status encontrada"
+                : "Selecione uma página de status"}
             </EmptyStateTitle>
           </EmptyStateContainer>
         )}
@@ -159,7 +159,7 @@ export function FormSheetMaintenanceCreate({
             form="maintenance-form"
             disabled={pageId === undefined}
           >
-            Submit
+            Enviar
           </Button>
         </FormSheetFooter>
       </FormSheetContent>

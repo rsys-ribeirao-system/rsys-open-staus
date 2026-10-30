@@ -3,19 +3,19 @@ import { Acknowledge, Check, Delete } from "@openstatus/icons";
 export const actions = [
   {
     id: "acknowledge",
-    label: "Acknowledge",
+    label: "Reconhecer",
     icon: Acknowledge,
     variant: "default" as const,
   },
   {
     id: "resolve",
-    label: "Resolve",
+    label: "Resolver",
     icon: Check,
     variant: "default" as const,
   },
   {
     id: "delete",
-    label: "Delete",
+    label: "Excluir",
     icon: Delete,
     variant: "destructive" as const,
   },

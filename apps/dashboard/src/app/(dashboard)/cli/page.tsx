@@ -29,10 +29,10 @@ const OS = ["macOs", "Windows", "Linux"] as const;
 
 const installs = [
   {
-    title: "Install CLI",
+    title: "Instalar a CLI",
     icon: Terminal,
     description:
-      "Install the OpenStatus CLI to set up your monitors straight in your code.",
+      "Instale a CLI do OpenStatus para configurar seus monitores direto no seu código.",
     command: {
       macOs: [
         "brew install openstatusHQ/cli/openstatus --cask",
@@ -49,16 +49,16 @@ const installs = [
   {
     title: "Login",
     icon: Login,
-    description: "Save your API token for use in subsequent commands.",
+    description: "Salve seu token de API para usar nos comandos seguintes.",
     command: "openstatus login",
   },
   {
-    title: "Add API Key",
+    title: "Adicionar chave de API",
     icon: KeyIcon,
     description: (
       <>
-        Or set it as an environment variable. Create an API key in your
-        workspace <Link href="/settings/general">settings.</Link>
+        Ou defina-a como variável de ambiente. Crie uma chave de API nas
+        <Link href="/settings/general">configurações</Link> do seu workspace.
       </>
     ),
     command: {
@@ -68,28 +68,28 @@ const installs = [
     },
   },
   {
-    title: "List Status Pages",
+    title: "Listar páginas de status",
     icon: StatusPage,
-    description: "List all status pages in your workspace.",
+    description: "Lista todas as páginas de status do seu workspace.",
     command: "openstatus status-page list",
   },
   {
-    title: "List Status Reports",
+    title: "Listar relatórios de status",
     icon: Report,
-    description: "List all status reports in your workspace.",
+    description: "Lista todos os relatórios de status do seu workspace.",
     command: "openstatus status-report list",
   },
   {
-    title: "Import Monitors",
+    title: "Importar monitores",
     icon: Download,
-    description: "Import monitors from your workspace to a YAML file.",
+    description: "Importa os monitores do seu workspace para um arquivo YAML.",
     command: "openstatus monitors import",
   },
   {
-    title: "Manage Monitors",
+    title: "Gerenciar monitores",
     icon: FileJson,
     description:
-      "Add, remove, or update monitors from a YAML file and apply your changes.",
+      "Adicione, remova ou atualize monitores a partir de um arquivo YAML e aplique suas alterações.",
     command: "openstatus monitors apply",
   },
 ] satisfies {
@@ -102,43 +102,43 @@ const installs = [
 const commands = [
   {
     command: "openstatus monitors list [options]",
-    description: "List all monitors in your workspace.",
+    description: "Lista todos os monitores do seu workspace.",
   },
   {
     command: "openstatus monitors info [monitor-id] [options]",
-    description: "Get information about a specific monitor.",
+    description: "Obtém informações sobre um monitor específico.",
   },
   {
     command: "openstatus monitors trigger [monitor-id] [options]",
-    description: "Trigger a monitor.",
+    description: "Dispara um monitor.",
   },
   {
     command: "openstatus status-page list [options]",
-    description: "List all status pages.",
+    description: "Lista todas as páginas de status.",
   },
   {
     command: "openstatus status-page info [page-id]",
-    description: "Get status page details.",
+    description: "Obtém os detalhes da página de status.",
   },
   {
     command:
       'openstatus status-report create --title "..." --status investigating --message "..." --page-id 123',
-    description: "Create a status report.",
+    description: "Cria um relatório de status.",
   },
   {
     command:
       'openstatus status-report add-update [report-id] --status resolved --message "..."',
-    description: "Add an update to a status report.",
+    description: "Adiciona uma atualização a um relatório de status.",
   },
   {
     command: "openstatus status-report list [options]",
-    description: "List all status reports.",
+    description: "Lista todos os relatórios de status.",
   },
 ];
 
 const templates = [
   {
-    description: "MCP server",
+    description: "Servidor MCP",
     template: `# yaml-language-server: $schema=https://www.openstatus.dev/schema.json
 
 mcp-server:
@@ -175,7 +175,7 @@ mcp-server:
 
 const githubActions = [
   {
-    description: "Run synthetic tests",
+    description: "Executar testes sintéticos",
     template: `name: OpenStatus
 on: [push]
 
@@ -190,7 +190,7 @@ jobs:
           api_key: \${{ secrets.OPENSTATUS_API_KEY }}`,
   },
   {
-    description: "Apply monitors configuration",
+    description: "Aplicar configuração de monitores",
     template: `name: OpenStatus
 on: [push]
 
@@ -215,14 +215,14 @@ export default function Page() {
         <SectionHeader>
           <SectionTitle>CLI</SectionTitle>
           <SectionDescription>
-            Get started with the CLI to export and manage your monitors in your
-            code.{" "}
+            Comece a usar a CLI para exportar e gerenciar seus monitores no seu
+            código.{" "}
             <Link
               href="https://www.openstatus.dev/docs/reference/cli-reference/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Read more
+              Saiba mais
             </Link>
             .
           </SectionDescription>
@@ -261,7 +261,7 @@ export default function Page() {
                           <React.Fragment key={command}>
                             <Code>{command}</Code>
                             {i < commands.length - 1 && (
-                              <span className="text-muted-foreground">or</span>
+                              <span className="text-muted-foreground">ou</span>
                             )}
                           </React.Fragment>
                         ))}
@@ -276,17 +276,17 @@ export default function Page() {
       </Section>
       <Section>
         <SectionHeader>
-          <SectionTitle>Commands</SectionTitle>
+          <SectionTitle>Comandos</SectionTitle>
           <SectionDescription>
-            We have a few more commands to run. Check the{" "}
+            Temos mais alguns comandos para executar. Consulte a{" "}
             <Link
               href="https://www.openstatus.dev/docs/reference/cli-reference/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              documentation
+              documentação
             </Link>{" "}
-            to read more.
+            para saber mais.
           </SectionDescription>
         </SectionHeader>
         <ul className="flex flex-col gap-2">
@@ -304,8 +304,9 @@ export default function Page() {
         <SectionHeader>
           <SectionTitle>Skills</SectionTitle>
           <SectionDescription>
-            Add the openstatus skill to let AI agents manage your monitors,
-            status pages, and status reports on your behalf.
+            Adicione a skill do openstatus para permitir que agentes de IA
+            gerenciem seus monitores, páginas de status e relatórios de status
+            por você.
           </SectionDescription>
         </SectionHeader>
         <Code>npx skills add openstatushq/cli</Code>
@@ -314,24 +315,24 @@ export default function Page() {
         <SectionHeader>
           <SectionTitle>GitHub Action</SectionTitle>
           <SectionDescription>
-            We provide you with a github action in case you'd like to use the
-            CLI within your CI/CD workflows. Check the{" "}
+            Oferecemos uma GitHub Action caso você queira usar a CLI nos seus
+            workflows de CI/CD. Consulte a página de{" "}
             <Link
               href="https://github.com/openstatusHQ/openstatus-github-action"
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub integration
+              integração com o GitHub
             </Link>{" "}
-            page or our{" "}
+            ou nosso{" "}
             <Link
               href="https://www.openstatus.dev/docs/guides/how-to-run-synthetic-test-github-action/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              guide
+              guia
             </Link>{" "}
-            to to run synthetic tests in a GitHub action.
+            para executar testes sintéticos em uma GitHub Action.
           </SectionDescription>
         </SectionHeader>
         <div className="flex flex-col gap-6">
@@ -349,7 +350,8 @@ export default function Page() {
         <SectionHeader>
           <SectionTitle>Templates</SectionTitle>
           <SectionDescription>
-            We have a few templates to help you get started. Check the{" "}
+            Temos alguns templates para ajudar você a começar. Consulte o
+            repositório{" "}
             <Link
               href="https://github.com/openstatusHQ/cli-template"
               target="_blank"
@@ -357,7 +359,7 @@ export default function Page() {
             >
               <code>@openstatusHQ/cli-template</code>
             </Link>{" "}
-            repository for more.
+            para ver mais.
           </SectionDescription>
         </SectionHeader>
         <div className="flex flex-col gap-6">

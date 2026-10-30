@@ -37,7 +37,7 @@ export function Sheet({
     <DataTableSheet defaultOpen onOpenChange={(open) => !open && onClose()}>
       <DataTableSheetContent className="sm:max-w-lg">
         <DataTableSheetHeader className="px-2">
-          <DataTableSheetTitle>Response Logs</DataTableSheetTitle>
+          <DataTableSheetTitle>Logs de resposta</DataTableSheetTitle>
         </DataTableSheetHeader>
         <DataTableBasics data={data} privateLocations={privateLocations} />
         {showCopyUrl ? (
@@ -54,7 +54,7 @@ export function Sheet({
                   }
                 }}
               >
-                Copy Request Log URL
+                Copiar URL do log da requisição
                 {isCopied ? <Check /> : <Copy />}
               </Button>
             </DataTableSheetFooter>

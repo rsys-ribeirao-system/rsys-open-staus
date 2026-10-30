@@ -32,7 +32,7 @@ export function TelegramManualInput({
       name="data.chatId"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>Telegram Chat ID</FormLabel>
+          <FormLabel>Chat ID do Telegram</FormLabel>
           <FormControl>
             <Input placeholder="1234567890" {...field} />
           </FormControl>
@@ -44,13 +44,13 @@ export function TelegramManualInput({
           )}
           {showDescription && (
             <FormDescription>
-              Enter the Telegram chat ID to send notifications to.{" "}
+              Informe o chat ID do Telegram para onde enviar as notificações.{" "}
               <Link
                 href="https://www.openstatus.dev/docs/reference/notification/#telegram"
                 rel="noreferrer"
                 target="_blank"
               >
-                Learn more
+                Saiba mais
               </Link>
             </FormDescription>
           )}

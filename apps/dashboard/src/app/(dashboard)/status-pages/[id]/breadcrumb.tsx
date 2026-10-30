@@ -29,7 +29,7 @@ export function Breadcrumb() {
       items={[
         {
           type: "link",
-          label: "Status Pages",
+          label: "Páginas de status",
           href: "/status-pages",
           icon: StatusPage,
         },

@@ -38,8 +38,8 @@ export function TelegramQRConnection({
   // When we have a chat ID (group or private), show the manual input with connection info
   if (chatId) {
     const successMsg = isGroup
-      ? `Connected to ${groupTitle}`
-      : `Connected to ${userName || "Unknown"}'s private chat`;
+      ? `Conectado a ${groupTitle}`
+      : `Conectado ao chat privado de ${userName || "Desconhecido"}`;
     return (
       <div className="flex flex-col gap-2">
         <TelegramManualInput
@@ -54,7 +54,7 @@ export function TelegramQRConnection({
           onClick={onReset}
           className="w-full"
         >
-          {isGroup ? "Reset Group ID" : "Add Group"}
+          {isGroup ? "Redefinir ID do grupo" : "Adicionar grupo"}
         </Button>
       </div>
     );
@@ -66,18 +66,18 @@ export function TelegramQRConnection({
       <div className="flex flex-col gap-2">
         {/* Show read-only private chat info */}
         <div className="space-y-2">
-          <Label>Private Chat ID</Label>
+          <Label>ID do chat privado</Label>
           <Input value={privateChatId} readOnly className="bg-muted" />
           {userName && (
             <div className="text-sm font-medium text-green-600">
-              {`Connected to: ${userName}`}
+              {`Conectado a: ${userName}`}
             </div>
           )}
         </div>
 
         {/* Show second QR code for group connection */}
         <div className="text-muted-foreground text-sm">
-          Step 2 of 2: Add bot to your group
+          Passo 2 de 2: adicione o bot ao seu grupo
         </div>
         <TelegramQRCode
           chatType="group"
@@ -92,7 +92,7 @@ export function TelegramQRConnection({
           onClick={onConfirmPrivateChat}
           className="w-full"
         >
-          Use private chat only
+          Usar apenas chat privado
         </Button>
       </div>
     );
@@ -102,7 +102,7 @@ export function TelegramQRConnection({
   return (
     <div className="flex flex-col gap-2">
       <div className="text-muted-foreground text-sm">
-        Step 1 of 2: Connect your Telegram account
+        Passo 1 de 2: conecte sua conta do Telegram
       </div>
       <TelegramQRCode
         chatType="private"

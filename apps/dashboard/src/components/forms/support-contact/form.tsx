@@ -28,37 +28,37 @@ import { z } from "zod";
 
 export const types = [
   {
-    label: "Report a bug",
+    label: "Reportar um bug",
     value: "bug" as const,
   },
   {
-    label: "Book a demo",
+    label: "Agendar uma demonstração",
     value: "demo" as const,
   },
   {
-    label: "Suggest a feature",
+    label: "Sugerir um recurso",
     value: "feature" as const,
   },
   {
-    label: "Report a security issue",
+    label: "Reportar um problema de segurança",
     value: "security" as const,
   },
   {
-    label: "Something else",
+    label: "Outro assunto",
     value: "question" as const,
   },
 ];
 
 export const schema = z.object({
   name: z.string().min(1, {
-    error: "Name is required",
+    error: "O nome é obrigatório",
   }),
   type: z.enum(["bug", "demo", "feature", "security", "question"]),
   email: z.email({
-    error: "Invalid email address",
+    error: "Endereço de e-mail inválido",
   }),
   message: z.string().min(1, {
-    error: "Message is required",
+    error: "A mensagem é obrigatória",
   }),
   blocker: z.boolean(),
 });
@@ -96,9 +96,9 @@ export function ContactForm({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Sending message...",
-          success: "Message sent. We'll get back to you soon.",
-          error: "Failed to send message. Please try again.",
+          loading: "Enviando mensagem...",
+          success: "Mensagem enviada. Retornaremos em breve.",
+          error: "Falha ao enviar a mensagem. Tente novamente.",
         });
         await promise;
       } catch (error) {
@@ -118,7 +118,7 @@ export function ContactForm({
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Nome</FormLabel>
               <FormControl>
                 <Input placeholder="Max" {...field} />
               </FormControl>
@@ -131,7 +131,7 @@ export function ContactForm({
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>E-mail</FormLabel>
               <FormControl>
                 <Input placeholder="max@openstatus.dev" {...field} />
               </FormControl>
@@ -144,11 +144,11 @@ export function ContactForm({
           name="type"
           render={({ field }) => (
             <FormItem className="sm:col-span-full">
-              <FormLabel>Type</FormLabel>
+              <FormLabel>Tipo</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="What you need help with" />
+                    <SelectValue placeholder="Com o que você precisa de ajuda" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -169,9 +169,9 @@ export function ContactForm({
             name="message"
             render={({ field }) => (
               <FormItem className="sm:col-span-full">
-                <FormLabel>Message</FormLabel>
+                <FormLabel>Mensagem</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Tell us about it..." {...field} />
+                  <Textarea placeholder="Conte para nós..." {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -191,7 +191,7 @@ export function ContactForm({
                   />
                 </FormControl>
                 <FormLabel className="leading-none font-normal">
-                  This bug prevents me from using the product.
+                  Este bug me impede de usar o produto.
                 </FormLabel>
               </FormItem>
             )}
@@ -202,7 +202,7 @@ export function ContactForm({
           className="w-full sm:col-span-full"
           disabled={isPending}
         >
-          {isPending ? "Submitting..." : "Submit"}
+          {isPending ? "Enviando..." : "Enviar"}
         </Button>
       </form>
     </Form>

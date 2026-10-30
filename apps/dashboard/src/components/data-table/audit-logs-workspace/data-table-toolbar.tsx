@@ -10,11 +10,11 @@ import { DataTableFacetedFilter } from "@/components/ui/data-table/data-table-fa
 type AuditLog = RouterOutputs["auditLog"]["list"]["items"][number];
 
 const ACTOR_TYPE_LABELS: Record<string, string> = {
-  user: "User",
-  apiKey: "API Key",
+  user: "Usuário",
+  apiKey: "Chave de API",
   slack: "Slack",
-  system: "System",
-  subscriber: "Subscriber",
+  system: "Sistema",
+  subscriber: "Assinante",
   mcp: "MCP",
 };
 
@@ -53,7 +53,7 @@ export function AuditLogsDataTableToolbar({
         {table.getColumn("actorType") && actorTypeOptions.length > 0 && (
           <DataTableFacetedFilter
             column={table.getColumn("actorType")}
-            title="Actor type"
+            title="Tipo de autor"
             options={actorTypeOptions}
             icon={Account}
           />
@@ -61,7 +61,7 @@ export function AuditLogsDataTableToolbar({
         {table.getColumn("action") && actionOptions.length > 0 && (
           <DataTableFacetedFilter
             column={table.getColumn("action")}
-            title="Action"
+            title="Ação"
             options={actionOptions}
             icon={Speed}
           />
@@ -69,7 +69,7 @@ export function AuditLogsDataTableToolbar({
         {table.getColumn("entityType") && entityTypeOptions.length > 0 && (
           <DataTableFacetedFilter
             column={table.getColumn("entityType")}
-            title="Entity type"
+            title="Tipo de entidade"
             options={entityTypeOptions}
             icon={Database}
           />
@@ -80,7 +80,7 @@ export function AuditLogsDataTableToolbar({
             onClick={() => table.resetColumnFilters()}
             className="h-8 px-2 lg:px-3"
           >
-            Reset
+            Redefinir
             <Close />
           </Button>
         )}

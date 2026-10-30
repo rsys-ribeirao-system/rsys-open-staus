@@ -16,13 +16,13 @@ export function listMonitorsTable(
 > {
   const items = output?.items ?? [];
   return {
-    empty: "No monitors.",
+    empty: "Nenhum monitor.",
     columns: [
-      { key: "name", header: "Name" },
-      { key: "jobType", header: "Type" },
-      { key: "periodicity", header: "Periodicity" },
-      { key: "regions", header: "Regions" },
-      { key: "active", header: "Active" },
+      { key: "name", header: "Nome" },
+      { key: "jobType", header: "Tipo" },
+      { key: "periodicity", header: "Frequência" },
+      { key: "regions", header: "Regiões" },
+      { key: "active", header: "Ativo" },
       { key: "id", header: "ID" },
     ],
     rows: items.map((m) => ({

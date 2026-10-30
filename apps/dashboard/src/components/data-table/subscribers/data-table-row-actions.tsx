@@ -78,7 +78,7 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
       ? [
           {
             id: "edit",
-            label: "Edit",
+            label: "Editar",
             icon: Edit,
             variant: "default" as const,
             onClick: () => setEditOpen(true),
@@ -89,7 +89,7 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
       ? [
           {
             id: "test",
-            label: "Send test",
+            label: "Enviar teste",
             icon: Send,
             variant: "default" as const,
             onClick: async () => {
@@ -98,11 +98,11 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
                 pageId: sub.pageId,
               });
               toast.promise(promise, {
-                loading: "Sending test…",
-                success: "Test webhook sent",
+                loading: "Enviando teste…",
+                success: "Webhook de teste enviado",
                 error: (error) => {
                   if (isTRPCClientError(error)) return error.message;
-                  return "Failed to send test";
+                  return "Falha ao enviar teste";
                 },
               });
               try {
@@ -136,8 +136,8 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
           items={items}
           defaultValues={editDefaults}
           editMode
-          title="Edit subscriber"
-          description="Update channel config, label, or component scope."
+          title="Editar assinante"
+          description="Atualize a configuração do canal, o rótulo ou o escopo de componentes."
           open={editOpen}
           onOpenChange={setEditOpen}
           onSubmit={async (values) => {

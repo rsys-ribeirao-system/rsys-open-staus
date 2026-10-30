@@ -72,7 +72,7 @@ const configurationSchema = z
       return true;
     },
     {
-      error: "Value must be manual when type is manual",
+      error: "O valor deve ser manual quando o tipo for manual",
       path: ["value"],
     },
   );
@@ -127,13 +127,13 @@ export function FormConfiguration({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -149,9 +149,9 @@ export function FormConfiguration({
         <form id="redesign" onSubmit={form.handleSubmit(submitAction)}>
           <FormCard>
             <FormCardHeader>
-              <FormCardTitle>Components Configuration</FormCardTitle>
+              <FormCardTitle>Configuração dos componentes</FormCardTitle>
               <FormCardDescription>
-                Configure which data should be shown for your components.
+                Configure quais dados devem ser exibidos nos seus componentes.
               </FormCardDescription>
             </FormCardHeader>
             <FormCardSeparator />
@@ -166,7 +166,7 @@ export function FormConfiguration({
                 name="configuration.type"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Bar Type</FormLabel>
+                    <FormLabel>Tipo de barra</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={String(field.value) ?? "absolute"}
@@ -174,7 +174,7 @@ export function FormConfiguration({
                     >
                       <FormControl>
                         <SelectTrigger className="w-full capitalize">
-                          <SelectValue placeholder="Select a type" />
+                          <SelectValue placeholder="Selecione um tipo" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -198,7 +198,7 @@ export function FormConfiguration({
                 name="configuration.value"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Card Value</FormLabel>
+                    <FormLabel>Valor do card</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={String(field.value) ?? "duration"}
@@ -209,7 +209,7 @@ export function FormConfiguration({
                     >
                       <FormControl>
                         <SelectTrigger className="w-full capitalize">
-                          <SelectValue placeholder="Select a type" />
+                          <SelectValue placeholder="Selecione um tipo" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -232,14 +232,14 @@ export function FormConfiguration({
                 {hasMonitorComponents ? (
                   <ul className="list-inside list-disc">
                     <li>
-                      <span>Bar Type </span>
+                      <span>Tipo de barra </span>
                       <span className="font-medium">
                         {watchConfigurationType}
                       </span>
                       : <span>{message.type[watchConfigurationType]}</span>
                     </li>
                     <li>
-                      <span>Card Value </span>
+                      <span>Valor do card </span>
                       <span className="font-medium">
                         {watchConfigurationValue}
                       </span>
@@ -252,8 +252,8 @@ export function FormConfiguration({
                   </ul>
                 ) : (
                   <span>
-                    Add a monitor component to your status page to configure how
-                    its bars and cards display data.
+                    Adicione um componente de monitor à sua página de status
+                    para configurar como as barras e os cards exibem os dados.
                   </span>
                 )}
               </Note>
@@ -265,14 +265,14 @@ export function FormConfiguration({
                 name="configuration.uptime"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Show Uptime</FormLabel>
+                    <FormLabel>Exibir disponibilidade</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={String(field.value) ?? "true"}
                     >
                       <FormControl>
                         <SelectTrigger className="w-full capitalize">
-                          <SelectValue placeholder="Select a type" />
+                          <SelectValue placeholder="Selecione um tipo" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -296,20 +296,20 @@ export function FormConfiguration({
                 name="configuration.days"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>History</FormLabel>
+                    <FormLabel>Histórico</FormLabel>
                     <Select
                       onValueChange={field.onChange}
                       defaultValue={String(field.value ?? 45)}
                     >
                       <FormControl>
                         <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Select a range" />
+                          <SelectValue placeholder="Selecione um período" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
                         {["30", "45"].map((days) => (
                           <SelectItem key={days} value={days}>
-                            {days} days
+                            {days} dias
                           </SelectItem>
                         ))}
                       </SelectContent>
@@ -321,21 +321,21 @@ export function FormConfiguration({
               <Note className="col-span-full">
                 <ul className="list-inside list-disc">
                   <li>
-                    <span>Show Uptime </span>
+                    <span>Exibir disponibilidade </span>
                     <span className="font-medium capitalize">
                       {String(watchConfigurationUptime)}
                     </span>
                     : <span>{message.uptime[watchConfigurationUptime]}</span>
                   </li>
                   <li>
-                    <span>History </span>
+                    <span>Histórico </span>
                     <span className="font-medium">
-                      {String(watchConfigurationDays)} days
+                      {String(watchConfigurationDays)} dias
                     </span>
                     :{" "}
                     <span>
-                      shows the last {String(watchConfigurationDays)} days of
-                      component history.
+                      exibe os últimos {String(watchConfigurationDays)} dias do
+                      histórico do componente.
                     </span>
                   </li>
                 </ul>
@@ -343,13 +343,13 @@ export function FormConfiguration({
             </FormCardContent>
             <FormCardFooter>
               <FormCardFooterInfo>
-                Learn more about{" "}
+                Saiba mais sobre{" "}
                 <Link
                   href="https://www.openstatus.dev/docs/tutorial/how-to-configure-status-page"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  Configuration
+                  Configuração
                 </Link>
                 .
               </FormCardFooterInfo>
@@ -361,12 +361,12 @@ export function FormConfiguration({
                     target="_blank"
                     className="inline-flex items-center gap-1"
                   >
-                    View and configure status page{" "}
+                    Ver e configurar página de status{" "}
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </Button>
                 <Button type="submit" disabled={isPending}>
-                  {isPending ? "Submitting..." : "Submit"}
+                  {isPending ? "Enviando..." : "Enviar"}
                 </Button>
               </div>
             </FormCardFooter>
@@ -390,19 +390,19 @@ export function FormConfiguration({
 const message = {
   type: {
     manual:
-      "only shares the duration of reports and maintenances you are setting up - nothing else.",
+      "compartilha apenas a duração dos relatórios e manutenções que você configurar - nada mais.",
     absolute:
-      "shares the status of your endpoint for the duration of the different statuses.",
+      "compartilha o status do seu endpoint durante cada um dos diferentes status.",
   },
   value: {
-    duration: "shares the duration of the different statuses.",
+    duration: "compartilha a duração dos diferentes status.",
     requests:
-      "shares the number of requests received (success, degraded, error).",
-    default: "shares only the worse status of the day",
+      "compartilha o número de requisições recebidas (sucesso, degradado, erro).",
+    default: "compartilha apenas o pior status do dia",
   },
   uptime: {
-    true: "shares the uptime percentage and current status of your endpoint.",
-    false: "shares only the current status.",
+    true: "compartilha o percentual de disponibilidade e o status atual do seu endpoint.",
+    false: "compartilha apenas o status atual.",
   },
 } as const;
 
@@ -446,13 +446,13 @@ function FormConfigurationDialog({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -478,10 +478,10 @@ function FormConfigurationDialog({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Status Page Configuration</DialogTitle>
+          <DialogTitle>Configuração da página de status</DialogTitle>
           <DialogDescription>
-            Do you want to update the status page based on the configured
-            settings? You can always change the settings later.
+            Deseja atualizar a página de status com base nas configurações
+            definidas? Você pode alterá-las depois a qualquer momento.
           </DialogDescription>
         </DialogHeader>
         <div className="flex flex-col gap-2">
@@ -491,7 +491,7 @@ function FormConfigurationDialog({
         </div>
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="outline">Cancel</Button>
+            <Button variant="outline">Cancelar</Button>
           </DialogClose>
           <Button
             type="button"
@@ -511,7 +511,7 @@ function FormConfigurationDialog({
             }
             disabled={isPending}
           >
-            {isPending ? "Saving..." : "Save"}
+            {isPending ? "Salvando..." : "Salvar"}
           </Button>
         </DialogFooter>
       </DialogContent>

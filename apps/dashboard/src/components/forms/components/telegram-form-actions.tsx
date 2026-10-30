@@ -32,7 +32,7 @@ export function TelegramFormActions({
     // Validate chat ID before sending test
     const chatId = form.getValues("data.chatId");
     if (!chatId || chatId.trim() === "") {
-      toast.error("Please enter a chat ID before sending test");
+      toast.error("Informe um chat ID antes de enviar o teste");
       return;
     }
 
@@ -47,8 +47,8 @@ export function TelegramFormActions({
           },
         });
         toast.promise(promise, {
-          loading: "Sending test...",
-          success: "Test sent",
+          loading: "Enviando teste...",
+          success: "Teste enviado",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
@@ -56,7 +56,7 @@ export function TelegramFormActions({
             if (error instanceof Error) {
               return error.message;
             }
-            return "Failed to send test";
+            return "Falha ao enviar o teste";
           },
         });
         await promise;
@@ -75,7 +75,7 @@ export function TelegramFormActions({
         onClick={testAction}
         disabled={isPending}
       >
-        Send Test
+        Enviar teste
       </Button>
     </div>
   );

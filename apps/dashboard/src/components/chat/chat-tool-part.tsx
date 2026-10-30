@@ -106,9 +106,9 @@ function ApprovalCard({
       <div className="bg-muted/30 flex items-center justify-end gap-3 border-t p-3">
         <span className="text-muted-foreground text-xs">
           <kbd className="bg-background rounded border px-1 font-mono">Esc</kbd>{" "}
-          to cancel ·{" "}
+          para cancelar ·{" "}
           <kbd className="bg-background rounded border px-1 font-mono">⌘ ↵</kbd>{" "}
-          to apply
+          para aplicar
         </span>
         <div className="flex gap-2">
           <Button
@@ -116,10 +116,10 @@ function ApprovalCard({
             variant="outline"
             onClick={() => cancelTool(approvalId)}
           >
-            Cancel
+            Cancelar
           </Button>
           <Button size="sm" onClick={() => confirmTool(approvalId)}>
-            Apply
+            Aplicar
           </Button>
         </div>
       </div>
@@ -138,7 +138,7 @@ function ToolDisclosure({
   const rich = renderToolResult(toolName, part.input, part.output);
   const summary =
     summarizeToolOutput(toolName, part.output) ??
-    (state === "output-denied" ? "Cancelled" : undefined);
+    (state === "output-denied" ? "Cancelado" : undefined);
   const [open, setOpen] = useState(false);
   // Gate the height animation behind a post-mount flag so a tool that mounts
   // already-open doesn't play the open animation on first paint.
@@ -187,7 +187,7 @@ function ToolDisclosure({
                 <TabsList className="h-6 p-[2px]">
                   <TabsTrigger
                     value="rich"
-                    aria-label="Rich view"
+                    aria-label="Visualização formatada"
                     tabIndex={open ? 0 : -1}
                     className="h-[18px] px-1 [&_svg:not([class*='size-'])]:size-3"
                   >
@@ -195,7 +195,7 @@ function ToolDisclosure({
                   </TabsTrigger>
                   <TabsTrigger
                     value="raw"
-                    aria-label="Raw view"
+                    aria-label="Visualização bruta"
                     tabIndex={open ? 0 : -1}
                     className="h-[18px] px-1 [&_svg:not([class*='size-'])]:size-3"
                   >
@@ -226,10 +226,10 @@ function ToolDisclosure({
           ) : (
             <>
               {part.input !== undefined ? (
-                <ToolPanel label="Parameters" body={part.input} />
+                <ToolPanel label="Parâmetros" body={part.input} />
               ) : null}
               {part.output !== undefined ? (
-                <ToolPanel label="Result" body={part.output} />
+                <ToolPanel label="Resultado" body={part.output} />
               ) : null}
             </>
           )}

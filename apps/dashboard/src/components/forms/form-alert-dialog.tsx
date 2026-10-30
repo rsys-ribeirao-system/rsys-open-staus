@@ -40,13 +40,13 @@ export function FormAlertDialog({
       startTransition(async () => {
         const promise = submitAction();
         toast.promise(promise, {
-          loading: "Deleting...",
-          success: "Deleted",
+          loading: "Excluindo...",
+          success: "Excluído",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to delete";
+            return "Falha ao excluir";
           },
         });
         await promise;
@@ -62,22 +62,23 @@ export function FormAlertDialog({
       <AlertDialogTrigger asChild>
         {children ?? (
           <Button variant="destructive" size="sm">
-            Delete
+            Excluir
           </Button>
         )}
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            Are you sure about delete `{confirmationValue}`?
+            Tem certeza de que deseja excluir `{confirmationValue}`?
           </AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete the item.
+            Esta ação não pode ser desfeita. O item será excluído
+            permanentemente.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <form id="form-alert-dialog" className="space-y-1.5">
           <p className="text-muted-foreground text-sm">
-            Type{" "}
+            Digite{" "}
             <Button
               variant="secondary"
               size="sm"
@@ -88,12 +89,12 @@ export function FormAlertDialog({
               {confirmationValue}
               {isCopied ? <Check /> : <Copy />}
             </Button>{" "}
-            to confirm
+            para confirmar
           </p>
           <Input value={value} onChange={(e) => setValue(e.target.value)} />
         </form>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Cancelar</AlertDialogCancel>
           <AlertDialogAction
             className="bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 text-white shadow-xs"
             disabled={value !== confirmationValue || isPending}
@@ -104,7 +105,7 @@ export function FormAlertDialog({
               handleDelete();
             }}
           >
-            {isPending ? "Deleting..." : "Delete"}
+            {isPending ? "Excluindo..." : "Delete"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
