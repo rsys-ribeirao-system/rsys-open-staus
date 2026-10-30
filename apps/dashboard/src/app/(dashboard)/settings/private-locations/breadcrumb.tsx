@@ -10,11 +10,11 @@ export function Breadcrumb() {
       items={[
         {
           type: "link",
-          label: "Settings",
+          label: "Configurações",
           icon: Settings,
           href: "/settings/general",
         },
-        { type: "page", label: "Private Locations", icon: Globe },
+        { type: "page", label: "Localizações privadas", icon: Globe },
       ]}
     />
   );

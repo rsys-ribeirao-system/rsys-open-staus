@@ -58,15 +58,18 @@ export function Client() {
   return (
     <SectionGroup>
       <SectionHeader>
-        <SectionTitle>Notifications</SectionTitle>
+        <SectionTitle>Notificações</SectionTitle>
         <SectionDescription>
-          Define your notifications to receive alerts when downtime occurs.
+          Configure suas notificações para receber alertas quando houver
+          indisponibilidade.
         </SectionDescription>
       </SectionHeader>
       <Section>
         {notifications.length === 0 ? (
           <EmptyStateContainer>
-            <EmptyStateTitle>No notifier found</EmptyStateTitle>
+            <EmptyStateTitle>
+              Nenhum canal de notificação encontrado
+            </EmptyStateTitle>
           </EmptyStateContainer>
         ) : (
           <DataTable columns={columns} data={notifications} />
@@ -74,15 +77,16 @@ export function Client() {
       </Section>
       <Section>
         <SectionHeader>
-          <SectionTitle>Create a new notifier</SectionTitle>
+          <SectionTitle>Criar um novo canal de notificação</SectionTitle>
           <SectionDescription>
-            Define your notifications to receive alerts when downtime occurs.{" "}
+            Configure suas notificações para receber alertas quando houver
+            indisponibilidade.{" "}
             <Link
               href="https://www.openstatus.dev/docs/reference/notification/"
               rel="noreferrer"
               target="_blank"
             >
-              Learn more
+              Saiba mais
             </Link>
             .
           </SectionDescription>
@@ -122,7 +126,7 @@ export function Client() {
                         <ActionCardTitle>{config[key].label}</ActionCardTitle>
                       </div>
                       <ActionCardDescription>
-                        Send notifications to {config[key].label}
+                        Enviar notificações para {config[key].label}
                       </ActionCardDescription>
                     </ActionCardHeader>
                   </ActionCard>
@@ -155,7 +159,7 @@ export function Client() {
                       <ActionCardTitle>{config[key].label}</ActionCardTitle>
                     </div>
                     <ActionCardDescription>
-                      Send notifications to {config[key].label}
+                      Enviar notificações para {config[key].label}
                     </ActionCardDescription>
                   </ActionCardHeader>
                 </ActionCard>
@@ -167,12 +171,12 @@ export function Client() {
               <div className="flex items-center gap-2">
                 <div className="border-border bg-muted flex size-6 items-center justify-center rounded-md border" />
                 <ActionCardTitle className="text-muted-foreground">
-                  Your Notifier
+                  Seu canal de notificação
                 </ActionCardTitle>
               </div>
               <ActionCardDescription>
-                Missing a channel?{" "}
-                <Link href="mailto:ping@openstatus.dev">Contact us</Link>
+                Sentiu falta de algum canal?{" "}
+                <Link href="mailto:ping@openstatus.dev">Fale conosco</Link>
               </ActionCardDescription>
             </ActionCardHeader>
           </ActionCard>

@@ -93,7 +93,7 @@ export default function Page() {
           <SectionHeader>
             <SectionTitle>Single Sign-On</SectionTitle>
             <SectionDescription>
-              Only workspace owners can manage SSO.
+              Apenas proprietários do workspace podem gerenciar o SSO.
             </SectionDescription>
           </SectionHeader>
         </Section>
@@ -126,8 +126,8 @@ export default function Page() {
         <SectionHeader>
           <SectionTitle>Single Sign-On</SectionTitle>
           <SectionDescription>
-            Let your team sign in through your identity provider with SAML.
-            GitHub and Google stay available for everyone.
+            Permita que sua equipe entre pelo seu provedor de identidade com
+            SAML. GitHub e Google continuam disponíveis para todos.
           </SectionDescription>
         </SectionHeader>
 
@@ -135,21 +135,21 @@ export default function Page() {
           <FormCardGroup>
             <FormCard>
               <FormCardHeader>
-                <FormCardTitle>Available as an add-on</FormCardTitle>
+                <FormCardTitle>Disponível como complemento</FormCardTitle>
                 <FormCardDescription>
                   {ssoAddon
-                    ? "SAML single sign-on is a paid add-on for your plan."
-                    : "SAML single sign-on is a paid add-on, available on any paid plan."}
+                    ? "O single sign-on SAML é um complemento pago para o seu plano."
+                    : "O single sign-on SAML é um complemento pago, disponível em qualquer plano pago."}
                 </FormCardDescription>
               </FormCardHeader>
               <FormCardFooter>
                 <FormCardFooterInfo>
                   {ssoAddon
-                    ? "Add it to connect Okta, Entra ID, or any SAML provider."
-                    : "Upgrade to connect Okta, Entra ID, or any SAML provider."}
+                    ? "Adicione-o para conectar Okta, Entra ID ou qualquer provedor SAML."
+                    : "Faça upgrade para conectar Okta, Entra ID ou qualquer provedor SAML."}
                 </FormCardFooterInfo>
                 <Button size="sm" onClick={() => setUpgradeOpen(true)}>
-                  {ssoAddon ? "Add SSO" : "Upgrade"}
+                  {ssoAddon ? "Adicionar SSO" : "Fazer upgrade"}
                 </Button>
               </FormCardFooter>
             </FormCard>
@@ -161,19 +161,18 @@ export default function Page() {
                 <FormCardTitle>
                   <span className="flex items-center gap-2">
                     <StepBadge done={configured} index={1} />
-                    Enable SSO
+                    Ativar SSO
                   </span>
                 </FormCardTitle>
                 <FormCardDescription>
-                  Creates the organization that holds your connection and
-                  domains.
+                  Cria a organização que contém sua conexão e seus domínios.
                 </FormCardDescription>
               </FormCardHeader>
               <FormCardFooter>
                 <FormCardFooterInfo>
                   {configured
-                    ? `Organization ${sso?.organizationId}`
-                    : "Not enabled yet."}
+                    ? `Organização ${sso?.organizationId}`
+                    : "Ainda não ativado."}
                 </FormCardFooterInfo>
                 {configured ? (
                   <Button
@@ -181,7 +180,7 @@ export default function Page() {
                     variant="outline"
                     onClick={() => setDisableOpen(true)}
                   >
-                    Disable SSO
+                    Desativar SSO
                   </Button>
                 ) : (
                   <Button
@@ -189,7 +188,7 @@ export default function Page() {
                     disabled={enableMutation.isPending || isPending}
                     onClick={() => enableMutation.mutate(undefined)}
                   >
-                    Enable SSO
+                    Ativar SSO
                   </Button>
                 )}
               </FormCardFooter>
@@ -200,12 +199,12 @@ export default function Page() {
                 <FormCardTitle>
                   <span className="flex items-center gap-2">
                     <StepBadge done={hasVerifiedDomain} index={2} />
-                    Verify your domain
+                    Verifique seu domínio
                   </span>
                 </FormCardTitle>
                 <FormCardDescription>
-                  Users can only sign in with SSO from a domain you have
-                  verified.
+                  Os usuários só podem entrar com SSO a partir de um domínio que
+                  você verificou.
                 </FormCardDescription>
               </FormCardHeader>
               <FormCardContent>
@@ -220,21 +219,21 @@ export default function Page() {
                         <Badge
                           variant={entry.verifiedAt ? "default" : "outline"}
                         >
-                          {entry.verifiedAt ? "Verified" : "Pending"}
+                          {entry.verifiedAt ? "Verificado" : "Pendente"}
                         </Badge>
                       </li>
                     ))}
                   </ul>
                 ) : (
                   <p className="text-muted-foreground text-sm">
-                    No domains yet. Until one is verified, SSO sign-in will be
-                    refused.
+                    Nenhum domínio ainda. Até que um seja verificado, o login
+                    com SSO será recusado.
                   </p>
                 )}
               </FormCardContent>
               <FormCardFooter>
                 <FormCardFooterInfo>
-                  Domain ownership is proven with a DNS record.
+                  A propriedade do domínio é comprovada com um registro DNS.
                 </FormCardFooterInfo>
                 <Button
                   size="sm"
@@ -242,7 +241,7 @@ export default function Page() {
                   disabled={!configured || portalLinkMutation.isPending}
                   onClick={() => openPortal("domain_verification")}
                 >
-                  Verify a domain
+                  Verificar um domínio
                 </Button>
               </FormCardFooter>
             </FormCard>
@@ -252,11 +251,12 @@ export default function Page() {
                 <FormCardTitle>
                   <span className="flex items-center gap-2">
                     <StepBadge done={connectionActive} index={3} />
-                    Connect your identity provider
+                    Conecte seu provedor de identidade
                   </span>
                 </FormCardTitle>
                 <FormCardDescription>
-                  Configure SAML in Okta, Entra ID, or any supported provider.
+                  Configure o SAML no Okta, Entra ID ou em qualquer provedor
+                  compatível.
                 </FormCardDescription>
               </FormCardHeader>
               <FormCardFooter>
@@ -264,10 +264,10 @@ export default function Page() {
                   {sso?.ready ? (
                     <span className="flex items-center gap-1">
                       <Shield className="size-3" />
-                      Ready — your team can sign in with SSO.
+                      Pronto — sua equipe pode entrar com SSO.
                     </span>
                   ) : (
-                    `Connection: ${sso?.connection ?? "none"}`
+                    `Conexão: ${sso?.connection ?? "nenhuma"}`
                   )}
                 </FormCardFooterInfo>
                 <Button
@@ -276,7 +276,7 @@ export default function Page() {
                   disabled={!configured || portalLinkMutation.isPending}
                   onClick={() => openPortal("sso")}
                 >
-                  Configure in WorkOS
+                  Configurar no WorkOS
                 </Button>
               </FormCardFooter>
             </FormCard>
@@ -293,24 +293,24 @@ export default function Page() {
       <Dialog open={disableOpen} onOpenChange={setDisableOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Disable SSO?</DialogTitle>
+            <DialogTitle>Desativar SSO?</DialogTitle>
             <DialogDescription>
-              Your team will no longer be able to sign in through your identity
-              provider. Nobody loses access to the workspace — existing members
-              keep signing in with GitHub or Google, and your provider
-              configuration is kept so you can re-enable it later.
+              Sua equipe não poderá mais entrar pelo seu provedor de identidade.
+              Ninguém perde acesso ao workspace — os membros existentes
+              continuam entrando com GitHub ou Google, e a configuração do
+              provedor é mantida para que você possa reativá-la depois.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button variant="outline" onClick={() => setDisableOpen(false)}>
-              Cancel
+              Cancelar
             </Button>
             <Button
               variant="destructive"
               disabled={disableMutation.isPending}
               onClick={() => disableMutation.mutate(undefined)}
             >
-              Disable SSO
+              Desativar SSO
             </Button>
           </DialogFooter>
         </DialogContent>

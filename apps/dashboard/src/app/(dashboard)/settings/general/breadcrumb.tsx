@@ -10,11 +10,11 @@ export function Breadcrumb() {
       items={[
         {
           type: "link",
-          label: "Settings",
+          label: "Configurações",
           icon: Settings,
           href: "/settings/general",
         },
-        { type: "page", label: "General", icon: Settings },
+        { type: "page", label: "Geral", icon: Settings },
       ]}
     />
   );

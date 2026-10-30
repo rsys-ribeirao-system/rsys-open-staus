@@ -39,7 +39,7 @@ export function NavActions() {
           className="data-[disabled=true]:opacity-50"
           onClick={() => setOpenDialog(true)}
         >
-          Create Private Location
+          Criar localização privada
         </Button>
       ) : (
         <FormSheetPrivateLocation
@@ -55,7 +55,7 @@ export function NavActions() {
             });
           }}
         >
-          <Button size="sm">Create Private Location</Button>
+          <Button size="sm">Criar localização privada</Button>
         </FormSheetPrivateLocation>
       )}
       <UpgradeDialog

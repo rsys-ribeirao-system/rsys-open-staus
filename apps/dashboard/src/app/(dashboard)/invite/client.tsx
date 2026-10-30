@@ -59,9 +59,9 @@ export function Client() {
     <SectionGroup>
       <Section>
         <SectionHeader>
-          <SectionTitle>Invitation</SectionTitle>
+          <SectionTitle>Convite</SectionTitle>
           <SectionDescription>
-            You&apos;ve been invited to join the workspace{" "}
+            Você foi convidado para entrar no workspace{" "}
             {invitation.workspace.name ? (
               <span className="font-semibold">{invitation.workspace.name}</span>
             ) : (
@@ -79,13 +79,13 @@ export function Client() {
                   id: invitation.id,
                 });
                 toast.promise(promise, {
-                  loading: "Accepting invitation...",
-                  success: "Invitation accepted",
+                  loading: "Aceitando convite...",
+                  success: "Convite aceito",
                   error: (error) => {
                     if (isTRPCClientError(error)) {
                       return error.message;
                     }
-                    return "Failed to accept invitation";
+                    return "Falha ao aceitar o convite";
                   },
                 });
                 await promise;
@@ -95,7 +95,7 @@ export function Client() {
             });
           }}
         >
-          {isPending ? "Accepting..." : "Accept Invitation"}
+          {isPending ? "Aceitando..." : "Aceitar convite"}
         </Button>
       </Section>
     </SectionGroup>
