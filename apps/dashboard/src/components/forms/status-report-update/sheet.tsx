@@ -51,9 +51,9 @@ export function FormSheetStatusReportUpdate({
       ) : null}
       <FormSheetContent className="sm:max-w-lg">
         <FormSheetHeader>
-          <FormSheetTitle>Status Report Update</FormSheetTitle>
+          <FormSheetTitle>Atualização do relatório</FormSheetTitle>
           <FormSheetDescription>
-            Configure and update the status of your report.
+            Configure e atualize o status do seu relatório.
           </FormSheetDescription>
         </FormSheetHeader>
         <FormCardGroup className="overflow-y-scroll">
@@ -73,7 +73,7 @@ export function FormSheetStatusReportUpdate({
         </FormCardGroup>
         <FormSheetFooter>
           <Button type="submit" form="status-report-update-form">
-            Submit
+            Enviar
           </Button>
         </FormSheetFooter>
       </FormSheetContent>

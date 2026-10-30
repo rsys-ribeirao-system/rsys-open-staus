@@ -39,9 +39,9 @@ export function FormSheetStatusReport({
       <FormSheetTrigger asChild>{children}</FormSheetTrigger>
       <FormSheetContent className="sm:max-w-lg">
         <FormSheetHeader>
-          <FormSheetTitle>Status Report</FormSheetTitle>
+          <FormSheetTitle>Relatório de status</FormSheetTitle>
           <FormSheetDescription>
-            Configure and update the status of your report.
+            Configure e atualize o status do seu relatório.
           </FormSheetDescription>
         </FormSheetHeader>
         {warning ? (
@@ -66,7 +66,7 @@ export function FormSheetStatusReport({
         </FormCardGroup>
         <FormSheetFooter>
           <Button type="submit" form="status-report-form">
-            Submit
+            Enviar
           </Button>
         </FormSheetFooter>
       </FormSheetContent>

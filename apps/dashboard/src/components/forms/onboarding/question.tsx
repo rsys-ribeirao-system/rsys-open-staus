@@ -40,20 +40,20 @@ import { z } from "zod";
 import { Note } from "@/components/common/note";
 
 const sources = [
-  { id: "search-engine", title: "Search Engine", icon: SearchIcon },
+  { id: "search-engine", title: "Buscador", icon: SearchIcon },
   { id: "github", title: "GitHub", icon: GitHubIcon },
   { id: "linkedin", title: "LinkedIn", icon: LinkedInIcon },
   { id: "bluesky", title: "Bluesky", icon: BlueskyIcon },
   { id: "twitter", title: "X / Twitter", icon: XIcon },
-  { id: "ai-chat", title: "AI Chat", icon: AI },
-  { id: "recommendation", title: "Friend / Colleague", icon: Team },
+  { id: "ai-chat", title: "Chat de IA", icon: AI },
+  { id: "recommendation", title: "Amigo / colega", icon: Team },
   { id: "youtube", title: "YouTube", icon: YouTubeIcon },
-  { id: "blog", title: "Blog / Article", icon: Blog },
-  { id: "other", title: "Other", icon: More },
+  { id: "blog", title: "Blog / artigo", icon: Blog },
+  { id: "other", title: "Outro", icon: More },
 ] as const;
 
 const schema = z.object({
-  source: z.string().min(1, "Please select an option"),
+  source: z.string().min(1, "Selecione uma opção"),
   other: z.string().optional(),
 });
 
@@ -85,9 +85,9 @@ export function QuestionForm({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Submitting...",
-          success: () => "Submitted",
-          error: "Failed to submit",
+          loading: "Enviando...",
+          success: () => "Enviado",
+          error: "Falha ao enviar",
         });
         await promise;
       } catch (error) {
@@ -100,7 +100,7 @@ export function QuestionForm({
     return (
       <Note color="success">
         <Check />
-        Thank you for your feedback!
+        Obrigado pelo seu feedback!
       </Note>
     );
   }
@@ -168,7 +168,7 @@ export function QuestionForm({
                 <FormItem>
                   <FormControl>
                     <Input
-                      placeholder="Please specify..."
+                      placeholder="Especifique..."
                       className="w-full"
                       {...field}
                     />
@@ -183,7 +183,7 @@ export function QuestionForm({
             disabled={isPending || !watchSource}
             variant="default"
           >
-            {isPending ? "Submitting..." : "Submit"}
+            {isPending ? "Enviando..." : "Enviar"}
           </Button>
         </div>
       </form>

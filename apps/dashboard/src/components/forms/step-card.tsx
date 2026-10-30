@@ -71,7 +71,7 @@ export function StepCardIndicator({
     <div
       data-slot="step-card-indicator"
       role="img"
-      aria-label={`Step ${step}`}
+      aria-label={`Etapa ${step}`}
       className={cn(
         "flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-medium",
         "group-data-[variant=completed]:bg-success group-data-[variant=completed]:text-white",
