@@ -2,14 +2,14 @@ import { endOfDay, isSameDay, startOfDay } from "date-fns";
 
 export function formatMilliseconds(ms: number) {
   if (ms > 1000) {
-    return `${Intl.NumberFormat("en-US", {
+    return `${Intl.NumberFormat("pt-BR", {
       style: "unit",
       unit: "second",
       maximumFractionDigits: 2,
     }).format(ms / 1000)}`;
   }
 
-  return `${Intl.NumberFormat("en-US", {
+  return `${Intl.NumberFormat("pt-BR", {
     style: "unit",
     unit: "millisecond",
   }).format(ms)}`;
@@ -17,7 +17,7 @@ export function formatMilliseconds(ms: number) {
 
 export function formatPercentage(value: number, fractionDigits = 2) {
   if (Number.isNaN(value)) return "100%";
-  return `${Intl.NumberFormat("en-US", {
+  return `${Intl.NumberFormat("pt-BR", {
     style: "percent",
     minimumFractionDigits: fractionDigits,
     maximumFractionDigits: fractionDigits,
@@ -25,13 +25,13 @@ export function formatPercentage(value: number, fractionDigits = 2) {
 }
 
 export function formatNumber(value: number) {
-  return `${Intl.NumberFormat("en-US").format(value)}`;
+  return `${Intl.NumberFormat("pt-BR").format(value)}`;
 }
 
 // TODO: think of supporting custom formats
 
 export function formatDate(date: Date) {
-  return date.toLocaleDateString("en-US", {
+  return date.toLocaleDateString("pt-BR", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -39,7 +39,7 @@ export function formatDate(date: Date) {
 }
 
 export function formatDateTime(date: Date) {
-  return date.toLocaleDateString("en-US", {
+  return date.toLocaleDateString("pt-BR", {
     month: "long",
     day: "numeric",
     hour: "numeric",
@@ -48,7 +48,7 @@ export function formatDateTime(date: Date) {
 }
 
 export function formatTime(date: Date) {
-  return date.toLocaleTimeString("en-US", {
+  return date.toLocaleTimeString("pt-BR", {
     hour: "numeric",
     minute: "numeric",
   });
@@ -73,14 +73,14 @@ export function formatDateRange(from?: Date, to?: Date) {
   }
 
   if (to) {
-    return `Until ${formatDateTime(to)}`;
+    return `Até ${formatDateTime(to)}`;
   }
 
   if (from) {
-    return `Since ${formatDateTime(from)}`;
+    return `Desde ${formatDateTime(from)}`;
   }
 
-  return "All time";
+  return "Todo o período";
 }
 
 export function formatDistanceToNowShort(date: Date): string {

@@ -14,7 +14,7 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body>
         {/* This is the default Next.js error component but it doesn't allow omitting the statusCode property yet. */}
         {/* oxlint-disable-next-line typescript/no-explicit-any */}
