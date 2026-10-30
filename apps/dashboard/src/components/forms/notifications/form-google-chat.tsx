@@ -29,9 +29,9 @@ import { CheckboxTree } from "@/components/ui/checkbox-tree";
 import { useTRPC } from "@/lib/trpc/client";
 
 const schema = z.object({
-  name: z.string().trim().min(1, "Name is required"),
+  name: z.string().trim().min(1, "O nome é obrigatório"),
   provider: z.literal("google-chat"),
-  data: z.url("Please enter a valid URL"),
+  data: z.url("Informe uma URL válida"),
   monitors: z.array(z.number()),
 });
 
@@ -77,13 +77,13 @@ export function FormGoogleChat({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -99,7 +99,7 @@ export function FormGoogleChat({
     // Validate webhook URL field before sending test
     const data = form.getValues("data");
     if (!data || data.trim() === "") {
-      toast.error("Please enter a webhook URL before sending test");
+      toast.error("Informe uma URL de webhook antes de enviar o teste");
       return;
     }
 
@@ -113,13 +113,13 @@ export function FormGoogleChat({
           },
         });
         toast.promise(promise, {
-          loading: "Sending test...",
-          success: "Test sent",
+          loading: "Enviando teste...",
+          success: "Teste enviado",
           error: (error) => {
             if (error instanceof Error) {
               return error.message;
             }
-            return "Failed to send test";
+            return "Falha ao enviar teste";
           },
         });
         await promise;
@@ -142,13 +142,13 @@ export function FormGoogleChat({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Nome</FormLabel>
                 <FormControl>
-                  <Input placeholder="My Notifier" {...field} />
+                  <Input placeholder="Meu canal de notificação" {...field} />
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter a descriptive name for your notifier.
+                  Informe um nome descritivo para o seu canal de notificação.
                 </FormDescription>
               </FormItem>
             )}
@@ -164,7 +164,8 @@ export function FormGoogleChat({
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter the phone number to send notifications to.
+                  Informe a URL do webhook do Google Chat que receberá as
+                  notificações.
                 </FormDescription>
               </FormItem>
             )}
@@ -176,7 +177,7 @@ export function FormGoogleChat({
               type="button"
               onClick={testAction}
             >
-              Send Test
+              Enviar teste
             </Button>
           </div>
         </FormCardContent>
@@ -187,16 +188,16 @@ export function FormGoogleChat({
             name="monitors"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Monitors</FormLabel>
+                <FormLabel>Monitores</FormLabel>
                 <FormDescription>
-                  Select the monitors you want to notify.
+                  Selecione os monitores que você deseja notificar.
                 </FormDescription>
                 <FormControl>
                   <CheckboxTree
                     items={[
                       {
                         id: -1,
-                        label: "Select all",
+                        label: "Selecionar todos",
                         children: monitors.map((m) => ({
                           id: m.id,
                           label: m.name,

@@ -35,12 +35,12 @@ import { CheckboxTree } from "@/components/ui/checkbox-tree";
 import { useTRPC } from "@/lib/trpc/client";
 
 const schema = z.object({
-  name: z.string().trim().min(1, "Name is required"),
+  name: z.string().trim().min(1, "O nome é obrigatório"),
   provider: z.literal("opsgenie"),
   data: z.object({
-    apiKey: z.string().trim().min(1, "API key is required"),
+    apiKey: z.string().trim().min(1, "A chave de API é obrigatória"),
     region: z.enum(["us", "eu"], {
-      message: "Please select a region",
+      message: "Selecione uma região",
     }),
   }),
   monitors: z.array(z.number()),
@@ -85,13 +85,13 @@ export function FormOpsGenie({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -107,13 +107,13 @@ export function FormOpsGenie({
     // Validate API key field before sending test
     const data = form.getValues("data");
     if (!data.apiKey || data.apiKey.trim() === "") {
-      toast.error("Please enter an API key before sending test");
+      toast.error("Informe uma chave de API antes de enviar o teste");
       return;
     }
 
     // Validate region field before sending test
     if (!data.region) {
-      toast.error("Please select a region before sending test");
+      toast.error("Selecione uma região antes de enviar o teste");
       return;
     }
 
@@ -127,13 +127,13 @@ export function FormOpsGenie({
           },
         });
         toast.promise(promise, {
-          loading: "Sending test...",
-          success: "Test sent",
+          loading: "Enviando teste...",
+          success: "Teste enviado",
           error: (error) => {
             if (error instanceof Error) {
               return error.message;
             }
-            return "Failed to send test";
+            return "Falha ao enviar teste";
           },
         });
         await promise;
@@ -156,13 +156,13 @@ export function FormOpsGenie({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Nome</FormLabel>
                 <FormControl>
-                  <Input placeholder="My Notifier" {...field} />
+                  <Input placeholder="Meu canal de notificação" {...field} />
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter a descriptive name for your notifier.
+                  Informe um nome descritivo para o seu canal de notificação.
                 </FormDescription>
               </FormItem>
             )}
@@ -172,12 +172,14 @@ export function FormOpsGenie({
             name="data.apiKey"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>API Key</FormLabel>
+                <FormLabel>Chave de API</FormLabel>
                 <FormControl>
-                  <Input placeholder="your-api-key" {...field} />
+                  <Input placeholder="sua-chave-de-api" {...field} />
                 </FormControl>
                 <FormMessage />
-                <FormDescription>Enter your OpsGenie API key.</FormDescription>
+                <FormDescription>
+                  Informe sua chave de API do OpsGenie.
+                </FormDescription>
               </FormItem>
             )}
           />
@@ -186,14 +188,14 @@ export function FormOpsGenie({
             name="data.region"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Region</FormLabel>
+                <FormLabel>Região</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a region" />
+                      <SelectValue placeholder="Selecione uma região" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -202,7 +204,9 @@ export function FormOpsGenie({
                   </SelectContent>
                 </Select>
                 <FormMessage />
-                <FormDescription>Select your OpsGenie region.</FormDescription>
+                <FormDescription>
+                  Selecione sua região do OpsGenie.
+                </FormDescription>
               </FormItem>
             )}
           />
@@ -213,7 +217,7 @@ export function FormOpsGenie({
               type="button"
               onClick={testAction}
             >
-              Send Test
+              Enviar teste
             </Button>
           </div>
         </FormCardContent>
@@ -224,16 +228,16 @@ export function FormOpsGenie({
             name="monitors"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Monitors</FormLabel>
+                <FormLabel>Monitores</FormLabel>
                 <FormDescription>
-                  Select the monitors you want to notify.
+                  Selecione os monitores que você deseja notificar.
                 </FormDescription>
                 <FormControl>
                   <CheckboxTree
                     items={[
                       {
                         id: -1,
-                        label: "Select all",
+                        label: "Selecionar todos",
                         children: monitors.map((m) => ({
                           id: m.id,
                           label: m.name,

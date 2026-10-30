@@ -33,17 +33,17 @@ export function FormApiKey() {
   return (
     <FormCard id="api-keys">
       <FormCardHeader>
-        <FormCardTitle>API Keys</FormCardTitle>
+        <FormCardTitle>Chaves de API</FormCardTitle>
         <FormCardDescription>
-          Create and manage your API keys.
+          Crie e gerencie suas chaves de API.
         </FormCardDescription>
       </FormCardHeader>
       <FormCardContent>
         {apiKeys.length === 0 ? (
           <EmptyStateContainer>
-            <EmptyStateTitle>No API keys</EmptyStateTitle>
+            <EmptyStateTitle>Nenhuma chave de API</EmptyStateTitle>
             <EmptyStateDescription>
-              Access your data via API.
+              Acesse seus dados via API.
             </EmptyStateDescription>
           </EmptyStateContainer>
         ) : (
@@ -52,18 +52,18 @@ export function FormApiKey() {
       </FormCardContent>
       <FormCardFooter>
         <FormCardFooterInfo>
-          Trigger monitors via CLI, CI/CD or create your own status page.{" "}
+          Dispare monitores via CLI, CI/CD ou crie sua própria página de status.{" "}
           <Link
             href="https://api.openstatus.dev/v1"
             rel="noreferrer"
             target="_blank"
           >
-            Learn more
+            Saiba mais
           </Link>
           .
         </FormCardFooterInfo>
         <CreateApiKeyDialog>
-          <Button size="sm">Create</Button>
+          <Button size="sm">Criar</Button>
         </CreateApiKeyDialog>
       </FormCardFooter>
     </FormCard>

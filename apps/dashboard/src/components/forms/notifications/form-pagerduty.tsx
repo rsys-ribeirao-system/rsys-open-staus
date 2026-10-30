@@ -31,7 +31,7 @@ import { CheckboxTree } from "@/components/ui/checkbox-tree";
 import { useTRPC } from "@/lib/trpc/client";
 
 const schema = z.object({
-  name: z.string().trim().min(1, "Name is required"),
+  name: z.string().trim().min(1, "O nome é obrigatório"),
   provider: z.literal("pagerduty"),
   data: z.string().trim().min(1, "PagerDuty configuration is required"),
   monitors: z.array(z.number()),
@@ -80,7 +80,7 @@ export function FormPagerDuty({
       if (data.success) {
         form.setValue("data", JSON.stringify(data.data));
       } else {
-        toast.error("Invalid PagerDuty configuration");
+        toast.error("Configuração do PagerDuty inválida");
       }
     }
   }, [searchConfig, form]);
@@ -92,13 +92,13 @@ export function FormPagerDuty({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -117,7 +117,7 @@ export function FormPagerDuty({
         const data = form.getValues("data");
         if (!data || data.trim() === "") {
           toast.error(
-            "Please enter PagerDuty configuration before sending test",
+            "Informe a configuração do PagerDuty antes de enviar o teste",
           );
           return;
         }
@@ -128,13 +128,13 @@ export function FormPagerDuty({
           },
         });
         toast.promise(promise, {
-          loading: "Sending test...",
-          success: "Test sent",
+          loading: "Enviando teste...",
+          success: "Teste enviado",
           error: (error) => {
             if (error instanceof Error) {
               return error.message;
             }
-            return "Failed to send test";
+            return "Falha ao enviar teste";
           },
         });
         await promise;
@@ -157,13 +157,13 @@ export function FormPagerDuty({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Nome</FormLabel>
                 <FormControl>
-                  <Input placeholder="My Notifier" {...field} />
+                  <Input placeholder="Meu canal de notificação" {...field} />
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter a descriptive name for your notifier.
+                  Informe um nome descritivo para o seu canal de notificação.
                 </FormDescription>
               </FormItem>
             )}
@@ -173,13 +173,13 @@ export function FormPagerDuty({
             name="data"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Config</FormLabel>
+                <FormLabel>Configuração</FormLabel>
                 <FormControl>
                   <Input placeholder="..." disabled {...field} />
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  The PagerDuty configuration that is being used.
+                  A configuração do PagerDuty em uso.
                 </FormDescription>
               </FormItem>
             )}
@@ -191,7 +191,7 @@ export function FormPagerDuty({
               type="button"
               onClick={testAction}
             >
-              Send Test
+              Enviar teste
             </Button>
           </div>
         </FormCardContent>
@@ -202,16 +202,16 @@ export function FormPagerDuty({
             name="monitors"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Monitors</FormLabel>
+                <FormLabel>Monitores</FormLabel>
                 <FormDescription>
-                  Select the monitors you want to notify.
+                  Selecione os monitores que você deseja notificar.
                 </FormDescription>
                 <FormControl>
                   <CheckboxTree
                     items={[
                       {
                         id: -1,
-                        label: "Select all",
+                        label: "Selecionar todos",
                         children: monitors.map((m) => ({
                           id: m.id,
                           label: m.name,

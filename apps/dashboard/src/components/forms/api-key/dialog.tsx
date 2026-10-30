@@ -59,9 +59,9 @@ export function CreateApiKeyDialog({
           }}
         >
           <DialogHeader>
-            <DialogTitle>Create API Key</DialogTitle>
+            <DialogTitle>Criar chave de API</DialogTitle>
             <DialogDescription>
-              Create a new API key to access your workspace data.
+              Crie uma nova chave de API para acessar os dados do seu workspace.
             </DialogDescription>
           </DialogHeader>
           <ApiKeyForm
@@ -78,7 +78,7 @@ export function CreateApiKeyDialog({
                 scopes: [values.scope],
               });
               if (!data) {
-                throw new Error("Failed to create API key");
+                throw new Error("Falha ao criar chave de API");
               }
               queryClient.invalidateQueries({
                 queryKey: trpc.apiKey.list.queryKey(),
@@ -97,10 +97,10 @@ export function CreateApiKeyDialog({
           }}
         >
           <AlertDialogHeader>
-            <AlertDialogTitle>API Key Created</AlertDialogTitle>
+            <AlertDialogTitle>Chave de API criada</AlertDialogTitle>
             <AlertDialogDescription>
-              Ensure you copy your API key before closing this dialog. You will
-              not see it again.
+              Copie sua chave de API antes de fechar esta janela. Você não
+              poderá vê-la novamente.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <div>
@@ -109,7 +109,8 @@ export function CreateApiKeyDialog({
               size="sm"
               onClick={() => {
                 copy(result?.token || "", {
-                  successMessage: "Copied API key to clipboard",
+                  successMessage:
+                    "Chave de API copiada para a área de transferência",
                 });
               }}
             >
@@ -122,7 +123,7 @@ export function CreateApiKeyDialog({
             </Button>
           </div>
           <AlertDialogFooter>
-            <Button onClick={() => setResult(null)}>Done</Button>
+            <Button onClick={() => setResult(null)}>Concluído</Button>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
