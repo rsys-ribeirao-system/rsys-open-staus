@@ -99,7 +99,7 @@ const schema = z.object({
       order: z.number(),
       name: z.string(),
       monitors: z.array(monitorSchema).min(1, {
-        error: "At least one monitor is required",
+        error: "Pelo menos um monitor é obrigatório",
       }),
     }),
   ),
@@ -318,13 +318,13 @@ export function FormMonitors({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -339,9 +339,9 @@ export function FormMonitors({
       <form onSubmit={form.handleSubmit(submitAction)} {...props}>
         <FormCard>
           <FormCardHeader>
-            <FormCardTitle>Monitors</FormCardTitle>
+            <FormCardTitle>Monitores</FormCardTitle>
             <FormCardDescription>
-              Connect your monitors to your status page.
+              Conecte seus monitores à sua página de status.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -350,7 +350,7 @@ export function FormMonitors({
               name="monitors"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel className="sr-only">Monitors</FormLabel>
+                  <FormLabel className="sr-only">Monitores</FormLabel>
                   <Popover>
                     <PopoverTrigger asChild>
                       <FormControl>
@@ -364,7 +364,7 @@ export function FormMonitors({
                         >
                           {field.value.length > 0
                             ? `${field.value.length} monitors selected`
-                            : "Select monitors"}
+                            : "Selecione monitores"}
                           <Expand className="opacity-50" />
                         </Button>
                       </FormControl>
@@ -372,11 +372,13 @@ export function FormMonitors({
                     <PopoverContent className="p-0">
                       <Command>
                         <CommandInput
-                          placeholder="Search monitors..."
+                          placeholder="Buscar monitores..."
                           className="h-9"
                         />
                         <CommandList>
-                          <CommandEmpty>No monitors found.</CommandEmpty>
+                          <CommandEmpty>
+                            Nenhum monitor encontrado.
+                          </CommandEmpty>
                           <CommandGroup>
                             {monitors.map((monitor) => {
                               const isInGroup = monitorsInGroups.has(
@@ -425,7 +427,9 @@ export function FormMonitors({
                       </Command>
                     </PopoverContent>
                   </Popover>
-                  <FormDescription>Choose monitors to display.</FormDescription>
+                  <FormDescription>
+                    Escolha os monitores a exibir.
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -442,13 +446,14 @@ export function FormMonitors({
                         disabled={legacy}
                       >
                         <Add />
-                        Add Group
+                        Adicionar grupo
                       </Button>
                     </span>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>
-                      Enable the new redesign to add groups to your status page.
+                      Ative o novo redesign para adicionar grupos à sua página
+                      de status.
                     </p>
                   </TooltipContent>
                 </Tooltip>
@@ -461,7 +466,7 @@ export function FormMonitors({
                 onClick={handleAddGroup}
               >
                 <Add />
-                Add Group
+                Adicionar grupo
               </Button>
             )}
           </FormCardContent>
@@ -505,17 +510,18 @@ export function FormMonitors({
                 </SortableContent>
               ) : (
                 <EmptyStateContainer>
-                  <EmptyStateTitle>No monitors selected</EmptyStateTitle>
+                  <EmptyStateTitle>Nenhum monitor selecionado</EmptyStateTitle>
                 </EmptyStateContainer>
               )}
             </Sortable>
           </FormCardContent>
           <FormCardFooter>
             <FormCardFooterInfo>
-              Learn more about monitor <Link href="#">display options</Link>.
+              Saiba mais sobre as <Link href="#">opções de exibição</Link> do
+              monitor.
             </FormCardFooterInfo>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Submitting..." : "Submit"}
+              {isPending ? "Enviando..." : "Enviar"}
             </Button>
           </FormCardFooter>
         </FormCard>
@@ -560,7 +566,7 @@ function MonitorRow({ monitor, className, ...props }: MonitorRowProps) {
           {monitor.url}
         </div>
         <div className="text-muted-foreground self-center truncate text-sm">
-          {monitor.active ? "Active" : "Inactive"}
+          {monitor.active ? "Ativo" : "Inativo"}
         </div>
       </div>
     </SortableItem>
@@ -647,10 +653,10 @@ function MonitorGroup({
             name={`groups.${groupIndex}.name` as const}
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel className="sr-only">Group name</FormLabel>
+                <FormLabel className="sr-only">Nome do grupo</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Group Name"
+                    placeholder="Nome do grupo"
                     className="bg-background w-full"
                     {...field}
                   />
@@ -666,7 +672,7 @@ function MonitorGroup({
           name={`groups.${groupIndex}.monitors` as const}
           render={({ field }) => (
             <FormItem className="flex w-full flex-col">
-              <FormLabel className="sr-only">Monitors</FormLabel>
+              <FormLabel className="sr-only">Monitores</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -680,7 +686,7 @@ function MonitorGroup({
                     >
                       {Array.isArray(field.value) && field.value.length > 0
                         ? `${field.value.length} monitors selected`
-                        : "Select monitors"}
+                        : "Selecione monitores"}
                       <Expand className="opacity-50" />
                     </Button>
                   </FormControl>
@@ -688,11 +694,11 @@ function MonitorGroup({
                 <PopoverContent className="p-0">
                   <Command>
                     <CommandInput
-                      placeholder="Search monitors..."
+                      placeholder="Buscar monitores..."
                       className="h-9"
                     />
                     <CommandList>
-                      <CommandEmpty>No monitors found.</CommandEmpty>
+                      <CommandEmpty>Nenhum monitor encontrado.</CommandEmpty>
                       <CommandGroup>
                         {monitors.map((monitor) => {
                           const current = field.value ?? [];
@@ -763,18 +769,19 @@ function MonitorGroup({
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                <AlertDialogTitle>Tem certeza?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  You are about to delete this group and all its monitors.
+                  Você está prestes a excluir este grupo e todos os seus
+                  monitores.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogCancel>Cancelar</AlertDialogCancel>
                 <AlertDialogAction
                   className="bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 text-white shadow-xs"
                   onClick={() => onDeleteGroup(group.id)}
                 >
-                  Delete
+                  Excluir
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -803,7 +810,7 @@ function MonitorGroup({
             </SortableContent>
           ) : (
             <EmptyStateContainer>
-              <EmptyStateTitle>No monitors selected</EmptyStateTitle>
+              <EmptyStateTitle>Nenhum monitor selecionado</EmptyStateTitle>
             </EmptyStateContainer>
           )}
         </Sortable>

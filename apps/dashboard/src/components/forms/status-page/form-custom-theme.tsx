@@ -91,13 +91,13 @@ export function FormCustomTheme({
           },
         });
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -119,10 +119,10 @@ export function FormCustomTheme({
         <FormCard>
           {locked ? <FormCardUpgrade /> : null}
           <FormCardHeader>
-            <FormCardTitle>Custom Theme</FormCardTitle>
+            <FormCardTitle>Tema personalizado</FormCardTitle>
             <FormCardDescription>
-              Override the selected theme&apos;s CSS variables with your own
-              values for light and dark mode.
+              Substitua as variáveis CSS do tema selecionado pelos seus próprios
+              valores para os modos claro e escuro.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardSeparator />
@@ -130,8 +130,8 @@ export function FormCustomTheme({
             <Tabs value={mode} onValueChange={(v) => setMode(v as ThemeMode)}>
               <div className="flex items-center justify-between">
                 <TabsList>
-                  <TabsTrigger value="light">Light</TabsTrigger>
-                  <TabsTrigger value="dark">Dark</TabsTrigger>
+                  <TabsTrigger value="light">Claro</TabsTrigger>
+                  <TabsTrigger value="dark">Escuro</TabsTrigger>
                 </TabsList>
                 <Button
                   type="button"
@@ -144,7 +144,7 @@ export function FormCustomTheme({
                   ) : (
                     <Expand className="size-4" />
                   )}
-                  {extended ? "Collapse" : "Extend"}
+                  {extended ? "Recolher" : "Expandir"}
                 </Button>
               </div>
               {MODES.map((m) => (
@@ -170,11 +170,11 @@ export function FormCustomTheme({
                           />
                         </FormControl>
                         <FormDescription>
-                          One declaration per line, e.g.{" "}
+                          Uma declaração por linha, ex.:{" "}
                           <code className="[font-variant-ligatures:none]">
                             --primary: oklch(0.6 0.1 250);
                           </code>
-                          . Leave empty to fall back to the theme.
+                          . Deixe vazio para usar o tema.
                         </FormDescription>
                         <FormMessage />
                       </FormItem>
@@ -186,13 +186,13 @@ export function FormCustomTheme({
           </FormCardContent>
           <FormCardFooter>
             <FormCardFooterInfo>
-              Check out the supported CSS variables in the{" "}
+              Confira as variáveis CSS suportadas na{" "}
               <Link
                 href="https://www.openstatus.dev/docs/reference/status-page#custom-theme"
                 rel="noreferrer"
                 target="_blank"
               >
-                Status Page Reference
+                Referência da página de status
               </Link>
               .
             </FormCardFooterInfo>
@@ -200,12 +200,12 @@ export function FormCustomTheme({
               <Button type="button" asChild>
                 <Link href="/settings/billing">
                   <Lock className="size-4" />
-                  Upgrade
+                  Fazer upgrade
                 </Link>
               </Button>
             ) : (
               <Button type="submit" disabled={isPending}>
-                {isPending ? "Submitting..." : "Submit"}
+                {isPending ? "Enviando..." : "Enviar"}
               </Button>
             )}
           </FormCardFooter>

@@ -59,10 +59,10 @@ export function TelegramConnectionFlow({
     >
       <TabsList className="w-full">
         <TabsTrigger value="qr" className="flex-1">
-          Connect with QR
+          Conectar com QR
         </TabsTrigger>
         <TabsTrigger value="manual" className="flex-1">
-          Enter ChatID manually
+          Informar ChatID manualmente
         </TabsTrigger>
       </TabsList>
       <TabsContent value="qr">

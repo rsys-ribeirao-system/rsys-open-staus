@@ -32,18 +32,18 @@ export default function TelegramQRCode({
       ) : null}
       <div className="text-muted-foreground flex items-center gap-2 text-sm">
         {isLoading ? (
-          "Generating QR Code..."
+          "Gerando QR code..."
         ) : isPolling ? (
           <>
             <Loading className="h-3 w-3 animate-spin" />
             {chatType === "private"
-              ? "Retrieving your account..."
-              : "Waiting for group connection..."}
+              ? "Buscando sua conta..."
+              : "Aguardando conexão do grupo..."}
           </>
         ) : chatType === "private" ? (
-          "Scan the QR code to connect your account"
+          "Escaneie o QR code para conectar sua conta"
         ) : (
-          "Scan to add the bot to your group"
+          "Escaneie para adicionar o bot ao seu grupo"
         )}
       </div>
     </div>

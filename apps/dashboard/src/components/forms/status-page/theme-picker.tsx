@@ -81,7 +81,7 @@ export function ThemePickerPopover({
             <div className="flex min-w-0 flex-1 items-center gap-2">
               <ThemeSwatches themeKey={value} />
               <span className="truncate">
-                {THEMES[value]?.name ?? "Select a theme"}
+                {THEMES[value]?.name ?? "Selecione um tema"}
               </span>
             </div>
             <Expand className="shrink-0 opacity-50" />
@@ -90,10 +90,10 @@ export function ThemePickerPopover({
       </PopoverTrigger>
       <PopoverContent className="p-0" align="start">
         <Command>
-          <CommandInput placeholder="Search themes..." className="h-9" />
+          <CommandInput placeholder="Buscar temas..." className="h-9" />
           <CommandList>
             <CommandEmpty>
-              No themes found. Browse{" "}
+              Nenhum tema encontrado. Veja{" "}
               <Link href="https://themes.openstatus.dev">
                 themes.openstatus.dev
               </Link>

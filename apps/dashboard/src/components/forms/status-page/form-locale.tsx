@@ -56,7 +56,7 @@ const schema = z
       return true;
     },
     {
-      message: "Default locale must be included in the enabled locales",
+      message: "O idioma padrão deve estar entre os idiomas habilitados",
       path: ["defaultLocale"],
     },
   );
@@ -91,13 +91,13 @@ export function FormLocale({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -140,9 +140,9 @@ export function FormLocale({
         <FormCard>
           {locked ? <FormCardUpgrade /> : null}
           <FormCardHeader>
-            <FormCardTitle>Locales</FormCardTitle>
+            <FormCardTitle>Idiomas</FormCardTitle>
             <FormCardDescription>
-              Configure which languages are available on your status page.
+              Configure quais idiomas ficam disponíveis na sua página de status.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardSeparator />
@@ -152,14 +152,14 @@ export function FormLocale({
               name="defaultLocale"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Default Locale</FormLabel>
+                  <FormLabel>Idioma padrão</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Select default locale" />
+                        <SelectValue placeholder="Selecione o idioma padrão" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -171,7 +171,7 @@ export function FormLocale({
                     </SelectContent>
                   </Select>
                   <FormDescription>
-                    The fallback language for your status page.
+                    O idioma de fallback da sua página de status.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -190,7 +190,7 @@ export function FormLocale({
                   htmlFor="multi-locale"
                   className="text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  Enable locale switcher
+                  Ativar seletor de idioma
                 </label>
               </div>
               {isMultiLocaleEnabled ? (
@@ -221,10 +221,10 @@ export function FormLocale({
           </FormCardContent>
           <FormCardFooter>
             <FormCardFooterInfo>
-              When the locale switcher is enabled, visitors can choose their
-              preferred language. Learn more about{" "}
+              Com o seletor de idioma ativado, os visitantes podem escolher o
+              idioma de preferência. Saiba mais sobre{" "}
               <Link href="https://www.openstatus.dev/docs/reference/status-page/#translations-i18n">
-                Translations
+                Traduções
               </Link>
               .
             </FormCardFooterInfo>
@@ -232,12 +232,12 @@ export function FormLocale({
               <Button type="button" asChild>
                 <Link href="/settings/billing">
                   <Lock className="size-4" />
-                  Upgrade
+                  Fazer upgrade
                 </Link>
               </Button>
             ) : (
               <Button type="submit" disabled={isPending}>
-                {isPending ? "Submitting..." : "Submit"}
+                {isPending ? "Enviando..." : "Enviar"}
               </Button>
             )}
           </FormCardFooter>
