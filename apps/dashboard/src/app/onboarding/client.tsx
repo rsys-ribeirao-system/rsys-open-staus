@@ -32,8 +32,8 @@ export type OnboardingPage = Pick<
 
 const STEPS = [
   { id: "1", label: "Monitor", icon: <Monitor /> },
-  { id: "2", label: "Status page", icon: <StatusPage /> },
-  { id: "3", label: "Launch", icon: <Launch /> },
+  { id: "2", label: "Página de status", icon: <StatusPage /> },
+  { id: "3", label: "Lançamento", icon: <Launch /> },
 ] as const;
 
 // Fallback URL used when the user's email domain is generic (gmail, yahoo, …).

@@ -96,8 +96,8 @@ export function FormStatusPageUpdate() {
       <Note color="info">
         <Info />
         <p>
-          Looking to connect monitors to your status page? Configure them on the{" "}
-          <Link href={`/status-pages/${id}/components`}>Components</Link> page.
+          Quer conectar monitores à sua página de status? Configure-os na página{" "}
+          <Link href={`/status-pages/${id}/components`}>Componentes</Link>.
         </p>
       </Note>
       <FormGeneral

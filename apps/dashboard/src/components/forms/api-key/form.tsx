@@ -34,7 +34,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 export const schema = z.object({
-  name: z.string().min(1, "Name is required"),
+  name: z.string().min(1, "O nome é obrigatório"),
   description: z.string().optional(),
   expiresAt: z.string().optional(),
   // Single-value radio. The wire format on the create-key API is
@@ -89,13 +89,13 @@ export function ApiKeyForm({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Creating...",
+          loading: "Criando...",
           success: () => "Created",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to create API key";
+            return "Falha ao criar chave de API";
           },
         });
         await promise;
@@ -115,9 +115,9 @@ export function ApiKeyForm({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Nome</FormLabel>
                 <FormControl>
-                  <Input placeholder="Production API" {...field} />
+                  <Input placeholder="API de produção" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -128,10 +128,10 @@ export function ApiKeyForm({
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>Descrição</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Used for production deployment"
+                    placeholder="Usada no deploy de produção"
                     rows={3}
                     {...field}
                   />
@@ -145,7 +145,7 @@ export function ApiKeyForm({
             name="scope"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Access</FormLabel>
+                <FormLabel>Acesso</FormLabel>
                 <FormControl>
                   <RadioGroup
                     value={field.value}
@@ -155,9 +155,12 @@ export function ApiKeyForm({
                     <label className="hover:bg-muted/40 has-[[aria-checked=true]]:border-primary flex cursor-pointer items-start gap-3 rounded-md border p-3">
                       <RadioGroupItem value="read" className="mt-1" />
                       <div className="space-y-0.5">
-                        <div className="text-sm font-medium">Read-only</div>
+                        <div className="text-sm font-medium">
+                          Somente leitura
+                        </div>
                         <div className="text-muted-foreground text-xs">
-                          Recommended for AI agents and read-only dashboards.
+                          Recomendado para agentes de IA e painéis somente
+                          leitura.
                         </div>
                       </div>
                     </label>
@@ -165,10 +168,10 @@ export function ApiKeyForm({
                       <RadioGroupItem value="write" className="mt-1" />
                       <div className="space-y-0.5">
                         <div className="text-sm font-medium">
-                          Read &amp; write
+                          Leitura e escrita
                         </div>
                         <div className="text-muted-foreground text-xs">
-                          Required for CI/CD and automation.
+                          Necessário para CI/CD e automação.
                         </div>
                       </div>
                     </label>
@@ -183,7 +186,7 @@ export function ApiKeyForm({
             name="expiresAt"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel>Expiration Date</FormLabel>
+                <FormLabel>Data de expiração</FormLabel>
                 <Popover modal>
                   <FormControl>
                     <PopoverTrigger asChild>
@@ -202,7 +205,7 @@ export function ApiKeyForm({
                             "PPP",
                           )
                         ) : (
-                          <span>Pick a date</span>
+                          <span>Escolha uma data</span>
                         )}
                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </Button>
@@ -238,7 +241,7 @@ export function ApiKeyForm({
                   </PopoverContent>
                 </Popover>
                 <FormDescription>
-                  Leave empty if the key should never expire.
+                  Deixe em branco se a chave nunca deve expirar.
                 </FormDescription>
                 <FormMessage />
               </FormItem>
@@ -247,10 +250,10 @@ export function ApiKeyForm({
         </div>
         <DialogFooter className="mt-4">
           <Button variant="outline" type="button" onClick={onCancel}>
-            Cancel
+            Cancelar
           </Button>
           <Button type="submit" disabled={isPending || submitDisabled}>
-            Create
+            Criar
           </Button>
         </DialogFooter>
       </form>

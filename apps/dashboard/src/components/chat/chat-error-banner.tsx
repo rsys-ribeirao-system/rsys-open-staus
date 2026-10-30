@@ -10,8 +10,8 @@ export function ChatErrorBanner({ error }: Props) {
   return (
     <div className="bg-destructive/10 text-destructive border-t px-4 py-2 text-sm">
       {isRateLimit
-        ? `You've hit the daily message cap${formatResetSuffix(message)}.`
-        : "The assistant encountered an error. Try again."}
+        ? `Você atingiu o limite diário de mensagens${formatResetSuffix(message)}.`
+        : "O assistente encontrou um erro. Tente novamente."}
     </div>
   );
 }

@@ -58,9 +58,9 @@ export function FormFollowRedirect({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
-          error: "Failed to save",
+          loading: "Salvando...",
+          success: "Salvo",
+          error: "Falha ao salvar",
         });
         await promise;
       } catch (error) {
@@ -74,9 +74,9 @@ export function FormFollowRedirect({
       <form onSubmit={form.handleSubmit(submitAction)} {...props}>
         <FormCard>
           <FormCardHeader>
-            <FormCardTitle>Follow Redirects</FormCardTitle>
+            <FormCardTitle>Seguir redirecionamentos</FormCardTitle>
             <FormCardDescription>
-              Configure whether to follow redirects.
+              Configure se os redirecionamentos devem ser seguidos.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent className="grid gap-4">
@@ -86,12 +86,12 @@ export function FormFollowRedirect({
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between">
                   <div className="space-y-0.5">
-                    <FormLabel>Follow redirects</FormLabel>
+                    <FormLabel>Seguir redirecionamentos</FormLabel>
                     <FormDescription>
-                      When enabled, the monitor will automatically follow HTTP
-                      redirects (3xx status codes) to their final destination.
-                      This is useful when monitoring URLs that may redirect to
-                      other locations.
+                      Quando ativado, o monitor seguirá automaticamente os
+                      redirecionamentos HTTP (códigos de status 3xx) até o
+                      destino final. Isso é útil ao monitorar URLs que podem
+                      redirecionar para outros locais.
                     </FormDescription>
                   </div>
                   <FormControl>
@@ -106,18 +106,18 @@ export function FormFollowRedirect({
           </FormCardContent>
           <FormCardFooter>
             <FormCardFooterInfo>
-              Learn more about{" "}
+              Saiba mais sobre{" "}
               <Link
                 href="https://www.openstatus.dev/docs/monitoring/customization/follow-redirects/"
                 rel="noreferrer"
                 target="_blank"
               >
-                follow redirects
+                seguir redirecionamentos
               </Link>
               .
             </FormCardFooterInfo>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Submitting..." : "Submit"}
+              {isPending ? "Enviando..." : "Enviar"}
             </Button>
           </FormCardFooter>
         </FormCard>

@@ -70,13 +70,13 @@ export function QuickActions({
       if (!deleteAction?.submitAction) return;
       const promise = deleteAction.submitAction();
       toast.promise(promise, {
-        loading: "Deleting...",
-        success: "Deleted",
+        loading: "Excluindo...",
+        success: "Excluído",
         error: (error) => {
           if (isTRPCClientError(error)) {
             return error.message;
           }
-          return "Failed to delete";
+          return "Falha ao excluir";
         },
       });
       try {
@@ -112,7 +112,7 @@ export function QuickActions({
         </DropdownMenuTrigger>
         <DropdownMenuContent align={align} side={side} className="w-36">
           <DropdownMenuLabel className="sr-only">
-            Quick Actions
+            Ações rápidas
           </DropdownMenuLabel>
           {actions
             ?.filter((item) => item.id !== "delete")
@@ -138,7 +138,7 @@ export function QuickActions({
               <AlertDialogTrigger asChild>
                 <DropdownMenuItem variant="destructive">
                   <Delete className="text-muted-foreground" />
-                  Delete
+                  Excluir
                 </DropdownMenuItem>
               </AlertDialogTrigger>
             </>
@@ -155,18 +155,18 @@ export function QuickActions({
         <AlertDialogHeader>
           <AlertDialogTitle>
             {deleteAction?.confirmationValue
-              ? `Are you sure about deleting \`${deleteAction.confirmationValue}\`?`
-              : "Are you sure?"}
+              ? `Tem certeza de que deseja excluir \`${deleteAction.confirmationValue}\`?`
+              : "Tem certeza?"}
           </AlertDialogTitle>
           <AlertDialogDescription>
             {deleteAction?.description ??
-              "This action cannot be undone. This will permanently remove the entry from the database."}
+              "Esta ação não pode ser desfeita. O registro será removido permanentemente do banco de dados."}
           </AlertDialogDescription>
         </AlertDialogHeader>
         {deleteAction?.confirmationValue ? (
           <form id="form-alert-dialog" className="space-y-1.5">
             <p className="text-muted-foreground text-sm">
-              Type{" "}
+              Digite{" "}
               <Button
                 variant="secondary"
                 size="sm"
@@ -181,14 +181,14 @@ export function QuickActions({
                 {deleteAction.confirmationValue}
                 {isCopied ? <Check /> : <Copy />}
               </Button>{" "}
-              to confirm
+              para confirmar
             </p>
             <Input value={value} onChange={(e) => setValue(e.target.value)} />
           </form>
         ) : null}
         <AlertDialogFooter>
           <AlertDialogCancel onClick={(e) => e.stopPropagation()}>
-            Cancel
+            Cancelar
           </AlertDialogCancel>
           <AlertDialogAction
             className="bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 text-white shadow-xs"
@@ -204,7 +204,7 @@ export function QuickActions({
               handleDelete();
             }}
           >
-            {isPending ? "Deleting..." : "Delete"}
+            {isPending ? "Excluindo..." : "Excluir"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

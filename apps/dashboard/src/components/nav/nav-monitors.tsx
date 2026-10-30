@@ -89,7 +89,7 @@ export function NavMonitors() {
         style={{ paddingRight: 4 }}
       >
         <div className="flex items-center gap-1">
-          <span>Monitors</span>
+          <span>Monitores</span>
           {isLoading ? (
             <Skeleton className="h-4 w-5 shrink-0" />
           ) : (
@@ -117,7 +117,7 @@ export function NavMonitors() {
                 </SidebarMenuAction>
               </TooltipTrigger>
               <TooltipContent side="right" align="center">
-                {limitReached ? "Upgrade" : "Create Monitor"}
+                {limitReached ? "Fazer upgrade" : "Criar monitor"}
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -137,14 +137,14 @@ export function NavMonitors() {
               edit: () => router.push(`/monitors/${item.id}/edit`),
               "copy-id": () => {
                 navigator.clipboard.writeText(item.id.toString());
-                toast.success("Monitor ID copied to clipboard");
+                toast.success("ID do monitor copiado");
               },
               "copy-curl": isHttp
                 ? async () => {
                     const copied = await copy(buildCurlCommand(item), {
                       withToast: "cURL command copied to clipboard",
                     });
-                    if (!copied) toast.error("Failed to copy cURL command");
+                    if (!copied) toast.error("Falha ao copiar comando cURL");
                   }
                 : undefined,
               clone: () => {
@@ -152,13 +152,13 @@ export function NavMonitors() {
                   id: item.id,
                 });
                 toast.promise(promise, {
-                  loading: "Cloning monitor...",
-                  success: "Monitor cloned",
+                  loading: "Clonando monitor...",
+                  success: "Monitor clonado",
                   error: (error) => {
                     if (isTRPCClientError(error)) {
                       return error.message;
                     }
-                    return "Failed to clone monitor";
+                    return "Falha ao clonar monitor";
                   },
                 });
               },
@@ -224,7 +224,7 @@ export function NavMonitors() {
         ) : (
           <SidebarMenuItem>
             <SidebarMenuButton disabled>
-              <span>No monitors found</span>
+              <span>Nenhum monitor encontrado</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         )}

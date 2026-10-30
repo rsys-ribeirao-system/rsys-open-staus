@@ -27,7 +27,9 @@ export default function Page() {
       <Section>
         <SectionHeader>
           <SectionTitle>{statusPage.title}</SectionTitle>
-          <SectionDescription>Customize your status page.</SectionDescription>
+          <SectionDescription>
+            Personalize sua página de status.
+          </SectionDescription>
         </SectionHeader>
         <FormStatusPageUpdate />
       </Section>

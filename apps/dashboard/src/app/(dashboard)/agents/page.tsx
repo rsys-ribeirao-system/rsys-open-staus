@@ -19,37 +19,39 @@ import { useTRPC } from "@/lib/trpc/client";
 const messages = [
   {
     message:
-      "@openstatus create an incident for the payment API – high latency detected.",
-    description: "Open a new incident and notify your subscribers.",
+      "@openstatus crie um incidente para a API de pagamentos – alta latência detectada.",
+    description: "Abra um novo incidente e notifique seus assinantes.",
   },
   {
     message:
-      "@openstatus keep the status page updated that we are still monitoring the issue.",
-    description: "Update the status report to 'Monitoring'.",
-  },
-  {
-    message: "@openstatus resolve the ongoing incident on my API status page.",
-    description: "Close an active incident and update your subscribers.",
+      "@openstatus mantenha a página de status atualizada informando que ainda estamos monitorando o problema.",
+    description: "Atualize o relatório de status para 'Monitorando'.",
   },
   {
     message:
-      "@openstatus schedule a maintenance window for my database next Friday from 2–3 PM.",
-    description: "Plan downtime so subscribers are informed in advance.",
+      "@openstatus resolva o incidente em andamento na página de status da minha API.",
+    description: "Encerre um incidente ativo e atualize seus assinantes.",
+  },
+  {
+    message:
+      "@openstatus agende uma janela de manutenção para meu banco de dados na próxima sexta, das 14h às 15h.",
+    description:
+      "Planeje a indisponibilidade para que os assinantes sejam avisados com antecedência.",
   },
 ];
 
 const commands = [
   {
     command: "/openstatus subscribe <status-page-url>",
-    description: "Subscribe this channel to a status page.",
+    description: "Inscreve este canal em uma página de status.",
   },
   {
     command: "/openstatus unsubscribe <status-page-url>",
-    description: "Unsubscribe this channel from a status page.",
+    description: "Cancela a inscrição deste canal em uma página de status.",
   },
   {
     command: "/openstatus subscriptions",
-    description: "Show this channel's subscriptions.",
+    description: "Mostra as inscrições deste canal.",
   },
 ];
 
@@ -60,15 +62,16 @@ export default function Page() {
     <SectionGroup>
       <Section>
         <SectionHeader>
-          <SectionTitle>Slack agent</SectionTitle>
+          <SectionTitle>Agente do Slack</SectionTitle>
           <SectionDescription>
-            Use our Slack agent to manage your status pages and incidents.{" "}
+            Use nosso agente do Slack para gerenciar suas páginas de status e
+            incidentes.{" "}
             <Link
               href="https://www.openstatus.dev/blog/openstatus-slack-agent"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Read more
+              Saiba mais
             </Link>
             .
           </SectionDescription>
@@ -76,24 +79,26 @@ export default function Page() {
         {!workspace?.limits["slack-agent"] ? (
           <Note color="info" size="sm">
             <Info />
-            This is a paid feature. Upgrade your plan to use the Slack agent.
+            Este é um recurso pago. Faça upgrade do seu plano para usar o agente
+            do Slack.
           </Note>
         ) : null}
         <Button size="sm" asChild>
-          <Link href="/settings/integrations">Install the Slack agent</Link>
+          <Link href="/settings/integrations">Instalar o agente do Slack</Link>
         </Button>
       </Section>
       <Section>
         <SectionHeader>
-          <SectionTitle>Messages</SectionTitle>
+          <SectionTitle>Mensagens</SectionTitle>
           <SectionDescription>
-            Here are some examples of messages that the Slack agent can handle.
+            Veja alguns exemplos de mensagens que o agente do Slack consegue
+            tratar.
           </SectionDescription>
         </SectionHeader>
         <Note size="sm">
           <Info />
-          Mention the @openstatus bot to trigger a response. This keeps threads
-          clean without the bot spamming your team.
+          Mencione o bot @openstatus para acionar uma resposta. Isso mantém as
+          threads limpas sem o bot enviar spam para sua equipe.
         </Note>
         <ul className="flex flex-col gap-2">
           {messages.map((message, i) => (
@@ -108,16 +113,17 @@ export default function Page() {
       </Section>
       <Section>
         <SectionHeader>
-          <SectionTitle>Commands</SectionTitle>
+          <SectionTitle>Comandos</SectionTitle>
           <SectionDescription>
-            Slash commands to manage which status pages notify this channel.
-            Also useful for Slack Connect channels shared with customers.
+            Comandos de barra para gerenciar quais páginas de status notificam
+            este canal. Também úteis para canais do Slack Connect compartilhados
+            com clientes.
           </SectionDescription>
         </SectionHeader>
         <Note size="sm">
           <Info />
-          Subscribing also joins the bot to the channel. Private channels
-          require /invite @openstatus first.
+          Inscrever-se também adiciona o bot ao canal. Canais privados exigem
+          /invite @openstatus primeiro.
         </Note>
         <ul className="flex flex-col gap-2">
           {commands.map((command, i) => (

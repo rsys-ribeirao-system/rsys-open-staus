@@ -61,17 +61,18 @@ export default function Page() {
     <SectionGroup>
       <NoteDismissible cookieKey="note_overview_slack_agent">
         <Agent />
-        Use our Slack agent to manage your status pages and incidents.
+        Use nosso agente do Slack para gerenciar suas páginas de status e
+        incidentes.
         <NoteButton variant="default" asChild>
-          <Link href="/agents">Learn more</Link>
+          <Link href="/agents">Saiba mais</Link>
         </NoteButton>
       </NoteDismissible>
       <Section>
         <SectionHeaderRow>
           <SectionHeader>
-            <SectionTitle>Overview</SectionTitle>
+            <SectionTitle>Visão geral</SectionTitle>
             <SectionDescription>
-              Welcome to your OpenStatus dashboard.
+              Boas-vindas ao seu painel do OpenStatus.
             </SectionDescription>
           </SectionHeader>
           {pages.length > 0 ? <CreateEventButtonGroup /> : null}
@@ -107,9 +108,9 @@ export default function Page() {
       </Section>
       <Section>
         <SectionHeader>
-          <SectionTitle>Needs Attention</SectionTitle>
+          <SectionTitle>Requer atenção</SectionTitle>
           <SectionDescription>
-            Everything currently unresolved, newest first.
+            Tudo o que ainda não foi resolvido, mais recentes primeiro.
           </SectionDescription>
         </SectionHeader>
         {needsAttention.length > 0 ? (
@@ -122,7 +123,7 @@ export default function Page() {
         ) : (
           <EmptyStateContainer>
             <EmptyStateTitle>
-              All clear - nothing needs your attention
+              Tudo certo - nada precisa da sua atenção
             </EmptyStateTitle>
           </EmptyStateContainer>
         )}
@@ -130,9 +131,9 @@ export default function Page() {
       {upcomingMaintenances.length > 0 ? (
         <Section>
           <SectionHeader>
-            <SectionTitle>Scheduled Maintenance</SectionTitle>
+            <SectionTitle>Manutenções agendadas</SectionTitle>
             <SectionDescription>
-              Upcoming and in-progress maintenance windows.
+              Janelas de manutenção futuras e em andamento.
             </SectionDescription>
           </SectionHeader>
           <DataTable
@@ -145,10 +146,10 @@ export default function Page() {
       ) : null}
       <Section>
         <SectionHeader>
-          <SectionTitle>Recent Activity</SectionTitle>
+          <SectionTitle>Atividade recente</SectionTitle>
           <SectionDescription>
-            Resolved incidents and reports, and completed maintenances from the
-            last 7 days.
+            Incidentes e relatórios resolvidos e manutenções concluídas nos
+            últimos 7 dias.
           </SectionDescription>
         </SectionHeader>
         {recentlyResolved.length > 0 ? (
@@ -160,7 +161,7 @@ export default function Page() {
           />
         ) : (
           <EmptyStateContainer>
-            <EmptyStateTitle>No recent activity</EmptyStateTitle>
+            <EmptyStateTitle>Nenhuma atividade recente</EmptyStateTitle>
           </EmptyStateContainer>
         )}
       </Section>

@@ -103,21 +103,21 @@ export function FormSheetStatusReportCreate({
       ) : null}
       <FormSheetContent className="sm:max-w-lg">
         <FormSheetHeader>
-          <FormSheetTitle>Status Report</FormSheetTitle>
+          <FormSheetTitle>Relatório de status</FormSheetTitle>
           <FormSheetDescription>
-            Configure and update the status of your report.
+            Configure e atualize o status do seu relatório.
           </FormSheetDescription>
         </FormSheetHeader>
         {defaultPageId === undefined && pages && pages.length > 1 ? (
           <>
             <div className="grid gap-1.5 px-4 py-4">
-              <Label htmlFor="status-page-select">Status Page</Label>
+              <Label htmlFor="status-page-select">Página de status</Label>
               <Select
                 value={pageId !== undefined ? String(pageId) : undefined}
                 onValueChange={(value) => setSelectedPageId(Number(value))}
               >
                 <SelectTrigger id="status-page-select" size="sm">
-                  <SelectValue placeholder="Select a status page" />
+                  <SelectValue placeholder="Selecione uma página de status" />
                 </SelectTrigger>
                 <SelectContent>
                   {pages.map((p) => (
@@ -134,9 +134,10 @@ export function FormSheetStatusReportCreate({
         {unresolvedReport ? (
           <>
             <p className="text-warning px-4 py-4 text-sm">
-              An unresolved report already exists for this page. Consider adding
-              a <span className="font-semibold">status report update</span>{" "}
-              instead.
+              Já existe um relatório não resolvido para esta página. Considere
+              adicionar uma{" "}
+              <span className="font-semibold">atualização do relatório</span> em
+              vez disso.
             </p>
             <Separator />
           </>
@@ -188,8 +189,8 @@ export function FormSheetStatusReportCreate({
           <EmptyStateContainer className="m-4">
             <EmptyStateTitle>
               {pages?.length === 0
-                ? "No status pages found"
-                : "Select a status page"}
+                ? "Nenhuma página de status encontrada"
+                : "Selecione uma página de status"}
             </EmptyStateTitle>
           </EmptyStateContainer>
         )}
@@ -199,7 +200,7 @@ export function FormSheetStatusReportCreate({
             form="status-report-form"
             disabled={pageId === undefined}
           >
-            Submit
+            Enviar
           </Button>
         </FormSheetFooter>
       </FormSheetContent>

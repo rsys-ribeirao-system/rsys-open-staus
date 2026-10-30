@@ -348,7 +348,7 @@ export function StatusCalendar({
             variant="ghost"
             size="icon"
             className="size-7"
-            aria-label="Previous month"
+            aria-label="Mês anterior"
             onClick={() => setMonth(subMonths(currentMonth, 1))}
           >
             <ChevronLeft className="size-4" />
@@ -360,7 +360,7 @@ export function StatusCalendar({
             variant="ghost"
             size="icon"
             className="size-7"
-            aria-label="Next month"
+            aria-label="Próximo mês"
             disabled={!canGoNext}
             onClick={() => setMonth(addMonths(currentMonth, 1))}
           >

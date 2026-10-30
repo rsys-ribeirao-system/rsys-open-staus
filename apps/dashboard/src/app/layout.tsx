@@ -11,6 +11,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeProvider } from "@/components/theme-provider";
+import "@/lib/date-locale";
 import { auth } from "@/lib/auth";
 import { TRPCReactProvider } from "@/lib/trpc/client";
 
@@ -83,7 +84,7 @@ export default async function RootLayout({
   const session = await auth();
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={cn(
           geistSans.variable,

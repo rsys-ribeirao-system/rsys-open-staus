@@ -42,9 +42,10 @@ export default function Page() {
       <Note color="info">
         <Info />
         <p>
-          Incidents are automatically created when a monitor detects downtime.
-          To communicate updates to your users, use Status Reports on a{" "}
-          <Link href="/status-pages">Status Page</Link>.
+          Incidentes são criados automaticamente quando um monitor detecta
+          indisponibilidade. Para comunicar atualizações aos seus usuários, use
+          relatórios de status em uma{" "}
+          <Link href="/status-pages">página de status</Link>.
         </p>
       </Note>
       <Section>
@@ -62,9 +63,9 @@ export default function Page() {
         </SectionHeader>
         {incidents.length === 0 ? (
           <EmptyStateContainer>
-            <EmptyStateTitle>No incidents</EmptyStateTitle>
+            <EmptyStateTitle>Nenhum incidente</EmptyStateTitle>
             <EmptyStateDescription>
-              No incidents found for this monitor.
+              Nenhum incidente encontrado para este monitor.
             </EmptyStateDescription>
           </EmptyStateContainer>
         ) : (

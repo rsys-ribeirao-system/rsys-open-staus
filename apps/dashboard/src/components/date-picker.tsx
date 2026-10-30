@@ -29,7 +29,7 @@ export function DatePicker({ range, onSelect, presets }: DatePickerProps) {
           <div className="h-full">
             <div className="flex flex-col px-1">
               <div className="text-muted-foreground px-3 py-1 text-xs font-medium">
-                Presets
+                Predefinições
               </div>
               {presets.map((preset) => {
                 const isSelected =
@@ -78,12 +78,12 @@ export function DatePicker({ range, onSelect, presets }: DatePickerProps) {
       <Separator />
       <div className="flex flex-col gap-2 px-3 py-4">
         <p className="text-muted-foreground px-1 text-xs font-medium">
-          Custom Range
+          Intervalo personalizado
         </p>
         <div className="grid gap-2 sm:grid-cols-2">
           <div className="grid w-full gap-1.5">
             <Label htmlFor="from" className="px-1">
-              Start
+              Início
             </Label>
             <Input
               type="datetime-local"
@@ -103,7 +103,7 @@ export function DatePicker({ range, onSelect, presets }: DatePickerProps) {
           </div>
           <div className="grid w-full gap-1.5">
             <Label htmlFor="to" className="px-1">
-              End
+              Fim
             </Label>
             <Input
               type="datetime-local"

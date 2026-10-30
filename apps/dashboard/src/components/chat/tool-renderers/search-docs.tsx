@@ -12,10 +12,10 @@ export function searchDocsTable(
 ): ResultTableData<"title" | "snippet"> {
   const results = output?.results ?? [];
   return {
-    empty: output?.error ?? "No results.",
+    empty: output?.error ?? "Nenhum resultado.",
     columns: [
-      { key: "title", header: "Title" },
-      { key: "snippet", header: "Snippet" },
+      { key: "title", header: "Título" },
+      { key: "snippet", header: "Trecho" },
     ],
     rows: results.map((r) => ({
       id: r.path,

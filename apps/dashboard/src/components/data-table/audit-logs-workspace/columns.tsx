@@ -48,7 +48,7 @@ function getActionBadgeColor(action: string) {
 export const columns: ColumnDef<AuditLog>[] = [
   {
     accessorKey: "user",
-    header: "Actor",
+    header: "Autor",
     enableSorting: false,
     enableHiding: false,
     cell: ({ row }) => {
@@ -135,7 +135,7 @@ export const columns: ColumnDef<AuditLog>[] = [
   },
   {
     accessorKey: "action",
-    header: "Action",
+    header: "Ação",
     enableSorting: false,
     enableHiding: false,
     filterFn: (row, id, filterValue: string[]) => {
@@ -176,7 +176,7 @@ export const columns: ColumnDef<AuditLog>[] = [
   },
   {
     accessorKey: "createdAt",
-    header: "Timestamp",
+    header: "Data/hora",
     enableSorting: false,
     enableHiding: false,
     cell: ({ row }) => {

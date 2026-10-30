@@ -26,7 +26,7 @@ export function NavActions() {
               </a>
             </Button>
           </TooltipTrigger>
-          <TooltipContent>View Documentation</TooltipContent>
+          <TooltipContent>Ver documentação</TooltipContent>
         </Tooltip>
       </TooltipProvider>
     </div>

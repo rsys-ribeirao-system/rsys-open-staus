@@ -30,7 +30,7 @@ export function ThemeToggle({
     return (
       <Select>
         <SelectTrigger className={cn("w-[180px]", className)} {...props}>
-          <SelectValue placeholder="Select theme" />
+          <SelectValue placeholder="Selecionar tema" />
         </SelectTrigger>
       </Select>
     );
@@ -39,25 +39,25 @@ export function ThemeToggle({
   return (
     <Select value={theme} onValueChange={setTheme}>
       <SelectTrigger className={cn("w-[180px]", className)} {...props}>
-        <SelectValue defaultValue={theme} placeholder="Select theme" />
+        <SelectValue defaultValue={theme} placeholder="Selecionar tema" />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="light">
           <div className="flex items-center gap-2">
             <Light className="h-4 w-4" />
-            <span>Light</span>
+            <span>Claro</span>
           </div>
         </SelectItem>
         <SelectItem value="dark">
           <div className="flex items-center gap-2">
             <Dark className="h-4 w-4" />
-            <span>Dark</span>
+            <span>Escuro</span>
           </div>
         </SelectItem>
         <SelectItem value="system">
           <div className="flex items-center gap-2">
             <System className="h-4 w-4" />
-            <span>System</span>
+            <span>Sistema</span>
           </div>
         </SelectItem>
       </SelectContent>

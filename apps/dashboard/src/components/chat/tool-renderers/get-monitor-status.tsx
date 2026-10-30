@@ -17,9 +17,9 @@ export function getMonitorStatusTable(
   output: Output,
 ): ResultTableData<"region" | "status"> {
   return {
-    empty: "No regions reporting yet.",
+    empty: "Nenhuma região reportando ainda.",
     columns: [
-      { key: "region", header: "Region" },
+      { key: "region", header: "Região" },
       { key: "status", header: "Status" },
     ],
     rows: output.regions.map((r) => ({

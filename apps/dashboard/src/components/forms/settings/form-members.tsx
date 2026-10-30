@@ -68,9 +68,9 @@ export function FormMembers({
       try {
         const promise = onCreate(values);
         toast.promise(promise, {
-          loading: "Saving...",
+          loading: "Salvando...",
           success: () => "Saved",
-          error: "Failed to save",
+          error: "Falha ao salvar",
         });
         await promise;
         form.reset();
@@ -86,14 +86,16 @@ export function FormMembers({
         <FormCard id="team-members">
           {locked ? <FormCardUpgrade /> : null}
           <FormCardHeader>
-            <FormCardTitle>Team</FormCardTitle>
-            <FormCardDescription>Manage your team members.</FormCardDescription>
+            <FormCardTitle>Equipe</FormCardTitle>
+            <FormCardDescription>
+              Gerencie os membros da sua equipe.
+            </FormCardDescription>
           </FormCardHeader>
           <FormCardContent>
             <Tabs defaultValue="members">
               <TabsList>
-                <TabsTrigger value="members">Members</TabsTrigger>
-                <TabsTrigger value="pending">Pending</TabsTrigger>
+                <TabsTrigger value="members">Membros</TabsTrigger>
+                <TabsTrigger value="pending">Pendentes</TabsTrigger>
               </TabsList>
               <TabsContent value="members">
                 <MembersDataTable />
@@ -111,18 +113,18 @@ export function FormMembers({
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Add member</FormLabel>
+                  <FormLabel>Adicionar membro</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="Email"
+                      placeholder="E-mail"
                       disabled={locked}
                       {...field}
                     />
                   </FormControl>
                   <FormMessage />
                   <FormCardDescription>
-                    Send an invitation to join the team.
+                    Envie um convite para entrar na equipe.
                   </FormCardDescription>
                 </FormItem>
               )}
@@ -132,26 +134,26 @@ export function FormMembers({
             {locked ? (
               <>
                 <FormCardFooterInfo>
-                  This feature is available on the{" "}
+                  Este recurso está disponível no{" "}
                   <Link
                     href="https://www.openstatus.dev/changelog/team-invites"
                     rel="noreferrer"
                     target="_blank"
                   >
-                    Starter plan
+                    plano Starter
                   </Link>
                   .
                 </FormCardFooterInfo>
                 <Button type="button" size="sm" asChild>
                   <Link href="/settings/billing">
                     <Lock />
-                    Upgrade
+                    Fazer upgrade
                   </Link>
                 </Button>
               </>
             ) : (
               <Button type="submit" size="sm" disabled={isPending}>
-                {isPending ? "Submitting..." : "Submit"}
+                {isPending ? "Enviando..." : "Enviar"}
               </Button>
             )}
           </FormCardFooter>

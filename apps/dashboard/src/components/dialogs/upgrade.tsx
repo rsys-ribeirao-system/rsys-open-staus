@@ -57,15 +57,15 @@ export function UpgradeDialog(
     <Dialog {...props}>
       <DialogContent className="max-h-[80vh] overflow-y-auto sm:max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Upgrade Workspace</DialogTitle>
+          <DialogTitle>Fazer upgrade do workspace</DialogTitle>
           <DialogDescription>
-            Upgrade your workspace to support more monitors, status pages,
-            regions, and much more. Get an overview within your{" "}
+            Faça upgrade do seu workspace para ter mais monitores, páginas de
+            status, regiões e muito mais. Veja um resumo nas{" "}
             <Link
               onClick={() => props.onOpenChange?.(false)}
               href="/settings/billing"
             >
-              billing settings
+              configurações de cobrança
             </Link>
             .
           </DialogDescription>
@@ -84,7 +84,7 @@ export function UpgradeDialog(
         {restrictTo.length === 0 ? (
           <Note>
             <Schedule />
-            Please contact us to upgrade your plan.
+            Entre em contato para fazer upgrade do seu plano.
             <NoteButton variant="outline" asChild>
               <a
                 href="https://openstatus.dev/cal"
@@ -92,7 +92,7 @@ export function UpgradeDialog(
                 rel="noreferrer"
                 className="text-nowrap"
               >
-                Book a call
+                Agendar uma conversa
               </a>
             </NoteButton>
           </Note>

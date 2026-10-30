@@ -31,7 +31,7 @@ export function FormSlug({ defaultValues }: { defaultValues?: FormValues }) {
       <FormCardHeader>
         <FormCardTitle>Slug</FormCardTitle>
         <FormCardDescription>
-          The unique slug for your workspace.
+          O slug exclusivo do seu workspace.
         </FormCardDescription>
       </FormCardHeader>
       <FormCardContent>
@@ -40,7 +40,7 @@ export function FormSlug({ defaultValues }: { defaultValues?: FormValues }) {
           size="sm"
           onClick={() =>
             copy(defaultValues?.slug ?? "unknown slug", {
-              successMessage: "Copied slug to clipboard",
+              successMessage: "Slug copiado para a área de transferência",
             })
           }
         >
@@ -54,17 +54,17 @@ export function FormSlug({ defaultValues }: { defaultValues?: FormValues }) {
       </FormCardContent>
       <FormCardFooter className="[&>:last-child]:ml-0">
         <FormCardFooterInfo>
-          Used when interacting with the API or for help on Discord.{" "}
+          Usado ao interagir com a API ou para pedir ajuda no Discord.{" "}
           <FormDialogSupportContact>
             <Button
               variant="ghost"
               size="sm"
               className="text-accent-foreground px-0 py-0 hover:bg-transparent dark:hover:bg-transparent"
             >
-              Let us know
+              Avise-nos
             </Button>
           </FormDialogSupportContact>{" "}
-          if you&apos;d like to change it.
+          se quiser alterá-lo.
         </FormCardFooterInfo>
       </FormCardFooter>
     </FormCard>

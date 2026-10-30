@@ -57,13 +57,13 @@ export function FormLinks({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -80,7 +80,7 @@ export function FormLinks({
           <FormCardHeader>
             <FormCardTitle>Links</FormCardTitle>
             <FormCardDescription>
-              Configure the links for the status page.
+              Configure os links da página de status.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent className="grid gap-4 sm:grid-cols-3">
@@ -89,13 +89,13 @@ export function FormLinks({
               name="homepageUrl"
               render={({ field }) => (
                 <FormItem className="sm:col-span-full">
-                  <FormLabel>Homepage URL</FormLabel>
+                  <FormLabel>URL da página inicial</FormLabel>
                   <FormControl>
                     <Input placeholder="https://acme.com" {...field} />
                   </FormControl>
                   <FormMessage />
                   <FormDescription>
-                    What URL should the logo link to? Leave empty to hide.
+                    Para qual URL o logo deve apontar? Deixe vazio para ocultar.
                   </FormDescription>
                 </FormItem>
               )}
@@ -105,17 +105,17 @@ export function FormLinks({
               name="contactUrl"
               render={({ field }) => (
                 <FormItem className="sm:col-span-full">
-                  <FormLabel>Contact URL</FormLabel>
+                  <FormLabel>URL de contato</FormLabel>
                   <FormControl>
                     <Input placeholder="https://acme.com/contact" {...field} />
                   </FormControl>
                   <FormMessage />
                   <FormDescription>
-                    Enter the URL for your contact page. Or start with{" "}
+                    Informe a URL da sua página de contato. Ou comece com{" "}
                     <code className="bg-muted rounded-md px-1 py-0.5">
                       mailto:
                     </code>{" "}
-                    to open the email client. Leave empty to hide.
+                    para abrir o cliente de e-mail. Deixe vazio para ocultar.
                   </FormDescription>
                 </FormItem>
               )}
@@ -123,7 +123,7 @@ export function FormLinks({
           </FormCardContent>
           <FormCardFooter>
             <FormCardFooterInfo>
-              Learn more about{" "}
+              Saiba mais sobre{" "}
               <Link
                 href="https://www.openstatus.dev/docs/tutorial/how-to-configure-status-page/#3-links"
                 rel="noreferrer"
@@ -134,7 +134,7 @@ export function FormLinks({
               .
             </FormCardFooterInfo>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Submitting..." : "Submit"}
+              {isPending ? "Enviando..." : "Enviar"}
             </Button>
           </FormCardFooter>
         </FormCard>

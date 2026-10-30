@@ -57,7 +57,7 @@ export function WorkspaceSwitcher({ className, side }: WorkspaceSwitcherProps) {
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <div className="truncate font-medium">
-                  {workspace.name || "Untitled Workspace"}
+                  {workspace.name || "Workspace sem título"}
                 </div>
                 <div className="truncate text-xs">
                   <span className="font-commit-mono tracking-tight">
@@ -90,7 +90,7 @@ export function WorkspaceSwitcher({ className, side }: WorkspaceSwitcherProps) {
                 className="gap-2 p-2"
               >
                 <span className="truncate">
-                  {workspace.name || "Untitled Workspace"}
+                  {workspace.name || "Workspace sem título"}
                 </span>
                 <span className="text-muted-foreground truncate font-mono text-xs">
                   {workspace.slug}
@@ -102,7 +102,7 @@ export function WorkspaceSwitcher({ className, side }: WorkspaceSwitcherProps) {
               <Link href="/settings/general">
                 <Add />
                 <div className="font-commit-mono text-muted-foreground tracking-tight">
-                  Add team member
+                  Adicionar membro
                 </div>
               </Link>
             </DropdownMenuItem>

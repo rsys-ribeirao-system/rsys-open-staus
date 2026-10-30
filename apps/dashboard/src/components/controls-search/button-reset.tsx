@@ -39,7 +39,7 @@ export function ButtonReset({ only }: { only?: string[] }) {
   return (
     <Button variant="ghost" size="sm" onClick={handleClick}>
       <Close />
-      Reset
+      Redefinir
     </Button>
   );
 }

@@ -123,9 +123,9 @@ export function Client() {
     <SectionGroup>
       <Section>
         <SectionHeader>
-          <SectionTitle>Monitors</SectionTitle>
+          <SectionTitle>Monitores</SectionTitle>
           <SectionDescription>
-            Create and manage your monitors.
+            Crie e gerencie seus monitores.
           </SectionDescription>
         </SectionHeader>
         <MetricCardGroup>

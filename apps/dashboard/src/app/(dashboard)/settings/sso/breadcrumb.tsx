@@ -10,7 +10,7 @@ export function Breadcrumb() {
       items={[
         {
           type: "link",
-          label: "Settings",
+          label: "Configurações",
           icon: Settings,
           href: "/settings/general",
         },

@@ -19,8 +19,10 @@ export function FormDangerZone({
   return (
     <FormCard variant="destructive">
       <FormCardHeader>
-        <FormCardTitle>Danger Zone</FormCardTitle>
-        <FormCardDescription>This action cannot be undone.</FormCardDescription>
+        <FormCardTitle>Zona de perigo</FormCardTitle>
+        <FormCardDescription>
+          Esta ação não pode ser desfeita.
+        </FormCardDescription>
       </FormCardHeader>
       <FormCardFooter variant="destructive" className="justify-end">
         <FormAlertDialog confirmationValue={title} submitAction={onSubmit} />

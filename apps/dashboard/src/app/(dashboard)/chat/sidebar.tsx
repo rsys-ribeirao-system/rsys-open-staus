@@ -42,17 +42,17 @@ export function Sidebar() {
   const metadata: SidebarMetadataProps[] = [];
   if (activeSession) {
     metadata.push({
-      label: "Details",
+      label: "Detalhes",
       items: [
-        { label: "Title", value: activeSession.title },
+        { label: "Título", value: activeSession.title },
         {
-          label: "Created",
+          label: "Criado",
           value: formatDistanceToNow(activeSession.createdAt, {
             addSuffix: true,
           }),
         },
         {
-          label: "Updated",
+          label: "Atualizado",
           value: formatDistanceToNow(activeSession.updatedAt, {
             addSuffix: true,
           }),
@@ -61,7 +61,7 @@ export function Sidebar() {
     });
   }
   metadata.push({
-    label: "Recent",
+    label: "Recentes",
     type: "list",
     items: (sessions ?? []).map((s) => ({
       id: s.id,
@@ -80,14 +80,14 @@ export function Sidebar() {
 
   return (
     <SidebarRight
-      header="Conversations"
+      header="Conversas"
       metadata={metadata}
       footerButton={{
         onClick: () => router.push("/chat"),
         children: (
           <>
             <Add />
-            <span>New chat</span>
+            <span>Novo chat</span>
           </>
         ),
       }}

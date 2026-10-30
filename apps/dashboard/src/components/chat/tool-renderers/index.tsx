@@ -107,7 +107,7 @@ export const toolRenderers: ToolRendererRegistry = {
         })}
       />
     ),
-    summary: (o) => `update #${o.statusReportUpdateId}`,
+    summary: (o) => `atualização #${o.statusReportUpdateId}`,
   },
   update_status_report: {
     renderDraft: (input) => updateStatusReportChanges(input),
@@ -126,7 +126,7 @@ export const toolRenderers: ToolRendererRegistry = {
         })}
       />
     ),
-    summary: (o) => `resolved · update #${o.statusReportUpdateId}`,
+    summary: (o) => `resolvido · atualização #${o.statusReportUpdateId}`,
   },
   create_maintenance: {
     renderDraft: (input) => createMaintenanceChanges(input),
@@ -163,7 +163,7 @@ export const toolRenderers: ToolRendererRegistry = {
       <ResultTable {...listResponseLogsTable(output)} />
     ),
     summary: (o) =>
-      `${o.logs.length} log${o.logs.length === 1 ? "" : "s"}${o.hasMore ? " (more available)" : ""}`,
+      `${o.logs.length} log${o.logs.length === 1 ? "" : "s"}${o.hasMore ? " (há mais)" : ""}`,
   },
   get_monitor: {
     renderResult: ({ input, output }) => (
@@ -176,14 +176,14 @@ export const toolRenderers: ToolRendererRegistry = {
       <ResultTable {...getMonitorStatusTable(output)} />
     ),
     summary: (o) =>
-      `${o.regions.length} region${o.regions.length === 1 ? "" : "s"}`,
+      `${o.regions.length} regi${o.regions.length === 1 ? "ão" : "ões"}`,
   },
   get_monitor_summary: {
     renderResult: ({ input, output }) => (
       <DetailsTable {...getMonitorSummaryDetails(input, output)} />
     ),
     summary: (o) =>
-      `${o.totalSuccessful + o.totalDegraded + o.totalFailed} checks · p95 ${o.p95}ms`,
+      `${o.totalSuccessful + o.totalDegraded + o.totalFailed} verificações · p95 ${o.p95}ms`,
   },
   get_response_log: {
     renderResult: ({ input, output }) => (
@@ -211,13 +211,13 @@ export const toolRenderers: ToolRendererRegistry = {
   // summary line plus the model's cited answer is the UX.
   get_doc_page: {
     summary: (o) =>
-      o.error ? o.error : `read ${o.url}${o.truncated ? " (truncated)" : ""}`,
+      o.error ? o.error : `lido ${o.url}${o.truncated ? " (truncado)" : ""}`,
   },
 };
 
 function itemsCountSummary(items: unknown[] | undefined): string | undefined {
   if (!items) return undefined;
-  return `${items.length} result${items.length === 1 ? "" : "s"}`;
+  return `${items.length} resultado${items.length === 1 ? "" : "s"}`;
 }
 
 // String-keyed dispatch — these helpers own the `as never` cast that

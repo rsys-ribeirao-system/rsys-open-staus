@@ -53,14 +53,14 @@ export function CreateMonitorForm({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: () => "Saved",
+          loading: "Salvando...",
+          success: () => "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
             console.error(error);
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -93,7 +93,7 @@ export function CreateMonitorForm({
                     <InputGroupAddon align="inline-end">
                       <InputGroupButton
                         size="icon-xs"
-                        aria-label="Clear URL"
+                        aria-label="Limpar URL"
                         onClick={() => {
                           field.onChange("");
                           inputRef.current?.focus();
@@ -107,7 +107,7 @@ export function CreateMonitorForm({
               </FormControl>
               <FormMessage />
               <FormDescription>
-                Enter the URL of your API or website.
+                Informe a URL da sua API ou site.
               </FormDescription>
             </FormItem>
           )}

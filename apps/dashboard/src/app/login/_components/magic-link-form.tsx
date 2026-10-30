@@ -19,20 +19,20 @@ export default function MagicLinkForm() {
       action={async (formData) => {
         try {
           await signInWithResendAction(formData);
-          toast.success("Check your terminal for the magic link.");
+          toast.success("Confira o link mágico no seu terminal.");
         } catch (e) {
           console.error(e);
-          toast.error("Error sending magic link.");
+          toast.error("Erro ao enviar o link mágico.");
         }
       }}
       className="grid gap-2"
     >
       <div className="grid gap-1.5">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">E-mail</Label>
         <Input id="email" name="email" type="email" required />
       </div>
       <LoginButton provider="email">
-        {pending ? "Logging..." : "Log Magic Link"}
+        {pending ? "Entrando..." : "Registrar link mágico"}
       </LoginButton>
     </form>
   );

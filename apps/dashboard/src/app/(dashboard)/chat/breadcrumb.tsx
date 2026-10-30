@@ -21,7 +21,7 @@ export function Breadcrumb() {
   if (sessionId === undefined) {
     return (
       <NavBreadcrumb
-        items={[{ type: "page", label: "Assistant", icon: Chat }]}
+        items={[{ type: "page", label: "Assistente", icon: Chat }]}
       />
     );
   }
@@ -31,11 +31,11 @@ export function Breadcrumb() {
       items={[
         {
           type: "link",
-          label: "Assistant",
+          label: "Assistente",
           href: "/chat",
           icon: Chat,
         },
-        { type: "page", label: session?.title ?? "New chat" },
+        { type: "page", label: session?.title ?? "Novo chat" },
       ]}
     />
   );

@@ -36,7 +36,7 @@ export function CommandTags() {
       <PopoverTrigger asChild>
         <Button variant="outline" size="sm">
           {selectedTags.length === (tags?.length ?? 0)
-            ? "All Tags"
+            ? "Todas as tags"
             : `${selectedTags.length} Tags`}
         </Button>
       </PopoverTrigger>
@@ -45,7 +45,7 @@ export function CommandTags() {
         className="relative w-[200px] overflow-hidden p-0"
       >
         <Command>
-          <CommandInput placeholder="Search tag..." />
+          <CommandInput placeholder="Buscar tag..." />
           <CommandList>
             <CommandGroup>
               {tags?.map((tag) => (
@@ -79,7 +79,7 @@ export function CommandTags() {
                 </CommandItem>
               ))}
             </CommandGroup>
-            <CommandEmpty>No tag found.</CommandEmpty>
+            <CommandEmpty>Nenhuma tag encontrada.</CommandEmpty>
           </CommandList>
         </Command>
       </PopoverContent>

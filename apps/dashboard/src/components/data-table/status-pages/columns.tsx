@@ -13,7 +13,7 @@ type StatusPage = RouterOutputs["page"]["list"][number];
 export const columns: ColumnDef<StatusPage>[] = [
   {
     accessorKey: "title",
-    header: "Title",
+    header: "Título",
     cell: ({ row }) => {
       return (
         <TableCellLink
@@ -38,7 +38,7 @@ export const columns: ColumnDef<StatusPage>[] = [
       return (
         <img
           src={`${value}`}
-          alt={`Favicon for ${row.getValue("title")}`}
+          alt={`Favicon de ${row.getValue("title")}`}
           className="bg-muted h-4 w-4 rounded border"
         />
       );
@@ -68,7 +68,7 @@ export const columns: ColumnDef<StatusPage>[] = [
   {
     accessorKey: "domain",
     accessorFn: (row) => row.customDomain,
-    header: "Domain",
+    header: "Domínio",
     cell: ({ row }) => {
       const value = row.getValue("domain");
       if (typeof value !== "string")

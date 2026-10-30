@@ -90,7 +90,7 @@ export default function Page() {
     <SectionGroup>
       <Section>
         <SectionHeader>
-          <SectionTitle>Create Monitor</SectionTitle>
+          <SectionTitle>Criar monitor</SectionTitle>
         </SectionHeader>
         <FormGeneral
           defaultValues={buildPrefill(params)}
@@ -114,13 +114,12 @@ export default function Page() {
       </Section>
       <Section>
         <EmptyStateContainer>
-          <EmptyStateTitle>Create and start customizing</EmptyStateTitle>
+          <EmptyStateTitle>Crie e comece a personalizar</EmptyStateTitle>
           <EmptyStateDescription>
-            Change the <span className="text-foreground">periodicity</span>, set
-            up the <span className="text-foreground">regions</span>,{" "}
-            <span className="text-foreground">timeout</span> or{" "}
-            <span className="text-foreground">degraded</span> duration and
-            more...
+            Altere a <span className="text-foreground">frequência</span>,
+            configure as <span className="text-foreground">regiões</span>, o{" "}
+            <span className="text-foreground">timeout</span> ou a duração de{" "}
+            <span className="text-foreground">degradado</span> e mais...
           </EmptyStateDescription>
         </EmptyStateContainer>
       </Section>

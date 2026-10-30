@@ -173,7 +173,7 @@ export function CommandMenu() {
           }}
           className="top-[15%] translate-y-0 overflow-hidden p-0 lg:max-w-xl"
         >
-          <DialogTitle className="sr-only">Command Menu</DialogTitle>
+          <DialogTitle className="sr-only">Menu de comandos</DialogTitle>
           <Command
             onKeyDown={(e) => {
               if (e.key === "Backspace" && !search && pages.length > 0) {
@@ -192,7 +192,7 @@ export function CommandMenu() {
                   {pageLabel(page)}
                   <button
                     type="button"
-                    aria-label="Clear scope"
+                    aria-label="Limpar escopo"
                     className="opacity-60 hover:opacity-100"
                     onClick={pop}
                   >
@@ -205,7 +205,7 @@ export function CommandMenu() {
                 value={search}
                 onValueChange={setSearch}
                 placeholder={
-                  page ? "Search actions…" : "Type a command or search…"
+                  page ? "Buscar ações…" : "Digite um comando ou busque…"
                 }
                 className="placeholder:text-muted-foreground flex h-10 w-full bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50"
               />
@@ -214,9 +214,9 @@ export function CommandMenu() {
                 overrides it, and a missed JIT class would leave the list
                 unbounded — the style prop can't silently fail */}
             <CommandList style={{ maxHeight: "min(400px, 65vh)" }}>
-              <CommandEmpty>No results found.</CommandEmpty>
+              <CommandEmpty>Nenhum resultado encontrado.</CommandEmpty>
               {!page && data.monitors === undefined ? (
-                <CommandLoading>Loading…</CommandLoading>
+                <CommandLoading>Carregando…</CommandLoading>
               ) : null}
               {groups.map((group) => (
                 <GroupView

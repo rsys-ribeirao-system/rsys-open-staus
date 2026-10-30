@@ -39,21 +39,21 @@ const data = {
     avatar: "/avatars/shadcn.jpg",
   },
   overview: [
-    { name: "Overview", url: NAV.overview.href, icon: NAV.overview.icon },
+    { name: "Visão geral", url: NAV.overview.href, icon: NAV.overview.icon },
     {
-      name: "Status Pages",
+      name: "Páginas de status",
       url: NAV.statusPages.href,
       icon: NAV.statusPages.icon,
     },
-    { name: "Monitors", url: NAV.monitors.href, icon: NAV.monitors.icon },
+    { name: "Monitores", url: NAV.monitors.href, icon: NAV.monitors.icon },
     {
-      name: "Notifications",
+      name: "Notificações",
       url: NAV.notifications.href,
       icon: NAV.notifications.icon,
     },
-    { name: "Settings", url: NAV.settings.href, icon: NAV.settings.icon },
-    { name: "Assistant", url: NAV.chat.href, icon: NAV.chat.icon },
-    { name: "Slack agent", url: NAV.agents.href, icon: NAV.agents.icon },
+    { name: "Configurações", url: NAV.settings.href, icon: NAV.settings.icon },
+    { name: "Assistente", url: NAV.chat.href, icon: NAV.chat.icon },
+    { name: "Agente do Slack", url: NAV.agents.href, icon: NAV.agents.icon },
   ],
 };
 

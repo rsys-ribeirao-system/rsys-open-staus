@@ -23,7 +23,7 @@ export function SsoForm({ redirectTo }: { redirectTo?: string }) {
         provider="oidc"
         onClick={() => setExpanded(true)}
       >
-        Sign in with SSO
+        Entrar com SSO
       </LoginButton>
     );
   }
@@ -36,15 +36,15 @@ export function SsoForm({ redirectTo }: { redirectTo?: string }) {
         type="email"
         required
         autoFocus
-        placeholder="you@company.com"
-        aria-label="Work email"
+        placeholder="voce@empresa.com"
+        aria-label="E-mail corporativo"
         aria-invalid={state.error ? true : undefined}
       />
       {state.error ? (
         <p className="text-destructive text-xs">{state.error}</p>
       ) : null}
       <Button type="submit" disabled={isPending} className="w-full">
-        {isPending ? "Redirecting…" : "Continue with SSO"}
+        {isPending ? "Redirecionando…" : "Continuar com SSO"}
       </Button>
     </form>
   );

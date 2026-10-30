@@ -16,23 +16,23 @@ import {
 
 const settings = [
   {
-    title: "General",
-    description: "Manage your workspace settings.",
+    title: "Geral",
+    description: "Gerencie as configurações do seu workspace.",
     href: "/settings/general",
   },
   {
-    title: "Billing",
-    description: "Manage your billing information and payment methods.",
+    title: "Cobrança",
+    description: "Gerencie suas informações de cobrança e formas de pagamento.",
     href: "/settings/billing",
   },
   {
-    title: "Account",
-    description: "Manage your account information.",
+    title: "Conta",
+    description: "Gerencie as informações da sua conta.",
     href: "/settings/account",
   },
   {
-    title: "Integrations",
-    description: "Connect third-party services to your workspace.",
+    title: "Integrações",
+    description: "Conecte serviços de terceiros ao seu workspace.",
     href: "/settings/integrations",
   },
 ];
@@ -41,9 +41,9 @@ export default function Page() {
     <SectionGroup>
       <Section>
         <SectionHeader>
-          <SectionTitle>Settings</SectionTitle>
+          <SectionTitle>Configurações</SectionTitle>
           <SectionDescription>
-            All your settings in one place.
+            Todas as suas configurações em um só lugar.
           </SectionDescription>
         </SectionHeader>
         <ActionCardGroup>

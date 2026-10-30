@@ -59,23 +59,23 @@ export function mapMetrics(metrics: RouterOutputs["tinybird"]["metrics"]) {
 
 export const metricsCards = {
   uptime: {
-    label: "UPTIME",
+    label: "DISPONIBILIDADE",
     variant: "success",
   },
   degraded: {
-    label: "DEGRADED",
+    label: "DEGRADADO",
     variant: "warning",
   },
   error: {
-    label: "FAILING",
+    label: "FALHANDO",
     variant: "destructive",
   },
   total: {
-    label: "REQUESTS",
+    label: "REQUISIÇÕES",
     variant: "default",
   },
   lastTimestamp: {
-    label: "LAST CHECKED",
+    label: "ÚLTIMA VERIFICAÇÃO",
     variant: "ghost",
   },
   p50: {
@@ -239,19 +239,19 @@ export const metricsGlobalCards: Record<
     key: "active" as const,
   },
   degraded: {
-    title: "Degraded",
+    title: "Degradado",
     key: "degraded" as const,
   },
   error: {
-    title: "Failing",
+    title: "Falhando",
     key: "error" as const,
   },
   inactive: {
-    title: "Inactive",
+    title: "Inativo",
     key: "inactive" as const,
   },
   p95: {
-    title: "Slowest P95",
+    title: "P95 mais lento",
     key: "p95" as const,
   },
 };

@@ -23,7 +23,7 @@ export function CreateEventButtonGroup() {
         <FormSheetStatusReportCreate>
           <Button data-section="action" variant="outline" size="sm">
             <Add />
-            Create Status Report
+            Criar relatório de status
           </Button>
         </FormSheetStatusReportCreate>
         <DropdownMenu>
@@ -31,7 +31,7 @@ export function CreateEventButtonGroup() {
             <Button
               variant="outline"
               size="sm"
-              aria-label="More create options"
+              aria-label="Mais opções de criação"
               className="pl-2!"
             >
               <ChevronDown />
@@ -40,7 +40,7 @@ export function CreateEventButtonGroup() {
           <DropdownMenuContent align="end">
             <DropdownMenuItem onSelect={() => setMaintenanceOpen(true)}>
               <Add className="text-muted-foreground" />
-              Create Maintenance
+              Criar manutenção
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

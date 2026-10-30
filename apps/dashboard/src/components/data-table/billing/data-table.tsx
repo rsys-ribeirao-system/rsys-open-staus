@@ -75,20 +75,20 @@ export function DataTable({ restrictTo }: { restrictTo?: WorkspacePlan[] }) {
         onValueChange={(v) => setInterval(v as BillingInterval)}
       >
         <TabsList>
-          <TabsTrigger value="monthly">Monthly</TabsTrigger>
+          <TabsTrigger value="monthly">Mensal</TabsTrigger>
           <TabsTrigger value="yearly">
-            Yearly <Badge className="ml-1.5 text-[10px]">2 months free</Badge>
+            Anual <Badge className="ml-1.5 text-[10px]">2 meses grátis</Badge>
           </TabsTrigger>
         </TabsList>
       </Tabs>
       <Table className="relative table-fixed">
         <TableCaption>
-          A list to compare the different features by plan.
+          Lista para comparar os recursos de cada plano.
         </TableCaption>
         <TableHeader>
           <TableRow className="hover:bg-transparent">
             <TableHead className="p-2 align-bottom">
-              Features comparison
+              Comparação de recursos
             </TableHead>
             {filteredPlans.map(({ id, ...plan }) => {
               const isCurrentPlan = workspace.plan === id;
@@ -152,10 +152,10 @@ export function DataTable({ restrictTo }: { restrictTo?: WorkspacePlan[] }) {
                       disabled={isPending || isCurrentPlan}
                     >
                       {isCurrentPlan
-                        ? "Current Plan"
+                        ? "Plano atual"
                         : isPending
-                          ? "Choosing..."
-                          : "Choose"}
+                          ? "Escolhendo..."
+                          : "Escolher"}
                     </Button>
                   </div>
                 </TableHead>

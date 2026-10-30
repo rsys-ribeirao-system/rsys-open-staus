@@ -92,14 +92,14 @@ export function FormSchedulingRegions({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: () => "Saved",
+          loading: "Salvando...",
+          success: () => "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
             console.error(error);
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -124,9 +124,9 @@ export function FormSchedulingRegions({
       <form onSubmit={form.handleSubmit(submitAction)} {...props}>
         <FormCard>
           <FormCardHeader>
-            <FormCardTitle>Scheduling & Regions</FormCardTitle>
+            <FormCardTitle>Agendamento e regiões</FormCardTitle>
             <FormCardDescription>
-              Configure the scheduling and regions for your monitor.
+              Configure o agendamento e as regiões do seu monitor.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent className="grid gap-4">
@@ -135,13 +135,13 @@ export function FormSchedulingRegions({
               name="periodicity"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Periodicity</FormLabel>
+                  <FormLabel>Frequência</FormLabel>
                   <FormControl>
                     <div>
                       <Slider
                         value={[monitorPeriodicity.indexOf(field.value)]}
                         max={PERIODICITY.length - 1}
-                        aria-label="Slider with ticks"
+                        aria-label="Controle deslizante de frequência"
                         onValueChange={(value) => {
                           field.onChange(PERIODICITY[value[0]]);
                         }}
@@ -175,9 +175,9 @@ export function FormSchedulingRegions({
             {!periodicity.includes(watchPeriodicity) ? (
               <Note color="error">
                 <Error />
-                The periodicity you are selecting is not allowed for your plan.
+                A frequência selecionada não é permitida no seu plano.
                 <NoteButton type="button" onClick={() => setOpenDialog(true)}>
-                  Upgrade your plan
+                  Fazer upgrade do plano
                 </NoteButton>
               </Note>
             ) : null}
@@ -186,8 +186,8 @@ export function FormSchedulingRegions({
           <FormCardContent className="grid gap-4">
             <Note color="warning">
               <Info />
-              To minimize false positives, we recommend monitoring your endpoint
-              in at least 3 regions.
+              Para minimizar falsos positivos, recomendamos monitorar seu
+              endpoint em pelo menos 3 regiões.
             </Note>
             <FormField
               control={form.control}
@@ -258,7 +258,7 @@ export function FormSchedulingRegions({
                                     }
                                   }}
                                 >
-                                  Select all
+                                  Selecionar todas
                                 </Button>
                               </div>
                               <div className="grid grid-cols-2 gap-2">
@@ -343,9 +343,9 @@ export function FormSchedulingRegions({
             {privateLocations.length === 0 ? (
               <Note>
                 <Globe />
-                Monitor your endpoints from private locations.
+                Monitore seus endpoints a partir de localizações privadas.
                 <NoteButton variant="outline" asChild>
-                  <Link href="/settings/private-locations">Learn more</Link>
+                  <Link href="/settings/private-locations">Saiba mais</Link>
                 </NoteButton>
               </Note>
             ) : (
@@ -356,7 +356,7 @@ export function FormSchedulingRegions({
                   <FormItem>
                     <div className="flex items-center justify-between">
                       <FormLabel>
-                        Private Locations{" "}
+                        Localizações privadas{" "}
                         <span className="text-muted-foreground/70 align-baseline font-mono text-xs font-normal tabular-nums">
                           ({watchPrivateLocations.length}/
                           {privateLocations.length})
@@ -385,7 +385,7 @@ export function FormSchedulingRegions({
                           }
                         }}
                       >
-                        Select all
+                        Selecionar todas
                       </Button>
                     </div>
                     <div className="grid grid-cols-2 gap-2">
@@ -437,32 +437,32 @@ export function FormSchedulingRegions({
           </FormCardContent>
           <FormCardFooter>
             <FormCardFooterInfo>
-              Your plan allows you to run{" "}
+              Seu plano permite usar{" "}
               <span className="text-foreground font-medium">{maxRegions}</span>{" "}
-              out of{" "}
+              de{" "}
               <span className="text-foreground font-medium">
                 {allowedRegions.length}
               </span>{" "}
-              regions. Learn more about{" "}
+              regiões. Saiba mais sobre{" "}
               <Link
                 href="https://www.openstatus.dev/docs/reference/http-monitor/#regions"
                 rel="noreferrer"
                 target="_blank"
               >
-                Regions
+                Regiões
               </Link>{" "}
-              and{" "}
+              e{" "}
               <Link
                 href="https://www.openstatus.dev/docs/reference/http-monitor/#frequency"
                 rel="noreferrer"
                 target="_blank"
               >
-                Periodicity
+                Frequência
               </Link>
               .
             </FormCardFooterInfo>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Submitting..." : "Submit"}
+              {isPending ? "Enviando..." : "Enviar"}
             </Button>
           </FormCardFooter>
         </FormCard>

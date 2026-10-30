@@ -17,14 +17,14 @@ import { TableCellUptime } from "./table-cell-uptime";
 const componentColumn: ColumnDef<HistoryRow> = {
   id: "component",
   accessorFn: (row) => row.component.name,
-  header: "Component",
+  header: "Componente",
   cell: ({ row }) => {
     const c = row.original.component;
     return (
       <div className="flex flex-col">
         <span className="truncate font-medium">{c.name}</span>
         <span className="text-muted-foreground text-xs">
-          {c.type === "monitor" ? "Monitor" : "Static"}
+          {c.type === "monitor" ? "Monitor" : "Estático"}
         </span>
       </div>
     );

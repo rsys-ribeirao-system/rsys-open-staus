@@ -156,7 +156,7 @@ function DataTableActionBarSelection<TData>({
           sideOffset={10}
           className="bg-accent text-foreground flex items-center gap-2 border px-2 py-1 font-semibold dark:bg-zinc-900 [&>span]:hidden"
         >
-          <p>Clear selection</p>
+          <p>Limpar seleção</p>
           <kbd className="bg-background text-foreground rounded border px-1.5 py-px font-mono text-[0.7rem] font-normal shadow-xs select-none">
             <abbr title="Escape" className="no-underline">
               Esc

@@ -70,7 +70,7 @@ export function GlobalUptimeSection({
             const k = key as keyof typeof acc;
             const v = (() => {
               if (k === "lastTimestamp") {
-                if (!value) return "N/A";
+                if (!value) return "N/D";
                 return formatDistanceToNow(new Date(value ?? 0), {
                   addSuffix: true,
                 });

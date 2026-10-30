@@ -30,10 +30,10 @@ export function Sidebar() {
       header="Monitor"
       metadata={[
         {
-          label: "Overview",
+          label: "Visão geral",
           items: [
             {
-              label: "External Name",
+              label: "Nome externo",
               value: monitor.externalName || monitor.name,
             },
             {
@@ -54,7 +54,7 @@ export function Sidebar() {
               ),
             },
             {
-              label: "Type",
+              label: "Tipo",
               value: type ? (
                 <span className="flex items-center gap-1">
                   <span>{type.label}</span>
@@ -69,7 +69,7 @@ export function Sidebar() {
               value: monitor.url.replace(/^https?:\/\//, ""),
             },
             {
-              label: "Regions",
+              label: "Regiões",
               value: (() => {
                 const allRegions = [
                   ...monitor.regions,
@@ -116,28 +116,28 @@ export function Sidebar() {
           ],
         },
         {
-          label: "Configuration",
+          label: "Configuração",
           items: [
-            { label: "Periodicity", value: monitor.periodicity },
+            { label: "Frequência", value: monitor.periodicity },
             {
               label: "Timeout",
               value: formatMilliseconds(monitor.timeout),
             },
-            { label: "Public", value: String(monitor.public) },
-            { label: "Active", value: String(monitor.active) },
+            { label: "Público", value: String(monitor.public) },
+            { label: "Ativo", value: String(monitor.active) },
             {
-              label: "Follow redirects",
+              label: "Seguir redirecionamentos",
               value: String(monitor.followRedirects),
             },
           ],
         },
         {
-          label: "Notifications",
-          emptyMessage: "No notifications attached",
+          label: "Notificações",
+          emptyMessage: "Nenhuma notificação vinculada",
           items: monitor.notifications.flatMap((notification) => {
             const arr = [];
             arr.push({
-              label: "Name",
+              label: "Nome",
               value: (
                 <TableCellLink
                   // TODO: add the ?id= to the href and open the sheet
@@ -147,12 +147,12 @@ export function Sidebar() {
               ),
             });
             arr.push({
-              label: "Type",
+              label: "Tipo",
               value: notification.provider,
               isNested: true,
             });
             arr.push({
-              label: "Value",
+              label: "Valor",
               value: notification.data, // TODO: improve this based on the provider - we might wanna parse it!
               isNested: true,
             });
@@ -160,18 +160,18 @@ export function Sidebar() {
           }),
         },
         {
-          label: "Assertions",
-          emptyMessage: "No assertions configured",
+          label: "Validações",
+          emptyMessage: "Nenhuma validação configurada",
           items: assertions.flatMap((assertion) => {
             const arr = [];
 
             arr.push({
-              label: "Type",
+              label: "Tipo",
               value: assertion.schema.type,
             });
 
             arr.push({
-              label: "Compare",
+              label: "Comparação",
               value: assertion.schema.compare,
               isNested: true,
             });
@@ -182,14 +182,14 @@ export function Sidebar() {
               assertion.schema.key
             ) {
               arr.push({
-                label: "Key",
+                label: "Chave",
                 value: assertion.schema.key,
                 isNested: true,
               });
             }
 
             arr.push({
-              label: "Value",
+              label: "Valor",
               value: assertion.schema.target,
               isNested: true,
             });
@@ -240,7 +240,7 @@ export function Sidebar() {
         children: (
           <>
             <Logs />
-            <span>View all logs</span>
+            <span>Ver todos os logs</span>
           </>
         ),
       }}

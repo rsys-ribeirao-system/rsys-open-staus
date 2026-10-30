@@ -54,9 +54,9 @@ export default function Page() {
     <SectionGroup>
       <Section>
         <SectionHeader>
-          <SectionTitle>General</SectionTitle>
+          <SectionTitle>Geral</SectionTitle>
           <SectionDescription>
-            Manage your workspace settings.
+            Gerencie as configurações do seu workspace.
           </SectionDescription>
         </SectionHeader>
         <FormCardGroup>

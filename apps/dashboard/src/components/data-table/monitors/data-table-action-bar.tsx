@@ -95,13 +95,13 @@ export function MonitorDataTableActionBar({
           ids: rows.map((row) => row.original.id),
         });
         toast.promise(promise, {
-          loading: "Deleting...",
-          success: "Deleted",
+          loading: "Excluindo...",
+          success: "Excluído",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to delete";
+            return "Falha ao excluir";
           },
         });
         await promise;
@@ -128,20 +128,20 @@ export function MonitorDataTableActionBar({
                 active: v === "active",
               }),
               {
-                loading: "Updating...",
-                success: "Updated",
+                loading: "Atualizando...",
+                success: "Atualizado",
                 error: (error) => {
                   if (isTRPCClientError(error)) {
                     return error.message;
                   }
-                  return "Failed to update";
+                  return "Falha ao atualizar";
                 },
               },
             );
           }}
         >
           <SelectTrigger asChild>
-            <DataTableActionBarAction size="icon" tooltip="Update status">
+            <DataTableActionBarAction size="icon" tooltip="Atualizar status">
               <Success />
             </DataTableActionBarAction>
           </SelectTrigger>
@@ -163,7 +163,7 @@ export function MonitorDataTableActionBar({
           <AlertDialogTrigger asChild>
             <DataTableActionBarAction
               size="icon"
-              tooltip="Delete monitors"
+              tooltip="Excluir monitores"
               isPending={isPending || deleteMonitorsMutation.isPending}
             >
               <DeleteIcon />
@@ -178,16 +178,16 @@ export function MonitorDataTableActionBar({
           >
             <AlertDialogHeader>
               <AlertDialogTitle>
-                Delete {rows.length} monitor{rows.length > 1 ? "s" : ""}?
+                Excluir {rows.length} monitor{rows.length > 1 ? "es" : ""}?
               </AlertDialogTitle>
               <AlertDialogDescription>
-                This action cannot be undone. This will permanently remove the
-                selected monitor(s) from the database.
+                Esta ação não pode ser desfeita. Isso removerá permanentemente
+                o(s) monitor(es) selecionado(s) do banco de dados.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <form id="form-alert-dialog" className="space-y-1.5">
               <p className="text-muted-foreground text-sm">
-                Type{" "}
+                Digite{" "}
                 <Button
                   variant="secondary"
                   size="sm"
@@ -198,13 +198,13 @@ export function MonitorDataTableActionBar({
                   {confirmationValue}
                   {isCopied ? <Check /> : <Copy />}
                 </Button>{" "}
-                to confirm
+                para confirmar
               </p>
               <Input value={value} onChange={(e) => setValue(e.target.value)} />
             </form>
             <AlertDialogFooter>
               <AlertDialogCancel onClick={(e) => e.stopPropagation()}>
-                Cancel
+                Cancelar
               </AlertDialogCancel>
               <AlertDialogAction
                 className="bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 text-white shadow-xs"
@@ -216,7 +216,7 @@ export function MonitorDataTableActionBar({
                   handleDelete();
                 }}
               >
-                {isPending ? "Deleting..." : "Delete"}
+                {isPending ? "Excluindo..." : "Excluir"}
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

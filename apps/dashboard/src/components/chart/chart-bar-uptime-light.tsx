@@ -17,15 +17,15 @@ import { useTRPC } from "@/lib/trpc/client";
 
 const chartConfig = {
   ok: {
-    label: "Success",
+    label: "Sucesso",
     color: "var(--color-success)",
   },
   degraded: {
-    label: "Degraded",
+    label: "Degradado",
     color: "var(--color-warning)",
   },
   error: {
-    label: "Error",
+    label: "Erro",
     color: "var(--color-destructive)",
   },
 } satisfies ChartConfig;

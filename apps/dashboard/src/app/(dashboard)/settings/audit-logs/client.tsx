@@ -108,10 +108,10 @@ export function Client() {
   return (
     <SectionGroup>
       <SectionHeader>
-        <SectionTitle>Audit Logs</SectionTitle>
+        <SectionTitle>Logs de auditoria</SectionTitle>
         <SectionDescription>
-          Track mutating actions taken against your workspace from the last 14
-          days.
+          Acompanhe as ações de alteração feitas no seu workspace nos últimos 14
+          dias.
         </SectionDescription>
       </SectionHeader>
       <Section>
@@ -132,16 +132,17 @@ export function Client() {
             <BillingOverlay>
               <BillingOverlayButton onClick={() => setOpenDialog(true)}>
                 <Lock />
-                Upgrade
+                Fazer upgrade
               </BillingOverlayButton>
               <BillingOverlayDescription>
-                Keep a verifiable history of every change in your workspace.{" "}
+                Mantenha um histórico verificável de cada alteração no seu
+                workspace.{" "}
                 <Link
                   href="https://www.openstatus.dev/docs/"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  Learn more
+                  Saiba mais
                 </Link>
                 .
               </BillingOverlayDescription>
@@ -171,9 +172,9 @@ export function Client() {
           />
         ) : (
           <EmptyStateContainer>
-            <EmptyStateTitle>No audit logs</EmptyStateTitle>
+            <EmptyStateTitle>Nenhum log de auditoria</EmptyStateTitle>
             <EmptyStateDescription>
-              Actions taken in this workspace will appear here.
+              As ações realizadas neste workspace aparecerão aqui.
             </EmptyStateDescription>
           </EmptyStateContainer>
         )}

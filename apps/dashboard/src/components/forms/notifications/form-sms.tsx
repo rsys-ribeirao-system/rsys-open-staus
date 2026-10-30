@@ -25,9 +25,9 @@ import { useFormSheetDirty } from "@/components/forms/form-sheet";
 import { CheckboxTree } from "@/components/ui/checkbox-tree";
 
 const schema = z.object({
-  name: z.string().trim().min(1, "Name is required"),
+  name: z.string().trim().min(1, "O nome é obrigatório"),
   provider: z.literal("sms"),
-  data: z.string().trim().min(1, "Phone number is required"),
+  data: z.string().trim().min(1, "O número de telefone é obrigatório"),
   monitors: z.array(z.number()),
 });
 
@@ -68,9 +68,9 @@ export function FormSms({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
+          loading: "Salvando...",
           success: () => JSON.stringify(values),
-          error: "Failed to save",
+          error: "Falha ao salvar",
         });
         await promise;
       } catch (error) {
@@ -92,13 +92,13 @@ export function FormSms({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Nome</FormLabel>
                 <FormControl>
-                  <Input placeholder="My Notifier" {...field} />
+                  <Input placeholder="Meu canal de notificação" {...field} />
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter a descriptive name for your notifier.
+                  Informe um nome descritivo para o seu canal de notificação.
                 </FormDescription>
               </FormItem>
             )}
@@ -108,13 +108,13 @@ export function FormSms({
             name="data"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel>Número de telefone</FormLabel>
                 <FormControl>
                   <Input placeholder="+1234567890" type="tel" {...field} />
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter the phone number to send notifications to.
+                  Informe o número de telefone que receberá as notificações.
                 </FormDescription>
               </FormItem>
             )}
@@ -127,16 +127,16 @@ export function FormSms({
             name="monitors"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Monitors</FormLabel>
+                <FormLabel>Monitores</FormLabel>
                 <FormDescription>
-                  Select the monitors you want to notify.
+                  Selecione os monitores que você deseja notificar.
                 </FormDescription>
                 <FormControl>
                   <CheckboxTree
                     items={[
                       {
                         id: -1,
-                        label: "Select all",
+                        label: "Selecionar todos",
                         children: monitors.map((m) => ({
                           id: m.id,
                           label: m.name,

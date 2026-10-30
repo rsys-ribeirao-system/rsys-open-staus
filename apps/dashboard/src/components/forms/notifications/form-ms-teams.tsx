@@ -31,7 +31,7 @@ import { useTRPC } from "@/lib/trpc/client";
 import { useFormSheetDirty } from "../form-sheet";
 
 const schema = z.object({
-  name: z.string().trim().min(1, "Name is required"),
+  name: z.string().trim().min(1, "O nome é obrigatório"),
   provider: z.literal("ms-teams"),
   data: z.object({
     webhookUrl: safeUrlSchema,
@@ -82,13 +82,13 @@ export function FormMsTeams({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -104,7 +104,7 @@ export function FormMsTeams({
     // Validate webhook URL field before sending test
     const data = form.getValues("data");
     if (!data.webhookUrl || data.webhookUrl.trim() === "") {
-      toast.error("Please enter a webhook URL before sending test");
+      toast.error("Informe uma URL de webhook antes de enviar o teste");
       return;
     }
 
@@ -118,13 +118,13 @@ export function FormMsTeams({
           },
         });
         toast.promise(promise, {
-          loading: "Sending test...",
-          success: "Test sent",
+          loading: "Enviando teste...",
+          success: "Teste enviado",
           error: (error) => {
             if (error instanceof Error) {
               return error.message;
             }
-            return "Failed to send test";
+            return "Falha ao enviar teste";
           },
         });
         await promise;
@@ -147,13 +147,13 @@ export function FormMsTeams({
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Nome</FormLabel>
                 <FormControl>
-                  <Input placeholder="My Notifier" {...field} />
+                  <Input placeholder="Meu canal de notificação" {...field} />
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Enter a descriptive name for your notifier.
+                  Informe um nome descritivo para o seu canal de notificação.
                 </FormDescription>
               </FormItem>
             )}
@@ -163,7 +163,9 @@ export function FormMsTeams({
             name="data.webhookUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Microsoft Teams Workflow URL</FormLabel>
+                <FormLabel>
+                  URL do fluxo de trabalho do Microsoft Teams
+                </FormLabel>
                 <FormControl>
                   <Input
                     placeholder="https://prod-00.westeurope.logic.azure.com:443/workflows/..."
@@ -172,8 +174,8 @@ export function FormMsTeams({
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Create a "Post to a channel when a webhook request is
-                  received" workflow in Teams, then paste the URL here.
+                  Crie no Teams um fluxo de trabalho “Post to a channel when a
+                  webhook request is received” e cole a URL aqui.
                 </FormDescription>
               </FormItem>
             )}
@@ -185,7 +187,7 @@ export function FormMsTeams({
               type="button"
               onClick={testAction}
             >
-              Send Test
+              Enviar teste
             </Button>
           </div>
         </FormCardContent>
@@ -196,16 +198,16 @@ export function FormMsTeams({
             name="monitors"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Monitors</FormLabel>
+                <FormLabel>Monitores</FormLabel>
                 <FormDescription>
-                  Select the monitors you want to notify.
+                  Selecione os monitores que você deseja notificar.
                 </FormDescription>
                 <FormControl>
                   <CheckboxTree
                     items={[
                       {
                         id: -1,
-                        label: "Select all",
+                        label: "Selecionar todos",
                         children: monitors.map((m) => ({
                           id: m.id,
                           label: m.name,

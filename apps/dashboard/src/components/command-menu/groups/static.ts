@@ -9,7 +9,7 @@ import type { CommandMenuGroup, CommandMenuItem } from "../types";
 
 export function navigationGroup(): CommandMenuGroup {
   return {
-    heading: "Navigation",
+    heading: "Navegação",
     items: NAV_MENU_ITEMS.map((item) => ({
       value: item.label,
       label: item.label,
@@ -22,8 +22,8 @@ export function navigationGroup(): CommandMenuGroup {
 
 export function createStatusReportItem(pageId?: number): CommandMenuItem {
   return {
-    value: pageId ? "create-status-report" : "Create Status Report",
-    label: "Create Status Report",
+    value: pageId ? "create-status-report" : "Criar relatório de status",
+    label: "Criar relatório de status",
     icon: Plus,
     keywords: ["incident", "announce", "publish"],
     action: { type: "sheet", sheet: { sheet: "status-report", pageId } },
@@ -32,8 +32,8 @@ export function createStatusReportItem(pageId?: number): CommandMenuItem {
 
 export function createMaintenanceItem(pageId?: number): CommandMenuItem {
   return {
-    value: pageId ? "create-maintenance" : "Create Maintenance",
-    label: "Create Maintenance",
+    value: pageId ? "create-maintenance" : "Criar manutenção",
+    label: "Criar manutenção",
     icon: Plus,
     keywords: ["downtime", "window", "schedule"],
     action: { type: "sheet", sheet: { sheet: "maintenance", pageId } },
@@ -42,18 +42,18 @@ export function createMaintenanceItem(pageId?: number): CommandMenuItem {
 
 export function createGroup(): CommandMenuGroup {
   return {
-    heading: "Create",
+    heading: "Criar",
     items: [
       {
-        value: "Create Monitor",
-        label: "Create Monitor",
+        value: "Criar monitor",
+        label: "Criar monitor",
         icon: Plus,
         keywords: ["new monitor"],
         action: { type: "navigate", href: "/monitors/create" },
       },
       {
-        value: "Create Status Page",
-        label: "Create Status Page",
+        value: "Criar página de status",
+        label: "Criar página de status",
         icon: Plus,
         keywords: ["new page"],
         action: { type: "navigate", href: "/status-pages/create" },
@@ -68,35 +68,35 @@ export function createGroup(): CommandMenuGroup {
 // they live with the command menu rather than a shared config.
 const SETTINGS_ANCHORS: CommandMenuItem[] = [
   {
-    value: "API Keys",
-    label: "API Keys",
+    value: "Chaves de API",
+    label: "Chaves de API",
     icon: KeyRound,
     keywords: ["token", "key"],
     action: { type: "navigate", href: "/settings/general#api-keys" },
   },
   {
-    value: "Team Members",
-    label: "Team Members",
+    value: "Membros da equipe",
+    label: "Membros da equipe",
     icon: Users,
     keywords: ["invite", "member"],
     action: { type: "navigate", href: "/settings/general#team-members" },
   },
   {
-    value: "Workspace Slug",
-    label: "Workspace Slug",
+    value: "Slug do workspace",
+    label: "Slug do workspace",
     icon: AtSign,
     action: { type: "navigate", href: "/settings/general#workspace-slug" },
   },
   {
-    value: "Workspace Name",
-    label: "Workspace Name",
+    value: "Nome do workspace",
+    label: "Nome do workspace",
     icon: Pencil,
     keywords: ["rename"],
     action: { type: "navigate", href: "/settings/general#workspace-name" },
   },
   {
-    value: "Appearance",
-    label: "Appearance",
+    value: "Aparência",
+    label: "Aparência",
     icon: Palette,
     keywords: ["theme", "dark mode"],
     action: { type: "navigate", href: "/settings/account#appearance" },
@@ -105,7 +105,7 @@ const SETTINGS_ANCHORS: CommandMenuItem[] = [
 
 export function settingsGroup(): CommandMenuGroup {
   return {
-    heading: "Settings",
+    heading: "Configurações",
     items: [
       ...SETTINGS_TABS.map((tab) => ({
         value: tab.label,
@@ -121,7 +121,7 @@ export function settingsGroup(): CommandMenuGroup {
 
 export function helpGroup(): CommandMenuGroup {
   return {
-    heading: "Get Help",
+    heading: "Obter ajuda",
     items: [
       {
         value: HELP_SUPPORT.label,
@@ -147,11 +147,11 @@ export function themeGroup(
 ): CommandMenuGroup {
   const target = resolvedTheme === "dark" ? "light" : "dark";
   return {
-    heading: "Theme",
+    heading: "Tema",
     items: [
       {
         value: "toggle-theme",
-        label: `Switch to ${target} theme`,
+        label: `Mudar para o tema ${target === "dark" ? "escuro" : "claro"}`,
         icon: resolvedTheme === "dark" ? Light : Dark,
         keywords: ["dark", "light", "appearance"],
         action: { type: "run", run: () => setTheme(target) },

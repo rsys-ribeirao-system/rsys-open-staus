@@ -65,9 +65,9 @@ export function Client() {
   return (
     <SectionGroup>
       <SectionHeader>
-        <SectionTitle>Private Locations</SectionTitle>
+        <SectionTitle>Localizações privadas</SectionTitle>
         <SectionDescription>
-          Create and manage your private locations.
+          Crie e gerencie suas localizações privadas.
         </SectionDescription>
       </SectionHeader>
       <Section>
@@ -80,16 +80,17 @@ export function Client() {
             <BillingOverlay>
               <BillingOverlayButton onClick={() => setOpenDialog(true)}>
                 <Lock />
-                Upgrade
+                Fazer upgrade
               </BillingOverlayButton>
               <BillingOverlayDescription>
-                Create private locations to monitor your internal services.{" "}
+                Crie localizações privadas para monitorar seus serviços
+                internos.{" "}
                 <Link
                   href="https://www.openstatus.dev/docs/tutorial/how-to-create-private-location/"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  Learn more
+                  Saiba mais
                 </Link>
                 .
               </BillingOverlayDescription>

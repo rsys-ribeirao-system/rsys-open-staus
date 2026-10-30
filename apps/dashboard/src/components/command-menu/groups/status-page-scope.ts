@@ -28,7 +28,7 @@ export function statusPageScopeGroups({
     createMaintenanceItem(page.id),
     ...unresolvedReports.map((report) => ({
       value: `add-update-${report.id}`,
-      label: `Add Update to ${report.title}`,
+      label: `Adicionar atualização a ${report.title}`,
       icon: Plus,
       keywords: ["update", "status report update", report.title],
       action: {
@@ -39,9 +39,9 @@ export function statusPageScopeGroups({
   ];
 
   return [
-    { heading: "Actions", items: actionItems },
+    { heading: "Ações", items: actionItems },
     {
-      heading: "Status Reports",
+      heading: "Relatórios de status",
       items: pageReports.map((report) => ({
         value: `status-report-${report.id}`,
         label: report.title,
@@ -54,7 +54,7 @@ export function statusPageScopeGroups({
       })),
     },
     {
-      heading: "Maintenances",
+      heading: "Manutenções",
       items: pageMaintenances.map((m) => ({
         value: `maintenance-${m.id}`,
         label: m.title,
@@ -67,7 +67,7 @@ export function statusPageScopeGroups({
       })),
     },
     {
-      heading: "Pages",
+      heading: "Páginas",
       items: STATUS_PAGE_TABS.map((tab) => ({
         value: tab.label,
         label: tab.label,

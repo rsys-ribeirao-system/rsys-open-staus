@@ -40,9 +40,9 @@ export function FormSheetMaintenance({
       </FormSheetTrigger>
       <FormSheetContent className="sm:max-w-lg">
         <FormSheetHeader>
-          <FormSheetTitle>Maintenance</FormSheetTitle>
+          <FormSheetTitle>Manutenção</FormSheetTitle>
           <FormSheetDescription>
-            Configure and update the maintenance.
+            Configure e atualize a manutenção.
           </FormSheetDescription>
         </FormSheetHeader>
         <FormCardGroup className="overflow-y-auto">
@@ -67,7 +67,7 @@ export function FormSheetMaintenance({
             </FormSheetFooterInfo>
           ) : null}
           <Button type="submit" form="maintenance-form">
-            Submit
+            Enviar
           </Button>
         </FormSheetFooter>
       </FormSheetContent>

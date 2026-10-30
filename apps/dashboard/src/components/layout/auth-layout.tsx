@@ -26,7 +26,7 @@ export function AuthLayout({ children }: { children: React.ReactNode }) {
           rel="noreferrer"
         >
           <BookOpen />
-          Documentation
+          Documentação
         </a>
       </Button>
       {/*
@@ -52,14 +52,14 @@ export function AuthLayout({ children }: { children: React.ReactNode }) {
         <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center gap-8 text-center md:text-left">
           <div className="mx-auto grid gap-3">
             <h1 className="font-cal text-foreground text-3xl">
-              Your status page, live in minutes.
+              Sua página de status no ar em minutos.
             </h1>
             <p className="font-commit-mono text-muted-foreground">
-              Communicate incidents, prove uptime, and monitor every endpoint
-              from 28 regions. Open source. Free to start.
+              Comunique incidentes, comprove a disponibilidade e monitore cada
+              endpoint a partir de 28 regiões. Open source. Grátis para começar.
             </p>
             <p className="font-commit-mono text-muted-foreground">
-              Coming from{" "}
+              Vindo do{" "}
               <a
                 href="https://openstatus.dev/guides/migrate-from-atlassian-statuspage"
                 target="_blank"
@@ -77,7 +77,7 @@ export function AuthLayout({ children }: { children: React.ReactNode }) {
               >
                 Betterstack
               </a>
-              , or{" "}
+              ou do{" "}
               <a
                 href="https://openstatus.dev/guides/migrate-from-instatus"
                 target="_blank"
@@ -86,7 +86,7 @@ export function AuthLayout({ children }: { children: React.ReactNode }) {
               >
                 Instatus
               </a>
-              ? We have importers for all three.
+              ? Temos importadores para os três.
             </p>
           </div>
         </div>

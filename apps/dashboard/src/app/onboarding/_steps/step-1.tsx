@@ -89,18 +89,19 @@ export function Step1({
         <OnboardingStepper steps={stepperSteps} />
         <OnboardingStepHeader>
           <OnboardingStepTitle>
-            Check your URL from {TOTAL_REGIONS} regions
+            Verifique sua URL a partir de {TOTAL_REGIONS} regiões
           </OnboardingStepTitle>
           <OnboardingStepDescription>
-            Drop in your API or website. We&apos;ll run a real check from every
-            openstatus region — first results land in under a second.
+            Informe sua API ou site. Faremos uma verificação real a partir de
+            cada região do openstatus — os primeiros resultados chegam em menos
+            de um segundo.
           </OnboardingStepDescription>
         </OnboardingStepHeader>
         {isLocked ? (
           <OnboardingLockedSummary
             value={monitorData?.url ?? ""}
             href={monitorData?.url}
-            helper="Rename, retarget, or tune this monitor later from its settings page."
+            helper="Renomeie, altere o destino ou ajuste este monitor depois na página de configurações dele."
           />
         ) : (
           <CreateMonitorForm
@@ -112,7 +113,7 @@ export function Step1({
         <OnboardingActions>
           {isLocked ? (
             <Button onClick={onContinue}>
-              Continue <Next className="size-3" />
+              Continuar <Next className="size-3" />
             </Button>
           ) : (
             <>
@@ -121,17 +122,17 @@ export function Step1({
                 disabled={isSubmitting}
                 type="submit"
               >
-                {isSubmitting ? "Running…" : "Run first check"}
+                {isSubmitting ? "Executando…" : "Executar primeira verificação"}
               </Button>
               <Button variant="ghost" onClick={onSkip} type="button">
-                I don&apos;t have a URL
+                Não tenho uma URL
               </Button>
             </>
           )}
         </OnboardingActions>
       </OnboardingFormColumn>
       <OnboardingResultColumn>
-        <OnboardingResultHeading>Global Checks</OnboardingResultHeading>
+        <OnboardingResultHeading>Verificações globais</OnboardingResultHeading>
         {!isLocked ? (
           <ChecksPreviewPlaceholder />
         ) : (
@@ -172,7 +173,8 @@ function ChecksPreviewPlaceholder(
       </OnboardingPreviewPlaceholderContent>
       <OnboardingPreviewPlaceholderOverlay>
         <OnboardingPreviewPlaceholderText>
-          Hit run to watch results land here from every region as they finish.
+          Clique em executar para ver aqui os resultados de cada região conforme
+          forem concluídos.
         </OnboardingPreviewPlaceholderText>
       </OnboardingPreviewPlaceholderOverlay>
     </OnboardingPreviewPlaceholder>

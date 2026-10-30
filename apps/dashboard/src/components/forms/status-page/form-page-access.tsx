@@ -121,13 +121,13 @@ export function FormPageAccess({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -142,11 +142,11 @@ export function FormPageAccess({
       <form onSubmit={form.handleSubmit(submitAction)} {...props}>
         <FormCard>
           <FormCardHeader>
-            <FormCardTitle>Page Access</FormCardTitle>
+            <FormCardTitle>Acesso à página</FormCardTitle>
             <FormCardDescription>
-              Enable protection for your status page. Choose between simple
-              password, email domain authentication via magic link, or IP
-              restriction.
+              Ative a proteção da sua página de status. Escolha entre senha
+              simples, autenticação por domínio de e-mail via magic link ou
+              restrição por IP.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent>
@@ -155,7 +155,7 @@ export function FormPageAccess({
               name="accessType"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Protection Type</FormLabel>
+                  <FormLabel>Tipo de proteção</FormLabel>
                   <FormControl>
                     <RadioGroup
                       onValueChange={field.onChange}
@@ -163,17 +163,17 @@ export function FormPageAccess({
                       className="grid grid-cols-2 gap-4 sm:grid-cols-4"
                     >
                       {[
-                        { value: "public", icon: Unlock, label: "Public" },
-                        { value: "password", icon: ApiKey, label: "Password" },
+                        { value: "public", icon: Unlock, label: "Público" },
+                        { value: "password", icon: ApiKey, label: "Senha" },
                         {
                           value: "email-domain",
                           icon: ShieldUser,
-                          label: "Magic Link (Auth)",
+                          label: "Magic link (autenticação)",
                         },
                         {
                           value: "ip-restriction",
                           icon: Restricted,
-                          label: "IP Restriction",
+                          label: "Restrição por IP",
                         },
                       ].map((type) => {
                         return (
@@ -219,14 +219,14 @@ export function FormPageAccess({
                 disabled={locked}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>Senha</FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
                     <FormMessage />
                     <FormDescription>
-                      Set a password to your status page to have a very basic
-                      protection.
+                      Defina uma senha para sua página de status e tenha uma
+                      proteção básica.
                     </FormDescription>
                   </FormItem>
                 )}
@@ -242,15 +242,15 @@ export function FormPageAccess({
                 disabled={locked}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email Domains</FormLabel>
+                    <FormLabel>Domínios de e-mail</FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
                     <FormMessage />
                     <FormDescription>
-                      Comma-separated list of email domains. Only emails from
-                      these domains will be authenticated to access the status
-                      page.
+                      Lista de domínios de e-mail separados por vírgula. Somente
+                      e-mails desses domínios serão autenticados para acessar a
+                      página de status.
                     </FormDescription>
                   </FormItem>
                 )}
@@ -266,7 +266,7 @@ export function FormPageAccess({
                 disabled={locked}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Allowed IP Ranges</FormLabel>
+                    <FormLabel>Faixas de IP permitidas</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="192.168.1.0/24, 10.0.0.1"
@@ -275,9 +275,9 @@ export function FormPageAccess({
                     </FormControl>
                     <FormMessage />
                     <FormDescription>
-                      Comma-separated list of IPv4 CIDR ranges (we automatically
-                      append /32 to single IPs). Single IPs are also accepted
-                      (e.g. 203.0.113.5).
+                      Lista de faixas CIDR IPv4 separadas por vírgula
+                      (adicionamos /32 automaticamente a IPs únicos). IPs únicos
+                      também são aceitos (ex.: 203.0.113.5).
                     </FormDescription>
                   </FormItem>
                 )}
@@ -294,11 +294,13 @@ export function FormPageAccess({
               render={({ field }) => (
                 <FormItem className="flex items-center justify-between">
                   <div className="space-y-0.5">
-                    <FormLabel>Allow search engine indexing</FormLabel>
+                    <FormLabel>
+                      Permitir indexação por mecanismos de busca
+                    </FormLabel>
                     <FormDescription>
                       {watchAccessType !== "public"
-                        ? "Protected pages cannot be indexed by search engines."
-                        : "Allow search engines to index your status page."}
+                        ? "Páginas protegidas não podem ser indexadas por mecanismos de busca."
+                        : "Permita que mecanismos de busca indexem sua página de status."}
                     </FormDescription>
                   </div>
                   <FormControl>
@@ -314,13 +316,13 @@ export function FormPageAccess({
           </FormCardContent>
           <FormCardFooter>
             <FormCardFooterInfo>
-              Learn more about{" "}
+              Saiba mais sobre{" "}
               <Link
                 href="https://www.openstatus.dev/docs/reference/status-page/#password"
                 rel="noreferrer"
                 target="_blank"
               >
-                Protection
+                Proteção
               </Link>
               .
             </FormCardFooterInfo>
@@ -328,12 +330,12 @@ export function FormPageAccess({
               <Button type="button" asChild>
                 <Link href="/settings/billing">
                   <Lock />
-                  Upgrade
+                  Fazer upgrade
                 </Link>
               </Button>
             ) : (
               <Button type="submit" disabled={isPending}>
-                {isPending ? "Submitting..." : "Submit"}
+                {isPending ? "Enviando..." : "Enviar"}
               </Button>
             )}
           </FormCardFooter>

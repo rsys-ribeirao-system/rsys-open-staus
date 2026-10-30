@@ -38,8 +38,7 @@ import { z } from "zod";
 import { ThemePickerPopover } from "@/components/forms/status-page/theme-picker";
 import { useTRPC } from "@/lib/trpc/client";
 
-const SLUG_UNIQUE_ERROR_MESSAGE =
-  "This slug is already taken. Please choose another one.";
+const SLUG_UNIQUE_ERROR_MESSAGE = "Este slug já está em uso. Escolha outro.";
 
 // Keep in sync with `slugSchema` in
 // `packages/db/src/schema/pages/validation.ts`. We can't import that on the
@@ -47,12 +46,12 @@ const SLUG_UNIQUE_ERROR_MESSAGE =
 // (subdomains are case-insensitive), so we restrict input client-side too.
 const SLUG_PATTERN = /^[a-z0-9-]+$/;
 const SLUG_PATTERN_MESSAGE =
-  "Only use digits (0-9), hyphen (-) or lowercase characters (a-z).";
+  "Use apenas dígitos (0-9), hífen (-) ou letras minúsculas (a-z).";
 
 const FORCE_THEME_OPTIONS = [
-  { value: "light", label: "Light", icon: Light },
-  { value: "dark", label: "Dark", icon: Dark },
-  { value: "system", label: "System", icon: System },
+  { value: "light", label: "Claro", icon: Light },
+  { value: "dark", label: "Escuro", icon: Dark },
+  { value: "system", label: "Sistema", icon: System },
 ] as const;
 
 const schema = z.object({
@@ -62,7 +61,7 @@ const schema = z.object({
   components: z
     .array(
       z.object({
-        name: z.string().min(1, "Component name is required"),
+        name: z.string().min(1, "O nome do componente é obrigatório"),
       }),
     )
     .optional(),
@@ -144,14 +143,14 @@ export function CreatePageForm({
 
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: () => "Saved",
+          loading: "Salvando...",
+          success: () => "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
             console.error(error);
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -196,7 +195,7 @@ export function CreatePageForm({
             name="theme"
             render={({ field }) => (
               <FormItem className="min-w-0">
-                <FormLabel>Style</FormLabel>
+                <FormLabel>Estilo</FormLabel>
                 <ThemePickerPopover
                   value={field.value}
                   onChange={field.onChange}
@@ -210,7 +209,7 @@ export function CreatePageForm({
             name="forceTheme"
             render={({ field }) => (
               <FormItem className="min-w-0">
-                <FormLabel>Mode</FormLabel>
+                <FormLabel>Modo</FormLabel>
                 <Select
                   value={field.value}
                   onValueChange={(v) => {
@@ -222,7 +221,7 @@ export function CreatePageForm({
                 >
                   <FormControl>
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Mode" />
+                      <SelectValue placeholder="Modo" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -243,10 +242,10 @@ export function CreatePageForm({
         </div>
         {showComponents && (
           <div className="space-y-3">
-            <FormLabel>Components</FormLabel>
+            <FormLabel>Componentes</FormLabel>
             <FormDescription>
-              Add the services your users care about. You can attach monitors
-              later.
+              Adicione os serviços que importam para seus usuários. Você pode
+              vincular monitores depois.
             </FormDescription>
             <div className="space-y-2">
               {fields.map((field, index) => (
@@ -258,7 +257,7 @@ export function CreatePageForm({
                     <FormItem>
                       <div className="flex items-center gap-2">
                         <FormControl>
-                          <Input placeholder="e.g. API, Dashboard" {...field} />
+                          <Input placeholder="ex.: API, Painel" {...field} />
                         </FormControl>
                         {fields.length > 1 && (
                           <Button
@@ -286,7 +285,7 @@ export function CreatePageForm({
                 onClick={() => append({ name: "" })}
               >
                 <Add className="mr-1 size-4" />
-                Add another
+                Adicionar outro
               </Button>
             )}
           </div>

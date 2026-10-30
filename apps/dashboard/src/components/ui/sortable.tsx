@@ -198,28 +198,28 @@ function Sortable<T>(props: SortableProps<T>) {
           const activeIndex = active.data.current?.sortable.index ?? 0;
           const moveDirection = overIndex > activeIndex ? "down" : "up";
           const activeValue = active.id.toString();
-          return `Sortable item "${activeValue}" moved ${moveDirection} to position ${
+          return `Item ordenável "${activeValue}" movido para ${moveDirection === "down" ? "baixo" : "cima"} até a posição ${
             overIndex + 1
-          } of ${value.length}.`;
+          } de ${value.length}.`;
         }
-        return "Sortable item is no longer over a droppable area. Press escape to cancel.";
+        return "O item ordenável não está mais sobre uma área válida. Pressione Esc para cancelar.";
       },
       onDragEnd({ active, over }) {
         const activeValue = active.id.toString();
         if (over) {
           const overIndex = over.data.current?.sortable.index ?? 0;
-          return `Sortable item "${activeValue}" dropped at position ${
+          return `Item ordenável "${activeValue}" solto na posição ${
             overIndex + 1
-          } of ${value.length}.`;
+          } de ${value.length}.`;
         }
-        return `Sortable item "${activeValue}" dropped. No changes were made.`;
+        return `Item ordenável "${activeValue}" solto. Nenhuma alteração foi feita.`;
       },
       onDragCancel({ active }) {
         const activeIndex = active.data.current?.sortable.index ?? 0;
         const activeValue = active.id.toString();
-        return `Sorting cancelled. Sortable item "${activeValue}" returned to position ${
+        return `Ordenação cancelada. Item ordenável "${activeValue}" voltou para a posição ${
           activeIndex + 1
-        } of ${value.length}.`;
+        } de ${value.length}.`;
       },
       onDragMove({ active, over }) {
         if (over) {
@@ -227,11 +227,11 @@ function Sortable<T>(props: SortableProps<T>) {
           const activeIndex = active.data.current?.sortable.index ?? 0;
           const moveDirection = overIndex > activeIndex ? "down" : "up";
           const activeValue = active.id.toString();
-          return `Sortable item "${activeValue}" is moving ${moveDirection} to position ${
+          return `Item ordenável "${activeValue}" está sendo movido para ${moveDirection === "down" ? "baixo" : "cima"} até a posição ${
             overIndex + 1
-          } of ${value.length}.`;
+          } de ${value.length}.`;
         }
-        return "Sortable item is no longer over a droppable area. Press escape to cancel.";
+        return "O item ordenável não está mais sobre uma área válida. Pressione Esc para cancelar.";
       },
     }),
     [value],
@@ -240,15 +240,15 @@ function Sortable<T>(props: SortableProps<T>) {
   const screenReaderInstructions: ScreenReaderInstructions = React.useMemo(
     () => ({
       draggable: `
-        To pick up a sortable item, press space or enter.
-        While dragging, use the ${
+        Para pegar um item ordenável, pressione espaço ou enter.
+        Enquanto arrasta, use as teclas ${
           orientation === "vertical"
-            ? "up and down"
+            ? "para cima e para baixo"
             : orientation === "horizontal"
-              ? "left and right"
-              : "arrow"
-        } keys to move the item.
-        Press space or enter again to drop the item in its new position, or press escape to cancel.
+              ? "para a esquerda e para a direita"
+              : "de seta"
+        } para mover o item.
+        Pressione espaço ou enter novamente para soltar o item na nova posição, ou pressione Esc para cancelar.
       `,
     }),
     [orientation],

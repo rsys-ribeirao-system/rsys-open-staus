@@ -12,7 +12,7 @@ export function useCopyToClipboard() {
       {
         timeout = 3000,
         withToast = false,
-        successMessage = "Copied to clipboard",
+        successMessage = "Copiado para a área de transferência",
       }: {
         timeout?: number;
         withToast?: boolean | string;

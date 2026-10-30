@@ -24,12 +24,13 @@ export function PopoverResolution({
       </PopoverTrigger>
       <PopoverContent side="top" className="p-0 text-sm">
         <p className="px-3 py-2 font-medium">
-          Run data aggregation on fixed time boundaries.
+          Agrega os dados em intervalos de tempo fixos.
         </p>
         <Separator />
         <p className="text-muted-foreground px-3 py-2">
-          A 30-minute resolution aligns to the top or bottom of the hour (e.g.,
-          00:00, 00:30) so all intervals are consistent for analysis.
+          Uma resolução de 30 minutos se alinha ao início ou à metade da hora
+          (ex.: 00:00, 00:30), mantendo todos os intervalos consistentes para
+          análise.
         </p>
       </PopoverContent>
     </Popover>

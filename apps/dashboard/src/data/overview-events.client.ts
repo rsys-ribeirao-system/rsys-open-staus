@@ -18,25 +18,25 @@ export type OverviewEvent =
   | { type: "maintenance"; maintenance: Maintenance };
 
 export const eventTypeConfig = {
-  incident: { label: "Incident", icon: IncidentIcon },
-  report: { label: "Status Report", icon: Report },
-  maintenance: { label: "Maintenance", icon: MaintenanceIcon },
+  incident: { label: "Incidente", icon: IncidentIcon },
+  report: { label: "Relatório de status", icon: Report },
+  maintenance: { label: "Manutenção", icon: MaintenanceIcon },
 } as const;
 
 export type OverviewEventType = keyof typeof eventTypeConfig;
 
 export const incidentStatusConfig = {
-  ongoing: { label: "Ongoing", color: "text-destructive/80" },
-  acknowledged: { label: "Acknowledged", color: "text-warning/80" },
-  resolved: { label: "Resolved", color: "text-success/80" },
+  ongoing: { label: "Em andamento", color: "text-destructive/80" },
+  acknowledged: { label: "Reconhecido", color: "text-warning/80" },
+  resolved: { label: "Resolvido", color: "text-success/80" },
 } as const;
 
 export type IncidentStatus = keyof typeof incidentStatusConfig;
 
 export const maintenanceStatusConfig = {
-  scheduled: { label: "Scheduled", color: "text-info/80" },
-  "in-progress": { label: "In Progress", color: "text-info/80" },
-  completed: { label: "Completed", color: "text-info/80" },
+  scheduled: { label: "Agendada", color: "text-info/80" },
+  "in-progress": { label: "Em andamento", color: "text-info/80" },
+  completed: { label: "Concluída", color: "text-info/80" },
 } as const;
 
 export type MaintenanceStatus = keyof typeof maintenanceStatusConfig;
@@ -160,33 +160,33 @@ export function buildOverviewData(
 
   const metrics: OverviewMetric[] = [
     {
-      title: "Monitors",
+      title: "Monitores",
       value: monitors.length,
       href: "/monitors",
       variant: "default",
       icon: Monitor,
     },
     {
-      title: "Status Pages",
+      title: "Páginas de status",
       value: pages.length,
       href: "/status-pages",
       variant: "default",
       icon: StatusPage,
     },
     {
-      title: "Open Incidents",
+      title: "Incidentes abertos",
       value: openIncidents.length,
       variant: openIncidents.length > 0 ? "destructive" : "default",
       icon: eventTypeConfig.incident.icon,
     },
     {
-      title: "Open Reports",
+      title: "Relatórios abertos",
       value: openReports.length,
       variant: openReports.length > 0 ? "warning" : "default",
       icon: eventTypeConfig.report.icon,
     },
     {
-      title: "Scheduled Maintenances",
+      title: "Manutenções agendadas",
       value: activeMaintenances.length,
       variant: activeMaintenances.length > 0 ? "info" : "default",
       icon: eventTypeConfig.maintenance.icon,

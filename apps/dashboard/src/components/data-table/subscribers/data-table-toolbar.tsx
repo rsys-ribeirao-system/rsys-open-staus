@@ -10,15 +10,15 @@ import { DataTableFacetedFilter } from "@/components/ui/data-table/data-table-fa
 type Subscriber = RouterOutputs["pageSubscriber"]["list"][number];
 
 const STATUS_OPTIONS = [
-  { label: "Active", value: "active" },
-  { label: "Pending", value: "pending" },
-  { label: "Unsubscribed", value: "unsubscribed" },
+  { label: "Ativo", value: "active" },
+  { label: "Pendente", value: "pending" },
+  { label: "Inscrição cancelada", value: "unsubscribed" },
 ];
 
 const SOURCE_OPTIONS = [
-  { label: "Self-signup", value: "self_signup" },
-  { label: "Vendor", value: "vendor" },
-  { label: "Import", value: "import" },
+  { label: "Autoinscrição", value: "self_signup" },
+  { label: "Fornecedor", value: "vendor" },
+  { label: "Importação", value: "import" },
 ];
 
 function filterAvailable<T extends { value: string }>(
@@ -56,7 +56,7 @@ export function SubscribersDataTableToolbar({
         {table.getColumn("source") && sourceOptions.length > 0 && (
           <DataTableFacetedFilter
             column={table.getColumn("source")}
-            title="Source"
+            title="Origem"
             options={sourceOptions}
             icon={Globe}
           />
@@ -67,7 +67,7 @@ export function SubscribersDataTableToolbar({
             onClick={() => table.resetColumnFilters()}
             className="h-8 px-2 lg:px-3"
           >
-            Reset
+            Redefinir
             <Close />
           </Button>
         )}

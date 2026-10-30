@@ -43,10 +43,10 @@ export function FormDialogSupportContact({
       ) : null}
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Support</DialogTitle>
+          <DialogTitle>Suporte</DialogTitle>
           <DialogDescription>
-            Please fill out the form below to get in touch with us. Or send us
-            an email to{" "}
+            Preencha o formulário abaixo para entrar em contato conosco. Ou
+            envie um e-mail para{" "}
             <Link href="mailto:ping@openstatus.dev">ping@openstatus.dev</Link>.
           </DialogDescription>
         </DialogHeader>

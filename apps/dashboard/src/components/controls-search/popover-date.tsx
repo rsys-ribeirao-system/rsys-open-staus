@@ -29,7 +29,7 @@ export function PopoverDate() {
     () => [
       {
         id: "today",
-        label: "Today",
+        label: "Hoje",
         values: {
           from: startOfDay(today.current),
           to: endOfDay(today.current),
@@ -38,7 +38,7 @@ export function PopoverDate() {
       },
       {
         id: "yesterday",
-        label: "Yesterday",
+        label: "Ontem",
         values: {
           from: startOfDay(subDays(today.current, 1)),
           to: endOfDay(subDays(today.current, 1)),
@@ -47,7 +47,7 @@ export function PopoverDate() {
       },
       {
         id: "lastHour",
-        label: "Last hour",
+        label: "Última hora",
         values: {
           from: subHours(today.current, 1),
           to: today.current,
@@ -56,7 +56,7 @@ export function PopoverDate() {
       },
       {
         id: "last6Hours",
-        label: "Last 6 hours",
+        label: "Últimas 6 horas",
         values: {
           from: subHours(today.current, 5),
           to: today.current,
@@ -65,7 +65,7 @@ export function PopoverDate() {
       },
       {
         id: "last24Hours",
-        label: "Last 24 hours",
+        label: "Últimas 24 horas",
         values: {
           from: subHours(today.current, 23),
           to: today.current,
@@ -74,7 +74,7 @@ export function PopoverDate() {
       },
       {
         id: "last7Days",
-        label: "Last 7 days",
+        label: "Últimos 7 dias",
         values: {
           from: subDays(today.current, 6),
           to: today.current,
@@ -83,7 +83,7 @@ export function PopoverDate() {
       },
       {
         id: "last14Days",
-        label: "Last 14 days",
+        label: "Últimos 14 dias",
         values: {
           from: subDays(today.current, 13),
           to: today.current,

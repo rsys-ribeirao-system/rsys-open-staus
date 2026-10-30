@@ -36,12 +36,12 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
     edit: () => router.push(`/monitors/${row.original.id}/edit`),
     "copy-id": () => {
       navigator.clipboard.writeText(row.original.id.toString());
-      toast.success("Monitor ID copied to clipboard");
+      toast.success("ID do monitor copiado para a área de transferência");
     },
     "copy-curl": isHttp
       ? async () => {
           await navigator.clipboard.writeText(buildCurlCommand(row.original));
-          toast.success("cURL command copied to clipboard");
+          toast.success("Comando cURL copiado para a área de transferência");
         }
       : undefined,
     // export: () => setOpenDialog(true),

@@ -35,7 +35,7 @@ export function NavMain({
   const { setOpenMobile } = useSidebar();
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Workspace Data</SidebarGroupLabel>
+      <SidebarGroupLabel>Dados do workspace</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible

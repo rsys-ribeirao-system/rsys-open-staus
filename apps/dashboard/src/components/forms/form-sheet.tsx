@@ -113,15 +113,16 @@ export function FormSheetAlertDialog({
     <AlertDialog {...props}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Discard changes?</AlertDialogTitle>
+          <AlertDialogTitle>Descartar alterações?</AlertDialogTitle>
           <AlertDialogDescription>
-            You have unsaved changes. Are you sure you want to discard them?
+            Você tem alterações não salvas. Tem certeza de que deseja
+            descartá-las?
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Continue editing</AlertDialogCancel>
+          <AlertDialogCancel>Continuar editando</AlertDialogCancel>
           <AlertDialogAction onClick={onConfirm}>
-            Discard changes
+            Descartar alterações
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

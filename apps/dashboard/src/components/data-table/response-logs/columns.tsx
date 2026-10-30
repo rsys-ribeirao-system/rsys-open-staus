@@ -46,7 +46,7 @@ export function getColumns(
     },
     {
       accessorKey: "timestamp",
-      header: "Timestamp",
+      header: "Data/hora",
       enableSorting: false,
       enableHiding: false,
       cell: ({ row }) => {
@@ -80,7 +80,7 @@ export function getColumns(
     },
     {
       accessorKey: "latency",
-      header: "Latency",
+      header: "Latência",
       enableSorting: false,
       enableHiding: false,
       cell: ({ row }) => {
@@ -89,7 +89,7 @@ export function getColumns(
     },
     {
       accessorKey: "region",
-      header: "Region",
+      header: "Região",
       cell: ({ row }) => (
         <TableCellRegion
           value={row.getValue("region")}
@@ -105,7 +105,7 @@ export function getColumns(
     },
     {
       accessorKey: "timing",
-      header: "Timing",
+      header: "Tempos",
       cell: ({ row }) => {
         const log = row.original;
         if (log.type === "http" && log.timing) {
@@ -118,12 +118,12 @@ export function getColumns(
     },
     {
       accessorKey: "trigger",
-      header: "Trigger",
+      header: "Disparo",
       cell: ({ row }) => {
         const value = row.getValue("trigger");
         if (value === "cron" || value === "api") {
           const Icon = value === "cron" ? Clock : ApiTrigger;
-          const label = value === "cron" ? "Scheduled" : "API";
+          const label = value === "cron" ? "Agendado" : "API";
           return (
             <TooltipProvider>
               <Tooltip>

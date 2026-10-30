@@ -58,7 +58,7 @@ export function OnboardingStepper({
 }: React.ComponentProps<"nav"> & { steps: OnboardingStep[] }) {
   return (
     <nav
-      aria-label="Onboarding progress"
+      aria-label="Progresso dos primeiros passos"
       className={cn("w-full", className)}
       {...props}
     >
@@ -325,7 +325,7 @@ export function OnboardingLockedSummary({
         {href ? (
           <Button variant="outline" asChild>
             <a href={href} target="_blank" rel="noopener noreferrer">
-              Open <ArrowUpRight className="size-3" />
+              Abrir <ArrowUpRight className="size-3" />
             </a>
           </Button>
         ) : null}

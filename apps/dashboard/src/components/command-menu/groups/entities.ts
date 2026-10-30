@@ -13,7 +13,7 @@ export function monitorsGroup(
 ): CommandMenuGroup | null {
   if (!monitors || monitors.length === 0) return null;
   return {
-    heading: "Monitors",
+    heading: "Monitores",
     idleLimit: 5,
     items: monitors.map((m) => ({
       value: `monitor-${m.id}`,
@@ -33,7 +33,7 @@ export function statusPagesGroup(
 ): CommandMenuGroup | null {
   if (!statusPages || statusPages.length === 0) return null;
   return {
-    heading: "Status Pages",
+    heading: "Páginas de status",
     idleLimit: 5,
     items: statusPages.map((p) => ({
       value: `status-page-${p.id}`,
@@ -53,7 +53,7 @@ export function statusReportsGroup(
 ): CommandMenuGroup | null {
   if (!sortedStatusReports || sortedStatusReports.length === 0) return null;
   return {
-    heading: "Status Reports",
+    heading: "Relatórios de status",
     idleLimit: 5,
     items: sortedStatusReports.map((r) => ({
       value: `status-report-${r.id}`,
@@ -74,7 +74,7 @@ export function maintenancesGroup(
 ): CommandMenuGroup | null {
   if (!sortedMaintenances || sortedMaintenances.length === 0) return null;
   return {
-    heading: "Maintenances",
+    heading: "Manutenções",
     idleLimit: 5,
     items: sortedMaintenances.map((m) => ({
       value: `maintenance-${m.id}`,
@@ -100,9 +100,9 @@ export function workspacesGroup(
     heading: "Workspace",
     items: otherWorkspaces.map((w) => ({
       value: `workspace-${w.id}`,
-      label: w.name || "Untitled Workspace",
+      label: w.name || "Workspace sem nome",
       description: w.slug,
-      keywords: [w.name || "Untitled Workspace", w.slug],
+      keywords: [w.name || "Workspace sem nome", w.slug],
       action: { type: "run", run: () => switchWorkspace(w.slug) },
     })),
   };

@@ -81,12 +81,12 @@ export function NavActions() {
     edit: () => router.push(`/monitors/${id}/edit`),
     "copy-id": async () => {
       await navigator.clipboard.writeText(id);
-      toast.success("Monitor ID copied to clipboard");
+      toast.success("ID do monitor copiado para a área de transferência");
     },
     "copy-curl": curlCommand
       ? async () => {
           await navigator.clipboard.writeText(curlCommand);
-          toast.success("cURL command copied to clipboard");
+          toast.success("Comando cURL copiado para a área de transferência");
         }
       : undefined,
     clone: () => {
@@ -94,13 +94,13 @@ export function NavActions() {
         id: Number.parseInt(id),
       });
       toast.promise(promise, {
-        loading: "Cloning monitor...",
-        success: "Monitor cloned",
+        loading: "Clonando monitor...",
+        success: "Monitor clonado",
         error: (error) => {
           if (isTRPCClientError(error)) {
             return error.message;
           }
-          return "Failed to clone monitor";
+          return "Falha ao clonar o monitor";
         },
       });
     },
@@ -118,32 +118,32 @@ export function NavActions() {
       });
 
       toast.promise(promise, {
-        loading: "Testing HTTP request...",
+        loading: "Testando requisição HTTP...",
         success: (data) => {
           setTest(data);
-          return "HTTP test completed successfully";
+          return "Teste HTTP concluído com sucesso";
         },
         error: (error) => {
           if (isTRPCClientError(error)) {
             return error.message;
           }
-          return "HTTP test failed";
+          return "Teste HTTP falhou";
         },
       });
     } else if (monitor?.jobType === "tcp") {
       const promise = testTcpMutation.mutateAsync({ url: monitor.url });
 
       toast.promise(promise, {
-        loading: "Testing TCP connection...",
+        loading: "Testando conexão TCP...",
         success: (data) => {
           setTest(data);
-          return "TCP test completed successfully";
+          return "Teste TCP concluído com sucesso";
         },
         error: (error) => {
           if (isTRPCClientError(error)) {
             return error.message;
           }
-          return "TCP test failed";
+          return "Teste TCP falhou";
         },
       });
     } else if (monitor?.jobType === "dns") {
@@ -154,32 +154,32 @@ export function NavActions() {
       });
 
       toast.promise(promise, {
-        loading: "Testing DNS request...",
+        loading: "Testando requisição DNS...",
         success: (data) => {
           setTest(data);
-          return "DNS test completed successfully";
+          return "Teste DNS concluído com sucesso";
         },
         error: (error) => {
           if (isTRPCClientError(error)) {
             return error.message;
           }
-          return "DNS test failed";
+          return "Teste DNS falhou";
         },
       });
     } else if (monitor?.jobType === "icmp") {
       const promise = testIcmpMutation.mutateAsync({ url: monitor.url });
 
       toast.promise(promise, {
-        loading: "Testing ICMP request...",
+        loading: "Testando requisição ICMP...",
         success: (data) => {
           setTest(data);
-          return "ICMP test completed successfully";
+          return "Teste ICMP concluído com sucesso";
         },
         error: (error) => {
           if (isTRPCClientError(error)) {
             return error.message;
           }
-          return "ICMP test failed";
+          return "Teste ICMP falhou";
         },
       });
     } else if (monitor?.jobType === "grpc") {
@@ -191,16 +191,16 @@ export function NavActions() {
       });
 
       toast.promise(promise, {
-        loading: "Testing gRPC request...",
+        loading: "Testando requisição gRPC...",
         success: (data) => {
           setTest(data);
-          return "gRPC test completed successfully";
+          return "Teste gRPC concluído com sucesso";
         },
         error: (error) => {
           if (isTRPCClientError(error)) {
             return error.message;
           }
-          return "gRPC test failed";
+          return "Teste gRPC falhou";
         },
       });
     }
@@ -235,12 +235,12 @@ export function NavActions() {
           </TooltipTrigger>
           <TooltipContent>
             {!monitor.active
-              ? "Inactive"
+              ? "Inativo"
               : monitor.status === "active"
                 ? "Normal"
                 : monitor.status === "error"
-                  ? "Failing"
-                  : "Degraded"}
+                  ? "Com falha"
+                  : "Degradado"}
           </TooltipContent>
         </Tooltip>
       </div>
@@ -257,7 +257,7 @@ export function NavActions() {
               <Speed className="text-muted-foreground group-hover:text-foreground" />
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Test Monitor</TooltipContent>
+          <TooltipContent>Testar monitor</TooltipContent>
         </Tooltip>
       </TooltipProvider>
       <QuickActions

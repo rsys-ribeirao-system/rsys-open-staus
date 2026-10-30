@@ -16,7 +16,7 @@ type Maintenance = RouterOutputs["maintenance"]["list"][number];
 export const columns: ColumnDef<Maintenance>[] = [
   {
     accessorKey: "title",
-    header: "Title",
+    header: "Título",
     enableSorting: false,
     enableHiding: false,
     meta: {
@@ -25,7 +25,7 @@ export const columns: ColumnDef<Maintenance>[] = [
   },
   {
     accessorKey: "message",
-    header: "Message",
+    header: "Mensagem",
     enableSorting: false,
     enableHiding: false,
     cell: ({ row }) => {
@@ -40,7 +40,7 @@ export const columns: ColumnDef<Maintenance>[] = [
   {
     accessorKey: "from",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Start Date" />
+      <DataTableColumnHeader column={column} title="Data de início" />
     ),
     cell: ({ row }) => <TableCellDate value={row.getValue("from")} />,
     enableHiding: false,
@@ -48,7 +48,7 @@ export const columns: ColumnDef<Maintenance>[] = [
   {
     id: "duration",
     accessorFn: (row) => formatDistanceStrict(row.from, row.to),
-    header: "Duration",
+    header: "Duração",
     cell: ({ row }) => {
       const value = row.getValue("duration");
       if (typeof value === "string") {

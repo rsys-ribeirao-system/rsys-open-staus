@@ -48,7 +48,7 @@ import { useTRPC } from "@/lib/trpc/client";
 
 const schema = z.object({
   provider: z.enum(["statuspage", "betterstack", "instatus", "checkly"]),
-  apiKey: z.string().min(1, "API key is required"),
+  apiKey: z.string().min(1, "A chave de API é obrigatória"),
   statuspagePageId: z.string().optional(),
   betterstackStatusPageId: z.string().optional(),
   instatusPageId: z.string().optional(),
@@ -67,14 +67,14 @@ function getPhaseCount(preview: ImportSummary, phase: string): number {
 }
 
 const PHASE_LABELS: Record<string, string> = {
-  monitors: "Monitors",
-  componentGroups: "Component Groups",
-  monitorGroups: "Monitor Groups",
-  sections: "Sections",
-  components: "Components",
-  incidents: "Status Reports",
-  maintenances: "Maintenances",
-  subscribers: "Subscribers",
+  monitors: "Monitores",
+  componentGroups: "Grupos de componentes",
+  monitorGroups: "Grupos de monitores",
+  sections: "Seções",
+  components: "Componentes",
+  incidents: "Relatórios de status",
+  maintenances: "Manutenções",
+  subscribers: "Assinantes",
 };
 
 export function FormImport({
@@ -116,7 +116,7 @@ export function FormImport({
         if (isTRPCClientError(error)) {
           toast.error(error.message);
         } else {
-          toast.error("Failed to preview import");
+          toast.error("Falha ao pré-visualizar a importação");
         }
       },
     }),
@@ -125,11 +125,13 @@ export function FormImport({
   async function runPreview() {
     const apiKey = form.getValues("apiKey");
     if (!apiKey) {
-      form.setError("apiKey", { message: "API key is required" });
+      form.setError("apiKey", { message: "A chave de API é obrigatória" });
       return;
     }
     if (watchProvider === "checkly" && !form.getValues("checklyAccountId")) {
-      form.setError("checklyAccountId", { message: "Account ID is required" });
+      form.setError("checklyAccountId", {
+        message: "O ID da conta é obrigatório",
+      });
       return;
     }
     previewMutation.mutate({
@@ -166,17 +168,17 @@ export function FormImport({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Importing...",
+          loading: "Importando...",
           success: (result) => {
             if (result.status === "partial")
-              return "Import completed with warnings";
-            return "Import completed";
+              return "Importação concluída com avisos";
+            return "Importação concluída";
           },
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Import failed";
+            return "Falha na importação";
           },
         });
         await promise;
@@ -190,10 +192,10 @@ export function FormImport({
       <form onSubmit={form.handleSubmit(submitAction)}>
         <FormCard>
           <FormCardHeader>
-            <FormCardTitle>Import</FormCardTitle>
+            <FormCardTitle>Importar</FormCardTitle>
             <FormCardDescription>
-              Import components, incidents, and subscribers from an external
-              status page provider.
+              Importe componentes, incidentes e assinantes de um provedor
+              externo de página de status.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardSeparator />
@@ -203,7 +205,7 @@ export function FormImport({
               name="provider"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Provider</FormLabel>
+                  <FormLabel>Provedor</FormLabel>
                   <FormControl>
                     <RadioGroup
                       onValueChange={field.onChange}
@@ -268,8 +270,8 @@ export function FormImport({
                         </FormLabel>
                       </FormItem>
                       <div className="text-muted-foreground col-span-1 self-end text-xs sm:place-self-end">
-                        Missing a provider?{" "}
-                        <a href="mailto:ping@openstatus.dev">Contact us</a>
+                        Falta algum provedor?{" "}
+                        <a href="mailto:ping@openstatus.dev">Fale conosco</a>
                       </div>
                     </RadioGroup>
                   </FormControl>
@@ -287,15 +289,15 @@ export function FormImport({
                   name="apiKey"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>API Key</FormLabel>
+                      <FormLabel>Chave de API</FormLabel>
                       <FormControl>
                         <Input
                           type="password"
                           placeholder={
                             watchProvider === "betterstack"
-                              ? "Bearer token"
+                              ? "Token bearer"
                               : watchProvider === "instatus"
-                                ? "Bearer API key"
+                                ? "Chave de API bearer"
                                 : watchProvider === "checkly"
                                   ? "cu_xxxxxxxxxxxx"
                                   : "OAuth API key"
@@ -306,12 +308,12 @@ export function FormImport({
                       <FormMessage />
                       <FormDescription>
                         {watchProvider === "betterstack"
-                          ? "Your Better Stack API token. Found in Better Stack > API tokens."
+                          ? "Seu token de API do Better Stack. Disponível em Better Stack > API tokens."
                           : watchProvider === "instatus"
-                            ? "Your Instatus API key. Found in your Instatus account under Settings > API."
+                            ? "Sua chave de API do Instatus. Disponível na sua conta Instatus em Settings > API."
                             : watchProvider === "checkly"
-                              ? "Your Checkly API key. Found in Checkly > User Settings > API keys."
-                              : "Your Statuspage API key. Found in your Statuspage account under Manage Account > API."}{" "}
+                              ? "Sua chave de API do Checkly. Disponível em Checkly > User Settings > API keys."
+                              : "Sua chave de API do Statuspage. Disponível na sua conta Statuspage em Manage Account > API."}{" "}
                         <Link
                           href={
                             watchProvider === "betterstack"
@@ -323,7 +325,7 @@ export function FormImport({
                                   : "https://openstatus.dev/guides/migrate-from-atlassian-statuspage"
                           }
                         >
-                          Full migration guide.
+                          Guia completo de migração.
                         </Link>
                       </FormDescription>
                     </FormItem>
@@ -335,13 +337,13 @@ export function FormImport({
                     name="statuspagePageId"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Page ID (optional)</FormLabel>
+                        <FormLabel>ID da página (opcional)</FormLabel>
                         <FormControl>
-                          <Input placeholder="e.g. abc123def456" {...field} />
+                          <Input placeholder="ex.: abc123def456" {...field} />
                         </FormControl>
                         <FormDescription>
-                          Import a specific page. Leave empty to import across
-                          pages.
+                          Importe uma página específica. Deixe vazio para
+                          importar de todas as páginas.
                         </FormDescription>
                       </FormItem>
                     )}
@@ -353,13 +355,13 @@ export function FormImport({
                     name="betterstackStatusPageId"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Status Page ID (optional)</FormLabel>
+                        <FormLabel>ID da página de status (opcional)</FormLabel>
                         <FormControl>
-                          <Input placeholder="e.g. 123456789" {...field} />
+                          <Input placeholder="ex.: 123456789" {...field} />
                         </FormControl>
                         <FormDescription>
-                          Import a specific status page. Leave empty to use the
-                          first available.
+                          Importe uma página de status específica. Deixe vazio
+                          para usar a primeira disponível.
                         </FormDescription>
                       </FormItem>
                     )}
@@ -371,13 +373,13 @@ export function FormImport({
                     name="instatusPageId"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Page ID (optional)</FormLabel>
+                        <FormLabel>ID da página (opcional)</FormLabel>
                         <FormControl>
-                          <Input placeholder="e.g. clx1abc2def3" {...field} />
+                          <Input placeholder="ex.: clx1abc2def3" {...field} />
                         </FormControl>
                         <FormDescription>
-                          Import a specific page. Leave empty to import all
-                          pages.
+                          Importe uma página específica. Deixe vazio para
+                          importar todas as páginas.
                         </FormDescription>
                       </FormItem>
                     )}
@@ -390,13 +392,13 @@ export function FormImport({
                       name="checklyAccountId"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Account ID</FormLabel>
+                          <FormLabel>ID da conta</FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g. 1a2b3c4d-..." {...field} />
+                            <Input placeholder="ex.: 1a2b3c4d-..." {...field} />
                           </FormControl>
                           <FormMessage />
                           <FormDescription>
-                            Your Checkly account ID. Found in Checkly under
+                            O ID da sua conta Checkly. Disponível no Checkly em
                             Account Settings → General.
                           </FormDescription>
                         </FormItem>
@@ -407,13 +409,15 @@ export function FormImport({
                       name="checklyStatusPageId"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Status Page ID (optional)</FormLabel>
+                          <FormLabel>
+                            ID da página de status (opcional)
+                          </FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g. 1a2b3c4d-..." {...field} />
+                            <Input placeholder="ex.: 1a2b3c4d-..." {...field} />
                           </FormControl>
                           <FormDescription>
-                            Import a specific status page. Leave empty to use
-                            the first available.
+                            Importe uma página de status específica. Deixe vazio
+                            para usar a primeira disponível.
                           </FormDescription>
                         </FormItem>
                       )}
@@ -427,8 +431,8 @@ export function FormImport({
                   disabled={previewMutation.isPending}
                 >
                   {previewMutation.isPending
-                    ? "Loading preview..."
-                    : "Preview Import"}
+                    ? "Carregando pré-visualização..."
+                    : "Pré-visualizar importação"}
                 </Button>
               </FormCardContent>
             </>
@@ -438,7 +442,7 @@ export function FormImport({
               <FormCardSeparator />
               <FormCardContent className="grid gap-4">
                 <div>
-                  <FormLabel>Preview</FormLabel>
+                  <FormLabel>Pré-visualização</FormLabel>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {Object.entries(PHASE_LABELS).map(([key, label]) => {
                       const count = getPhaseCount(previewMutation.data, key);
@@ -467,10 +471,9 @@ export function FormImport({
                     render={({ field }) => (
                       <FormItem className="flex flex-row items-center justify-between">
                         <div className="space-y-0.5">
-                          <FormLabel>Monitors</FormLabel>
+                          <FormLabel>Monitores</FormLabel>
                           <FormDescription>
-                            Import monitors with their URL, frequency, and
-                            regions.
+                            Importe monitores com URL, frequência e regiões.
                           </FormDescription>
                         </div>
                         <FormControl>
@@ -489,10 +492,12 @@ export function FormImport({
                   render={({ field }) => (
                     <FormItem className="flex flex-row items-center justify-between">
                       <div className="space-y-0.5">
-                        <FormLabel>Status Reports & Maintenances</FormLabel>
+                        <FormLabel>
+                          Relatórios de status e manutenções
+                        </FormLabel>
                         <FormDescription>
-                          Import incidents as status reports and scheduled
-                          maintenances.
+                          Importe incidentes como relatórios de status e
+                          manutenções agendadas.
                         </FormDescription>
                       </div>
                       <FormControl>
@@ -510,9 +515,9 @@ export function FormImport({
                   render={({ field }) => (
                     <FormItem className="flex flex-row items-center justify-between">
                       <div className="space-y-0.5">
-                        <FormLabel>Components</FormLabel>
+                        <FormLabel>Componentes</FormLabel>
                         <FormDescription>
-                          Import components and groups.
+                          Importe componentes e grupos.
                         </FormDescription>
                       </div>
                       <FormControl>
@@ -532,9 +537,9 @@ export function FormImport({
                     render={({ field }) => (
                       <FormItem className="flex flex-row items-center justify-between">
                         <div className="space-y-0.5">
-                          <FormLabel>Subscribers</FormLabel>
+                          <FormLabel>Assinantes</FormLabel>
                           <FormDescription>
-                            Import email subscribers.
+                            Importe assinantes de e-mail.
                           </FormDescription>
                         </div>
                         <FormControl>
@@ -559,7 +564,7 @@ export function FormImport({
                 previewMutation.data.errors.length > 0
               }
             >
-              {isPending ? "Importing..." : "Import"}
+              {isPending ? "Importando..." : "Importar"}
             </Button>
           </FormCardFooter>
         </FormCard>

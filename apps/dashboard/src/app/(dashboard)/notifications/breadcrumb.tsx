@@ -7,7 +7,7 @@ import { NavBreadcrumb } from "@/components/nav/nav-breadcrumb";
 export function Breadcrumb() {
   return (
     <NavBreadcrumb
-      items={[{ type: "page", label: "Notifications", icon: Notification }]}
+      items={[{ type: "page", label: "Notificações", icon: Notification }]}
     />
   );
 }

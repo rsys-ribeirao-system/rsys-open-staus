@@ -29,11 +29,11 @@ export function NavActions() {
           className="data-[limited=true]:opacity-80"
           onClick={() => setOpenDialog(true)}
         >
-          Create Monitor
+          Criar monitor
         </Button>
       ) : (
         <Button size="sm" asChild>
-          <Link href="/monitors/create">Create Monitor</Link>
+          <Link href="/monitors/create">Criar monitor</Link>
         </Button>
       )}
       <UpgradeDialog open={openDialog} onOpenChange={setOpenDialog} />
