@@ -60,7 +60,7 @@ export function StatusEventGroup({
       data-slot="status-event-group"
       className={cn("flex flex-col gap-4", className)}
       role="feed"
-      aria-label="Status events and updates"
+      aria-label="Eventos e atualizações de status"
       {...props}
     >
       {children}
