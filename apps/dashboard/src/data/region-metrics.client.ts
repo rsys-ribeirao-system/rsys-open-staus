@@ -3,7 +3,7 @@ import { Filter } from "@openstatus/icons";
 export const actions = [
   {
     id: "filter",
-    label: "Filter",
+    label: "Filtrar",
     icon: Filter,
     variant: "default" as const,
   },

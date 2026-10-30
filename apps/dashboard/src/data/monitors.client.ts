@@ -42,25 +42,25 @@ export const monitorTypes = [
 export const actions = [
   {
     id: "edit",
-    label: "Settings",
+    label: "Configurações",
     icon: Settings,
     variant: "default" as const,
   },
   {
     id: "copy-id",
-    label: "Copy ID",
+    label: "Copiar ID",
     icon: Copy,
     variant: "default" as const,
   },
   {
     id: "copy-curl",
-    label: "Copy cURL",
+    label: "Copiar cURL",
     icon: Terminal,
     variant: "default" as const,
   },
   {
     id: "clone",
-    label: "Clone",
+    label: "Clonar",
     icon: Duplicate,
     variant: "default" as const,
   },
@@ -72,7 +72,7 @@ export const actions = [
   // },
   {
     id: "delete",
-    label: "Delete",
+    label: "Excluir",
     icon: Delete,
     variant: "destructive" as const,
   },

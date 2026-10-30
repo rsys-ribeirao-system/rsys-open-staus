@@ -139,11 +139,11 @@ export function useTelegramConnection({
           type: "SET_PRIVATE_CONNECTION_DATA",
           payload: {
             privateChatId: lastUpdate.chatId,
-            userName: lastUpdate.user?.first_name || "Unknown",
+            userName: lastUpdate.user?.first_name || "Desconhecido",
           },
         });
         toast.success(
-          `Connected to ${lastUpdate.user?.first_name || "Unknown"}'s account. Now add the bot to your group.`,
+          `Conectado à conta de ${lastUpdate.user?.first_name || "Desconhecido"}. Agora adicione o bot ao seu grupo.`,
         );
       }
       // Phase 2: Group chat ID received
@@ -151,7 +151,7 @@ export function useTelegramConnection({
         dispatch({
           type: "SET_GROUP_CONNECTION_DATA",
           payload: {
-            groupTitle: lastUpdate.chatTitle || "Unknown",
+            groupTitle: lastUpdate.chatTitle || "Desconhecido",
             chatId: lastUpdate.chatId,
           },
         });
@@ -160,7 +160,7 @@ export function useTelegramConnection({
             shouldDirty: true,
           });
           toast.success(
-            `Connected to group "${lastUpdate.chatTitle || "Unknown"}"`,
+            `Conectado ao grupo "${lastUpdate.chatTitle || "Desconhecido"}"`,
           );
         });
       }
@@ -179,7 +179,7 @@ export function useTelegramConnection({
           shouldDirty: true,
         });
         toast.success(
-          `Connected to ${state.userName || "Unknown"}'s private chat`,
+          `Conectado ao chat privado de ${state.userName || "Desconhecido"}`,
         );
       });
     }

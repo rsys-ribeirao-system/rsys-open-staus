@@ -6,22 +6,22 @@ import type { FormValues as StatusReportUpdateFormValues } from "@/components/fo
 
 export const impactConfig = {
   operational: {
-    label: "Operational",
+    label: "Operacional",
     color:
       "text-success/80 data-[state=selected]:bg-success/10 data-[state=selected]:text-success",
   },
   degraded_performance: {
-    label: "Degraded performance",
+    label: "Desempenho degradado",
     color:
       "text-warning/80 data-[state=selected]:bg-warning/10 data-[state=selected]:text-warning",
   },
   partial_outage: {
-    label: "Partial outage",
+    label: "Indisponibilidade parcial",
     color:
       "text-warning/80 data-[state=selected]:bg-warning/10 data-[state=selected]:text-warning",
   },
   major_outage: {
-    label: "Major outage",
+    label: "Indisponibilidade grave",
     color:
       "text-destructive/80 data-[state=selected]:bg-destructive/10 data-[state=selected]:text-destructive",
   },
@@ -45,20 +45,20 @@ export function impactsEqual(
 
 // legacy report (created before impact tracking): no impact rows
 export const untriagedImpact = {
-  label: "Untriaged",
+  label: "Não triado",
   color: "text-muted-foreground/80",
 } as const;
 
 export const actions = [
   {
     id: "edit",
-    label: "Settings",
+    label: "Configurações",
     icon: Settings,
     variant: "default" as const,
   },
   {
     id: "delete",
-    label: "Delete",
+    label: "Excluir",
     icon: Delete,
     variant: "destructive" as const,
   },

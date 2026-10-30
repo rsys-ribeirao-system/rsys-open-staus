@@ -8,7 +8,7 @@ export type HelpIcon = React.ComponentType<React.ComponentProps<"svg">>;
 // Single source of truth for the Get Help menu (sidebar nav-help) and the
 // command-menu "Get Help" group so their icons stay in sync.
 export const HELP_SUPPORT = {
-  label: "Support",
+  label: "Suporte",
   icon: Support as HelpIcon,
   keywords: ["feedback", "help", "contact"],
 };
@@ -22,25 +22,25 @@ export type HelpLink = {
 
 export const HELP_LINKS = [
   {
-    label: "Docs",
+    label: "Documentação",
     href: "https://www.openstatus.dev/docs",
     icon: Docs,
     keywords: ["documentation"],
   },
   {
-    label: "API Reference",
+    label: "Referência da API",
     href: "https://api.openstatus.dev/openapi",
     icon: Api,
     keywords: ["openapi", "swagger"],
   },
   {
-    label: "Book a Call",
+    label: "Agendar uma chamada",
     href: "https://openstatus.dev/cal",
     icon: Schedule,
     keywords: ["demo", "meeting"],
   },
   {
-    label: "Community",
+    label: "Comunidade",
     href: "https://openstatus.dev/discord",
     icon: DiscordIcon,
     keywords: ["discord", "chat"],
