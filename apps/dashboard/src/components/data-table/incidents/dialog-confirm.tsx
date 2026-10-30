@@ -56,13 +56,13 @@ export function DialogConfirmIncident({
           ? acknowledgeIncidentMutation.mutateAsync({ id: incident.id })
           : resolveIncidentMutation.mutateAsync({ id: incident.id });
       toast.promise(promise, {
-        loading: "Confirming...",
-        success: "Confirmed",
+        loading: "Confirmando...",
+        success: "Confirmado",
         error: (error) => {
           if (isTRPCClientError(error)) {
             return error.message;
           }
-          return "Failed to confirm";
+          return "Falha ao confirmar";
         },
       });
       try {
@@ -84,14 +84,17 @@ export function DialogConfirmIncident({
         }}
       >
         <AlertDialogHeader>
-          <AlertDialogTitle>Confirm your action</AlertDialogTitle>
+          <AlertDialogTitle>Confirme sua ação</AlertDialogTitle>
           <AlertDialogDescription>
-            You are about to <span className="font-semibold">{type}</span> this
-            incident.
+            Você está prestes a{" "}
+            <span className="font-semibold">
+              {type === "acknowledge" ? "reconhecer" : "resolver"}
+            </span>{" "}
+            este incidente.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel>Cancelar</AlertDialogCancel>
           <AlertDialogAction
             onClick={(e) => {
               e.preventDefault();
@@ -99,7 +102,7 @@ export function DialogConfirmIncident({
             }}
             disabled={isPending}
           >
-            {isPending ? "Confirming..." : "Confirm"}
+            {isPending ? "Confirmando..." : "Confirmar"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

@@ -12,13 +12,13 @@ type PageComponent = RouterOutputs["pageComponent"]["list"][number];
 export const columns: ColumnDef<PageComponent>[] = [
   {
     accessorKey: "name",
-    header: "Name",
+    header: "Nome",
     enableSorting: false,
     enableHiding: false,
   },
   {
     accessorKey: "description",
-    header: "Description",
+    header: "Descrição",
     enableSorting: false,
     cell: ({ row }) => {
       const value = row.getValue("description");
@@ -32,7 +32,7 @@ export const columns: ColumnDef<PageComponent>[] = [
   {
     accessorKey: "type",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Type" />
+      <DataTableColumnHeader column={column} title="Tipo" />
     ),
     cell: ({ row }) => {
       const value = row.getValue("type");
@@ -42,7 +42,7 @@ export const columns: ColumnDef<PageComponent>[] = [
   {
     accessorKey: "order",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Order" />
+      <DataTableColumnHeader column={column} title="Ordem" />
     ),
     cell: ({ row }) => {
       const value = row.getValue("order");

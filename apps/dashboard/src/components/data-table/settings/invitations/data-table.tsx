@@ -33,9 +33,9 @@ export function DataTable() {
   if (invitations.length === 0) {
     return (
       <EmptyStateContainer>
-        <EmptyStateTitle>No pending invitations</EmptyStateTitle>
+        <EmptyStateTitle>Nenhum convite pendente</EmptyStateTitle>
         <EmptyStateDescription>
-          Only active invitations are shown here.
+          Apenas convites ativos são exibidos aqui.
         </EmptyStateDescription>
       </EmptyStateContainer>
     );
@@ -45,11 +45,11 @@ export function DataTable() {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Email</TableHead>
-          <TableHead>Role</TableHead>
-          <TableHead>Created At</TableHead>
-          <TableHead>Expires At</TableHead>
-          <TableHead>Accepted At</TableHead>
+          <TableHead>E-mail</TableHead>
+          <TableHead>Função</TableHead>
+          <TableHead>Criado em</TableHead>
+          <TableHead>Expira em</TableHead>
+          <TableHead>Aceito em</TableHead>
           <TableHead>
             <span className="sr-only">Actions</span>
           </TableHead>

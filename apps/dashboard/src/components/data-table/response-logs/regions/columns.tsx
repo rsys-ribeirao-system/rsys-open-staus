@@ -29,7 +29,7 @@ export function getColumns(
   return [
     {
       accessorKey: "region",
-      header: "Region",
+      header: "Região",
       cell: ({ row }) => {
         const value = row.getValue("region");
         if (typeof value === "string") {
@@ -64,7 +64,7 @@ export function getColumns(
     },
     {
       accessorKey: "trend",
-      header: "Trend",
+      header: "Tendência",
       cell: ({ row }) => {
         return <TrendCell trend={row.original.trend} />;
       },

@@ -101,7 +101,7 @@ export const columns: ColumnDef<OverviewEvent>[] = [
   {
     id: "title",
     accessorFn: (row) => getTitle(row).title,
-    header: "Title",
+    header: "Título",
     cell: ({ row }) => {
       const { title, href } = getTitle(row.original);
       return <TableCellLink href={href} value={title} />;
@@ -127,7 +127,7 @@ export const columns: ColumnDef<OverviewEvent>[] = [
     id: "startedAt",
     accessorFn: (row) => getStartedAt(row),
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Start" />
+      <DataTableColumnHeader column={column} title="Início" />
     ),
     cell: ({ row }) => <TableCellDate value={row.getValue("startedAt")} />,
     enableHiding: false,
@@ -138,7 +138,7 @@ export const columns: ColumnDef<OverviewEvent>[] = [
   {
     id: "endsAt",
     accessorFn: (row) => getResolvedAt(row),
-    header: "End",
+    header: "Fim",
     cell: ({ row }) => <TableCellDate value={row.getValue("endsAt")} />,
     enableSorting: false,
     meta: {
@@ -148,7 +148,7 @@ export const columns: ColumnDef<OverviewEvent>[] = [
   {
     id: "duration",
     accessorFn: (row) => getDuration(row),
-    header: "Duration",
+    header: "Duração",
     cell: ({ row }) => {
       const value = row.getValue("duration");
       if (typeof value !== "string") {
@@ -172,7 +172,7 @@ export const columns: ColumnDef<OverviewEvent>[] = [
           return (
             <FormSheetStatusReportUpdateCreate report={event.report}>
               <Button variant="outline" size="sm" className="h-7">
-                Add Update
+                Adicionar atualização
               </Button>
             </FormSheetStatusReportUpdateCreate>
           );

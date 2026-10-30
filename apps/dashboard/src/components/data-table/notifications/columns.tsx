@@ -17,13 +17,13 @@ export const columns: ColumnDef<Notifier>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
     enableHiding: false,
   },
   {
     accessorKey: "provider",
-    header: "Provider",
+    header: "Provedor",
     enableSorting: false,
     enableHiding: false,
     cell: ({ row }) => {
@@ -39,7 +39,7 @@ export const columns: ColumnDef<Notifier>[] = [
   },
   {
     accessorKey: "monitors",
-    header: "Monitors",
+    header: "Monitores",
     enableSorting: false,
     enableHiding: false,
     cell: ({ row }) => {

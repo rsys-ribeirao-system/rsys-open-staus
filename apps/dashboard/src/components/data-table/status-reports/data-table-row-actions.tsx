@@ -104,12 +104,12 @@ export function StatusReportRowActions({ report }: { report: StatusReport }) {
         }}
       >
         <button ref={buttonUpdateRef} type="button" className="sr-only">
-          Open sheet
+          Abrir painel
         </button>
       </FormSheetStatusReport>
       <FormSheetStatusReportUpdateCreate report={report}>
         <button ref={buttonCreateRef} type="button" className="sr-only">
-          Open sheet
+          Abrir painel
         </button>
       </FormSheetStatusReportUpdateCreate>
     </>

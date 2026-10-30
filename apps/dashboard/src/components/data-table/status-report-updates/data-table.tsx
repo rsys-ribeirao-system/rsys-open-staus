@@ -89,8 +89,8 @@ export function DataTable({
           <TableHead className="w-7">
             <span className="sr-only">Status</span>
           </TableHead>
-          <TableHead>Message</TableHead>
-          <TableHead>Date</TableHead>
+          <TableHead>Mensagem</TableHead>
+          <TableHead>Data</TableHead>
           <TableHead className="w-[px]">
             <TooltipProvider>
               <Tooltip>
@@ -117,12 +117,14 @@ export function DataTable({
                   <TooltipTrigger asChild>
                     <Button size="icon" className="ml-auto flex h-7 w-7 p-0">
                       <Add />
-                      <span className="sr-only">Create Report Update</span>
+                      <span className="sr-only">
+                        Criar atualização do relatório
+                      </span>
                     </Button>
                   </TooltipTrigger>
                 </FormSheetStatusReportUpdate>
                 <TooltipContent side="left" align="center">
-                  Create Report Update
+                  Criar atualização do relatório
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>

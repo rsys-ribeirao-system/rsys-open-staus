@@ -30,7 +30,7 @@ function detectFlavorBadge(url: string | null) {
 export const columns: ColumnDef<Subscriber>[] = [
   {
     id: "destination",
-    header: "Destination",
+    header: "Destino",
     enableSorting: false,
     enableHiding: false,
     cell: ({ row }) => {
@@ -59,7 +59,7 @@ export const columns: ColumnDef<Subscriber>[] = [
   {
     id: "source",
     accessorFn: (row) => row.source,
-    header: "Source",
+    header: "Origem",
     enableSorting: false,
     enableHiding: false,
     filterFn: (row, id, filterValue: string[]) => {
@@ -70,10 +70,10 @@ export const columns: ColumnDef<Subscriber>[] = [
       const source = row.original.source;
       const label =
         source === "vendor"
-          ? "Vendor"
+          ? "Fornecedor"
           : source === "import"
-            ? "Import"
-            : "Self-signup";
+            ? "Importação"
+            : "Autoinscrição";
       return (
         <Badge variant="outline" className="text-xs">
           {label}
@@ -83,7 +83,7 @@ export const columns: ColumnDef<Subscriber>[] = [
   },
   {
     id: "components",
-    header: "Components",
+    header: "Componentes",
     enableSorting: false,
     enableHiding: false,
     cell: ({ row }) => {
@@ -122,12 +122,12 @@ export const columns: ColumnDef<Subscriber>[] = [
     cell: ({ row }) => {
       const status = row.getValue("status") as string;
       if (status === "unsubscribed") {
-        return <Badge variant="destructive">Unsubscribed</Badge>;
+        return <Badge variant="destructive">Inscrição cancelada</Badge>;
       }
       if (status === "pending") {
-        return <Badge variant="outline">Pending</Badge>;
+        return <Badge variant="outline">Pendente</Badge>;
       }
-      return <Badge variant="secondary">Active</Badge>;
+      return <Badge variant="secondary">Ativo</Badge>;
     },
   },
   {

@@ -33,14 +33,14 @@ export const columns: ColumnDef<Monitor>[] = [
           (table.getIsSomePageRowsSelected() && "indeterminate")
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
+        aria-label="Selecionar todos"
       />
     ),
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
+        aria-label="Selecionar linha"
       />
     ),
     enableSorting: false,
@@ -87,7 +87,7 @@ export const columns: ColumnDef<Monitor>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Name" />
+      <DataTableColumnHeader column={column} title="Nome" />
     ),
     cell: ({ row }) => {
       return (
@@ -119,7 +119,7 @@ export const columns: ColumnDef<Monitor>[] = [
   },
   {
     accessorKey: "jobType",
-    header: "Type",
+    header: "Tipo",
     enableHiding: true,
   },
   {

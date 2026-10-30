@@ -33,7 +33,7 @@ export function DataTableRowActions({ row }: DataTableRowActionsProps) {
     edit: () => router.push(`/status-pages/${row.original.id}/edit`),
     "copy-id": () => {
       navigator.clipboard.writeText(row.original.id.toString());
-      toast.success("Monitor ID copied to clipboard");
+      toast.success("ID copiado para a área de transferência");
     },
   });
 

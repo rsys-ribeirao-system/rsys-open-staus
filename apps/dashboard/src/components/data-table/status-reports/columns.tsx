@@ -52,8 +52,8 @@ export const columns: ColumnDef<StatusReport>[] = [
             },
             "aria-expanded": row.getIsExpanded(),
             "aria-label": row.getIsExpanded()
-              ? `Collapse details for ${row.original.title}`
-              : `Expand details for ${row.original.title}`,
+              ? `Recolher detalhes de ${row.original.title}`
+              : `Expandir detalhes de ${row.original.title}`,
             size: "icon",
             variant: "ghost",
           }}
@@ -72,7 +72,7 @@ export const columns: ColumnDef<StatusReport>[] = [
   },
   {
     accessorKey: "title",
-    header: "Title",
+    header: "Título",
     cell: ({ row }) => {
       const { id, pageId } = row.original;
 
@@ -115,7 +115,7 @@ export const columns: ColumnDef<StatusReport>[] = [
   {
     id: "impact",
     accessorFn: (row) => worstReportImpact(row),
-    header: "Impact",
+    header: "Impacto",
     cell: ({ row }) => {
       const impact = row.getValue<PageComponentImpact | null>("impact");
       const config = impact ? impactConfig[impact] : untriagedImpact;
@@ -130,7 +130,7 @@ export const columns: ColumnDef<StatusReport>[] = [
   {
     id: "updates",
     accessorFn: (row) => row.updates.length,
-    header: "Updates",
+    header: "Atualizações",
     cell: ({ row }) => {
       const value = row.getValue("updates");
       return <TableCellNumber value={value} />;
@@ -139,7 +139,7 @@ export const columns: ColumnDef<StatusReport>[] = [
   {
     id: "pageComponents",
     accessorFn: (row) => row?.pageComponents,
-    header: "Affected",
+    header: "Afetados",
     cell: ({ row }) => {
       const value = row.getValue("pageComponents");
       if (Array.isArray(value) && value.length > 0 && "name" in value[0]) {
@@ -166,7 +166,7 @@ export const columns: ColumnDef<StatusReport>[] = [
       row.updates.sort((a, b) => a.date.getTime() - b.date.getTime())[0]
         ?.date ?? row.createdAt,
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Started At" />
+      <DataTableColumnHeader column={column} title="Iniciado em" />
     ),
     cell: ({ row }) => <TableCellDate value={row.getValue("startedAt")} />,
     enableHiding: false,

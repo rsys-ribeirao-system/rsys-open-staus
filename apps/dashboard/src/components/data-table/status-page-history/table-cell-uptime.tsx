@@ -124,7 +124,7 @@ export function TableCellUptime({
         </div>
         {cell.percentage === null ? (
           <div className="text-muted-foreground">
-            No data recorded for {monthLabel}.
+            Nenhum dado registrado em {monthLabel}.
           </div>
         ) : (
           <div className="flex items-center gap-2">
@@ -134,7 +134,7 @@ export function TableCellUptime({
                 indicatorStyles[cell.status],
               )}
             />
-            <span>Uptime</span>
+            <span>Disponibilidade</span>
             <span className="text-foreground ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums">
               {cell.percentage.toFixed(3)}
               <span className="text-muted-foreground font-normal">%</span>

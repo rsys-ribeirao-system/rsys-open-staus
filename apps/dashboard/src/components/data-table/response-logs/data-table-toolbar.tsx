@@ -37,7 +37,7 @@ export function ResponseLogsDataTableToolbar({
         {table.getColumn("region") && (
           <DataTableFacetedFilter
             column={table.getColumn("region")}
-            title="Region"
+            title="Região"
             options={regions.map((region) => ({
               label: region.location,
               value: region.code,
@@ -48,10 +48,10 @@ export function ResponseLogsDataTableToolbar({
         {table.getColumn("error") && (
           <DataTableFacetedFilter
             column={table.getColumn("error")}
-            title="Error"
+            title="Erro"
             options={[
-              { label: "Yes", value: "true" },
-              { label: "No", value: "false" },
+              { label: "Sim", value: "true" },
+              { label: "Não", value: "false" },
             ]}
             icon={Warning}
           />
@@ -62,7 +62,7 @@ export function ResponseLogsDataTableToolbar({
             onClick={() => table.resetColumnFilters()}
             className="h-8 px-2 lg:px-3"
           >
-            Reset
+            Redefinir
             <Close />
           </Button>
         )}

@@ -35,7 +35,7 @@ export const columns: ColumnDef<Incident>[] = [
   {
     accessorKey: "startedAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Started At" />
+      <DataTableColumnHeader column={column} title="Iniciado em" />
     ),
     cell: ({ row }) => <TableCellDate value={row.getValue("startedAt")} />,
     enableHiding: false,
@@ -43,7 +43,7 @@ export const columns: ColumnDef<Incident>[] = [
   {
     accessorKey: "acknowledgedAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Acknowledged" />
+      <DataTableColumnHeader column={column} title="Reconhecido" />
     ),
     cell: ({ row }) => <TableCellDate value={row.getValue("acknowledgedAt")} />,
     enableHiding: false,
@@ -51,7 +51,7 @@ export const columns: ColumnDef<Incident>[] = [
   {
     accessorKey: "resolvedAt",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Resolved At" />
+      <DataTableColumnHeader column={column} title="Resolvido em" />
     ),
     cell: ({ row }) => <TableCellDate value={row.getValue("resolvedAt")} />,
     enableHiding: false,
@@ -62,7 +62,7 @@ export const columns: ColumnDef<Incident>[] = [
       row.resolvedAt
         ? formatDistanceStrict(row.startedAt, row.resolvedAt)
         : "ongoing",
-    header: "Duration",
+    header: "Duração",
     cell: ({ row }) => {
       const value = row.getValue("duration");
       if (typeof value === "string") {
