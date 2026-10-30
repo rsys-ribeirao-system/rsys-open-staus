@@ -29,11 +29,11 @@ export function NavActions() {
           className="data-[limited=true]:opacity-80"
           onClick={() => setOpenDialog(true)}
         >
-          Create Status Page
+          Criar página de status
         </Button>
       ) : (
         <Button size="sm" asChild>
-          <Link href="/status-pages/create">Create Status Page</Link>
+          <Link href="/status-pages/create">Criar página de status</Link>
         </Button>
       )}
       <UpgradeDialog

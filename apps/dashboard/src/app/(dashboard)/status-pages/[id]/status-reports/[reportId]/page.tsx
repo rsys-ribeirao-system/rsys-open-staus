@@ -92,17 +92,19 @@ export default function Page() {
           <SectionHeader>
             <SectionTitle>{statusReport.title}</SectionTitle>
             <SectionDescription>
-              Manage updates for this status report. Affects{" "}
+              Gerencie as atualizações deste relatório de status. Afeta{" "}
               <span className="text-foreground">
-                {affected ? affected : "zero"}
+                {affected ? affected : "nenhum"}
               </span>{" "}
-              component(s).
+              componente(s).
             </SectionDescription>
           </SectionHeader>
         </SectionHeaderRow>
 
         <EmptyStateContainer className="my-8 border-dashed">
-          <EmptyStateDescription>Status Page Report</EmptyStateDescription>
+          <EmptyStateDescription>
+            Relatório da página de status
+          </EmptyStateDescription>
           <FormSheetStatusReportUpdate
             defaultValues={{
               status: nextStatus,
@@ -128,7 +130,7 @@ export default function Page() {
           >
             <Button size="sm">
               <Add />
-              Create Status Update
+              Criar atualização do relatório
             </Button>
           </FormSheetStatusReportUpdate>
         </EmptyStateContainer>

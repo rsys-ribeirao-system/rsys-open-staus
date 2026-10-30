@@ -28,17 +28,17 @@ export function Client() {
     <SectionGroup>
       <NoteDismissible cookieKey="note_status_pages_themes">
         <Theme />
-        Create your own custom themes for your status pages.
+        Crie temas personalizados para suas páginas de status.
         <NoteButton variant="default" asChild>
           <Link href="https://themes.openstatus.dev" target="_blank">
-            Learn more
+            Saiba mais
           </Link>
         </NoteButton>
       </NoteDismissible>
       <SectionHeader>
-        <SectionTitle>Status Pages</SectionTitle>
+        <SectionTitle>Páginas de status</SectionTitle>
         <SectionDescription>
-          Create and manage your status pages.
+          Crie e gerencie suas páginas de status.
         </SectionDescription>
         <DataTable
           columns={columns}

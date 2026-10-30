@@ -63,13 +63,13 @@ export default function Page() {
     <SectionGroup>
       <NoteDismissible cookieKey="note_status_reports_component_impacts">
         <Impact />
-        Status reports now support per-component impacts.
+        Relatórios de status agora suportam impactos por componente.
         <NoteButton variant="default" asChild>
           <NextLink
             href="https://www.openstatus.dev/changelog/status-page-components-impact"
             target="_blank"
           >
-            Learn more
+            Saiba mais
           </NextLink>
         </NoteButton>
       </NoteDismissible>
@@ -78,10 +78,8 @@ export default function Page() {
           <SectionHeader>
             <SectionTitle>{page.title}</SectionTitle>
             <SectionDescription>
-              List of all status reports. Looking for{" "}
-              <Link href={`/status-pages/${id}/maintenances`}>
-                maintenances
-              </Link>
+              Lista de todos os relatórios de status. Procurando{" "}
+              <Link href={`/status-pages/${id}/maintenances`}>manutenções</Link>
               ?
             </SectionDescription>
           </SectionHeader>
@@ -90,9 +88,12 @@ export default function Page() {
               warning={
                 hasUnresolvedIssue ? (
                   <>
-                    An unresolved report already exists. Consider adding a{" "}
-                    <span className="font-semibold">status report update</span>{" "}
-                    instead.
+                    Já existe um relatório não resolvido. Considere adicionar
+                    uma{" "}
+                    <span className="font-semibold">
+                      atualização do relatório
+                    </span>{" "}
+                    em vez disso.
                   </>
                 ) : undefined
               }
@@ -131,7 +132,7 @@ export default function Page() {
             >
               <Button data-section="action" size="sm">
                 <Add />
-                Create Status Report
+                Criar relatório de status
               </Button>
             </FormSheetStatusReport>
           </div>

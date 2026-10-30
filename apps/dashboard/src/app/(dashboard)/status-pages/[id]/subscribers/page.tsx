@@ -107,7 +107,9 @@ export default function Page() {
         <SectionHeaderRow>
           <SectionHeader>
             <SectionTitle>{page?.title}</SectionTitle>
-            <SectionDescription>List of all subscribers.</SectionDescription>
+            <SectionDescription>
+              Lista de todos os assinantes.
+            </SectionDescription>
           </SectionHeader>
           <div>
             {isLimited ? (
@@ -163,16 +165,17 @@ export default function Page() {
             <BillingOverlay>
               <BillingOverlayButton onClick={() => setOpenDialog(true)}>
                 <Lock />
-                Upgrade
+                Fazer upgrade
               </BillingOverlayButton>
               <BillingOverlayDescription>
-                Keep your users in the loop with status page updates.{" "}
+                Mantenha seus usuários informados com atualizações da página de
+                status.{" "}
                 <Link
                   href="https://www.openstatus.dev/docs/reference/subscriber/"
                   rel="noreferrer"
                   target="_blank"
                 >
-                  Learn more
+                  Saiba mais
                 </Link>
                 .
               </BillingOverlayDescription>
@@ -192,9 +195,9 @@ export default function Page() {
           />
         ) : (
           <EmptyStateContainer>
-            <EmptyStateTitle>No subscribers</EmptyStateTitle>
+            <EmptyStateTitle>Nenhum assinante</EmptyStateTitle>
             <EmptyStateDescription>
-              Nobody has been subscribed to this status page.
+              Ninguém se inscreveu nesta página de status.
             </EmptyStateDescription>
           </EmptyStateContainer>
         )}

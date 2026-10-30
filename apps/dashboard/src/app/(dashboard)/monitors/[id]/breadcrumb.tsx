@@ -25,7 +25,7 @@ export function Breadcrumb() {
   return (
     <NavBreadcrumb
       items={[
-        { type: "link", label: "Monitors", href: "/monitors", icon: Monitor },
+        { type: "link", label: "Monitores", href: "/monitors", icon: Monitor },
         {
           type: "link",
           label: monitor.name,
