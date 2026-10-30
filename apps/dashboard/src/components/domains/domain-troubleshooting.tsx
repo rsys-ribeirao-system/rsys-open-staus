@@ -25,25 +25,25 @@ const tools = [
     label: "Let's Debug",
     href: (domain: string) =>
       `https://letsdebug.net/${encodeURIComponent(domain)}`,
-    description: "Diagnose Let's Encrypt issuance failures.",
+    description: "Diagnostique falhas de emissão do Let's Encrypt.",
   },
   {
     label: "DNSViz",
     href: (domain: string) =>
       `https://dnsviz.net/d/${encodeURIComponent(domain)}/dnssec/`,
-    description: "Visualize DNS and DNSSEC behavior.",
+    description: "Visualize o comportamento de DNS e DNSSEC.",
   },
   {
     label: "DNS Checker",
     href: (domain: string) =>
       `https://dnschecker.org/#A/${encodeURIComponent(domain)}`,
-    description: "Check global DNS propagation.",
+    description: "Verifique a propagação global do DNS.",
   },
   {
     label: "Google Public DNS",
     href: (domain: string) =>
       `https://dns.google/query?name=${encodeURIComponent(domain)}&rr_type=A`,
-    description: "Resolve records from a public resolver.",
+    description: "Resolva registros usando um resolvedor público.",
   },
 ] as const;
 
@@ -54,10 +54,10 @@ export function DomainTroubleshooting({ domain }: { domain: string }) {
       <CollapsibleTrigger className="w-full cursor-pointer rounded-xl">
         <Card className="gap-0 border-dashed py-0 text-left shadow-none">
           <CardHeader className="px-4 py-3 select-none">
-            <CardTitle className="text-sm">Troubleshooting</CardTitle>
+            <CardTitle className="text-sm">Solução de problemas</CardTitle>
             <CardDescription>
-              If the configuration stays pending or invalid for more than a few
-              minutes, one of these is usually the cause.
+              Se a configuração continuar pendente ou inválida por mais de
+              alguns minutos, normalmente a causa é uma destas.
             </CardDescription>
           </CardHeader>
           <CollapsibleContent
@@ -68,55 +68,58 @@ export function DomainTroubleshooting({ domain }: { domain: string }) {
               <ul className="list-disc space-y-2 pl-5 text-sm">
                 <li>
                   <span className="font-medium">
-                    CAA records block Let's Encrypt.
+                    Registros CAA bloqueiam o Let's Encrypt.
                   </span>{" "}
-                  If your domain has any <InlineSnippet>CAA</InlineSnippet>{" "}
-                  records, one of them must allow{" "}
-                  <InlineSnippet>letsencrypt.org</InlineSnippet>. Check with{" "}
+                  Se o seu domínio tiver algum registro{" "}
+                  <InlineSnippet>CAA</InlineSnippet>, um deles precisa permitir{" "}
+                  <InlineSnippet>letsencrypt.org</InlineSnippet>. Verifique com{" "}
                   <InlineSnippet>{`dig CAA ${domain}`}</InlineSnippet>.
                 </li>
                 <li>
                   <span className="font-medium">
-                    Stale <InlineSnippet>_acme-challenge</InlineSnippet> record.
+                    Registro <InlineSnippet>_acme-challenge</InlineSnippet>{" "}
+                    antigo.
                   </span>{" "}
-                  A leftover TXT record from a previous provider can block
-                  issuance. Check with{" "}
+                  Um registro TXT que sobrou de um provedor anterior pode
+                  bloquear a emissão. Verifique com{" "}
                   <InlineSnippet>{`dig TXT _acme-challenge.${domain}`}</InlineSnippet>
                   .
                 </li>
                 <li>
                   <span className="font-medium">
-                    <InlineSnippet>AAAA</InlineSnippet> record pointing
-                    elsewhere.
+                    Registro <InlineSnippet>AAAA</InlineSnippet> apontando para
+                    outro lugar.
                   </span>{" "}
-                  IPv6 is not supported for custom domains; remove any{" "}
-                  <InlineSnippet>AAAA</InlineSnippet> records on the domain.
+                  IPv6 não é suportado em domínios personalizados; remova todos
+                  os registros <InlineSnippet>AAAA</InlineSnippet> do domínio.
                 </li>
                 <li>
                   <span className="font-medium">
-                    DNS scripting or proxying interferes with the challenge.
+                    Scripts ou proxy de DNS interferem no desafio.
                   </span>{" "}
-                  Features like Bunny DNS scripts or Cloudflare's orange-cloud
-                  proxy can return different answers to the certificate
-                  authority than to your browser. Disable them for the record
-                  and retry.
-                </li>
-                <li>
-                  <span className="font-medium">CNAME copied incorrectly.</span>{" "}
-                  Don't include the domain in the{" "}
-                  <InlineSnippet>Name</InlineSnippet> field, and keep the
-                  trailing dot in the value if your provider requires it.
+                  Recursos como scripts do Bunny DNS ou o proxy (nuvem laranja)
+                  da Cloudflare podem retornar respostas diferentes para a
+                  autoridade certificadora e para o seu navegador. Desative-os
+                  para o registro e tente novamente.
                 </li>
                 <li>
                   <span className="font-medium">
-                    DNS hasn't propagated yet.
+                    CNAME copiado incorretamente.
                   </span>{" "}
-                  Changes can take up to an hour (longer if the previous TTL was
-                  high).
+                  Não inclua o domínio no campo{" "}
+                  <InlineSnippet>Name</InlineSnippet> e mantenha o ponto final
+                  no valor se o seu provedor exigir.
+                </li>
+                <li>
+                  <span className="font-medium">O DNS ainda não propagou.</span>{" "}
+                  As alterações podem levar até uma hora (mais, se o TTL
+                  anterior era alto).
                 </li>
               </ul>
               <div className="space-y-2">
-                <p className="text-sm font-medium">Run external diagnostics</p>
+                <p className="text-sm font-medium">
+                  Executar diagnósticos externos
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {tools.map((tool) => (
                     <Button

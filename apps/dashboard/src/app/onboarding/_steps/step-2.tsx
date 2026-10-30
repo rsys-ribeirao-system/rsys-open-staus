@@ -70,17 +70,19 @@ export function Step2({
       <OnboardingFormColumn>
         <OnboardingStepper steps={stepperSteps} />
         <OnboardingStepHeader>
-          <OnboardingStepTitle>Publish a status page</OnboardingStepTitle>
+          <OnboardingStepTitle>
+            Publique uma página de status
+          </OnboardingStepTitle>
           <OnboardingStepDescription>
-            Pick a subdomain and a theme - your page goes live the moment you
-            publish. Configure everything else later from page settings.
+            Escolha um subdomínio e um tema - sua página fica no ar assim que
+            você publicar. Configure o resto depois nas configurações da página.
           </OnboardingStepDescription>
         </OnboardingStepHeader>
         {isLocked ? (
           <OnboardingLockedSummary
             value={`${createdPageData?.slug}.openstatus.dev`}
             href={`https://${createdPageData?.slug}.openstatus.dev`}
-            helper="Theme, components, and visibility are editable later from page settings."
+            helper="Tema, componentes e visibilidade podem ser editados depois nas configurações da página."
           />
         ) : (
           <CreatePageForm
@@ -97,7 +99,7 @@ export function Step2({
         <OnboardingActions>
           {isLocked ? (
             <Button onClick={onContinue}>
-              Continue <Next className="size-3" />
+              Continuar <Next className="size-3" />
             </Button>
           ) : (
             <>
@@ -106,17 +108,19 @@ export function Step2({
                 disabled={isSubmitting}
                 type="submit"
               >
-                {isSubmitting ? "Publishing…" : "Publish my page"}
+                {isSubmitting ? "Publicando…" : "Publicar minha página"}
               </Button>
               <Button variant="ghost" onClick={onSkip} type="button">
-                Do this later
+                Fazer isso depois
               </Button>
             </>
           )}
         </OnboardingActions>
       </OnboardingFormColumn>
       <OnboardingResultColumn>
-        <OnboardingResultHeading>Status Page Preview</OnboardingResultHeading>
+        <OnboardingResultHeading>
+          Prévia da página de status
+        </OnboardingResultHeading>
         <div className="flex h-[calc(100dvh-13rem)] flex-1 overflow-hidden md:h-auto md:min-h-0">
           <OnboardingStatusPagePreview
             slug={

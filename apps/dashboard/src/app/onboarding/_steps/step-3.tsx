@@ -70,20 +70,24 @@ export function Step3({
 
     const priority: Link[] = [];
     if (monitorSkipped) {
-      priority.push({ name: "Monitors", href: "/monitors", icon: Monitor });
+      priority.push({ name: "Monitores", href: "/monitors", icon: Monitor });
     }
     if (pageSkipped) {
       priority.push({
-        name: "Status Pages",
+        name: "Páginas de status",
         href: "/status-pages",
         icon: StatusPage,
       });
     }
     const filler: Link[] = [
-      { name: "Invite team", href: "/settings/general", icon: Invite },
-      { name: "Notifiers", href: "/notifications", icon: Notification },
-      { name: "Overview", href: "/overview", icon: Overview },
-      { name: "Billing", href: "/settings/billing", icon: Billing },
+      { name: "Convidar equipe", href: "/settings/general", icon: Invite },
+      {
+        name: "Canais de notificação",
+        href: "/notifications",
+        icon: Notification,
+      },
+      { name: "Visão geral", href: "/overview", icon: Overview },
+      { name: "Cobrança", href: "/settings/billing", icon: Billing },
     ];
     return [...priority, ...filler].slice(0, 4);
   }, [monitorSkipped, pageSkipped]);
@@ -93,9 +97,9 @@ export function Step3({
       <OnboardingFormColumn>
         <OnboardingStepper steps={stepperSteps} />
         <OnboardingStepHeader>
-          <OnboardingStepTitle>You&apos;re live</OnboardingStepTitle>
+          <OnboardingStepTitle>Você está no ar</OnboardingStepTitle>
           <OnboardingStepDescription>
-            Jump into the product and explore what openstatus can do.
+            Explore o produto e veja tudo o que o openstatus pode fazer.
           </OnboardingStepDescription>
         </OnboardingStepHeader>
         <div className="grid gap-2 sm:grid-cols-2">
@@ -114,7 +118,7 @@ export function Step3({
           <OnboardingActions className="flex-wrap">
             <Button asChild>
               <Link href="/overview">
-                Continue <Next className="size-3" />
+                Continuar <Next className="size-3" />
               </Link>
             </Button>
             <Button variant="ghost" asChild>
@@ -124,12 +128,13 @@ export function Step3({
                 rel="noopener noreferrer"
               >
                 <Calendar className="size-3" />
-                Talk to a founder
+                Falar com um fundador
               </a>
             </Button>
           </OnboardingActions>
           <p className="text-muted-foreground text-xs">
-            SOC2 audit incoming? Ping us for a 14-day free trial.
+            Auditoria SOC2 chegando? Fale com a gente para um teste grátis de 14
+            dias.
           </p>
         </div>
         <NoClickopsCard />
@@ -158,10 +163,11 @@ function NoClickopsCard() {
   return (
     <FormCard className="shrink-0">
       <FormCardHeader>
-        <FormCardTitle>Agent-first, no clickops</FormCardTitle>
+        <FormCardTitle>Feito para agentes, sem clickops</FormCardTitle>
         <FormCardDescription>
-          Monitors, status pages, notifications, private locations — all
-          manageable as code. Create an API key and hand it to your agent via{" "}
+          Monitores, páginas de status, notificações, localizações privadas —
+          tudo gerenciável como código. Crie uma chave de API e entregue ao seu
+          agente via{" "}
           <CommonLink
             href="https://www.openstatus.dev/docs/reference/mcp-server"
             rel="noreferrer"
@@ -169,7 +175,7 @@ function NoClickopsCard() {
           >
             MCP
           </CommonLink>
-          , script it with the{" "}
+          , automatize com a{" "}
           <CommonLink
             href="https://www.openstatus.dev/docs/reference/cli-reference"
             rel="noreferrer"
@@ -177,7 +183,7 @@ function NoClickopsCard() {
           >
             CLI
           </CommonLink>
-          , or commit it with{" "}
+          ou versione com{" "}
           <CommonLink
             href="https://registry.terraform.io/providers/openstatusHQ/openstatus/latest"
             rel="noreferrer"
@@ -193,13 +199,13 @@ function NoClickopsCard() {
       </FormCardContent>
       <FormCardFooter>
         <FormCardFooterInfo>
-          Read more in our{" "}
+          Saiba mais na nossa{" "}
           <CommonLink
             href="https://www.openstatus.dev/docs"
             rel="noreferrer"
             target="_blank"
           >
-            docs
+            documentação
           </CommonLink>
           .
         </FormCardFooterInfo>
@@ -207,14 +213,14 @@ function NoClickopsCard() {
           <Button size="sm" variant="outline" asChild>
             <Link href="/settings/general#api-keys">
               <ApiKey />
-              Manage API keys
+              Gerenciar chaves de API
             </Link>
           </Button>
         ) : (
           <CreateApiKeyDialog>
             <Button size="sm">
               <ApiKey />
-              Create API key
+              Criar chave de API
             </Button>
           </CreateApiKeyDialog>
         )}

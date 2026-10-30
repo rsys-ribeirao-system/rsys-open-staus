@@ -45,7 +45,7 @@ export function LoginButton({
           variant="secondary"
           className="border-primary bg-background absolute -top-2.5 -right-2.5 border text-[10px]"
         >
-          Last used
+          Último usado
         </Badge>
       ) : null}
     </Button>

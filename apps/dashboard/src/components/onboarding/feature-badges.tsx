@@ -37,9 +37,9 @@ const WEB = "https://www.openstatus.dev";
 
 const FEATURE_CATEGORIES: { label: string; items: FeatureLinkItem[] }[] = [
   {
-    label: "Resources",
+    label: "Recursos",
     items: [
-      { name: "Docs", href: DOCS, icon: BookOpen, external: true },
+      { name: "Documentação", href: DOCS, icon: BookOpen, external: true },
       {
         name: "Changelog",
         href: `${WEB}/changelog`,
@@ -55,7 +55,7 @@ const FEATURE_CATEGORIES: { label: string; items: FeatureLinkItem[] }[] = [
     ],
   },
   {
-    label: "Monitoring",
+    label: "Monitoramento",
     items: [
       {
         name: "OpenTelemetry",
@@ -64,13 +64,13 @@ const FEATURE_CATEGORIES: { label: string; items: FeatureLinkItem[] }[] = [
         external: true,
       },
       {
-        name: "Private locations",
+        name: "Localizações privadas",
         href: `${DOCS}/tutorial/how-to-create-private-location`,
         icon: PrivateLocation,
         external: true,
       },
       {
-        name: "Notifications",
+        name: "Notificações",
         href: `${DOCS}/reference/notification`,
         icon: Notification,
         external: true,
@@ -78,34 +78,34 @@ const FEATURE_CATEGORIES: { label: string; items: FeatureLinkItem[] }[] = [
     ],
   },
   {
-    label: "Status page",
+    label: "Página de status",
     items: [
       {
-        name: "Custom domain",
+        name: "Domínio personalizado",
         href: `${DOCS}/reference/status-page#custom-domain`,
         icon: Globe,
         external: true,
       },
       {
-        name: "Themes Store",
+        name: "Loja de temas",
         href: "https://themes.openstatus.dev",
         icon: Theme,
         external: true,
       },
       {
-        name: "Protection",
+        name: "Proteção",
         href: `${DOCS}/reference/status-page#password-basic-auth`,
         icon: Shield,
         external: true,
       },
       {
-        name: "Slack agent",
+        name: "Agente do Slack",
         href: `${DOCS}/tutorial/how-to-setup-slack-agent`,
         icon: SlackIcon,
         external: true,
       },
       {
-        name: "Subscribers",
+        name: "Assinantes",
         href: `${DOCS}/reference/subscriber`,
         icon: Team,
         external: true,
@@ -113,7 +113,7 @@ const FEATURE_CATEGORIES: { label: string; items: FeatureLinkItem[] }[] = [
     ],
   },
   {
-    label: "Developer",
+    label: "Desenvolvedor",
     items: [
       {
         name: "REST API",
@@ -128,7 +128,7 @@ const FEATURE_CATEGORIES: { label: string; items: FeatureLinkItem[] }[] = [
         external: true,
       },
       {
-        name: "MCP server",
+        name: "Servidor MCP",
         href: `${DOCS}/reference/mcp-server`,
         icon: ModelContextProtocolIcon,
         external: true,
@@ -144,8 +144,12 @@ const FEATURE_CATEGORIES: { label: string; items: FeatureLinkItem[] }[] = [
   {
     label: "Workspace",
     items: [
-      { name: "Audit logs", href: "/settings/audit-logs", icon: AuditLog },
-      { name: "Team & invites", href: "/settings/general", icon: Invite },
+      {
+        name: "Logs de auditoria",
+        href: "/settings/audit-logs",
+        icon: AuditLog,
+      },
+      { name: "Equipe e convites", href: "/settings/general", icon: Invite },
     ],
   },
 ];
@@ -160,7 +164,7 @@ export function FeatureBadgeWall({
       {...props}
     >
       <OnboardingResultHeading>
-        What else openstatus can do
+        O que mais o openstatus pode fazer
       </OnboardingResultHeading>
       <div className="border-border bg-background rounded-md border p-4 md:min-h-0 md:flex-1 md:overflow-y-auto">
         <div className="flex flex-col gap-4">
@@ -192,7 +196,7 @@ export function QuestionPanel({
   return (
     <div className={cn("flex flex-col gap-3", className)} {...props}>
       <OnboardingResultHeading>
-        How did you hear about openstatus?
+        Como você conheceu o openstatus?
       </OnboardingResultHeading>
       <div className="border-border bg-background rounded-md border p-4">
         <QuestionForm onSubmit={onSubmit} />

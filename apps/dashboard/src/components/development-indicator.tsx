@@ -24,17 +24,17 @@ export function DevelopmentIndicator() {
             <Tooltip>
               <TooltipTrigger>
                 <div className="bg-destructive text-background w-fit rounded-t px-2 py-1 font-mono text-xs">
-                  In Beta
+                  Em beta
                 </div>
               </TooltipTrigger>
               <TooltipContent side="top">
                 {!isMobile ? (
                   <p>
-                    Press <Kbd className="ms-0 -me-0">F</Kbd> key to provide
-                    feedback.
+                    Pressione a tecla <Kbd className="ms-0 -me-0">F</Kbd> para
+                    enviar feedback.
                   </p>
                 ) : (
-                  <p>Use a larger screen to provide feedback.</p>
+                  <p>Use uma tela maior para enviar feedback.</p>
                 )}
               </TooltipContent>
             </Tooltip>
