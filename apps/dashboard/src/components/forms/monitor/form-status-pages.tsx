@@ -71,13 +71,13 @@ export function FormStatusPages({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: () => "Saved",
+          loading: "Salvando...",
+          success: () => "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -92,10 +92,10 @@ export function FormStatusPages({
       <form onSubmit={form.handleSubmit(submitAction)} {...props}>
         <FormCard>
           <FormCardHeader>
-            <FormCardTitle>Status Pages</FormCardTitle>
+            <FormCardTitle>Páginas de status</FormCardTitle>
             <FormCardDescription>
-              Add status pages to your monitor and configure the external name
-              and description to be shown on the status page.
+              Adicione páginas de status ao seu monitor e configure o nome
+              externo e a descrição exibidos na página de status.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent className="grid gap-4 sm:grid-cols-3">
@@ -104,14 +104,14 @@ export function FormStatusPages({
               name="externalName"
               render={({ field }) => (
                 <FormItem className="sm:col-span-2">
-                  <FormLabel>External Name</FormLabel>
+                  <FormLabel>Nome externo</FormLabel>
                   <FormControl>
                     <Input placeholder="OpenStatus API" {...field} />
                   </FormControl>
                   <FormDescription>
-                    External name on the status page, the feed or subscribers
-                    notifications. If not provided, monitor&apos;s name will be
-                    used.
+                    Nome externo na página de status, no feed ou nas
+                    notificações dos assinantes. Se não for informado, o nome do
+                    monitor será usado.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -122,13 +122,13 @@ export function FormStatusPages({
               name="description"
               render={({ field }) => (
                 <FormItem className="sm:col-span-full">
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>Descrição</FormLabel>
                   <FormControl>
-                    <Input placeholder="My Status Page" {...field} />
+                    <Input placeholder="Minha página de status" {...field} />
                   </FormControl>
                   <FormDescription>
-                    A tooltip with extra information about the monitor will be
-                    displayed.
+                    Uma dica com informações extras sobre o monitor será
+                    exibida.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -145,7 +145,7 @@ export function FormStatusPages({
                   <FormItem>
                     <div className="flex items-center justify-between">
                       <FormLabel className="text-base">
-                        List of Status Pages
+                        Lista de páginas de status
                       </FormLabel>
                       <Button
                         variant="ghost"
@@ -170,7 +170,7 @@ export function FormStatusPages({
                           }
                         }}
                       >
-                        Select all
+                        Selecionar todas
                       </Button>
                     </div>
                     {statusPages.map((item) => (
@@ -223,13 +223,13 @@ export function FormStatusPages({
               />
             ) : (
               <EmptyStateContainer>
-                <EmptyStateTitle>No status pages</EmptyStateTitle>
+                <EmptyStateTitle>Nenhuma página de status</EmptyStateTitle>
               </EmptyStateContainer>
             )}
           </FormCardContent>
           <FormCardFooter>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Submitting..." : "Submit"}
+              {isPending ? "Enviando..." : "Enviar"}
             </Button>
           </FormCardFooter>
         </FormCard>

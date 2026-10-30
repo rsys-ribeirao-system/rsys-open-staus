@@ -60,9 +60,9 @@ export function FormResponseTime({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: () => "Saved",
-          error: "Failed to save",
+          loading: "Salvando...",
+          success: () => "Salvo",
+          error: "Falha ao salvar",
         });
         await promise;
       } catch (error) {
@@ -76,9 +76,9 @@ export function FormResponseTime({
       <form onSubmit={form.handleSubmit(submitAction)} {...props}>
         <FormCard>
           <FormCardHeader>
-            <FormCardTitle>Response Time Thresholds</FormCardTitle>
+            <FormCardTitle>Limites de tempo de resposta</FormCardTitle>
             <FormCardDescription>
-              Configure your degraded and timeout thresholds.
+              Configure os limites de degradação e de timeout.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent className="grid gap-4 sm:grid-cols-2">
@@ -87,12 +87,12 @@ export function FormResponseTime({
               name="degradedAfter"
               render={({ field }) => (
                 <FormItem className="self-start">
-                  <FormLabel>Degraded (in ms.)</FormLabel>
+                  <FormLabel>Degradado (em ms)</FormLabel>
                   <FormControl>
                     <Input placeholder="30000" type="number" {...field} />
                   </FormControl>
                   <FormDescription>
-                    Time after which the endpoint is considered degraded.
+                    Tempo após o qual o endpoint é considerado degradado.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -103,12 +103,12 @@ export function FormResponseTime({
               name="timeout"
               render={({ field }) => (
                 <FormItem className="self-start">
-                  <FormLabel>Timeout (in ms.)</FormLabel>
+                  <FormLabel>Timeout (em ms)</FormLabel>
                   <FormControl>
                     <Input placeholder="45000" type="number" {...field} />
                   </FormControl>
                   <FormDescription>
-                    Max. time allowed for request to complete.
+                    Tempo máximo permitido para a requisição ser concluída.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -117,7 +117,7 @@ export function FormResponseTime({
           </FormCardContent>
           <FormCardFooter>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Submitting..." : "Submit"}
+              {isPending ? "Enviando..." : "Enviar"}
             </Button>
           </FormCardFooter>
         </FormCard>

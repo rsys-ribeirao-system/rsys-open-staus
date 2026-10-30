@@ -66,13 +66,13 @@ export function FormNotifiers({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: () => "Saved",
+          loading: "Salvando...",
+          success: () => "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -87,9 +87,10 @@ export function FormNotifiers({
       <form onSubmit={form.handleSubmit(submitAction)} {...props}>
         <FormCard>
           <FormCardHeader>
-            <FormCardTitle>Notifications</FormCardTitle>
+            <FormCardTitle>Notificações</FormCardTitle>
             <FormCardDescription>
-              Get notified when your monitor is degraded or down.
+              Seja notificado quando seu monitor estiver degradado ou fora do
+              ar.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent>
@@ -101,7 +102,7 @@ export function FormNotifiers({
                   <FormItem>
                     <div className="flex items-center justify-between">
                       <FormLabel className="text-base">
-                        List of Notifications
+                        Lista de notificações
                       </FormLabel>
                       <Button
                         variant="ghost"
@@ -126,7 +127,7 @@ export function FormNotifiers({
                           }
                         }}
                       >
-                        Select all
+                        Selecionar todos
                       </Button>
                     </div>
                     {notifiers.map((item) => (
@@ -182,13 +183,13 @@ export function FormNotifiers({
               />
             ) : (
               <EmptyStateContainer>
-                <EmptyStateTitle>No notifications</EmptyStateTitle>
+                <EmptyStateTitle>Nenhuma notificação</EmptyStateTitle>
               </EmptyStateContainer>
             )}
           </FormCardContent>
           <FormCardFooter>
             <Button type="submit" disabled={isPending}>
-              {isPending ? "Submitting..." : "Submit"}
+              {isPending ? "Enviando..." : "Enviar"}
             </Button>
           </FormCardFooter>
         </FormCard>

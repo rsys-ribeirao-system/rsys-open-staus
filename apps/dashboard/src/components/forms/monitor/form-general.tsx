@@ -85,18 +85,18 @@ import {
 
 const TYPES = ["http", "tcp", "dns", "icmp", "grpc"] as const;
 const GRPC_TLS_LABELS = {
-  tls: "TLS (verify certificate)",
-  tls_insecure: "TLS (skip verification)",
-  plaintext: "Plaintext (h2c)",
+  tls: "TLS (verificar certificado)",
+  tls_insecure: "TLS (ignorar verificação)",
+  plaintext: "Texto puro (h2c)",
 } as const;
 const HTTP_ASSERTION_TYPES = ["status", "header", "textBody"] as const;
 const DNS_ASSERTION_TYPES = dnsRecords;
 
 const schema = z.object({
-  name: z.string().trim().min(1, "Name is required"),
+  name: z.string().trim().min(1, "O nome é obrigatório"),
   type: z.enum(TYPES),
   method: z.enum(monitorMethods),
-  url: z.string().min(1, "URL is required"),
+  url: z.string().min(1, "A URL é obrigatória"),
   headers: z.array(
     z.object({
       key: z.string(),
@@ -176,40 +176,40 @@ export function FormGeneral({
       if (assertion.type === "status") {
         if (typeof assertion.target !== "number" || assertion.target <= 0) {
           form.setError(`assertions.${i}.target`, {
-            message: "Status target must be a positive number",
+            message: "O valor esperado do status deve ser um número positivo",
           });
           return;
         }
       } else if (assertion.type === "header") {
         if (!assertion.key || assertion.key.trim() === "") {
           form.setError(`assertions.${i}.key`, {
-            message: "Header key is required",
+            message: "A chave do header é obrigatória",
           });
           return;
         }
         if (!assertion.target || assertion.target.trim() === "") {
           form.setError(`assertions.${i}.target`, {
-            message: "Header target is required",
+            message: "O valor esperado do header é obrigatório",
           });
           return;
         }
       } else if (assertion.type === "textBody") {
         if (!assertion.target || assertion.target.trim() === "") {
           form.setError(`assertions.${i}.target`, {
-            message: "Body target is required",
+            message: "O valor esperado do body é obrigatório",
           });
           return;
         }
       } else if (assertion.type === "dnsRecord") {
         if (!assertion.key || assertion.key.trim() === "") {
           form.setError(`assertions.${i}.key`, {
-            message: "DNS record key is required",
+            message: "A chave do registro DNS é obrigatória",
           });
           return;
         }
         if (!assertion.target || assertion.target.trim() === "") {
           form.setError(`assertions.${i}.target`, {
-            message: "DNS record target is required",
+            message: "O valor esperado do registro DNS é obrigatório",
           });
           return;
         }
@@ -220,14 +220,14 @@ export function FormGeneral({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
+          loading: "Salvando...",
+          success: "Salvo",
           error: (error) => {
             if (isTRPCClientError(error)) {
               setError(error.message);
               return error.message;
             }
-            return "Failed to save";
+            return "Falha ao salvar";
           },
         });
         await promise;
@@ -242,9 +242,9 @@ export function FormGeneral({
       <form onSubmit={form.handleSubmit(submitAction)} {...props}>
         <FormCard>
           <FormCardHeader>
-            <FormCardTitle>Monitor Configuration</FormCardTitle>
+            <FormCardTitle>Configuração do monitor</FormCardTitle>
             <FormCardDescription>
-              Configure your monitor settings and endpoints.
+              Configure as opções e os endpoints do seu monitor.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent className="grid gap-4 sm:grid-cols-3">
@@ -253,14 +253,14 @@ export function FormGeneral({
               name="name"
               render={({ field }) => (
                 <FormItem className="sm:col-span-2">
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input placeholder="OpenStatus API" {...field} />
                   </FormControl>
                   <FormMessage />
                   <FormDescription>
-                    Internal name for your monitor. This will be used to
-                    identify the monitor in the dashboard.
+                    Nome interno do seu monitor. Ele será usado para identificar
+                    o monitor no painel.
                   </FormDescription>
                 </FormItem>
               )}
@@ -270,7 +270,7 @@ export function FormGeneral({
               name="active"
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center">
-                  <FormLabel>Active</FormLabel>
+                  <FormLabel>Ativo</FormLabel>
                   <FormControl>
                     <Switch
                       checked={field.value}
@@ -288,7 +288,7 @@ export function FormGeneral({
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Monitoring Type</FormLabel>
+                  <FormLabel>Tipo de monitoramento</FormLabel>
                   <FormControl>
                     <RadioGroup
                       onValueChange={field.onChange}
@@ -332,7 +332,8 @@ export function FormGeneral({
                               </FormItem>
                             </TooltipTrigger>
                             <TooltipContent>
-                              Monitor type cannot be changed after creation.
+                              O tipo do monitor não pode ser alterado após a
+                              criação.
                             </TooltipContent>
                           </Tooltip>
                         );
@@ -342,8 +343,8 @@ export function FormGeneral({
                           "text-muted-foreground col-span-1 self-end text-xs sm:place-self-end",
                         )}
                       >
-                        Missing a type?{" "}
-                        <a href="mailto:ping@openstatus.dev">Contact us</a>
+                        Falta algum tipo?{" "}
+                        <a href="mailto:ping@openstatus.dev">Fale conosco</a>
                       </div>
                     </RadioGroup>
                   </FormControl>
@@ -362,14 +363,14 @@ export function FormGeneral({
                     name="method"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Method</FormLabel>
+                        <FormLabel>Método</FormLabel>
                         <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value}
                         >
                           <FormControl>
                             <SelectTrigger className="w-full">
-                              <SelectValue placeholder="Select a method" />
+                              <SelectValue placeholder="Selecione um método" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
@@ -409,11 +410,11 @@ export function FormGeneral({
                   name="headers"
                   render={({ field }) => (
                     <FormItem className="col-span-full">
-                      <FormLabel>Request Headers</FormLabel>
+                      <FormLabel>Headers da requisição</FormLabel>
                       {field.value.map((header, index) => (
                         <div key={index} className="grid gap-2 sm:grid-cols-5">
                           <Input
-                            placeholder="Key"
+                            placeholder="Chave"
                             className="col-span-2"
                             value={header.key}
                             onChange={(e) => {
@@ -426,7 +427,7 @@ export function FormGeneral({
                             }}
                           />
                           <Input
-                            placeholder="Value"
+                            placeholder="Valor"
                             className="col-span-2"
                             value={header.value}
                             onChange={(e) => {
@@ -465,7 +466,7 @@ export function FormGeneral({
                           }}
                         >
                           <Add />
-                          Add Header
+                          Adicionar header
                         </Button>
                       </div>
                       <FormMessage />
@@ -482,7 +483,7 @@ export function FormGeneral({
                         <FormControl>
                           <Textarea {...field} />
                         </FormControl>
-                        <FormDescription>Write your payload</FormDescription>
+                        <FormDescription>Escreva seu payload</FormDescription>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -496,11 +497,11 @@ export function FormGeneral({
                   name="assertions"
                   render={({ field }) => (
                     <FormItem className="col-span-full">
-                      <FormLabel>Assertions</FormLabel>
+                      <FormLabel>Validações</FormLabel>
                       <FormDescription>
-                        Validate the response to ensure your service is working
-                        as expected. <br />
-                        Add body, header, or status assertions.
+                        Valide a resposta para garantir que seu serviço está
+                        funcionando como esperado. <br />
+                        Adicione validações de body, header ou status.
                       </FormDescription>
                       {field.value.map((assertion, index) => (
                         <div key={index} className="grid gap-2 sm:grid-cols-6">
@@ -522,7 +523,7 @@ export function FormGeneral({
                                     }
                                     className="w-full"
                                   >
-                                    <SelectValue placeholder="Select type" />
+                                    <SelectValue placeholder="Selecione o tipo" />
                                   </SelectTrigger>
                                   <SelectContent>
                                     {HTTP_ASSERTION_TYPES.map((type) => (
@@ -546,7 +547,7 @@ export function FormGeneral({
                                 >
                                   <SelectTrigger className="w-full min-w-16">
                                     <span className="truncate">
-                                      <SelectValue placeholder="Select compare" />
+                                      <SelectValue placeholder="Selecione a comparação" />
                                     </span>
                                   </SelectTrigger>
                                   <SelectContent>
@@ -578,7 +579,7 @@ export function FormGeneral({
                               render={({ field }) => (
                                 <FormItem>
                                   <Input
-                                    placeholder="Header key"
+                                    placeholder="Chave do header"
                                     className="w-full"
                                     {...field}
                                     value={field.value as string}
@@ -594,7 +595,7 @@ export function FormGeneral({
                             render={({ field }) => (
                               <FormItem>
                                 <Input
-                                  placeholder="Target value"
+                                  placeholder="Valor esperado"
                                   className="w-full"
                                   type={
                                     assertion.type === "status"
@@ -650,7 +651,7 @@ export function FormGeneral({
                           }}
                         >
                           <Add />
-                          Add Status Assertion
+                          Adicionar validação de status
                         </Button>
                         <Button
                           size="sm"
@@ -672,7 +673,7 @@ export function FormGeneral({
                           }}
                         >
                           <Add />
-                          Add Header Assertion
+                          Adicionar validação de header
                         </Button>
                         <Button
                           size="sm"
@@ -693,7 +694,7 @@ export function FormGeneral({
                           }}
                         >
                           <Add />
-                          Add Body Assertion
+                          Adicionar validação de body
                         </Button>
                       </div>
                       <FormMessage />
@@ -716,16 +717,16 @@ export function FormGeneral({
                     </FormControl>
                     <FormMessage />
                     <FormDescription>
-                      The input supports both IPv4 addresses and IPv6 addresses.
+                      O campo aceita endereços IPv4 e IPv6.
                     </FormDescription>
                   </FormItem>
                 )}
               />
               <div className="text-muted-foreground col-span-full text-sm">
-                Examples:
+                Exemplos:
                 <ul className="list-inside list-disc">
                   <li>
-                    Domain:{" "}
+                    Domínio:{" "}
                     <span className="text-foreground font-mono">
                       openstatus.dev:443
                     </span>
@@ -759,17 +760,17 @@ export function FormGeneral({
                     </FormControl>
                     <FormMessage />
                     <FormDescription>
-                      The host to ping. Supports a domain, IPv4, or IPv6 address
-                      (no port).
+                      O host para o ping. Aceita domínio, endereço IPv4 ou IPv6
+                      (sem porta).
                     </FormDescription>
                   </FormItem>
                 )}
               />
               <div className="text-muted-foreground col-span-full text-sm">
-                Examples:
+                Exemplos:
                 <ul className="list-inside list-disc">
                   <li>
-                    Domain:{" "}
+                    Domínio:{" "}
                     <span className="text-foreground font-mono">
                       openstatus.dev
                     </span>
@@ -801,8 +802,8 @@ export function FormGeneral({
                     </FormControl>
                     <FormMessage />
                     <FormDescription>
-                      The gRPC target. A port is required; bracket IPv6
-                      addresses.
+                      O destino gRPC. A porta é obrigatória; use colchetes em
+                      endereços IPv6.
                     </FormDescription>
                   </FormItem>
                 )}
@@ -839,7 +840,7 @@ export function FormGeneral({
                 name="grpcService"
                 render={({ field }) => (
                   <FormItem className="col-span-full">
-                    <FormLabel>Service</FormLabel>
+                    <FormLabel>Serviço</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="checkout.v1.CheckoutService"
@@ -849,8 +850,9 @@ export function FormGeneral({
                     </FormControl>
                     <FormMessage />
                     <FormDescription>
-                      The service name passed to grpc.health.v1.Health/Check.
-                      Leave empty to check overall server health.
+                      O nome do serviço enviado para
+                      grpc.health.v1.Health/Check. Deixe vazio para verificar a
+                      saúde geral do servidor.
                     </FormDescription>
                   </FormItem>
                 )}
@@ -860,11 +862,11 @@ export function FormGeneral({
                 name="headers"
                 render={({ field }) => (
                   <FormItem className="col-span-full">
-                    <FormLabel>Metadata</FormLabel>
+                    <FormLabel>Metadados</FormLabel>
                     {field.value.map((header, index) => (
                       <div key={index} className="grid gap-2 sm:grid-cols-5">
                         <Input
-                          placeholder="Key"
+                          placeholder="Chave"
                           className="col-span-2"
                           value={header.key}
                           onChange={(e) => {
@@ -877,7 +879,7 @@ export function FormGeneral({
                           }}
                         />
                         <Input
-                          placeholder="Value"
+                          placeholder="Valor"
                           className="col-span-2"
                           value={header.value}
                           onChange={(e) => {
@@ -915,12 +917,12 @@ export function FormGeneral({
                         }}
                       >
                         <Add />
-                        Add Metadata
+                        Adicionar metadados
                       </Button>
                     </div>
                     <FormDescription>
-                      Sent with the health check request, commonly for
-                      authentication.
+                      Enviados com a requisição de health check, geralmente para
+                      autenticação.
                     </FormDescription>
                   </FormItem>
                 )}
@@ -941,7 +943,7 @@ export function FormGeneral({
                       </FormControl>
                       <FormMessage />
                       <FormDescription>
-                        The input supports both domain names and URIs.
+                        O campo aceita nomes de domínio e URIs.
                       </FormDescription>
                     </FormItem>
                   )}
@@ -954,11 +956,11 @@ export function FormGeneral({
                   name="assertions"
                   render={({ field }) => (
                     <FormItem className="col-span-full">
-                      <FormLabel>Assertions</FormLabel>
+                      <FormLabel>Validações</FormLabel>
                       <FormDescription>
-                        Validate the response to ensure your service is working
-                        as expected. <br />
-                        Add DNS record assertions.
+                        Valide a resposta para garantir que seu serviço está
+                        funcionando como esperado. <br />
+                        Adicione validações de registros DNS.
                       </FormDescription>
                       {field.value.map((assertion, index) => (
                         <div key={index} className="grid gap-2 sm:grid-cols-6">
@@ -974,7 +976,7 @@ export function FormGeneral({
                                   disabled
                                 >
                                   <SelectTrigger className="w-full">
-                                    <SelectValue placeholder="Select type" />
+                                    <SelectValue placeholder="Selecione o tipo" />
                                   </SelectTrigger>
                                 </Select>
                               </FormItem>
@@ -997,7 +999,7 @@ export function FormGeneral({
                                     }
                                     className="w-full"
                                   >
-                                    <SelectValue placeholder="Select type" />
+                                    <SelectValue placeholder="Selecione o tipo" />
                                   </SelectTrigger>
                                   <SelectContent>
                                     {DNS_ASSERTION_TYPES.map((type) => (
@@ -1021,7 +1023,7 @@ export function FormGeneral({
                                 >
                                   <SelectTrigger className="w-full min-w-16">
                                     <span className="truncate">
-                                      <SelectValue placeholder="Select compare" />
+                                      <SelectValue placeholder="Selecione a comparação" />
                                     </span>
                                   </SelectTrigger>
                                   <SelectContent>
@@ -1045,7 +1047,7 @@ export function FormGeneral({
                               render={({ field }) => (
                                 <FormItem>
                                   <Input
-                                    placeholder="Header key"
+                                    placeholder="Chave do header"
                                     className="w-full"
                                     {...field}
                                     value={field.value as string}
@@ -1061,7 +1063,7 @@ export function FormGeneral({
                             render={({ field }) => (
                               <FormItem>
                                 <Input
-                                  placeholder="Target value"
+                                  placeholder="Valor esperado"
                                   className="w-full"
                                   type={
                                     assertion.type === "status"
@@ -1118,7 +1120,7 @@ export function FormGeneral({
                           }}
                         >
                           <Add />
-                          Add DNS Record Assertion
+                          Adicionar validação de registro DNS
                         </Button>
                       </div>
                       <FormMessage />
@@ -1130,43 +1132,43 @@ export function FormGeneral({
           )}
           <FormCardFooter>
             <FormCardFooterInfo>
-              Learn more about{" "}
+              Saiba mais sobre{" "}
               <Link
                 href="https://www.openstatus.dev/docs/tutorial/how-to-create-monitor/"
                 rel="noreferrer"
                 target="_blank"
               >
-                Monitor Type
+                Tipo de monitor
               </Link>{" "}
-              and{" "}
+              e{" "}
               <Link
                 href="https://www.openstatus.dev/docs/tutorial/how-to-create-monitor/"
                 rel="noreferrer"
                 target="_blank"
               >
-                Assertions
+                Validações
               </Link>
-              . We test your endpoint before saving the monitor.
+              . Testamos seu endpoint antes de salvar o monitor.
             </FormCardFooterInfo>
             <Button type="submit" disabled={isPending || disabled}>
-              {isPending ? "Submitting..." : "Submit"}
+              {isPending ? "Enviando..." : "Enviar"}
             </Button>
           </FormCardFooter>
         </FormCard>
         <AlertDialog open={!!error} onOpenChange={() => setError(null)}>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Still save?</AlertDialogTitle>
+              <AlertDialogTitle>Salvar mesmo assim?</AlertDialogTitle>
               <AlertDialogDescription>
-                It seems like the endpoint is not reachable or the assertions
-                failed. Do you want to save the monitor anyway?
+                Parece que o endpoint não está acessível ou as validações
+                falharam. Deseja salvar o monitor mesmo assim?
               </AlertDialogDescription>
             </AlertDialogHeader>
             <div className="border-destructive/20 bg-destructive/10 max-h-48 overflow-auto rounded-md border p-2 whitespace-pre">
               <p className="text-destructive font-mono text-sm">{error}</p>
             </div>
             <AlertDialogFooter>
-              <AlertDialogCancel type="button">Cancel</AlertDialogCancel>
+              <AlertDialogCancel type="button">Cancelar</AlertDialogCancel>
               <AlertDialogAction
                 type="button"
                 onClick={async (e) => {
@@ -1178,7 +1180,7 @@ export function FormGeneral({
                 }}
                 disabled={isPending}
               >
-                Save
+                Salvar
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

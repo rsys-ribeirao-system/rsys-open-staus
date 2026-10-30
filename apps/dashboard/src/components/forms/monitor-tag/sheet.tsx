@@ -40,9 +40,9 @@ export function FormSheetMonitorTag({
       </FormSheetTrigger>
       <FormSheetContent>
         <FormSheetHeader>
-          <FormSheetTitle>Monitor Tag</FormSheetTitle>
+          <FormSheetTitle>Tag do monitor</FormSheetTitle>
           <FormSheetDescription>
-            Configure and update the monitor tag.
+            Configure e atualize a tag do monitor.
           </FormSheetDescription>
         </FormSheetHeader>
         <FormCardGroup className="flex-1 overflow-y-auto">
@@ -59,7 +59,7 @@ export function FormSheetMonitorTag({
         </FormCardGroup>
         <FormSheetFooter>
           <Button type="submit" form="tags-form">
-            Submit
+            Enviar
           </Button>
         </FormSheetFooter>
       </FormSheetContent>

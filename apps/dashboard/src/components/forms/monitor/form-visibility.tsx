@@ -61,9 +61,9 @@ export function FormVisibility({
       try {
         const promise = onSubmit(values);
         toast.promise(promise, {
-          loading: "Saving...",
-          success: "Saved",
-          error: "Failed to save",
+          loading: "Salvando...",
+          success: "Salvo",
+          error: "Falha ao salvar",
         });
         await promise;
       } catch (error) {
@@ -78,9 +78,9 @@ export function FormVisibility({
         <FormCard>
           {locked ? <FormCardUpgrade /> : null}
           <FormCardHeader>
-            <FormCardTitle>Visibility</FormCardTitle>
+            <FormCardTitle>Visibilidade</FormCardTitle>
             <FormCardDescription>
-              Share your monitor stats with the public.
+              Compartilhe as estatísticas do seu monitor publicamente.
             </FormCardDescription>
           </FormCardHeader>
           <FormCardContent>
@@ -91,10 +91,11 @@ export function FormVisibility({
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between">
                   <div className="space-y-0.5">
-                    <FormLabel>Allow public access</FormLabel>
+                    <FormLabel>Permitir acesso público</FormLabel>
                     <FormDescription>
-                      Change monitor visibility. The monitor stats will be
-                      attached to the status page the monitor is connected to.
+                      Altere a visibilidade do monitor. As estatísticas do
+                      monitor serão exibidas na página de status à qual o
+                      monitor está conectado.
                     </FormDescription>
                   </div>
                   <FormControl>
@@ -110,13 +111,13 @@ export function FormVisibility({
           </FormCardContent>
           <FormCardFooter>
             <FormCardFooterInfo>
-              Learn more about{" "}
+              Saiba mais sobre{" "}
               <Link
                 href="https://www.openstatus.dev/docs/reference/http-monitor/#public"
                 rel="noreferrer"
                 target="_blank"
               >
-                monitor visibility
+                visibilidade do monitor
               </Link>
               .
             </FormCardFooterInfo>
@@ -124,12 +125,12 @@ export function FormVisibility({
               <Button asChild>
                 <NextLink href="/settings/billing">
                   <Lock className="size-4" />
-                  Upgrade
+                  Fazer upgrade
                 </NextLink>
               </Button>
             ) : (
               <Button type="submit" disabled={isPending}>
-                {isPending ? "Submitting..." : "Submit"}
+                {isPending ? "Enviando..." : "Enviar"}
               </Button>
             )}
           </FormCardFooter>
